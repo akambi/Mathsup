@@ -1,0 +1,4 @@
+msp_frontend:
+    resource: "@MspFrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+

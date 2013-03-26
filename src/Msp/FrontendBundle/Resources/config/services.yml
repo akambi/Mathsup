@@ -1,0 +1,7 @@
+parameters:
+#    msp_frontend.example.class: Msp\FrontendBundle\Example
+
+services:
+#    msp_frontend.example:
+#        class: %msp_frontend.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
