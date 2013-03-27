@@ -8,6 +8,6 @@ class FrontendController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('MspFrontendBundle:Default:index.html.twig');
+        return $this->render('MspFrontendBundle:Page:index.html.twig');
     }
 }
