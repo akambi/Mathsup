@@ -20,18 +20,28 @@
         <div class="container">
             <header class="span12">
                 
+                <h1 class="span12 text-center titre">{% block entetetitle %}MathSup{% endblock %}</h1>
+                
                 <div class="span3">
-                    <img src="" alt="logo">
+                    <a href="{{ path('msp_frontend_homepage') }}">
+                        <img src="" alt="logo"/>
+                    </a>
                 </div>
                 
                 <div class="span8">
                     
-                    <nav>
-                        <ul class="nav nav-pills">
-                            <li><a href="">QUI SOMMES NOUS?</a></li>
-                            <li><a href="">CONTACT</a></li>
-                            <li><a href="">MATH PLUS</a></li>
-                            <li><a href="">FAQ</a></li>
+                    <adress class="span8 text-right">
+                        RENSEIGNEMENTS ET INSCRIPTION AU <strong>01 42 30 50 11</strong>
+                    </adress>
+                    
+                    <hr class="span8"/>
+                    
+                    <nav class="span8">
+                        <ul class="nav nav-pills pull-right">
+                            <li><a href="{{ path('msp_qui_sommes_nous') }}">QUI SOMMES NOUS?</a></li>
+                            <li><a href="{{ path('msp_contact') }}">CONTACT</a></li>
+                            <li><a href="{{ path('msp_math_plus') }}">MATH PLUS</a></li>
+                            <li><a href="{{ path('msp_faq') }}">FAQ</a></li>
                         </ul>
                     </nav>
                     
@@ -40,39 +50,74 @@
             </header>
                 
             <section class="span12">
+                {% block aside %}
+                    <aside class="span3">
+
+                        <ul class="nav nav-list">
+                            <li><a href="{{ path('msp_primaire') }}">PRIMAIRE</a></li>
+                            <li>
+                                <a href="{{ path('msp_college') }}">COLLÈGE</a>
+                                <ul class="nav">
+                                    <li><a href="{{ path('msp_college_section', { 'page': "6ieme" } ) }}">6<sup>ième</sup></a></li>
+                                    <li><a href="{{ path('msp_college_section', { 'page': "5ieme" } ) }}">5<sup>ième</sup></a></li>
+                                    <li><a href="{{ path('msp_college_section', { 'page': "4ieme" } ) }}">4<sup>ième</sup></a></li>
+                                    <li><a href="{{ path('msp_college_section', { 'page': "3ieme" } ) }}">3<sup>ième</sup></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ path('msp_lycee') }}">LYCÉE</a>
+                                <ul class="nav">
+                                    <li><a href="{{ path('msp_lycee_section', { 'page': "2nde" } ) }}">2<sup>nde</sup></a></li>
+                                    <li><a href="{{ path('msp_lycee_section', { 'page': "1ere" } ) }}">1<sup>ère</sup></a></li>
+                                    <li><a href="{{ path('msp_lycee_section', { 'page': "tle" } ) }}">Tle</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ path('msp_universite') }}">UNIVERSITÉ</a>
+                                <ul class="nav">
+                                    <li><a href="{{ path('msp_universite_section', { 'page': "licence" }) }}">Licence</a></li>
+                                    <li><a href="{{ path('msp_universite_section', { 'page': "prepa" }) }}">Prépa</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ path('msp_institution') }}">INSTITUTION</a>
+                                <ul class="nav">
+                                    <li><a href="{{ path('msp_institution_section', { 'page': "remise-a-niveau" }) }}">Remise à niveau</a></li>
+                                    <li><a href="{{ path('msp_institution_section', { 'page': "comite-entreprise" }) }}">Comité d'Entreprise</a></li>
+                                    <li><a href="{{ path('msp_institution_section', { 'page': "preparation-concours" }) }}">Préparation Concours</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <form action="" method="post">
+                            <fieldset>
+                                <input type="text" id="login" name="login" placeholder="Login" value="" required/>
+                                <input type="text" id="password" name="password" placeholder="Mot de passe" value="" required/>
+                                <input type="submit" id="connexion" name="connexion" class="btn" value="Connexion"/>
+                            </fieldset>
+                        </form>
+
+                    </aside>
+                {% endblock %}                
                 
-                <aside class="span3">
+                {% block content %}
                     
-                    <h2>PRIMAIRE</h2>
-                    
-                    <h2>COLL&Egrave;GE</h2>
-                    
-                    <h2>LYC&Eacute;E</h2>
-                    
-                    <h2>UNIVERSIT&Eacute;</h2>
-                    
-                    <h2>INSTITUTION</h2>
-                    
-                </aside>
-                
-                <article class="span8">
-                    
-                    {% block content %}
-                    {% endblock %}
-                    
-                </article>       
+                {% endblock %}                       
                 
             </section>
                 
             <footer class="span12">
-                <ul class="nav nav-pills">
-                    <li><a href="">Tarifs</a></li>
-                    <li><a href="">Partenariats</a></li>
-                    <li><a href="">Nos engagements</a></li>
-                    <li><a href="">CGS</a></li>
-                    <li><a href="">Plan du site</a></li>
-                    <li><a href="">Liens</a></li>
+                
+                <ul class="inline pull-right">
+                    <li><a href="{{ path('msp_tarifs') }}">Tarifs</a></li>
+                    <li><a href="{{ path('msp_partenariats') }}">Partenariats</a></li>
+                    <li><a href="{{ path('msp_nos_engagements') }}">Nos engagements</a></li>
+                    <li><a href="{{ path('msp_cgs') }}">CGS</a></li>
+                    <li><a href="{{ path('msp_plan_du_site') }}">Plan du site</a></li>
+                    <li><a href="{{ path('msp_liens') }}">Liens</a></li>
+                    <li>© mathsup.net</li>
                 </ul>
+                
             </footer>           
                 
         </div>        

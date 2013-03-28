@@ -1,3 +1,79 @@
 msp_frontend_homepage:
     pattern:  /
     defaults: { _controller: MspFrontendBundle:Frontend:index }
+
+msp_qui_sommes_nous:
+    pattern:  /qui-sommes-nous/
+    defaults: { _controller: MspFrontendBundle:Frontend:quiSommesNous }
+
+msp_contact:
+    pattern:  /contact/
+    defaults: { _controller: MspFrontendBundle:Frontend:contact }
+
+msp_math_plus:
+    pattern:  /math-plus/
+    defaults: { _controller: MspFrontendBundle:Frontend:mathPlus }
+
+msp_faq:
+    pattern:  /FAQ/
+    defaults: { _controller: MspFrontendBundle:Frontend:faq }
+
+msp_primaire:
+    pattern:  /primaire/
+    defaults: { _controller: MspFrontendBundle:Frontend:primaire }
+
+msp_college:
+    pattern:  /college/
+    defaults: { _controller: MspFrontendBundle:Frontend:college }
+
+msp_college_section:
+    pattern:  /college/{page}/
+    defaults: { _controller: MspFrontendBundle:Frontend:college }
+
+msp_lycee:
+    pattern:  /lycee/
+    defaults: { _controller: MspFrontendBundle:Frontend:lycee }    
+
+msp_lycee_section:
+    pattern:  /lycee/{page}/
+    defaults: { _controller: MspFrontendBundle:Frontend:lycee } 
+
+msp_universite:
+    pattern:  /universite/
+    defaults: { _controller: MspFrontendBundle:Frontend:universite }
+
+msp_universite_section:
+    pattern:  /universite/{page}/
+    defaults: { _controller: MspFrontendBundle:Frontend:universite }
+
+msp_institution:
+    pattern:  /institution/
+    defaults: { _controller: MspFrontendBundle:Frontend:institution }
+
+msp_institution_section:
+    pattern:  /institution/{page}/
+    defaults: { _controller: MspFrontendBundle:Frontend:institution }
+
+msp_tarifs:
+    pattern:  /tarifs/
+    defaults: { _controller: MspFrontendBundle:Frontend:tarifs }
+
+msp_partenariats:
+    pattern:  /partenariats/
+    defaults: { _controller: MspFrontendBundle:Frontend:partenariats }
+
+msp_nos_engagements:
+    pattern:  /nos-engagements/
+    defaults: { _controller: MspFrontendBundle:Frontend:nosEngagements }
+
+msp_cgs:
+    pattern:  /CGS/
+    defaults: { _controller: MspFrontendBundle:Frontend:cgs }
+
+msp_plan_du_site:
+    pattern:  /plan_du_site/
+    defaults: { _controller: MspFrontendBundle:Frontend:planDuSite }
+
+msp_liens:
+    pattern:  /liens/
+    defaults: { _controller: MspFrontendBundle:Frontend:liens }
