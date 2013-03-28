@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+    <head>
+        
+        <title>{% block title %}MathSup{% endblock %}</title>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="description" content="{% block description %}{% endblock %}"/>        
+        <meta name="keywords" lang="fr" content="{% block keywords %}{% endblock %}"/>
+        <meta name="robots" content="{% block robots %}all{% endblock %}"/>
+        
+        {% block stylesheets %}
+            {% stylesheets output='css/style.css' filter='cssrewrite' 'css/*' 'bundles/sdzblog/css/*' %}
+                <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+            {% endstylesheets %}
+        {% endblock %}
+                
+    </head>
+    <body>    
+        <div class="container">
+            <header class="span12">
+                
+                <div class="span3">
+                    <img src="" alt="logo">
+                </div>
+                
+                <div class="span8">
+                    
+                    <nav>
+                        <ul class="nav nav-pills">
+                            <li><a href="">QUI SOMMES NOUS?</a></li>
+                            <li><a href="">CONTACT</a></li>
+                            <li><a href="">MATH PLUS</a></li>
+                            <li><a href="">FAQ</a></li>
+                        </ul>
+                    </nav>
+                    
+                </div>
+                
+            </header>
+                
+            <section class="span12">
+                
+                <aside class="span3">
+                    
+                    <h2>PRIMAIRE</h2>
+                    
+                    <h2>COLL&Egrave;GE</h2>
+                    
+                    <h2>LYC&Eacute;E</h2>
+                    
+                    <h2>UNIVERSIT&Eacute;</h2>
+                    
+                    <h2>INSTITUTION</h2>
+                    
+                </aside>
+                
+                <article class="span8">
+                    
+                    {% block content %}
+                    {% endblock %}
+                    
+                </article>       
+                
+            </section>
+                
+            <footer class="span12">
+                <ul class="nav nav-pills">
+                    <li><a href="">Tarifs</a></li>
+                    <li><a href="">Partenariats</a></li>
+                    <li><a href="">Nos engagements</a></li>
+                    <li><a href="">CGS</a></li>
+                    <li><a href="">Plan du site</a></li>
+                    <li><a href="">Liens</a></li>
+                </ul>
+            </footer>           
+                
+        </div>        
+            
+        {% block javascripts1 %}
+        {# Ajoutez ces javascripts si vous comptez vous servir des fonctionnalit�s du bootstrap Twitter #}
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>      
+        {% endblock %}
+        {% block javascripts2 %}
+            {% javascripts output='js/main.js' filter='' 'js/*' %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>
