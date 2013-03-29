@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Difficulter
 {
     /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Qcm", mappedBy="difficulter")
+    */
+    private $qcms;
+    
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -60,5 +65,45 @@ class Difficulter
     public function getLibelle()
     {
         return $this->libelle;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->qcms = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add qcms
+     *
+     * @param \Msp\FrontendBundle\Entity\Qcm $qcms
+     * @return Difficulter
+     */
+    public function addQcm(\Msp\FrontendBundle\Entity\Qcm $qcms)
+    {
+        $this->qcms[] = $qcms;
+    
+        return $this;
+    }
+
+    /**
+     * Remove qcms
+     *
+     * @param \Msp\FrontendBundle\Entity\Qcm $qcms
+     */
+    public function removeQcm(\Msp\FrontendBundle\Entity\Qcm $qcms)
+    {
+        $this->qcms->removeElement($qcms);
+    }
+
+    /**
+     * Get qcms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQcms()
+    {
+        return $this->qcms;
     }
 }

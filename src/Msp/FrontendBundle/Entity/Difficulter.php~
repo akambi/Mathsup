@@ -5,18 +5,17 @@ namespace Msp\FrontendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Classe
+ * Difficulter
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Msp\FrontendBundle\Entity\ClasseRepository")
+ * @ORM\Entity(repositoryClass="Msp\FrontendBundle\Entity\DifficulterRepository")
  */
-class Classe
+class Difficulter
 {
     /**
-    * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Niveau", inversedBy="classes")
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Qcm", mappedBy="difficulter")
     */
-    private $niveau;
+    private $qcms;
     
     /**
      * @var integer
@@ -30,7 +29,7 @@ class Classe
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=10)
+     * @ORM\Column(name="libelle", type="string", length=25)
      */
     private $libelle;
 
@@ -49,7 +48,7 @@ class Classe
      * Set libelle
      *
      * @param string $libelle
-     * @return Classe
+     * @return Difficulter
      */
     public function setLibelle($libelle)
     {
@@ -66,28 +65,5 @@ class Classe
     public function getLibelle()
     {
         return $this->libelle;
-    }
-
-    /**
-     * Set niveau
-     *
-     * @param \Msp\FrontendBundle\Entity\Niveau $niveau
-     * @return Classe
-     */
-    public function setNiveau(\Msp\FrontendBundle\Entity\Niveau $niveau)
-    {
-        $this->niveau = $niveau;
-    
-        return $this;
-    }
-
-    /**
-     * Get niveau
-     *
-     * @return \Msp\FrontendBundle\Entity\Niveau 
-     */
-    public function getNiveau()
-    {
-        return $this->niveau;
     }
 }

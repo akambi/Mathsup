@@ -150,37 +150,4 @@ class Niveau
     {
         return $this->qcms;
     }
-
-    /**
-     * Add classes
-     *
-     * @param \Msp\FrontendBundle\Entity\Classe $classes
-     * @return Niveau
-     */
-    public function addClasse(\Msp\FrontendBundle\Entity\Classe $classes)
-    {
-        $this->classes[] = $classes;
-    
-        return $this;
-    }
-
-    /**
-     * Remove classes
-     *
-     * @param \Msp\FrontendBundle\Entity\Classe $classes
-     */
-    public function removeClasse(\Msp\FrontendBundle\Entity\Classe $classes)
-    {
-        $this->classes->removeElement($classes);
-    }
-
-    /**
-     * Get classes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getClasses()
-    {
-        return $this->classes;
-    }
 }
