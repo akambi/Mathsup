@@ -13,6 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class Cours
 {
     /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserHourlyRate", mappedBy="cours")
+    */
+    private $userHourlyRates;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserAvailability", mappedBy="cours")
+    */
+    private $userAvailabilities;
+    
+    /**
     * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Ticket", mappedBy="cours")
     */
     private $tickets;

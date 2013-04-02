@@ -1,0 +1,45 @@
+<?php
+
+namespace Msp\FrontendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserAvailability 
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class UserAvailability
+{
+    /**
+    * @ORM\Id
+    * @ORM\ManyToOne(targetEntity="Msp\UserBundle\Entity\User", inversedBy="userAvailabilities")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $user;
+    
+    /**
+    * @ORM\Id
+    * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Cours", inversedBy="userAvailabilities")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $cours;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Id
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="disponible", type="boolean")
+     */
+    private $disponible;
+}
+
+?>

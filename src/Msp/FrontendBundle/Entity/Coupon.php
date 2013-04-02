@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Coupon
 {
     /**
+    * @ORM\ManyToOne(targetEntity="Msp\UserBundle\Entity\User", inversedBy="coupons")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $user;
+    
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -24,7 +30,7 @@ class Coupon
     /**
      * @var string
      *
-     * @ORM\Column(name="token", type="string", length=45)
+     * @ORM\Column(name="token", type="string", length=255)
      */
     private $token;
 
@@ -120,5 +126,28 @@ class Coupon
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Msp\UserBundle\Entity\User $user
+     * @return Coupon
+     */
+    public function setUser(\Msp\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Msp\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

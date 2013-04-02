@@ -19,7 +19,7 @@ class Question
     private $qcm;
     
     /**
-    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Response", mappedBy="question")
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Reponse", mappedBy="question")
     */
     private $reponses;
     

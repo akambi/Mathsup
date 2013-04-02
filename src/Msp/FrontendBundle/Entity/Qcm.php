@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Qcm
 {
     /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserQcm", mappedBy="qcm")
+    */
+    private $userQcms;
+    
+    /**
     * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Niveau", inversedBy="qcms")
     * @ORM\JoinColumn(nullable=false)
     */
@@ -224,5 +229,38 @@ class Qcm
     public function getQuestions()
     {
         return $this->questions;
+    }
+
+    /**
+     * Add userQcms
+     *
+     * @param \Msp\FrontendBundle\Entity\UserQcm $userQcms
+     * @return Qcm
+     */
+    public function addUserQcm(\Msp\FrontendBundle\Entity\UserQcm $userQcms)
+    {
+        $this->userQcms[] = $userQcms;
+    
+        return $this;
+    }
+
+    /**
+     * Remove userQcms
+     *
+     * @param \Msp\FrontendBundle\Entity\UserQcm $userQcms
+     */
+    public function removeUserQcm(\Msp\FrontendBundle\Entity\UserQcm $userQcms)
+    {
+        $this->userQcms->removeElement($userQcms);
+    }
+
+    /**
+     * Get userQcms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserQcms()
+    {
+        return $this->userQcms;
     }
 }

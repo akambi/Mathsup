@@ -1,0 +1,45 @@
+<?php
+
+namespace Msp\FrontendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserQcm
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class UserQcm
+{
+    /**
+    * @ORM\Id
+    * @ORM\ManyToOne(targetEntity="Msp\UserBundle\Entity\User", inversedBy="userQcms")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $user;
+    
+    /**
+    * @ORM\Id
+    * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Qcm", inversedBy="userQcms")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $qcm;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Id
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="note", type="integer")
+     */
+    private $note;
+}
+
+?>

@@ -13,6 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class Cours
 {
     /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserHourlyRate", mappedBy="cours")
+    */
+    private $userHourlyRates;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserAvailability", mappedBy="cours")
+    */
+    private $userAvailabilities;
+    
+    /**
     * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Ticket", mappedBy="cours")
     */
     private $tickets;
@@ -105,5 +115,71 @@ class Cours
     public function getTickets()
     {
         return $this->tickets;
+    }
+
+    /**
+     * Add userHourlyRates
+     *
+     * @param \Msp\FrontendBundle\Entity\UserHourlyRate $userHourlyRates
+     * @return Cours
+     */
+    public function addUserHourlyRate(\Msp\FrontendBundle\Entity\UserHourlyRate $userHourlyRates)
+    {
+        $this->userHourlyRates[] = $userHourlyRates;
+    
+        return $this;
+    }
+
+    /**
+     * Remove userHourlyRates
+     *
+     * @param \Msp\FrontendBundle\Entity\UserHourlyRate $userHourlyRates
+     */
+    public function removeUserHourlyRate(\Msp\FrontendBundle\Entity\UserHourlyRate $userHourlyRates)
+    {
+        $this->userHourlyRates->removeElement($userHourlyRates);
+    }
+
+    /**
+     * Get userHourlyRates
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserHourlyRates()
+    {
+        return $this->userHourlyRates;
+    }
+
+    /**
+     * Add userAvailabilities
+     *
+     * @param \Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities
+     * @return Cours
+     */
+    public function addUserAvailabilitie(\Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities)
+    {
+        $this->userAvailabilities[] = $userAvailabilities;
+    
+        return $this;
+    }
+
+    /**
+     * Remove userAvailabilities
+     *
+     * @param \Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities
+     */
+    public function removeUserAvailabilitie(\Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities)
+    {
+        $this->userAvailabilities->removeElement($userAvailabilities);
+    }
+
+    /**
+     * Get userAvailabilities
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserAvailabilities()
+    {
+        return $this->userAvailabilities;
     }
 }

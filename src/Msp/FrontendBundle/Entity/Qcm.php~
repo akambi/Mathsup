@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Qcm
 {
     /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserQcm", mappedBy="qcm")
+    */
+    private $userQcms;
+    
+    /**
     * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Niveau", inversedBy="qcms")
     * @ORM\JoinColumn(nullable=false)
     */

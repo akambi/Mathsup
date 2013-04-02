@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Niveau
 {
     /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserHourlyRate", mappedBy="niveau")
+    */
+    private $userHourlyRates;
+    
+    /**
     * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Classe", mappedBy="niveau")
     */
     private $classes;
@@ -182,5 +187,38 @@ class Niveau
     public function getClasses()
     {
         return $this->classes;
+    }
+
+    /**
+     * Add userHourlyRates
+     *
+     * @param \Msp\FrontendBundle\Entity\UserHourlyRate $userHourlyRates
+     * @return Niveau
+     */
+    public function addUserHourlyRate(\Msp\FrontendBundle\Entity\UserHourlyRate $userHourlyRates)
+    {
+        $this->userHourlyRates[] = $userHourlyRates;
+    
+        return $this;
+    }
+
+    /**
+     * Remove userHourlyRates
+     *
+     * @param \Msp\FrontendBundle\Entity\UserHourlyRate $userHourlyRates
+     */
+    public function removeUserHourlyRate(\Msp\FrontendBundle\Entity\UserHourlyRate $userHourlyRates)
+    {
+        $this->userHourlyRates->removeElement($userHourlyRates);
+    }
+
+    /**
+     * Get userHourlyRates
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserHourlyRates()
+    {
+        return $this->userHourlyRates;
     }
 }

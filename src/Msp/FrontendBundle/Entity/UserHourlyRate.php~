@@ -1,0 +1,44 @@
+<?php
+
+namespace Msp\FrontendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserHourlyRate
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class UserHourlyRate
+{
+    /**
+    * @ORM\Id
+    * @ORM\ManyToOne(targetEntity="Msp\UserBundle\Entity\User", inversedBy="userHourlyRates")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $user;
+    
+    /**
+    * @ORM\Id
+    * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Cours", inversedBy="userHourlyRates")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $cours;
+        
+    /**
+    * @ORM\Id
+    * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Niveau", inversedBy="userHourlyRates")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $niveau;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="taux_horaire", type="float")
+     */
+    private $tauxHoraire;
+}
+
+?>
