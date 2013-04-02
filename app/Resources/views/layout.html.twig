@@ -24,7 +24,7 @@
                 
                 <div class="span3">
                     <a href="{{ path('msp_frontend_homepage') }}">
-                        <img src="" alt="logo"/>
+                        <img src="" alt=""/>
                     </a>
                 </div>
                 
@@ -89,13 +89,15 @@
                             </li>
                         </ul>
                         
-                        <form action="" method="post">
+                        <form action="{{ path("fos_user_security_check") }}" method="post">
                             <fieldset>
-                                <input type="text" id="login" name="login" placeholder="Login" value="" required/>
-                                <input type="text" id="password" name="password" placeholder="Mot de passe" value="" required/>
-                                <input type="submit" id="connexion" name="connexion" class="btn" value="Connexion"/>
+                                <input type="text" id="username" name="_username" placeholder="Login" required="required" />
+                                <input type="password" id="password" name="_password"  placeholder="Mot de passe" required="required" />
+                                <input type="submit" id="_submit" class="btn btn-large btn-block btn-primary" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
                             </fieldset>
                         </form>
+                        
+                        <a class="btn btn-large btn-block" href="{{ path("fos_user_registration_register") }}">Inscription</a>
 
                     </aside>
                 {% endblock %}                
