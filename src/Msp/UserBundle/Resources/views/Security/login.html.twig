@@ -1,7 +1,7 @@
-{% extends "MspFrontendBundle::layout.html.twig" %}
+{% extends "MspUserBundle::layout.html.twig" %}
 
 {# Le titre de la page (defaut MathSup) #}
-{% block title %}LOGIN | {{ parent() }}{% endblock %}
+{% block title %}CONNEXION | {{ parent() }}{% endblock %}
 {# La description de la page (defaut vide) #}
 {% block description %}{% endblock %}
 {# Les mots clés de la page (defaut vide) #}
@@ -10,33 +10,35 @@
 {% block robots %}noindex, nofollow{% endblock %}
 
 {# Le titre de l'entête du document #}
-{% block entetetitle %}CGS | {{ parent() }}{% endblock %}
+{% block entetetitle %}CONNEXION | {{ parent() }}{% endblock %}
 {# La barre latéralke de la page #}
 {% block aside %}{{ parent() }}{% endblock %}
-
-{% block content %}
     
-    {% block fos_user_content %}
-    {% if error %}
-        <div class="span8 alert alert-error">{{ error|trans({}, 'FOSUserBundle') }}</div>
-    {% endif %}
+{% block fos_user_content %}
 
-    <form class="span8" action="{{ path("fos_user_security_check") }}" method="post">
-        <fieldset>
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+<header>
+    <h1>CONNEXION</h1>
+</header>
 
-            <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Login" required="required" /><br/>
+{% if error %}
+    <div class="alert alert-error">{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
 
-            <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-            <input type="password" id="password" name="_password" placeholder="Mot de passe" required="required" /><br/>
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <fieldset>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label><br/>
+        <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Login" required="required" /><br/>
 
-            <input type="submit" id="_submit" class="btn btn-primary" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
-        </fieldset>
-    </form>
-    {% endblock fos_user_content %}
+        <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+        <input type="password" id="password" name="_password" placeholder="Mot de passe" required="required" /><br/>
 
-{% endblock %}
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label><br/>
+
+        <input type="submit" id="_submit" class="btn btn-primary" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+    </fieldset>
+</form>
+
+{% endblock fos_user_content %}
