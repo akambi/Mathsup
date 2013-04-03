@@ -1,0 +1,54 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>ExerciceCorrige</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Exercice</th>
+                <td>{{ entity.exercice }}</td>
+            </tr>
+            <tr>
+                <th>Corrige</th>
+                <td>{{ entity.corrige }}</td>
+            </tr>
+            <tr>
+                <th>Urlpdf</th>
+                <td>{{ entity.urlPdf }}</td>
+            </tr>
+            <tr>
+                <th>Urlvideo</th>
+                <td>{{ entity.urlVideo }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('exercicecorrige') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('exercicecorrige_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('exercicecorrige_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

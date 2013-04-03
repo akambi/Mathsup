@@ -34,10 +34,15 @@
         <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
         <input type="password" id="password" name="_password" placeholder="Mot de passe" required="required" /><br/>
 
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-        <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label><br/>
-
+        <label for="remember_me">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+        </label><br/>
+        
         <input type="submit" id="_submit" class="btn btn-primary" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+        
+        <a class="btn" href="{{ path("fos_user_resetting_request") }}">Mot de passe oublié<i class="icon-chevron-right"></i></a>
+        
     </fieldset>
 </form>
 
