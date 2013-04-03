@@ -19,3 +19,7 @@
 [2013-03-28 14:06:11] request.CRITICAL: Uncaught PHP Exception InvalidArgumentException: "Unable to find template "MspFrontendBundle:Page:college.html.twig"." at C:\wamp\www\Mathsup\vendor\symfony\symfony\src\Symfony\Bridge\Twig\TwigEngine.php line 123 [] []
 [2013-03-28 14:15:24] request.INFO: Matched route "msp_college" (parameters: "_controller": "Msp\FrontendBundle\Controller\FrontendController::collegeAction", "_route": "msp_college") [] []
 [2013-03-28 14:15:24] request.CRITICAL: Uncaught PHP Exception InvalidArgumentException: "Unable to find template "MspFrontendBundle:Page:college.html.twig"." at C:\wamp\www\Mathsup\vendor\symfony\symfony\src\Symfony\Bridge\Twig\TwigEngine.php line 123 [] []
+[2013-04-03 08:50:53] request.INFO: Matched route "fos_user_security_check" (parameters: "_controller": "FOS\UserBundle\Controller\SecurityController::checkAction", "_route": "fos_user_security_check") [] []
+[2013-04-03 08:50:53] security.INFO: Populated SecurityContext with an anonymous Token [] []
+[2013-04-03 08:50:53] request.CRITICAL: Uncaught PHP Exception RuntimeException: "You must configure the check path to be handled by the firewall using form_login in your security firewall configuration." at C:\wamp\www\Mathsup\vendor\friendsofsymfony\user-bundle\FOS\UserBundle\Controller\SecurityController.php line 69 [] []
+[2013-04-03 08:50:54] security.DEBUG: Write SecurityContext in the session [] []

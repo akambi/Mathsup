@@ -66,11 +66,10 @@ class User extends BaseUser
      */
     protected $prenom;
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="departement", type="string", length=45, nullable=true)
-     */
+   /**
+    * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Departement", inversedBy="users")
+    * @ORM\JoinColumn(nullable=true)
+    */
     protected $departement;
     
     public function __construct()
@@ -135,30 +134,7 @@ class User extends BaseUser
     {
         return $this->prenom;
     }
-
-    /**
-     * Set departement
-     *
-     * @param string $departement
-     * @return User
-     */
-    public function setDepartement($departement)
-    {
-        $this->departement = $departement;
     
-        return $this;
-    }
-
-    /**
-     * Get departement
-     *
-     * @return string 
-     */
-    public function getDepartement()
-    {
-        return $this->departement;
-    }
-
     /**
      * Add userAvailabilities
      *
@@ -345,5 +321,28 @@ class User extends BaseUser
     public function getClasse()
     {
         return $this->classe;
+    }
+
+    /**
+     * Set departement
+     *
+     * @param \Msp\FrontendBundle\Entity\Departement $departement
+     * @return User
+     */
+    public function setDepartement(\Msp\FrontendBundle\Entity\Departement $departement = null)
+    {
+        $this->departement = $departement;
+    
+        return $this;
+    }
+
+    /**
+     * Get departement
+     *
+     * @return \Msp\FrontendBundle\Entity\Departement 
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
     }
 }
