@@ -12,6 +12,7 @@ class DifficulterType extends AbstractType
     {
         $builder
             ->add('libelle')
+            ->add('nombre_etoile')
         ;
     }
 

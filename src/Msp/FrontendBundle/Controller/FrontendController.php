@@ -203,4 +203,9 @@ class FrontendController extends Controller
     {
         return $this->render('MspFrontendBundle:Page:liens.html.twig');
     }
+    
+    public function compteAction()
+    {
+        return $this->render('MspFrontendBundle:User:index.html.twig');
+    }
 }

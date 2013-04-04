@@ -1,7 +1,12 @@
+#
+# Route de la page d'accueil #
+#
 msp_frontend_homepage:
     pattern:  /
     defaults: { _controller: MspFrontendBundle:Frontend:index }
-
+#
+# Les routes des pages statiques #
+#
 msp_qui_sommes_nous:
     pattern:  /qui-sommes-nous/
     defaults: { _controller: MspFrontendBundle:Frontend:quiSommesNous }
@@ -77,3 +82,162 @@ msp_plan_du_site:
 msp_liens:
     pattern:  /liens/
     defaults: { _controller: MspFrontendBundle:Frontend:liens }
+
+msp_compte:
+    pattern:  /compte/
+    defaults: { _controller: MspFrontendBundle:Frontend:compte }
+
+#
+# Les routes pour niveau #
+#
+niveau:
+    pattern:  /niveau/
+    defaults: { _controller: MspFrontendBundle:Niveau:index }
+
+niveau_create:
+    pattern:  /niveau/create/
+    defaults: { _controller: MspFrontendBundle:Niveau:create}
+
+niveau_new:
+    pattern:  /niveau/new/
+    defaults: { _controller: MspFrontendBundle:Niveau:new}
+
+niveau_show:
+    pattern:  /niveau/show/{id}
+    defaults: { _controller: MspFrontendBundle:Niveau:show}
+
+niveau_edit:
+    pattern:  /niveau/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Niveau:edit}
+
+niveau_update:
+    pattern:  /niveau/update/{id}
+    defaults: { _controller: MspFrontendBundle:Niveau:update}
+
+niveau_delete:
+    pattern:  /niveau/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Niveau:delete}
+
+#
+# Les routes pour Classe #
+#
+classe:
+    pattern:  /classe/
+    defaults: { _controller: MspFrontendBundle:Classe:index }
+
+classe_create:
+    pattern:  /classe/create/
+    defaults: { _controller: MspFrontendBundle:Classe:create}
+
+classe_new:
+    pattern:  /classe/new/
+    defaults: { _controller: MspFrontendBundle:Classe:new}
+
+classe_show:
+    pattern:  /classe/show/{id}
+    defaults: { _controller: MspFrontendBundle:Classe:show}
+
+classe_edit:
+    pattern:  /classe/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Classe:edit}
+
+classe_update:
+    pattern:  /classe/update/{id}
+    defaults: { _controller: MspFrontendBundle:Classe:update}
+
+classe_delete:
+    pattern:  /classe/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Classe:delete}
+
+#
+# Les routes pour chapitre #
+#
+chapitre:
+    pattern:  /chapitre/
+    defaults: { _controller: MspFrontendBundle:Chapitre:index }
+
+chapitre_create:
+    pattern:  /chapitre/create/
+    defaults: { _controller: MspFrontendBundle:Chapitre:create}
+
+chapitre_new:
+    pattern:  /chapitre/new/
+    defaults: { _controller: MspFrontendBundle:Chapitre:new}
+
+chapitre_show:
+    pattern:  /chapitre/show/{id}
+    defaults: { _controller: MspFrontendBundle:Chapitre:show}
+
+chapitre_edit:
+    pattern:  /chapitre/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Chapitre:edit}
+
+chapitre_update:
+    pattern:  /chapitre/update/{id}
+    defaults: { _controller: MspFrontendBundle:Chapitre:update}
+
+chapitre_delete:
+    pattern:  /chapitre/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Chapitre:delete}
+
+#
+# Les routes pour ExerciceCorrige #
+#
+exercicecorrige:
+    pattern:  /exercicecorrige/
+    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:index }
+
+exercicecorrige_create:
+    pattern:  /exercicecorrige/create/
+    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:create}
+
+exercicecorrige_new:
+    pattern:  /exercicecorrige/new/
+    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:new}
+
+exercicecorrige_show:
+    pattern:  /exercicecorrige/show/{id}
+    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:show}
+
+exercicecorrige_edit:
+    pattern:  /exercicecorrige/edit/{id}
+    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:edit}
+
+exercicecorrige_update:
+    pattern:  /exercicecorrige/update/{id}
+    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:update}
+
+exercicecorrige_delete:
+    pattern:  /exercicecorrige/delete/{id}
+    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:delete}
+
+#
+# Les routes pour ExerciceCorrige #
+#
+difficulter:
+    pattern:  /difficulter/
+    defaults: { _controller: MspFrontendBundle:Difficulter:index }
+
+difficulter_create:
+    pattern:  /difficulter/create/
+    defaults: { _controller: MspFrontendBundle:Difficulter:create}
+
+difficulter_new:
+    pattern:  /difficulter/new/
+    defaults: { _controller: MspFrontendBundle:Difficulter:new}
+
+difficulter_show:
+    pattern:  /difficulter/show/{id}
+    defaults: { _controller: MspFrontendBundle:Difficulter:show}
+
+difficulter_edit:
+    pattern:  /difficulter/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Difficulter:edit}
+
+difficulter_update:
+    pattern:  /difficulter/update/{id}
+    defaults: { _controller: MspFrontendBundle:Difficulter:update}
+
+difficulter_delete:
+    pattern:  /difficulter/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Difficulter:delete}

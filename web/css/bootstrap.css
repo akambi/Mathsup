@@ -832,7 +832,7 @@ ol.unstyled {
   list-style: none;
 }
 
-ul.inline,
+ul.inline, ul.record_actions,
 ol.inline {
   margin-left: 0;
   list-style: none;

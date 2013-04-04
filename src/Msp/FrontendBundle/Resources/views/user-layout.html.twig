@@ -1,0 +1,23 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+<section class="span8">
+    {% block navbaruser %}
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li class="active"><a href="{{ path('msp_compte') }}"><i class="icon-user"></i></a></li>
+                <li><a href="{{ path('niveau') }}">NIVEAU</a></li>
+                <li><a href="{{ path('classe') }}">CLASSE</a></li>
+                <li><a href="{{ path('chapitre') }}">CHAPITRE</a></li>
+                <li><a href="{{ path('exercicecorrige') }}">Exercices Corrigés</a></li>
+                <li><a href="{{ path('difficulter') }}">Difficulté</a></li>
+            </ul>
+        </div>
+    </div>
+    {% endblock %}
+    {% block body %}
+    {% endblock %}
+     
+</section>
+{% endblock %}

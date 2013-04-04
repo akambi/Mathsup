@@ -91,6 +91,14 @@ class Niveau
     }
     
     /**
+     * toString
+     */
+    public function __toString()
+    {
+        return $this->libelle;
+    }
+    
+    /**
      * Add chapitres
      *
      * @param \Msp\FrontendBundle\Entity\Chapitre $chapitres

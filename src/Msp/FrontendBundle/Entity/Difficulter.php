@@ -32,7 +32,13 @@ class Difficulter
      * @ORM\Column(name="libelle", type="string", length=25)
      */
     private $libelle;
-
+        
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nombre_etoile", type="integer")
+     */
+    private $nombreEtoile;
 
     /**
      * Get id
@@ -105,5 +111,29 @@ class Difficulter
     public function getQcms()
     {
         return $this->qcms;
+    }
+    
+
+    /**
+     * Set nombreEtoile
+     *
+     * @param integer $nombreEtoile
+     * @return Difficulter
+     */
+    public function setNombreEtoile($nombreEtoile)
+    {
+        $this->nombreEtoile = $nombreEtoile;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombreEtoile
+     *
+     * @return integer 
+     */
+    public function getNombreEtoile()
+    {
+        return $this->nombreEtoile;
     }
 }

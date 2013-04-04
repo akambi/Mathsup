@@ -110,6 +110,15 @@ class Chapitre
         $this->date = new \Datetime();
     }
     
+    
+     /**
+     * toString
+     */
+    public function __toString()
+    {
+        return $this->libelle;
+    }
+    
     /**
      * Set niveau
      *
