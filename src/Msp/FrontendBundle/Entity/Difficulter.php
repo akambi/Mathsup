@@ -80,6 +80,15 @@ class Difficulter
         $this->qcms = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+    
+     /**
+     * toString
+     */
+    public function __toString()
+    {
+        return $this->libelle;
+    }
+    
     /**
      * Add qcms
      *

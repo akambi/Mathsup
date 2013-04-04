@@ -241,3 +241,35 @@ difficulter_update:
 difficulter_delete:
     pattern:  /difficulter/delete/{id}
     defaults: { _controller: MspFrontendBundle:Difficulter:delete}
+
+#
+# Les routes pour ExerciceCorrige #
+#
+qcm:
+    pattern:  /qcm/
+    defaults: { _controller: MspFrontendBundle:Qcm:index }
+
+qcm_create:
+    pattern:  /qcm/create/
+    defaults: { _controller: MspFrontendBundle:Qcm:create}
+
+qcm_new:
+    pattern:  /qcm/new/
+    defaults: { _controller: MspFrontendBundle:Qcm:new}
+
+qcm_show:
+    pattern:  /qcm/show/{id}
+    defaults: { _controller: MspFrontendBundle:Qcm:show}
+
+qcm_edit:
+    pattern:  /qcm/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Qcm:edit}
+
+qcm_update:
+    pattern:  /qcm/update/{id}
+    defaults: { _controller: MspFrontendBundle:Qcm:update}
+
+qcm_delete:
+    pattern:  /qcm/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Qcm:delete }
+
