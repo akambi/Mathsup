@@ -38,7 +38,14 @@ class Classe
      * @ORM\Column(name="libelle", type="string", length=10)
      */
     private $libelle;
-
+    
+    /**
+     * toString
+     */
+    public function __toString()
+    {
+        return $this->libelle;
+    }
 
     /**
      * Get id

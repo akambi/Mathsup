@@ -75,6 +75,14 @@ class Departement
     }
     
     /**
+     * toString
+     */
+    public function __toString()
+    {
+        return $this->libelle;
+    }
+    
+    /**
      * Add users
      *
      * @param \Msp\UserBundle\Entity\User $users

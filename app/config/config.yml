@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: services.yml }
 
 framework:
     #esi:             ~
@@ -75,3 +76,8 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Msp\UserBundle\Entity\User
+    # Necessite la création du fichier services.yml
+    registration:
+        form:
+            type: msp_user_registration
+

@@ -119,6 +119,37 @@ niveau_delete:
     defaults: { _controller: MspFrontendBundle:Niveau:delete}
 
 #
+# Les routes pour Departement #
+#
+departement:
+    pattern:  /departement/
+    defaults: { _controller: MspFrontendBundle:Departement:index }
+
+departement_create:
+    pattern:  /departement/create/
+    defaults: { _controller: MspFrontendBundle:Departement:create}
+
+departement_new:
+    pattern:  /departement/new/
+    defaults: { _controller: MspFrontendBundle:Departement:new}
+
+departement_show:
+    pattern:  /departement/show/{id}
+    defaults: { _controller: MspFrontendBundle:Departement:show}
+
+departement_edit:
+    pattern:  /departement/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Departement:edit}
+
+departement_update:
+    pattern:  /departement/update/{id}
+    defaults: { _controller: MspFrontendBundle:Departement:update}
+
+departement_delete:
+    pattern:  /departement/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Departement:delete}
+
+#
 # Les routes pour COURS #
 #
 cours:
