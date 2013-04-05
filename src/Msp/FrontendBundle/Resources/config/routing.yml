@@ -119,6 +119,37 @@ niveau_delete:
     defaults: { _controller: MspFrontendBundle:Niveau:delete}
 
 #
+# Les routes pour COURS #
+#
+cours:
+    pattern:  /cours/
+    defaults: { _controller: MspFrontendBundle:Cours:index }
+
+cours_create:
+    pattern:  /cours/create/
+    defaults: { _controller: MspFrontendBundle:Cours:create}
+
+cours_new:
+    pattern:  /cours/new/
+    defaults: { _controller: MspFrontendBundle:Cours:new}
+
+cours_show:
+    pattern:  /cours/show/{id}
+    defaults: { _controller: MspFrontendBundle:Cours:show}
+
+cours_edit:
+    pattern:  /cours/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Cours:edit}
+
+cours_update:
+    pattern:  /cours/update/{id}
+    defaults: { _controller: MspFrontendBundle:Cours:update}
+
+cours_delete:
+    pattern:  /cours/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Cours:delete }
+
+#
 # Les routes pour Classe #
 #
 classe:
@@ -212,7 +243,7 @@ exercicecorrige_delete:
     defaults: { _controller: MspFrontendBundle:ExerciceCorrige:delete}
 
 #
-# Les routes pour ExerciceCorrige #
+# Les routes pour DIFFICULTER #
 #
 difficulter:
     pattern:  /difficulter/
@@ -243,7 +274,7 @@ difficulter_delete:
     defaults: { _controller: MspFrontendBundle:Difficulter:delete}
 
 #
-# Les routes pour ExerciceCorrige #
+# Les routes pour QCM #
 #
 qcm:
     pattern:  /qcm/
@@ -273,3 +304,64 @@ qcm_delete:
     pattern:  /qcm/delete/{id}
     defaults: { _controller: MspFrontendBundle:Qcm:delete }
 
+#
+# Les routes pour REPONSE #
+#
+question:
+    pattern:  /question/
+    defaults: { _controller: MspFrontendBundle:Question:index }
+
+question_create:
+    pattern:  /question/create/
+    defaults: { _controller: MspFrontendBundle:Question:create}
+
+question_new:
+    pattern:  /question/new/
+    defaults: { _controller: MspFrontendBundle:Question:new}
+
+question_show:
+    pattern:  /question/show/{id}
+    defaults: { _controller: MspFrontendBundle:Question:show}
+
+question_edit:
+    pattern:  /question/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Question:edit}
+
+question_update:
+    pattern:  /question/update/{id}
+    defaults: { _controller: MspFrontendBundle:Question:update}
+
+question_delete:
+    pattern:  /question/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Question:delete }
+
+#
+# Les routes pour REPONSE #
+#
+reponse:
+    pattern:  /reponse/
+    defaults: { _controller: MspFrontendBundle:Reponse:index }
+
+reponse_create:
+    pattern:  /reponse/create/
+    defaults: { _controller: MspFrontendBundle:Reponse:create}
+
+reponse_new:
+    pattern:  /reponse/new/
+    defaults: { _controller: MspFrontendBundle:Reponse:new}
+
+reponse_show:
+    pattern:  /reponse/show/{id}
+    defaults: { _controller: MspFrontendBundle:Reponse:show}
+
+reponse_edit:
+    pattern:  /reponse/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Reponse:edit}
+
+reponse_update:
+    pattern:  /reponse/update/{id}
+    defaults: { _controller: MspFrontendBundle:Reponse:update}
+
+reponse_delete:
+    pattern:  /reponse/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Reponse:delete }

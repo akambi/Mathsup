@@ -13,6 +13,17 @@
 {% block entetetitle %}COLLÈGE 6<sup>ième</sup> | {{ parent() }}{% endblock %}
 {# La barre latéralke de la page #}
 {% block aside %}{{ parent() }}{% endblock %}
+{% block college %}
+<li>
+    <a href="{{ path('msp_college') }}">COLLÈGE</a>
+    <ul class="nav nav-list">
+        <li class="active"><a href="{{ path('msp_college_section', { 'page': "6ieme" } ) }}">6<sup>ième</sup></a></li>
+        <li><a href="{{ path('msp_college_section', { 'page': "5ieme" } ) }}">5<sup>ième</sup></a></li>
+        <li><a href="{{ path('msp_college_section', { 'page': "4ieme" } ) }}">4<sup>ième</sup></a></li>
+        <li><a href="{{ path('msp_college_section', { 'page': "3ieme" } ) }}">3<sup>ième</sup></a></li>
+    </ul>
+</li>
+{% endblock %}
 {# Le contenu de la page #}
 {% block content %}
     <article class="span8">

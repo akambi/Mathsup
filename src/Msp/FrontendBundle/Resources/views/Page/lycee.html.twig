@@ -13,6 +13,16 @@
 {% block entetetitle %}LYCÉE | {{ parent() }}{% endblock %}
 {# La barre latéralke de la page #}
 {% block aside %}{{ parent() }}{% endblock %}
+{% block lycee %}
+<li class="active">
+    <a href="{{ path('msp_lycee') }}">LYCÉE</a>
+    <ul class="nav nav-list">
+        <li><a href="{{ path('msp_lycee_section', { 'page': "2nde" } ) }}">2<sup>nde</sup></a></li>
+        <li><a href="{{ path('msp_lycee_section', { 'page': "1ere" } ) }}">1<sup>ère</sup></a></li>
+        <li><a href="{{ path('msp_lycee_section', { 'page': "tle" } ) }}">Tle</a></li>
+    </ul>
+</li>
+{% endblock %}
 {# Le contenu de la page #}
 {% block content %}
     <article class="span8">

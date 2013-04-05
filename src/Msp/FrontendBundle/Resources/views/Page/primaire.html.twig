@@ -13,6 +13,9 @@
 {% block entetetitle %}PRIMAIRE | {{ parent() }}{% endblock %}
 {# La barre latéralke de la page #}
 {% block aside %}{{ parent() }}{% endblock %}
+{% block primaire %}
+<li class="active"><a href="{{ path('msp_primaire') }}">PRIMAIRE</a></li>
+{% endblock %}
 {# Le contenu de la page #}
 {% block content %}
     <article class="span8">

@@ -33,9 +33,7 @@
                     <adress class="span8 text-right">
                         RENSEIGNEMENTS ET INSCRIPTION AU <strong>01 42 30 50 11</strong>
                     </adress>
-                    
-                    <hr class="span8"/>
-                    
+                                                           
                     <nav class="span8">
                         <ul class="nav nav-pills pull-right">
                             <li><a href="{{ path('msp_qui_sommes_nous') }}">QUI SOMMES NOUS?</a></li>
@@ -55,40 +53,38 @@
                     <aside class="span3">
 
                         <ul class="nav nav-list">
+                            
+                            {% block primaire %}
                             <li><a href="{{ path('msp_primaire') }}">PRIMAIRE</a></li>
+                            {% endblock %}
+                                
+                            {% block college %}
                             <li>
-                                <a href="{{ path('msp_college') }}">COLLÈGE</a>
-                                <ul class="nav">
-                                    <li><a href="{{ path('msp_college_section', { 'page': "6ieme" } ) }}">6<sup>ième</sup></a></li>
-                                    <li><a href="{{ path('msp_college_section', { 'page': "5ieme" } ) }}">5<sup>ième</sup></a></li>
-                                    <li><a href="{{ path('msp_college_section', { 'page': "4ieme" } ) }}">4<sup>ième</sup></a></li>
-                                    <li><a href="{{ path('msp_college_section', { 'page': "3ieme" } ) }}">3<sup>ième</sup></a></li>
-                                </ul>
+                                <a href="{{ path('msp_college') }}">COLLÈGE</a>                                
                             </li>
+                            {% endblock %}
+                            
+                            {% block lycee %}
                             <li>
-                                <a href="{{ path('msp_lycee') }}">LYCÉE</a>
-                                <ul class="nav">
-                                    <li><a href="{{ path('msp_lycee_section', { 'page': "2nde" } ) }}">2<sup>nde</sup></a></li>
-                                    <li><a href="{{ path('msp_lycee_section', { 'page': "1ere" } ) }}">1<sup>ère</sup></a></li>
-                                    <li><a href="{{ path('msp_lycee_section', { 'page': "tle" } ) }}">Tle</a></li>
-                                </ul>
+                                <a href="{{ path('msp_lycee') }}">LYCÉE</a>                                
                             </li>
+                            {% endblock %}
+
+                            {% block universite %}
                             <li>
-                                <a href="{{ path('msp_universite') }}">UNIVERSITÉ</a>
-                                <ul class="nav">
-                                    <li><a href="{{ path('msp_universite_section', { 'page': "licence" }) }}">Licence</a></li>
-                                    <li><a href="{{ path('msp_universite_section', { 'page': "prepa" }) }}">Prépa</a></li>
-                                </ul>
+                                <a href="{{ path('msp_universite') }}">UNIVERSITÉ</a>                                
                             </li>
+                            {% endblock %}
+
+                            {% block institution %}
                             <li>
-                                <a href="{{ path('msp_institution') }}">INSTITUTION</a>
-                                <ul class="nav">
-                                    <li><a href="{{ path('msp_institution_section', { 'page': "remise-a-niveau" }) }}">Remise à niveau</a></li>
-                                    <li><a href="{{ path('msp_institution_section', { 'page': "comite-entreprise" }) }}">Comité d'Entreprise</a></li>
-                                    <li><a href="{{ path('msp_institution_section', { 'page': "preparation-concours" }) }}">Préparation Concours</a></li>
-                                </ul>
+                                <a href="{{ path('msp_institution') }}">INSTITUTION</a>                               
                             </li>
+                            {% endblock %}
+                            
                         </ul>
+                        
+                        <hr/>
                         
                         <form action="{{ path("fos_user_security_check") }}" method="post">
                             <fieldset>

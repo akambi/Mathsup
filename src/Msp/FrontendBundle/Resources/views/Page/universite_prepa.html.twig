@@ -13,6 +13,15 @@
 {% block entetetitle %}UNIVERSIÉ PRÉPA | {{ parent() }}{% endblock %}
 {# La barre latéralke de la page #}
 {% block aside %}{{ parent() }}{% endblock %}
+{% block universite %}
+<li>
+    <a href="{{ path('msp_universite') }}">UNIVERSITÉ</a>
+    <ul class="nav nav-list">
+        <li><a href="{{ path('msp_universite_section', { 'page': "licence" }) }}">Licence</a></li>
+        <li class="active"><a href="{{ path('msp_universite_section', { 'page': "prepa" }) }}">Prépa</a></li>
+    </ul>
+</li>
+{% endblock %}
 {# Le contenu de la page #}
 {% block content %}
     <article class="span8">

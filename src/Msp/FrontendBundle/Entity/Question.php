@@ -205,10 +205,10 @@ class Question
     /**
      * Add reponses
      *
-     * @param \Msp\FrontendBundle\Entity\Response $reponses
+     * @param \Msp\FrontendBundle\Entity\Reponse $reponses
      * @return Question
      */
-    public function addReponse(\Msp\FrontendBundle\Entity\Response $reponses)
+    public function addReponse(\Msp\FrontendBundle\Entity\Reponse $reponses)
     {
         $this->reponses[] = $reponses;
     
@@ -218,9 +218,9 @@ class Question
     /**
      * Remove reponses
      *
-     * @param \Msp\FrontendBundle\Entity\Response $reponses
+     * @param \Msp\FrontendBundle\Entity\Reponse $reponses
      */
-    public function removeReponse(\Msp\FrontendBundle\Entity\Response $reponses)
+    public function removeReponse(\Msp\FrontendBundle\Entity\Reponse $reponses)
     {
         $this->reponses->removeElement($reponses);
     }

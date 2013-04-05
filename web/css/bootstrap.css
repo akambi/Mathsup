@@ -6156,3 +6156,7 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+.margin-left-small{margin-left: 5px;}
+.margin-left-medium{margin-left: 10px;}
+.margin-left-large{margin-left: 20px;}
