@@ -68,7 +68,7 @@ class User extends BaseUser
     
    /**
     * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Departement", inversedBy="users")
-    * @ORM\JoinColumn(nullable=true)
+    * @ORM\JoinColumn(nullable=false)
     */
     protected $departement;
     
@@ -329,7 +329,7 @@ class User extends BaseUser
      * @param \Msp\FrontendBundle\Entity\Departement $departement
      * @return User
      */
-    public function setDepartement(\Msp\FrontendBundle\Entity\Departement $departement = null)
+    public function setDepartement(\Msp\FrontendBundle\Entity\Departement $departement)
     {
         $this->departement = $departement;
     
