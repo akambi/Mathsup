@@ -23,6 +23,7 @@
             <tr>
                 <th>Id</th>
                 <th>Libelle</th>
+                <th>Niveau</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -31,6 +32,7 @@
             <tr>
                 <td><a href="{{ path('classe_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.libelle }}</td>
+                <td>{{ entity.niveau }}</td>
                 <td>
                 <ul class="inline">
                     <li>
