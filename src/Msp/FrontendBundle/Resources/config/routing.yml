@@ -122,8 +122,8 @@ niveau_delete:
 # Les routes pour Departement #
 #
 departement:
-    pattern:  /departement/
-    defaults: { _controller: MspFrontendBundle:Departement:index }
+    pattern:  /departement/{page}/
+    defaults: { _controller: MspFrontendBundle:Departement:index, page: 1 }
 
 departement_create:
     pattern:  /departement/create/

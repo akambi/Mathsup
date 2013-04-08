@@ -24,14 +24,32 @@ class DepartementController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction( $page )
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MspFrontendBundle:Departement')->findAll();
+        $repository = $em->getRepository('MspFrontendBundle:Departement');
+        
+        $total = $repository->getTotal();
+        $nb_par_page = 10;        
+        $nb_pages = (ceil($total/$nb_par_page))? ceil($total/$nb_par_page): 1;    
+        $offset = ($page-1) * $nb_par_page;
+        if( $page < 1 OR $page > $nb_pages )
+        {
+            throw $this->createNotFoundException('Page inexistante (page = '.$page.')');
+        }
+        
+        $entities = $repository->findBy(
+            array(), // Pas de critère
+            array(), // On tri par date décroissante
+            $nb_par_page, // On sélectionne $nb_articles_page articles
+            $offset // A partir du $offset ième
+        );
+        
 
         return array(
             'entities' => $entities,
+            'page' => $page,
+            'nb_pages' => $nb_pages
         );
     }
 

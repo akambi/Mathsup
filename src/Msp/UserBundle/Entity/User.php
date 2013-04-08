@@ -6,6 +6,8 @@ use FOS\UserBundle\Entity\User as BaseUser;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 /**
 * @ORM\Entity
 * @ORM\Table()
@@ -71,6 +73,12 @@ class User extends BaseUser
     * @ORM\JoinColumn(nullable=false)
     */
     protected $departement;
+    
+    /**
+    * @Gedmo\Slug(fields={"nom", "prenom"})
+    * @ORM\Column(length=128, unique=true)
+    */
+    private $slug;
     
     public function __construct()
     {
@@ -344,5 +352,28 @@ class User extends BaseUser
     public function getDepartement()
     {
         return $this->departement;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return User
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
