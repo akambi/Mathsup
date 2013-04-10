@@ -25,6 +25,9 @@
                 <th>Libelle</th>
                 <th>Duree</th>
                 <th>Date</th>
+                <th>Niveau</th>
+                <th>Difficulté</th>
+                <th>Questions</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -34,14 +37,20 @@
                 <td><a href="{{ path('qcm_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.libelle }}</td>
                 <td>{{ entity.duree|date('H:i:s') }}</td>
-                <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.date %}{{ entity.date|date('d/m/Y H:i:s') }}{% endif %}</td>
+                <td><a href="{{ path('niveau_show', {id: entity.niveau.id}) }}">{{ entity.niveau }}</a></td>
+                <td><a href="{{ path('difficulter_show', {id: entity.difficulter.id}) }}">{{ entity.difficulter }}</a></td>
+                <td>{{ entity.questions|length }}</td>
                 <td>
-                <ul class="inline">
+                <ul class="inline nav-pills">
                     <li>
                         <a class="btn" href="{{ path('qcm_show', { 'id': entity.id }) }}">Voir <i class="icon-align-justify"></i></a>
                     </li>
                     <li>
                         <a class="btn" href="{{ path('qcm_edit', { 'id': entity.id }) }}">Modifier <i class="icon-edit"></i></a>
+                    </li>
+                    <li>
+                        <a class="btn" href="{{ path('question', { 'qcm': entity.id }) }}">Gérer Questions <i class="icon-list-alt"></i></a>
                     </li>
                 </ul>
                 </td>

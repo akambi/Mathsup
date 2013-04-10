@@ -17,18 +17,19 @@
 {% block body -%}
     <h1>Ajout Question</h1>
 
-    <form action="{{ path('question_create') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('question_create', {'qcm': qcm_id } ) }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <p>
             <button class="btn btn-primary" type="submit">Ajouter</button>
         </p>
-    </form>
-
-        <ul class="inline">
-    <li>
-        <a class="btn" href="{{ path('question') }}">
-            <i class="icon-chevron-left"></i> Retour à la liste
-        </a>
-    </li>
-</ul>
+    </form>    
+    
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path('question', { 'qcm': qcm_id }) }}">
+                <i class="icon-chevron-left"></i> Retour à la liste
+            </a>
+        </li>
+    </ul>
+    <script type="text/javascript" src="{{ asset('form_js/question.js') }}"></script>
 {% endblock %}

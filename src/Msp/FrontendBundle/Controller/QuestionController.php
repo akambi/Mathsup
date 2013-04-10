@@ -26,12 +26,21 @@ class QuestionController extends Controller
      */
     public function indexAction()
     {
+        $request = $this->getRequest();
+        $qcm  = new Question();
+        $qcm_id = $request->query->get("qcm");
+        
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MspFrontendBundle:Question')->findAll();
+        if($qcm_id):
+            $qcm = $em->getRepository('MspFrontendBundle:Qcm')->find($qcm_id);
+            $entities = $qcm->getQuestions();
+        else:
+            $entities = $em->getRepository('MspFrontendBundle:Question')->findAll();
+        endif;        
 
         return array(
             'entities' => $entities,
+            'qcm' => $qcm,
         );
     }
 
@@ -47,18 +56,25 @@ class QuestionController extends Controller
         $entity  = new Question();
         $form = $this->createForm(new QuestionType(), $entity);
         $form->bind($request);
+        $qcm_id = $request->query->get("qcm");
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($entity);           
+            foreach ($entity->getReponses() as $response)
+            {
+                $response->setQuestion($entity);
+                $em->persist($response);
+            }
             $em->flush();
 
-            return $this->redirect($this->generateUrl('question_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('question_show', array('id' => $entity->getId(), 'qcm' => $qcm_id )));
         }
-
+        
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'qcm_id' => $qcm_id
         );
     }
 
@@ -71,12 +87,25 @@ class QuestionController extends Controller
      */
     public function newAction()
     {
-        $entity = new Question();
+        $request = $this->getRequest();
+        $qcm  = new Question();
+        $qcm_id = $request->query->get("qcm");
+        
+        $em = $this->getDoctrine()->getManager();
+        if($qcm_id):
+            $qcm = $em->getRepository('MspFrontendBundle:Qcm')->find($qcm_id);
+            $entity = new Question();
+            $entity->setQcm($qcm);
+        else:
+            $entity = new Question();
+        endif;        
+        
         $form   = $this->createForm(new QuestionType(), $entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'qcm_id' => $qcm_id,
         );
     }
 
@@ -96,12 +125,16 @@ class QuestionController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Question entity.');
         }
-
+        
         $deleteForm = $this->createDeleteForm($id);
-
+        
+        $request = $this->getRequest();        
+        $qcm_id = $request->query->get("qcm");
+        
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'qcm_id' => $qcm_id,
         );
     }
 
@@ -114,6 +147,9 @@ class QuestionController extends Controller
      */
     public function editAction($id)
     {
+        $request = $this->getRequest();        
+        $qcm_id = $request->query->get("qcm");
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('MspFrontendBundle:Question')->find($id);
@@ -129,6 +165,7 @@ class QuestionController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'qcm_id' => $qcm_id,
         );
     }
 
@@ -141,6 +178,8 @@ class QuestionController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $qcm_id = $request->query->get("qcm");
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('MspFrontendBundle:Question')->find($id);
@@ -155,15 +194,21 @@ class QuestionController extends Controller
 
         if ($editForm->isValid()) {
             $em->persist($entity);
+            foreach ($entity->getReponses() as $response)
+            {
+                $response->setQuestion($entity);
+                $em->persist($response);
+            }
             $em->flush();
 
-            return $this->redirect($this->generateUrl('question_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('question_edit', array('id' => $id, 'qcm' => $qcm_id)));
         }
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'qcm_id'      => $qcm_id,
         );
     }
 
@@ -175,6 +220,8 @@ class QuestionController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        $qcm_id = $request->query->get("qcm");
+        
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
@@ -185,12 +232,16 @@ class QuestionController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Question entity.');
             }
-
+        //  On supprime d'abord les réponses            
+            foreach ( $entity->getReponses() as $response )
+            {
+                $em->remove($response);
+            }
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('question'));
+        return $this->redirect($this->generateUrl('question', array( 'qcm' => $qcm_id )));
     }
 
     /**

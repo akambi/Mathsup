@@ -185,7 +185,17 @@ class QcmController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Qcm entity.');
             }
-
+            
+        //  On supprime d'abord les questions
+            foreach ( $entity->getQuestions() as $question )
+            {
+                foreach ( $question->getReponses() as $response )
+                {
+                    $em->remove($response);
+                }
+                
+                $em->remove($question);
+            }
             $em->remove($entity);
             $em->flush();
         }

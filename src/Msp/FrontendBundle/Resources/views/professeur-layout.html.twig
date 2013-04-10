@@ -1,0 +1,23 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+<section class="span9">
+    {% block navbaruser %}
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li class="active"><a href="{{ path('msp_professeur', { slug: app.user.slug } ) }}"><i class="icon-user"></i></a></li>
+                <li><a href="#">Gestion PLANNING</a></li>
+                <li><a href="#">EDITION PROFIL</a></li>
+                <li><a href="#">Gestion TICKETS</a></li>
+                <li><a href="#">FICHE DE PAIE</a></li>      
+                <li><a href="#">BILAN MENSUEL</a></li>                
+            </ul>
+        </div>
+    </div>
+    {% endblock %}
+    {% block body %}
+    {% endblock %}
+     
+</section>
+{% endblock %}

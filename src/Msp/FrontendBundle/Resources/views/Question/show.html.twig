@@ -40,22 +40,36 @@
                 <th>Date</th>
                 <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
             </tr>
+            <tr>
+                <th>Réponses</th>
+                <th colspan="2">Bonne réponse ?</th>
+            </tr>
+            {% for reponse in entity.reponses %}
+                <tr>
+                    <th>{{ reponse.libelle }}</th>
+                    {% if reponse.etat == 1 %}
+                    <td>OUI</td>
+                    {% else %}
+                    <td>NON</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
         <ul class="inline">
     <li>
-        <a class="btn" href="{{ path('question') }}">
+        <a class="btn" href="{{ path('question', { 'qcm': qcm_id }) }}">
             <i class="icon-chevron-left"></i> Retour à la liste
         </a>
     </li>
     <li>
-        <a class="btn" href="{{ path('question_edit', { 'id': entity.id }) }}">
+        <a class="btn" href="{{ path('question_edit', { 'id': entity.id, 'qcm': qcm_id }) }}">
             Modifier <i class="icon-edit"></i>
         </a>
     </li>
     <li>
-        <form action="{{ path('question_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('question_delete', { 'id': entity.id, 'qcm': qcm_id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
             <button class="btn btn-danger" type="submit">Supprimer <i class="icon-remove"></i></button>

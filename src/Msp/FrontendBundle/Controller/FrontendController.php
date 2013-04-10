@@ -208,4 +208,19 @@ class FrontendController extends Controller
     {
         return $this->render('MspFrontendBundle:User:index.html.twig');
     }
+    
+    public function eleveAction( $slug)
+    {
+        return $this->render('MspFrontendBundle:User:eleve.html.twig');
+    }
+    
+    public function professeurAction( $slug )
+    {
+        return $this->render('MspFrontendBundle:User:professeur.html.twig');
+    }
+    
+    public function adminAction( $slug )
+    {
+        return $this->render('MspFrontendBundle:User:admin.html.twig');
+    }
 }

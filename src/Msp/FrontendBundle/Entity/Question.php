@@ -4,6 +4,9 @@ namespace Msp\FrontendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+//  Pour utiliser ArrrayCollection de doctrine
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Question
  *
@@ -167,7 +170,7 @@ class Question
      */
     public function __construct()
     {
-        $this->reponses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reponses = new ArrayCollection();
         $this->date = new \Datetime();
     }
     

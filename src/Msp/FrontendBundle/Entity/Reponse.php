@@ -39,18 +39,19 @@ class Reponse
      *
      * @ORM\Column(name="etat", type="boolean")
      */
-    private $etat;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime")
-     */
-    private $date;
+    private $etat;  
 
     public function __construct()
     {
         $this->date = new \Datetime();        
+    }
+    
+    /**
+     * toString
+     */
+    public function __toString()
+    {
+        return $this->libelle;
     }
     
     /**

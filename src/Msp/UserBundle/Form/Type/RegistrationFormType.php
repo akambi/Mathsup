@@ -22,7 +22,7 @@ class RegistrationFormType extends BaseType
                     'choices' => array(
                         'ROLE_ELEVE' => 'Elève', 
                         'ROLE_PROFESSEUR' => 'Professeur', 
-                        'ROLE_SUPER_ADMIN' => 'Administrateur'
+                        'ROLE_ADMIN' => 'Administrateur'
                         )
                     )
                 )

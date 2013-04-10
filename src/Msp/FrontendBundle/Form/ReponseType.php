@@ -12,9 +12,7 @@ class ReponseType extends AbstractType
     {
         $builder
             ->add('libelle')
-            ->add('etat')
-            ->add('date')
-            ->add('question')
+            ->add('etat', 'checkbox', array( 'label' => 'Bonne réponse?', 'required'  => false))                        
         ;
     }
 

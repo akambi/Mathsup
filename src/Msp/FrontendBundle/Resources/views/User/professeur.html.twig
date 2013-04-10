@@ -1,7 +1,7 @@
-{% extends "MspFrontendBundle::layout.html.twig" %}
+{% extends "MspFrontendBundle::professeur-layout.html.twig" %}
 
 {# Le titre de la page (defaut MathSup) #}
-{% block title %}NOS ENGAGEMENTS | {{ parent() }}{% endblock %}
+{% block title %}PROFESSEUR {{ app.user.prenom }} {{ app.user.nom }} | {{ parent() }}{% endblock %}
 {# La description de la page (defaut vide) #}
 {% block description %}{% endblock %}
 {# Les mots clés de la page (defaut vide) #}
@@ -10,12 +10,10 @@
 {% block robots %}noindex, nofollow{% endblock %}
 
 {# Le titre de l'entête du document #}
-{% block entetetitle %}NOS ENGAGEMENTS | {{ parent() }}{% endblock %}
+{% block entetetitle %}PROFESSEUR| {{ app.user.prenom }} {{ app.user.nom }} {{ parent() }}{% endblock %}
 {# La barre latéralke de la page #}
 {% block aside %}{{ parent() }}{% endblock %}
 {# Le contenu de la page #}
-{% block content %}
-    <article class="span9">
-        <h1>NOS ENGAGEMENTS</h1>
-    </article>    
-{% endblock %}
+{% block body %}    
+    <h1>Professeur {{ app.user.prenom }} {{ app.user.nom }}</h1>
+{% endblock %}{# empty Twig template #}

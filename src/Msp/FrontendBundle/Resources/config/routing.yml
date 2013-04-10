@@ -5,6 +5,21 @@ msp_frontend_homepage:
     pattern:  /
     defaults: { _controller: MspFrontendBundle:Frontend:index }
 #
+# Les routes des utilisateurs #
+#
+msp_eleve:
+    pattern:  /eleve/{slug}/
+    defaults: { _controller: MspFrontendBundle:Frontend:eleve }
+
+msp_professeur:
+    pattern:  /professeur/{slug}/
+    defaults: { _controller: MspFrontendBundle:Frontend:professeur }
+
+msp_admin:
+    pattern:  /admin/{slug}/
+    defaults: { _controller: MspFrontendBundle:Frontend:admin }
+
+#
 # Les routes des pages statiques #
 #
 msp_qui_sommes_nous:
@@ -82,10 +97,6 @@ msp_plan_du_site:
 msp_liens:
     pattern:  /liens/
     defaults: { _controller: MspFrontendBundle:Frontend:liens }
-
-msp_compte:
-    pattern:  /compte/
-    defaults: { _controller: MspFrontendBundle:Frontend:compte }
 
 #
 # Les routes pour niveau #
