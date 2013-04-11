@@ -14,7 +14,7 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 
 /**
  * Coupon controller.
- * @Secure(roles="ROLE_ADMIN")
+ * 
  * @Route("/coupon")
  */
 class CouponController extends Controller
