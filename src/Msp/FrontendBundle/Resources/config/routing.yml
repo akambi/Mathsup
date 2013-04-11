@@ -107,7 +107,7 @@ niveau:
 
 niveau_create:
     pattern:  /niveau/create/
-    defaults: { _controller: MspFrontendBundle:Niveau:create}
+    defaults: { _controller: MspFrontendBundle:Niveau:create }
 
 niveau_new:
     pattern:  /niveau/new/
@@ -133,7 +133,7 @@ niveau_delete:
 # Les routes pour Departement #
 #
 departement:
-    pattern:  /departement/{page}/
+    pattern:  /departement/{page}
     defaults: { _controller: MspFrontendBundle:Departement:index, page: 1 }
 
 departement_create:
@@ -226,8 +226,8 @@ classe_delete:
 # Les routes pour chapitre #
 #
 chapitre:
-    pattern:  /chapitre/
-    defaults: { _controller: MspFrontendBundle:Chapitre:index }
+    pattern:  /chapitre/{page}
+    defaults: { _controller: MspFrontendBundle:Chapitre:index, page:1 }
 
 chapitre_create:
     pattern:  /chapitre/create/
@@ -257,8 +257,8 @@ chapitre_delete:
 # Les routes pour ExerciceCorrige #
 #
 exercicecorrige:
-    pattern:  /exercicecorrige/
-    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:index }
+    pattern:  /exercicecorrige/{page}
+    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:index, page: 1 }
 
 exercicecorrige_create:
     pattern:  /exercicecorrige/create/
@@ -319,8 +319,8 @@ difficulter_delete:
 # Les routes pour QCM #
 #
 qcm:
-    pattern:  /qcm/
-    defaults: { _controller: MspFrontendBundle:Qcm:index }
+    pattern:  /qcm/{page}
+    defaults: { _controller: MspFrontendBundle:Qcm:index, page:1 }
 
 qcm_create:
     pattern:  /qcm/create/

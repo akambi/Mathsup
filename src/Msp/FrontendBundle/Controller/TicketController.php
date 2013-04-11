@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\FrontendBundle\Entity\Ticket;
 use Msp\FrontendBundle\Form\TicketType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Ticket controller.
  *

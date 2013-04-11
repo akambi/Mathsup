@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\FrontendBundle\Entity\Qcm;
 use Msp\FrontendBundle\Form\QcmType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Qcm controller.
  *
@@ -19,25 +21,43 @@ class QcmController extends Controller
 {
     /**
      * Lists all Qcm entities.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="qcm")
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction( $page )
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MspFrontendBundle:Qcm')->findAll();
+        $repository = $em->getRepository('MspFrontendBundle:Qcm');
+        
+        $total = $repository->getTotal();
+        $nb_par_page = $this->container->getParameter('qcm');
+        $nb_pages = (ceil($total/$nb_par_page))? ceil($total/$nb_par_page): 1;    
+        $offset = ($page-1) * $nb_par_page;
+        
+        if( $page < 1 OR $page > $nb_pages )
+        {
+            throw $this->createNotFoundException('Page inexistante (page = '.$page.')');
+        }
+        
+        $entities = $repository->findBy(
+            array(), // Pas de critère
+            array(), // On tri par date décroissante
+            $nb_par_page, // On sélectionne $nb_articles_page articles
+            $offset // A partir du $offset ième
+        );        
 
         return array(
             'entities' => $entities,
+            'page' => $page,
+            'nb_pages' => $nb_pages,
         );
     }
 
     /**
      * Creates a new Qcm entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="qcm_create")
      * @Method("POST")
      * @Template("MspFrontendBundle:Qcm:new.html.twig")
@@ -64,7 +84,7 @@ class QcmController extends Controller
 
     /**
      * Displays a form to create a new Qcm entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/new", name="qcm_new")
      * @Method("GET")
      * @Template()
@@ -82,7 +102,7 @@ class QcmController extends Controller
 
     /**
      * Finds and displays a Qcm entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="qcm_show")
      * @Method("GET")
      * @Template()
@@ -107,7 +127,7 @@ class QcmController extends Controller
 
     /**
      * Displays a form to edit an existing Qcm entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}/edit", name="qcm_edit")
      * @Method("GET")
      * @Template()
@@ -134,7 +154,7 @@ class QcmController extends Controller
 
     /**
      * Edits an existing Qcm entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="qcm_update")
      * @Method("PUT")
      * @Template("MspFrontendBundle:Qcm:edit.html.twig")
@@ -169,7 +189,7 @@ class QcmController extends Controller
 
     /**
      * Deletes a Qcm entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="qcm_delete")
      * @Method("DELETE")
      */
@@ -205,7 +225,7 @@ class QcmController extends Controller
 
     /**
      * Creates a form to delete a Qcm entity by id.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @param mixed $id The entity id
      *
      * @return Symfony\Component\Form\Form The form

@@ -33,33 +33,37 @@
                 <td>{{ entity.corrige }}</td>
             </tr>
             <tr>
-                <th>Urlpdf</th>
+                <th>Url pdf</th>
                 <td>{{ entity.urlPdf }}</td>
             </tr>
             <tr>
-                <th>Urlvideo</th>
+                <th>Url video</th>
                 <td>{{ entity.urlVideo }}</td>
             </tr>
             <tr>
                 <th>Date</th>
-                <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+                <td>{{ entity.date|date('d/m/Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Chapitre</th>
+                <td>{{ entity.chapitre }}</td>
             </tr>
         </tbody>
     </table>
 
         <ul class="inline">
     <li>
-        <a class="btn" href="{{ path('exercicecorrige') }}">
+        <a class="btn" href="{{ path('exercicecorrige', { 'chapitre': chapitre_id }) }}">
             <i class="icon-chevron-left"></i> Retour à la liste
         </a>
     </li>
     <li>
-       <a class="btn" href="{{ path('exercicecorrige_edit', { 'id': entity.id }) }}">
+       <a class="btn" href="{{ path('exercicecorrige_edit', { 'id': entity.id, 'chapitre': chapitre_id }) }}">
            Modifier <i class="icon-edit"></i>
        </a>
     </li>
     <li>
-        <form action="{{ path('exercicecorrige_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('exercicecorrige_delete', { 'id': entity.id, 'chapitre': chapitre_id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
             <button class="btn btn-danger" type="submit">Supprimer <i class="icon-remove"></i></button>

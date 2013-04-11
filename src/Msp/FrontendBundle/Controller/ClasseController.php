@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\FrontendBundle\Entity\Classe;
 use Msp\FrontendBundle\Form\ClasseType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Classe controller.
  *
@@ -19,7 +21,7 @@ class ClasseController extends Controller
 {
     /**
      * Lists all Classe entities.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="classe")
      * @Method("GET")
      * @Template()
@@ -37,7 +39,7 @@ class ClasseController extends Controller
 
     /**
      * Creates a new Classe entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="classe_create")
      * @Method("POST")
      * @Template("MspFrontendBundle:Classe:new.html.twig")
@@ -64,7 +66,7 @@ class ClasseController extends Controller
 
     /**
      * Displays a form to create a new Classe entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/new", name="classe_new")
      * @Method("GET")
      * @Template()
@@ -82,7 +84,7 @@ class ClasseController extends Controller
 
     /**
      * Finds and displays a Classe entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="classe_show")
      * @Method("GET")
      * @Template()
@@ -107,7 +109,7 @@ class ClasseController extends Controller
 
     /**
      * Displays a form to edit an existing Classe entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}/edit", name="classe_edit")
      * @Method("GET")
      * @Template()
@@ -134,7 +136,7 @@ class ClasseController extends Controller
 
     /**
      * Edits an existing Classe entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="classe_update")
      * @Method("PUT")
      * @Template("MspFrontendBundle:Classe:edit.html.twig")
@@ -169,7 +171,7 @@ class ClasseController extends Controller
 
     /**
      * Deletes a Classe entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="classe_delete")
      * @Method("DELETE")
      */
@@ -195,7 +197,7 @@ class ClasseController extends Controller
 
     /**
      * Creates a form to delete a Classe entity by id.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @param mixed $id The entity id
      *
      * @return Symfony\Component\Form\Form The form

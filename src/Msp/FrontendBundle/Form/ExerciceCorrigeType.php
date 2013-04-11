@@ -11,12 +11,12 @@ class ExerciceCorrigeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('exercice')
-            ->add('corrige')
-            ->add('urlPdf')
-            ->add('urlVideo')
-            ->add('date')
             ->add('chapitre')
+            ->add('exercice','textarea', array('label' => 'Rédaction de l\'excercice'))
+            ->add('corrige','textarea', array('label' => 'Rédaction du corrigé'))
+            ->add('file', 'file', array( "label" => "Selectionner un fichier PDF", 'required' => false))
+            ->add('urlVideo', 'url', array( "label" => 'L\'url de la vidéo'))
+            ->add('date', 'datetime', array('extra_fields_message' => 'test', "with_seconds" => true, 'date_format' => 'dd/MM/yyyy') )            
         ;
     }
 

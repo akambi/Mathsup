@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\FrontendBundle\Entity\Question;
 use Msp\FrontendBundle\Form\QuestionType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Question controller.
  *
@@ -19,7 +21,7 @@ class QuestionController extends Controller
 {
     /**
      * Lists all Question entities.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="question")
      * @Method("GET")
      * @Template()
@@ -46,7 +48,7 @@ class QuestionController extends Controller
 
     /**
      * Creates a new Question entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="question_create")
      * @Method("POST")
      * @Template("MspFrontendBundle:Question:new.html.twig")
@@ -80,7 +82,7 @@ class QuestionController extends Controller
 
     /**
      * Displays a form to create a new Question entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/new", name="question_new")
      * @Method("GET")
      * @Template()
@@ -111,7 +113,7 @@ class QuestionController extends Controller
 
     /**
      * Finds and displays a Question entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="question_show")
      * @Method("GET")
      * @Template()
@@ -140,7 +142,7 @@ class QuestionController extends Controller
 
     /**
      * Displays a form to edit an existing Question entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}/edit", name="question_edit")
      * @Method("GET")
      * @Template()
@@ -171,7 +173,7 @@ class QuestionController extends Controller
 
     /**
      * Edits an existing Question entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="question_update")
      * @Method("PUT")
      * @Template("MspFrontendBundle:Question:edit.html.twig")
@@ -214,7 +216,7 @@ class QuestionController extends Controller
 
     /**
      * Deletes a Question entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="question_delete")
      * @Method("DELETE")
      */
@@ -246,7 +248,7 @@ class QuestionController extends Controller
 
     /**
      * Creates a form to delete a Question entity by id.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @param mixed $id The entity id
      *
      * @return Symfony\Component\Form\Form The form

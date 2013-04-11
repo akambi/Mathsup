@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\FrontendBundle\Entity\Departement;
 use Msp\FrontendBundle\Form\DepartementType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Departement controller.
  *
@@ -19,7 +21,7 @@ class DepartementController extends Controller
 {
     /**
      * Lists all Departement entities.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="departement")
      * @Method("GET")
      * @Template()
@@ -30,9 +32,10 @@ class DepartementController extends Controller
         $repository = $em->getRepository('MspFrontendBundle:Departement');
         
         $total = $repository->getTotal();
-        $nb_par_page = 10;        
+        $nb_par_page = $this->container->getParameter('departement');
         $nb_pages = (ceil($total/$nb_par_page))? ceil($total/$nb_par_page): 1;    
         $offset = ($page-1) * $nb_par_page;
+        
         if( $page < 1 OR $page > $nb_pages )
         {
             throw $this->createNotFoundException('Page inexistante (page = '.$page.')');
@@ -55,7 +58,7 @@ class DepartementController extends Controller
 
     /**
      * Creates a new Departement entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="departement_create")
      * @Method("POST")
      * @Template("MspFrontendBundle:Departement:new.html.twig")
@@ -82,7 +85,7 @@ class DepartementController extends Controller
 
     /**
      * Displays a form to create a new Departement entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/new", name="departement_new")
      * @Method("GET")
      * @Template()
@@ -100,7 +103,7 @@ class DepartementController extends Controller
 
     /**
      * Finds and displays a Departement entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="departement_show")
      * @Method("GET")
      * @Template()
@@ -125,7 +128,7 @@ class DepartementController extends Controller
 
     /**
      * Displays a form to edit an existing Departement entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}/edit", name="departement_edit")
      * @Method("GET")
      * @Template()
@@ -152,7 +155,7 @@ class DepartementController extends Controller
 
     /**
      * Edits an existing Departement entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="departement_update")
      * @Method("PUT")
      * @Template("MspFrontendBundle:Departement:edit.html.twig")
@@ -187,7 +190,7 @@ class DepartementController extends Controller
 
     /**
      * Deletes a Departement entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="departement_delete")
      * @Method("DELETE")
      */
@@ -213,7 +216,7 @@ class DepartementController extends Controller
 
     /**
      * Creates a form to delete a Departement entity by id.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @param mixed $id The entity id
      *
      * @return Symfony\Component\Form\Form The form

@@ -18,7 +18,7 @@
 {% block body -%}
     <h1>Edition ExerciceCorrige N°{{ entity.id }}</h1>
 
-    <form action="{{ path('exercicecorrige_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <form action="{{ path('exercicecorrige_update', { 'id': entity.id, 'chapitre': chapitre_id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <input type="hidden" name="_method" value="PUT" />
         {{ form_widget(edit_form) }}
         <p>
@@ -28,12 +28,12 @@
 
         <ul class="inline">
     <li>
-        <a class="btn" href="{{ path('exercicecorrige') }}">
+        <a class="btn" href="{{ path('exercicecorrige', { 'chapitre': chapitre_id }) }}">
             <i class="icon-chevron-left"></i> Retour à la liste
         </a>
     </li>
     <li>
-        <form action="{{ path('exercicecorrige_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('exercicecorrige_delete', { 'id': entity.id, 'chapitre': chapitre_id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
             <button class="btn btn-danger" type="submit">Supprimer <i class="icon-remove"></i></button>

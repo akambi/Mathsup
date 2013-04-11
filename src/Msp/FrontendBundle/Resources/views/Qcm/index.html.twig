@@ -58,8 +58,20 @@
         {% endfor %}
         </tbody>
     </table>
+    
+    <div class="pagination">
+        <ul>
+            {# On utilise la fonction range(a, b) qui crée un tableau de
+            valeurs entre a et b #}
+            {% for p in range(1, nb_pages) %}
+            <li{% if p == page %} class="active"{% endif %}>
+                <a href="{{ path('departement', {'page': p}) }}">{{ p }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 
-        <ul class="inline">
+    <ul class="inline">
         <li>
             <a class="btn" href="{{ path('qcm_new') }}">
                 Ajouter un QCM <i class="icon-chevron-right"></i>

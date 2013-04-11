@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\FrontendBundle\Entity\Difficulter;
 use Msp\FrontendBundle\Form\DifficulterType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Difficulter controller.
  *
@@ -19,7 +21,7 @@ class DifficulterController extends Controller
 {
     /**
      * Lists all Difficulter entities.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="difficulter")
      * @Method("GET")
      * @Template()
@@ -37,7 +39,7 @@ class DifficulterController extends Controller
 
     /**
      * Creates a new Difficulter entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="difficulter_create")
      * @Method("POST")
      * @Template("MspFrontendBundle:Difficulter:new.html.twig")
@@ -64,7 +66,7 @@ class DifficulterController extends Controller
 
     /**
      * Displays a form to create a new Difficulter entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/new", name="difficulter_new")
      * @Method("GET")
      * @Template()
@@ -82,7 +84,7 @@ class DifficulterController extends Controller
 
     /**
      * Finds and displays a Difficulter entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="difficulter_show")
      * @Method("GET")
      * @Template()
@@ -107,7 +109,7 @@ class DifficulterController extends Controller
 
     /**
      * Displays a form to edit an existing Difficulter entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}/edit", name="difficulter_edit")
      * @Method("GET")
      * @Template()
@@ -134,7 +136,7 @@ class DifficulterController extends Controller
 
     /**
      * Edits an existing Difficulter entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="difficulter_update")
      * @Method("PUT")
      * @Template("MspFrontendBundle:Difficulter:edit.html.twig")
@@ -169,7 +171,7 @@ class DifficulterController extends Controller
 
     /**
      * Deletes a Difficulter entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="difficulter_delete")
      * @Method("DELETE")
      */
@@ -195,7 +197,7 @@ class DifficulterController extends Controller
 
     /**
      * Creates a form to delete a Difficulter entity by id.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @param mixed $id The entity id
      *
      * @return Symfony\Component\Form\Form The form

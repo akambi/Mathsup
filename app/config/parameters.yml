@@ -13,3 +13,9 @@ parameters:
 
     locale:            fr
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+# Pour la pagination
+    departement:        10
+    qcm:                10
+    chapitre:           10
+    excerccice_corrige: 10

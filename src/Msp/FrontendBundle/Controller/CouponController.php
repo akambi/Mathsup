@@ -10,16 +10,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\FrontendBundle\Entity\Coupon;
 use Msp\FrontendBundle\Form\CouponType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Coupon controller.
- *
+ * @Secure(roles="ROLE_ADMIN")
  * @Route("/coupon")
  */
 class CouponController extends Controller
 {
     /**
      * Lists all Coupon entities.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="coupon")
      * @Method("GET")
      * @Template()
@@ -37,7 +39,7 @@ class CouponController extends Controller
 
     /**
      * Creates a new Coupon entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="coupon_create")
      * @Method("POST")
      * @Template("MspFrontendBundle:Coupon:new.html.twig")
@@ -64,7 +66,7 @@ class CouponController extends Controller
 
     /**
      * Displays a form to create a new Coupon entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/new", name="coupon_new")
      * @Method("GET")
      * @Template()
@@ -82,7 +84,7 @@ class CouponController extends Controller
 
     /**
      * Finds and displays a Coupon entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="coupon_show")
      * @Method("GET")
      * @Template()
@@ -107,7 +109,7 @@ class CouponController extends Controller
 
     /**
      * Displays a form to edit an existing Coupon entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}/edit", name="coupon_edit")
      * @Method("GET")
      * @Template()
@@ -134,7 +136,7 @@ class CouponController extends Controller
 
     /**
      * Edits an existing Coupon entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="coupon_update")
      * @Method("PUT")
      * @Template("MspFrontendBundle:Coupon:edit.html.twig")
@@ -169,7 +171,7 @@ class CouponController extends Controller
 
     /**
      * Deletes a Coupon entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="coupon_delete")
      * @Method("DELETE")
      */
@@ -195,7 +197,7 @@ class CouponController extends Controller
 
     /**
      * Creates a form to delete a Coupon entity by id.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @param mixed $id The entity id
      *
      * @return Symfony\Component\Form\Form The form

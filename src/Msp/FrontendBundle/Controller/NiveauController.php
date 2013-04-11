@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\FrontendBundle\Entity\Niveau;
 use Msp\FrontendBundle\Form\NiveauType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Niveau controller.
  *
@@ -19,7 +21,7 @@ class NiveauController extends Controller
 {
     /**
      * Lists all Niveau entities.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="niveau")
      * @Method("GET")
      * @Template()
@@ -37,7 +39,7 @@ class NiveauController extends Controller
 
     /**
      * Creates a new Niveau entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="niveau_create")
      * @Method("POST")
      * @Template("MspFrontendBundle:Niveau:new.html.twig")
@@ -64,7 +66,7 @@ class NiveauController extends Controller
 
     /**
      * Displays a form to create a new Niveau entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/new", name="niveau_new")
      * @Method("GET")
      * @Template()
@@ -82,7 +84,7 @@ class NiveauController extends Controller
 
     /**
      * Finds and displays a Niveau entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="niveau_show")
      * @Method("GET")
      * @Template()
@@ -107,7 +109,7 @@ class NiveauController extends Controller
 
     /**
      * Displays a form to edit an existing Niveau entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}/edit", name="niveau_edit")
      * @Method("GET")
      * @Template()
@@ -134,7 +136,7 @@ class NiveauController extends Controller
 
     /**
      * Edits an existing Niveau entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="niveau_update")
      * @Method("PUT")
      * @Template("MspFrontendBundle:Niveau:edit.html.twig")
@@ -169,7 +171,7 @@ class NiveauController extends Controller
 
     /**
      * Deletes a Niveau entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="niveau_delete")
      * @Method("DELETE")
      */
@@ -195,7 +197,7 @@ class NiveauController extends Controller
 
     /**
      * Creates a form to delete a Niveau entity by id.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @param mixed $id The entity id
      *
      * @return Symfony\Component\Form\Form The form

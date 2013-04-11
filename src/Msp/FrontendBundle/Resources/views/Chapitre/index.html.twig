@@ -24,6 +24,8 @@
                 <th>Id</th>
                 <th>Libelle</th>
                 <th>Date</th>
+                <th>Exercices Corrigés</th>
+                <th>Niveau</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -32,14 +34,19 @@
             <tr>
                 <td><a href="{{ path('chapitre_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.libelle }}</td>
-                <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.date %}{{ entity.date|date('d/m/Y H:i:s') }}{% endif %}</td>
+                <td>{{ entity.excerciceCorriges|length }}</td>
+                <td><a href="{{ path('niveau_show', { id: entity.niveau.id }) }}">{{ entity.niveau }}</a></td>
                 <td>
-                <ul class="inline">
+                <ul class=" unstyled nav-pills">
                     <li>
                         <a class="btn" href="{{ path('chapitre_show', { 'id': entity.id }) }}">Voir <i class="icon-align-justify"></i></a>
                     </li>
                     <li>
                         <a class="btn" href="{{ path('chapitre_edit', { 'id': entity.id }) }}">Modifier <i class="icon-edit"></i></a>
+                    </li>
+                    <li>
+                        <a class="btn" href="{{ path('exercicecorrige', { 'chapitre': entity.id }) }}">Gérer Excercices Corrigés <i class="icon-list-alt"></i></a>
                     </li>
                 </ul>
                 </td>
@@ -47,8 +54,19 @@
         {% endfor %}
         </tbody>
     </table>
-
-        <ul class="inline">
+    <div class="pagination">
+        <ul>
+            {# On utilise la fonction range(a, b) qui crée un tableau de
+            valeurs entre a et b #}
+            {% for p in range(1, nb_pages) %}
+            <li{% if p == page %} class="active"{% endif %}>
+                <a href="{{ path('departement', {'page': p}) }}">{{ p }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <ul class="inline">
         <li>
             <a class="btn" href="{{ path('chapitre_new') }}">
                 Ajouter un chapitre <i class="icon-chevron-right"></i>

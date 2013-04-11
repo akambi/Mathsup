@@ -18,7 +18,7 @@
 {% block body -%}
     <h1>Ajout Exercice Corrigé</h1>
 
-    <form action="{{ path('exercicecorrige_create') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('exercicecorrige_create', {'chapitre': chapitre_id }) }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <p>
             <button class="btn btn-primary" type="submit">Ajouter</button>
@@ -27,7 +27,7 @@
 
         <ul class="inline">
     <li>
-        <a class="btn" href="{{ path('exercicecorrige') }}">
+        <a class="btn" href="{{ path('exercicecorrige', { 'chapitre': chapitre_id }) }}">
             <i class="icon-chevron-left"></i> Retour à la liste
         </a>
     </li>

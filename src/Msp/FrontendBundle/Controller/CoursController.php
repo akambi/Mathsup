@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\FrontendBundle\Entity\Cours;
 use Msp\FrontendBundle\Form\CoursType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Cours controller.
  *
@@ -19,7 +21,7 @@ class CoursController extends Controller
 {
     /**
      * Lists all Cours entities.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="cours")
      * @Method("GET")
      * @Template()
@@ -37,7 +39,7 @@ class CoursController extends Controller
 
     /**
      * Creates a new Cours entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="cours_create")
      * @Method("POST")
      * @Template("MspFrontendBundle:Cours:new.html.twig")
@@ -64,7 +66,7 @@ class CoursController extends Controller
 
     /**
      * Displays a form to create a new Cours entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/new", name="cours_new")
      * @Method("GET")
      * @Template()
@@ -82,7 +84,7 @@ class CoursController extends Controller
 
     /**
      * Finds and displays a Cours entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="cours_show")
      * @Method("GET")
      * @Template()
@@ -107,7 +109,7 @@ class CoursController extends Controller
 
     /**
      * Displays a form to edit an existing Cours entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}/edit", name="cours_edit")
      * @Method("GET")
      * @Template()
@@ -134,7 +136,7 @@ class CoursController extends Controller
 
     /**
      * Edits an existing Cours entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="cours_update")
      * @Method("PUT")
      * @Template("MspFrontendBundle:Cours:edit.html.twig")
@@ -169,7 +171,7 @@ class CoursController extends Controller
 
     /**
      * Deletes a Cours entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="cours_delete")
      * @Method("DELETE")
      */
@@ -195,7 +197,7 @@ class CoursController extends Controller
 
     /**
      * Creates a form to delete a Cours entity by id.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @param mixed $id The entity id
      *
      * @return Symfony\Component\Form\Form The form

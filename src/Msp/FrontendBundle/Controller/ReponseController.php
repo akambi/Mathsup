@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\FrontendBundle\Entity\Reponse;
 use Msp\FrontendBundle\Form\ReponseType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Reponse controller.
  *
@@ -19,7 +21,7 @@ class ReponseController extends Controller
 {
     /**
      * Lists all Reponse entities.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="reponse")
      * @Method("GET")
      * @Template()
@@ -37,7 +39,7 @@ class ReponseController extends Controller
 
     /**
      * Creates a new Reponse entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="reponse_create")
      * @Method("POST")
      * @Template("MspFrontendBundle:Reponse:new.html.twig")
@@ -64,7 +66,7 @@ class ReponseController extends Controller
 
     /**
      * Displays a form to create a new Reponse entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/new", name="reponse_new")
      * @Method("GET")
      * @Template()
@@ -82,7 +84,7 @@ class ReponseController extends Controller
 
     /**
      * Finds and displays a Reponse entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="reponse_show")
      * @Method("GET")
      * @Template()
@@ -107,7 +109,7 @@ class ReponseController extends Controller
 
     /**
      * Displays a form to edit an existing Reponse entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}/edit", name="reponse_edit")
      * @Method("GET")
      * @Template()
@@ -134,7 +136,7 @@ class ReponseController extends Controller
 
     /**
      * Edits an existing Reponse entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="reponse_update")
      * @Method("PUT")
      * @Template("MspFrontendBundle:Reponse:edit.html.twig")
@@ -169,7 +171,7 @@ class ReponseController extends Controller
 
     /**
      * Deletes a Reponse entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="reponse_delete")
      * @Method("DELETE")
      */
@@ -195,7 +197,7 @@ class ReponseController extends Controller
 
     /**
      * Creates a form to delete a Reponse entity by id.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @param mixed $id The entity id
      *
      * @return Symfony\Component\Form\Form The form

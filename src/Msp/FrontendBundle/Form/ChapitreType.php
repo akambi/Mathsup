@@ -11,8 +11,8 @@ class ChapitreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle')
-            ->add('date')
+            ->add('libelle', 'textarea', array( "label" => 'Titre') )
+            ->add('date', 'datetime', array('extra_fields_message' => 'test', "with_seconds" => true, 'date_format' => 'dd/MM/yyyy'))
             ->add('niveau')
         ;
     }

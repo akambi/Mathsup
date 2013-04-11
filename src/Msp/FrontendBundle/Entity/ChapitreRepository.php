@@ -12,4 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class ChapitreRepository extends EntityRepository
 {
+     public function getTotal()
+    {
+        $qb = $this->createQueryBuilder('a')->select('COUNT(a)'); 
+        return (int) $qb->getQuery()->getSingleScalarResult();
+    } 
 }

@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\FrontendBundle\Entity\Chapitre;
 use Msp\FrontendBundle\Form\ChapitreType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Chapitre controller.
  *
@@ -19,25 +21,43 @@ class ChapitreController extends Controller
 {
     /**
      * Lists all Chapitre entities.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="chapitre")
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction( $page )
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MspFrontendBundle:Chapitre')->findAll();
+        $repository = $em->getRepository('MspFrontendBundle:Chapitre');
+        
+        $total = $repository->getTotal();
+        $nb_par_page = $this->container->getParameter('chapitre');
+        $nb_pages = (ceil($total/$nb_par_page))? ceil($total/$nb_par_page): 1;    
+        $offset = ($page-1) * $nb_par_page;
+        
+        if( $page < 1 OR $page > $nb_pages )
+        {
+            throw $this->createNotFoundException('Page inexistante (page = '.$page.')');
+        }
+        
+        $entities = $repository->findBy(
+            array(), // Pas de critère
+            array(), // On tri par date décroissante
+            $nb_par_page, // On sélectionne $nb_articles_page articles
+            $offset // A partir du $offset ième
+        );        
 
         return array(
             'entities' => $entities,
+            'page' => $page,
+            'nb_pages' => $nb_pages,
         );
     }
 
     /**
      * Creates a new Chapitre entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/", name="chapitre_create")
      * @Method("POST")
      * @Template("MspFrontendBundle:Chapitre:new.html.twig")
@@ -64,7 +84,7 @@ class ChapitreController extends Controller
 
     /**
      * Displays a form to create a new Chapitre entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/new", name="chapitre_new")
      * @Method("GET")
      * @Template()
@@ -82,7 +102,7 @@ class ChapitreController extends Controller
 
     /**
      * Finds and displays a Chapitre entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="chapitre_show")
      * @Method("GET")
      * @Template()
@@ -107,7 +127,7 @@ class ChapitreController extends Controller
 
     /**
      * Displays a form to edit an existing Chapitre entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}/edit", name="chapitre_edit")
      * @Method("GET")
      * @Template()
@@ -134,7 +154,7 @@ class ChapitreController extends Controller
 
     /**
      * Edits an existing Chapitre entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="chapitre_update")
      * @Method("PUT")
      * @Template("MspFrontendBundle:Chapitre:edit.html.twig")
@@ -169,7 +189,7 @@ class ChapitreController extends Controller
 
     /**
      * Deletes a Chapitre entity.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @Route("/{id}", name="chapitre_delete")
      * @Method("DELETE")
      */
@@ -185,7 +205,11 @@ class ChapitreController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Chapitre entity.');
             }
-
+            
+            foreach ( $entity->getExcerciceCorriges() as $exerciceCorrige )
+            {
+                $em->remove($exerciceCorrige);
+            }
             $em->remove($entity);
             $em->flush();
         }
@@ -195,7 +219,7 @@ class ChapitreController extends Controller
 
     /**
      * Creates a form to delete a Chapitre entity by id.
-     *
+     * @Secure(roles="ROLE_ADMIN")
      * @param mixed $id The entity id
      *
      * @return Symfony\Component\Form\Form The form

@@ -4,6 +4,8 @@ namespace Msp\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 class FrontendController extends Controller
 {
     public function indexAction()
@@ -204,21 +206,25 @@ class FrontendController extends Controller
         return $this->render('MspFrontendBundle:Page:liens.html.twig');
     }
     
-    public function compteAction()
-    {
-        return $this->render('MspFrontendBundle:User:index.html.twig');
-    }
-    
+    /*
+     * @Secure(roles="ROLE_ELEVE")
+     */
     public function eleveAction( $slug)
     {
         return $this->render('MspFrontendBundle:User:eleve.html.twig');
     }
     
+    /*
+     * @Secure(roles="ROLE_PROFESSEUR")
+     */
     public function professeurAction( $slug )
     {
         return $this->render('MspFrontendBundle:User:professeur.html.twig');
     }
     
+    /*
+     * @Secure(roles="ROLE_ADMIN")
+     */
     public function adminAction( $slug )
     {
         return $this->render('MspFrontendBundle:User:admin.html.twig');
