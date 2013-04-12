@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="Msp\UserBundle\Entity\UserRepository")
 * @ORM\Table()
 */
 class User extends BaseUser
@@ -57,14 +57,14 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=45, nullable=true)
+     * @ORM\Column(name="nom", type="string", length=45)
      */
     protected $nom;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=45, nullable=true)
+     * @ORM\Column(name="prenom", type="string", length=45)
      */
     protected $prenom;
     
@@ -75,6 +75,20 @@ class User extends BaseUser
     protected $departement;
     
     /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=255)
+     */
+    protected $ville;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_inscription", type="datetime")
+     */
+    private $dateInscription;
+    
+    /**
     * @Gedmo\Slug(fields={"nom", "prenom"})
     * @ORM\Column(length=128, unique=true)
     */
@@ -83,6 +97,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $this->dateInscription = new \Datetime();
         // your own logic
     }
     
@@ -375,5 +390,51 @@ class User extends BaseUser
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     * @return User
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+    
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string 
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set dateInscription
+     *
+     * @param \DateTime $dateInscription
+     * @return User
+     */
+    public function setDateInscription($dateInscription)
+    {
+        $this->dateInscription = $dateInscription;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateInscription
+     *
+     * @return \DateTime 
+     */
+    public function getDateInscription()
+    {
+        return $this->dateInscription;
     }
 }

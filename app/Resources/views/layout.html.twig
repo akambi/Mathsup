@@ -22,11 +22,6 @@
             <![endif]-->
         {% endblock %}
         
-        {% block javascripts1 %}
-        {# inclusion de la librairie de jquery #}
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>            
-        {% endblock %}
-        
     </head>
     <body>    
         <div class="container">
@@ -115,17 +110,6 @@
                         
                         <hr/>
                         
-                        
-                        
-                        {# L'utilisateur est-il connecté ? #}
-                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            {# L'utilisateur est-il admin ? #}
-                            {% if is_granted('ROLE_ADMIN') %}
-                                {# L'utilisateur est admin ! #}
-                                <a class="btn btn-large btn-block" href="{{ path("fos_user_registration_register") }}">Inscription</a>
-                            {% endif %}                        
-                        {% endif %}
-                        
                         {# L'utilisateur est-il connecté ? #}
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             {# L'utilisateur est connecté ! #}
@@ -164,6 +148,11 @@
             </footer>           
                 
         </div>
+        
+        {% block javascripts1 %}
+        {# inclusion de la librairie de jquery #}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>            
+        {% endblock %}
         
         {% block javascripts2 %}
             {% javascripts output='js/main.js' filter='' 'js/*' %}

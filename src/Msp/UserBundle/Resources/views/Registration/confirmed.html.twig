@@ -26,4 +26,18 @@
         {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
         {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a></p>{% endif %}
     {% endif %}
+            
+    <ul class="unstyled nav-pills nav-stacked">
+        <li>
+            <a class="btn" href="{{ path('eleve') }}">
+                <i class="icon-chevron-left"></i> Retour à la liste des élèves
+            </a>
+        </li>
+        <li>
+            <a class="btn" href="{{ path('professeur') }}">
+                <i class="icon-chevron-left"></i> Retour à la liste des professeurs
+            </a>
+        </li>
+    </ul>
+            
 {% endblock fos_user_content %}

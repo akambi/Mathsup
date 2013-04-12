@@ -1,0 +1,93 @@
+{% extends "MspFrontendBundle::user-layout.html.twig" %}
+
+{# Le titre de la page (defaut MathSup) #}
+{% block title %}LIST DES ELEVES | {{ parent() }}{% endblock %}
+{# La description de la page (defaut vide) #}
+{% block description %}{% endblock %}
+{# Les mots clés de la page (defaut vide) #}
+{% block keywords %}{% endblock %}
+{# Indication pour les robots de la page  (defaut all) #}
+{% block robots %}noindex, nofollow{% endblock %}
+
+{# Le titre de l'entête du document #}
+{% block entetetitle %}LIST DES ELEVES | {{ parent() }}{% endblock %}
+{# La barre latéralke de la page #}
+{% block aside %}{{ parent() }}{% endblock %}
+{# Le contenu de la page #}
+
+{% block body -%}
+    <h1>Liste des Elèves</h1>
+
+    <table id="table"  class="sortable" cellpadding="0" cellspacing="0" border="0" >
+        <thead>
+            <tr>
+                <th><h3>ID</th>
+                <th><h3>Nom</h3></th>
+                <th><h3>Département</h3></th>
+                <th><h3>Ville</h3></th>                
+                <th><h3>Classe</h3></th>
+                <th><h3>Niveau</h3></th>
+                <th class="nosort"><h3>Actions</h3></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for key, entity in entities %}
+            <tr>
+                <td><a href="{{ path('eleve_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nom }} {{ entity.prenom }}</td>
+                <td>{{ entity.departement }}</td>
+                <td>{{ entity.ville }}</td>                
+                <td><a href="{{ path('classe_show', { 'id': entity.classe.id }) }}">{{ entity.classe }}</a></td>
+                <td><a href="{{ path('niveau_show', { 'id': niveaux[key].id }) }}">{{ niveaux[key] }}</a></td>
+                <td>
+                <ul class="unstyled nav-pills">
+                    <li>
+                        <a class="btn" href="{{ path('eleve_show', { 'id': entity.id }) }}">Voir <i class="icon-align-justify"></i></a>
+                    </li>
+                    <li>
+                        <a class="btn" href="{{ path('eleve_edit', { 'id': entity.id }) }}">Modifier <i class="icon-edit"></i></a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <div id="controls">
+        <div id="perpage">
+            <select onchange="sorter.size(this.value)">
+                <option value="5">5</option>
+                <option value="10" selected="selected">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <span>Elèves / Page</span>
+        </div>
+        <div id="navigation">
+            <img src="{{ asset('img/sorter/first.gif') }}" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
+            <img src="{{ asset('img/sorter/previous.gif') }}" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
+            <img src="{{ asset('img/sorter/next.gif') }}" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
+            <img src="{{ asset('img/sorter/last.gif') }}" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+        </div>
+        <div id="text">Page <span id="currentpage"></span> / <span id="pagelimit"></span></div>
+    </div>
+    
+    <div class="clearfix"></div>
+    
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path("fos_user_registration_register") }}">
+                Ajouter un élève <i class="icon-chevron-right"></i>
+            </a>
+        </li>
+    </ul>
+    
+{% endblock %}
+
+{% block javascripts2 %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('javascript/sorter.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('javascript/start_sorter.js') }}"></script>
+{% endblock %}

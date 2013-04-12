@@ -31,5 +31,10 @@
             </a>
         </li>
     </ul>
-    <script type="text/javascript" src="{{ asset('form_js/question.js') }}"></script>
+    
+{% endblock %}
+
+{% block javascripts2 %}
+    {{ parent() }}    
+    <script type="text/javascript" src="{{ asset('javascript/question.js') }}"></script>
 {% endblock %}

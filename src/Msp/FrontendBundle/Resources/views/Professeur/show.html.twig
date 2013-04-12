@@ -1,7 +1,7 @@
 {% extends "MspFrontendBundle::user-layout.html.twig" %}
 
 {# Le titre de la page (defaut MathSup) #}
-{% block title %}CLASSE "{{ entity.libelle }}" | {{ parent() }}{% endblock %}
+{% block title %}PROFESSEUR "{{ entity.nom }} {{ entity.prenom }}" | {{ parent() }}{% endblock %}
 {# La description de la page (defaut vide) #}
 {% block description %}{% endblock %}
 {# Les mots clés de la page (defaut vide) #}
@@ -10,44 +10,48 @@
 {% block robots %}noindex, nofollow{% endblock %}
 
 {# Le titre de l'entête du document #}
-{% block entetetitle %}CLASSE "{{ entity.libelle }}" | {{ parent() }}{% endblock %}
+{% block entetetitle %}PROFESSEUR "{{ entity.nom }} {{ entity.prenom }}" | {{ parent() }}{% endblock %}
 {# La barre latéralke de la page #}
 {% block aside %}{{ parent() }}{% endblock %}
 {# Le contenu de la page #}
 
 {% block body -%}
-    <h1>Classe "{{ entity.libelle }}"</h1>
+    <h1>PROFESSEUR "{{ entity.nom }} {{ entity.prenom }}"</h1>
 
-    <table class="table table-hover">
+    <table class="table table_hover">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
+                <th>NOM</th>
+                <td>{{ entity.nom }} {{ entity.prenom }}</td>
             </tr>
             <tr>
-                <th>Libellé</th>
-                <td>{{ entity.libelle }}</td>
+                <th>Département</th>
+                <td>{{ entity.nom }}</td>
             </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ entity.ville }}</td>
+            </tr>            
             <tr>
                 <th>Niveau</th>
-                <td>{{ entity.niveau }}</td>
-            </tr>
+                <td></td>
+            </tr>            
         </tbody>
     </table>
 
         <ul class="inline">
     <li>
-        <a class="btn" href="{{ path('classe') }}">
+        <a class="btn" href="{{ path('professeur') }}">
             <i class="icon-chevron-left"></i> Retour à la liste
         </a>
     </li>
     <li>
-        <a class="btn" href="{{ path('classe_edit', { 'id': entity.id }) }}">
+        <a class="btn" href="{{ path('professeur_edit', { 'id': entity.id }) }}">
             Modifier <i class="icon-edit"></i>
         </a>
     </li>
     <li>
-        <form action="{{ path('classe_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('professeur_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
             <button class="btn btn-danger" type="submit">Supprimer <i class="icon-remove"></i></button>

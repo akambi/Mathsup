@@ -8,15 +8,15 @@ msp_frontend_homepage:
 # Les routes des utilisateurs #
 #
 msp_eleve:
-    pattern:  /eleve/{slug}/
+    pattern:  /eleve/profile/{slug}/
     defaults: { _controller: MspFrontendBundle:Frontend:eleve }
 
 msp_professeur:
-    pattern:  /professeur/{slug}/
+    pattern:  /professeur/profile/{slug}/
     defaults: { _controller: MspFrontendBundle:Frontend:professeur }
 
 msp_admin:
-    pattern:  /admin/{slug}/
+    pattern:  /admin/profile/{slug}/
     defaults: { _controller: MspFrontendBundle:Frontend:admin }
 
 #
@@ -407,3 +407,50 @@ reponse_update:
 reponse_delete:
     pattern:  /reponse/delete/{id}
     defaults: { _controller: MspFrontendBundle:Reponse:delete }
+
+#
+# Les routes pour LA GESTION DES ELEVES #
+#
+eleve:
+    pattern:  /eleve/
+    defaults: { _controller: MspFrontendBundle:Eleve:index }
+
+eleve_show:
+    pattern:  /eleve/show/{id}
+    defaults: { _controller: MspFrontendBundle:Eleve:show}
+
+eleve_edit:
+    pattern:  /eleve/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Eleve:edit}
+
+eleve_update:
+    pattern:  /eleve/update/{id}
+    defaults: { _controller: MspFrontendBundle:Eleve:update}
+
+eleve_delete:
+    pattern:  /eleve/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Eleve:delete }
+
+#
+# Les routes pour LA GESTION DES Professeurs #
+#
+professeur:
+    pattern:  /professeur/
+    defaults: { _controller: MspFrontendBundle:Professeur:index }
+
+professeur_show:
+    pattern:  /professeur/show/{id}
+    defaults: { _controller: MspFrontendBundle:Professeur:show}
+
+professeur_edit:
+    pattern:  /professeur/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Professeur:edit}
+
+professeur_update:
+    pattern:  /professeur/update/{id}
+    defaults: { _controller: MspFrontendBundle:Professeur:update}
+
+professeur_delete:
+    pattern:  /professeur/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Professeur:delete }
+

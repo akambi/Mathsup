@@ -8,6 +8,7 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class FrontendController extends Controller
 {
+    
     public function indexAction()
     {
         return $this->render('MspFrontendBundle:Page:index.html.twig');
@@ -204,9 +205,9 @@ class FrontendController extends Controller
     public function liensAction()
     {
         return $this->render('MspFrontendBundle:Page:liens.html.twig');
-    }
+    }    
     
-    /*
+    /**
      * @Secure(roles="ROLE_ELEVE")
      */
     public function eleveAction( $slug)
@@ -214,7 +215,7 @@ class FrontendController extends Controller
         return $this->render('MspFrontendBundle:User:eleve.html.twig');
     }
     
-    /*
+    /**
      * @Secure(roles="ROLE_PROFESSEUR")
      */
     public function professeurAction( $slug )
@@ -222,11 +223,12 @@ class FrontendController extends Controller
         return $this->render('MspFrontendBundle:User:professeur.html.twig');
     }
     
-    /*
+    /**
      * @Secure(roles="ROLE_ADMIN")
      */
     public function adminAction( $slug )
     {
         return $this->render('MspFrontendBundle:User:admin.html.twig');
     }
+    
 }

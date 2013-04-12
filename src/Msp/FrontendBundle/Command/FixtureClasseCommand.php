@@ -20,13 +20,25 @@ class FixtureClasseCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $liste_niveau = $em->getRepository('MspFrontendBundle:Niveau')->findAll();
     //  liste des données à ajouter
+        $classe_primaire = array('Primaire');
         $classe_college = array('6ème', '5ème', '4ème', '3ème');
         $classe_lycee = array('2nde', '1ère', 'Tle');
         $classe_universite = array('Licence', 'Prepa');
     //  On persiste les données
         foreach($liste_niveau as $y => $niveau)
         {
-            if( $niveau->getId() == 2):
+            if( $niveau->getId() == 1):
+                foreach($classe_primaire as $i => $libelle)
+                {
+                    $output->writeln('Creation de la classe : '.$libelle);
+                //  On crée la catégorie
+                    $liste_classe[$y][$i] = new Classe();
+                    $liste_classe[$y][$i]->setLibelle( $libelle );
+                    $liste_classe[$y][$i]->setNiveau( $niveau );
+                //  On la persiste
+                    $em->persist($liste_classe[$y][$i]);
+                }
+            elseif( $niveau->getId() == 2):
                 foreach($classe_college as $i => $libelle)
                 {
                     $output->writeln('Creation de la classe : '.$libelle);
