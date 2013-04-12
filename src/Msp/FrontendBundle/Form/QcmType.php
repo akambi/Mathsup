@@ -13,7 +13,7 @@ class QcmType extends AbstractType
         $builder
             ->add('libelle', 'textarea', array( "label" => 'Titre'))
             ->add('duree', 'time', array( 'label' => 'Durée', "with_seconds" => true))
-            ->add('date', 'datetime', array('extra_fields_message' => 'test', "with_seconds" => true, 'date_format' => 'dd/MM/yyyy'))
+            ->add('date', 'datetime', array( "with_seconds" => true, 'date_format' => 'dd/MM/yyyy'))
             ->add('niveau')
             ->add('difficulter', 'entity', array( "label"=> "Difficulté", 'class' => 'Msp\FrontendBundle\Entity\Difficulter'))
         ;
