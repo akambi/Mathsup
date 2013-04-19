@@ -1,0 +1,64 @@
+{% extends "MspFrontendBundle::professeur-layout.html.twig" %}
+
+{# Le titre de la page (defaut MathSup) #}
+{% block title %}CONFÉRENCE "{{ entity.meetingName }}" | {{ parent() }}{% endblock %}
+{# La description de la page (defaut vide) #}
+{% block description %}{% endblock %}
+{# Les mots clés de la page (defaut vide) #}
+{% block keywords %}{% endblock %}
+{# Indication pour les robots de la page  (defaut all) #}
+{% block robots %}noindex, nofollow{% endblock %}
+
+{# Le titre de l'entête du document #}
+{% block entetetitle %}CONFÉRENCES "{{ entity.meetingName }}" | {{ parent() }}{% endblock %}
+{# La barre latéralke de la page #}
+{% block aside %}{{ parent() }}{% endblock %}
+
+{% block body -%}
+    <h1>Conference "{{ entity.meetingName }}"</h1>
+
+    <table class="table table_hover">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>            
+            <tr>
+                <th>TITRE</th>
+                <td>{{ entity.meetingName }}</td>
+            </tr>            
+            <tr>
+                <th>MOT DE PASSE</th>
+                <td>{{ entity.moderatorPW }}</td>
+            </tr>
+            <tr>
+                <th>MOT DE PASSE DES ÉLÈVES</th>
+                <td>{{ entity.attendeePW }}</td>
+            </tr>            
+            <tr>
+                <th>Date</th>
+                <td>{{ entity.meetingDate|date('d/m/Y H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="inline">
+    <li>
+        <a class="btn" href="{{ path('msp_professeur_conference') }}">
+            <i class="icon-chevron-left"></i> Retour à la liste
+        </a>
+    </li>
+    <li>
+        <a class="btn" href="{{ path('msp_professeur_conference_edit', { 'id': entity.id }) }}">
+            Modifier <i class="icon-edit"></i>
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('msp_professeur_conference_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit">Supprimer <i class="icon-remove"></i></button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

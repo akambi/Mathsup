@@ -112,7 +112,17 @@
                         
                         {# L'utilisateur est-il connecté ? #}
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            {# L'utilisateur est connecté ! #}
+                            {# L'utilisateur est connecté ! #}                            
+                            <form id="conference" action="{{ path("msp_conference_connexion") }}" method="post">
+                                <fieldset class="text-center">
+                                    <legend>CONFÉRENCE</legend>
+                                    <input type="text" id="titre" name="msp_frontendbundle_bigbluebuttontype[titre]" class="input-small" placeholder="Titre" required="required" />
+                                    <input type="password" id="motdepasse" name="msp_frontendbundle_bigbluebuttontype[motdepasse]"  class="input-small" placeholder="Mot de passe" required="required" />
+                                    <input id="msp_frontendbundle_bigbluebuttontype__token" type="hidden" value="52b918c941fe213a5447f60a7842b7145c307e9c" name="msp_frontendbundle_bigbluebuttontype[_token]">
+                                    <input class="btn btn-primary" type="submit" value="Se connecter"/>
+                                </fieldset>
+                            </form> 
+                            
                             <a class="btn btn-danger btn-block" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
                         {% else %}
                             <form id="connexion" action="{{ path("fos_user_security_check") }}" method="post">

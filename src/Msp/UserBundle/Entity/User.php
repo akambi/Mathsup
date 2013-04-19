@@ -15,6 +15,16 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class User extends BaseUser
 {
     /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserGoConference", mappedBy="user")
+    */
+    private $userGoConferences;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Conference", mappedBy="user")
+    */
+    private $conferences;
+    
+    /**
     * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserAvailability", mappedBy="user")
     */
     private $userAvailabilities;
@@ -436,5 +446,71 @@ class User extends BaseUser
     public function getDateInscription()
     {
         return $this->dateInscription;
+    }
+
+    /**
+     * Add userGoConferences
+     *
+     * @param \Msp\FrontendBundle\Entity\UserGoConference $userGoConferences
+     * @return User
+     */
+    public function addUserGoConference(\Msp\FrontendBundle\Entity\UserGoConference $userGoConferences)
+    {
+        $this->userGoConferences[] = $userGoConferences;
+    
+        return $this;
+    }
+
+    /**
+     * Remove userGoConferences
+     *
+     * @param \Msp\FrontendBundle\Entity\UserGoConference $userGoConferences
+     */
+    public function removeUserGoConference(\Msp\FrontendBundle\Entity\UserGoConference $userGoConferences)
+    {
+        $this->userGoConferences->removeElement($userGoConferences);
+    }
+
+    /**
+     * Get userGoConferences
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserGoConferences()
+    {
+        return $this->userGoConferences;
+    }
+
+    /**
+     * Add conferences
+     *
+     * @param \Msp\FrontendBundle\Entity\Conference $conferences
+     * @return User
+     */
+    public function addConference(\Msp\FrontendBundle\Entity\Conference $conferences)
+    {
+        $this->conferences[] = $conferences;
+    
+        return $this;
+    }
+
+    /**
+     * Remove conferences
+     *
+     * @param \Msp\FrontendBundle\Entity\Conference $conferences
+     */
+    public function removeConference(\Msp\FrontendBundle\Entity\Conference $conferences)
+    {
+        $this->conferences->removeElement($conferences);
+    }
+
+    /**
+     * Get conferences
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getConferences()
+    {
+        return $this->conferences;
     }
 }

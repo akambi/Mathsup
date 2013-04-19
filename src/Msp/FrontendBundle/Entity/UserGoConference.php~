@@ -5,42 +5,33 @@ namespace Msp\FrontendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * UserQcm
+ * UserGoConference 
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class UserQcm
+class UserGoConference
 {
     /**
     * @ORM\Id
-    * @ORM\ManyToOne(targetEntity="Msp\UserBundle\Entity\User", inversedBy="userQcms")
+    * @ORM\ManyToOne(targetEntity="Msp\UserBundle\Entity\User", inversedBy="userGoConferences")
     * @ORM\JoinColumn(nullable=false)
     */
     private $user;
     
     /**
     * @ORM\Id
-    * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Qcm", inversedBy="userQcms")
+    * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Conference", inversedBy="userGoConferences")
     * @ORM\JoinColumn(nullable=false)
     */
-    private $qcm;
+    private $conference;
     
     /**
      * @var \DateTime
-     *
-     * @ORM\Id
+     * 
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
-    
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="note", type="integer")
-     */
-    private $note;
-
     
     /**
      * Constructor
@@ -54,7 +45,7 @@ class UserQcm
      * Set date
      *
      * @param \DateTime $date
-     * @return UserQcm
+     * @return UserGoConference
      */
     public function setDate($date)
     {
@@ -74,33 +65,10 @@ class UserQcm
     }
 
     /**
-     * Set note
-     *
-     * @param integer $note
-     * @return UserQcm
-     */
-    public function setNote($note)
-    {
-        $this->note = $note;
-    
-        return $this;
-    }
-
-    /**
-     * Get note
-     *
-     * @return integer 
-     */
-    public function getNote()
-    {
-        return $this->note;
-    }
-
-    /**
      * Set user
      *
      * @param \Msp\UserBundle\Entity\User $user
-     * @return UserQcm
+     * @return UserGoConference
      */
     public function setUser(\Msp\UserBundle\Entity\User $user)
     {
@@ -120,25 +88,25 @@ class UserQcm
     }
 
     /**
-     * Set qcm
+     * Set conference
      *
-     * @param \Msp\FrontendBundle\Entity\Qcm $qcm
-     * @return UserQcm
+     * @param \Msp\FrontendBundle\Entity\Conference $conference
+     * @return UserGoConference
      */
-    public function setQcm(\Msp\FrontendBundle\Entity\Qcm $qcm)
+    public function setConference(\Msp\FrontendBundle\Entity\Conference $conference)
     {
-        $this->qcm = $qcm;
+        $this->conference = $conference;
     
         return $this;
     }
 
     /**
-     * Get qcm
+     * Get conference
      *
-     * @return \Msp\FrontendBundle\Entity\Qcm 
+     * @return \Msp\FrontendBundle\Entity\Conference 
      */
-    public function getQcm()
+    public function getConference()
     {
-        return $this->qcm;
+        return $this->conference;
     }
 }

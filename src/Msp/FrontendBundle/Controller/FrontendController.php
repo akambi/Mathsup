@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
+use Msp\FrontendBundle\Form\BigBlueButtonType As BBBType;
+use Msp\FrontendBundle\Form\BigBlueButtonHandler As BBBHandler;
+
 class FrontendController extends Controller
 {
     
@@ -231,4 +234,23 @@ class FrontendController extends Controller
         return $this->render('MspFrontendBundle:User:admin.html.twig');
     }
     
+    
+    /**
+     * @Secure(roles="ROLE_ELEVE, ROLE_PROFESSEUR")
+     */
+    public function connexionConferenceAction()
+    {
+        $msg = "";
+        $form = $this->createForm(new BBBType);
+    
+        $formHandler = new BBBHandler($form, $this->get('request'), $this->getDoctrine()->getEntityManager(), $this->container);
+    //  On exécute le traitement du formulaire. S'il retourne true, alors le formulaire a bien été traité
+        if( $formHandler->process() )
+        {
+            $msg = $formHandler->getError();
+        }
+        
+        return $this->render('MspFrontendBundle:User:conf_connect.html.twig', array( 'form' => $form->createView(), 'msg' => $msg ) );
+    }
+        
 }

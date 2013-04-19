@@ -4,17 +4,57 @@
 msp_frontend_homepage:
     pattern:  /
     defaults: { _controller: MspFrontendBundle:Frontend:index }
+
+msp_conference_connexion:
+    pattern:  /conference/connexion/
+    defaults: { _controller: MspFrontendBundle:Frontend:connexionConference }
+
+
 #
-# Les routes des utilisateurs #
+# Les routes des eleves #
 #
 msp_eleve:
     pattern:  /eleve/profile/{slug}/
     defaults: { _controller: MspFrontendBundle:Frontend:eleve }
 
+#
+# Les routes des professeurs #
+#
 msp_professeur:
     pattern:  /professeur/profile/{slug}/
     defaults: { _controller: MspFrontendBundle:Frontend:professeur }
 
+msp_professeur_conference_create:
+    pattern:  /professeur/conference/create/
+    defaults: { _controller: MspFrontendBundle:Conference:create}
+
+msp_professeur_conference_new:
+    pattern:  /professeur/conference/new/
+    defaults: { _controller: MspFrontendBundle:Conference:new}
+
+msp_professeur_conference_show:
+    pattern:  /professeur/conference/show/{id}
+    defaults: { _controller: MspFrontendBundle:Conference:show}
+
+msp_professeur_conference_edit:
+    pattern:  /professeur/conference/edit/{id}
+    defaults: { _controller: MspFrontendBundle:Conference:edit}
+
+msp_professeur_conference_update:
+    pattern:  /professeur/conference/update/{id}
+    defaults: { _controller: MspFrontendBundle:Conference:update}
+
+msp_professeur_conference_delete:
+    pattern:  /professeur/conference/delete/{id}
+    defaults: { _controller: MspFrontendBundle:Conference:delete }
+
+msp_professeur_conference:
+    pattern:  /professeur/conference/{page}/
+    defaults: { _controller: MspFrontendBundle:Conference:index, page:1 }
+
+#
+# Les routes des administrateurs #
+#
 msp_admin:
     pattern:  /admin/profile/{slug}/
     defaults: { _controller: MspFrontendBundle:Frontend:admin }
@@ -132,10 +172,6 @@ niveau_delete:
 #
 # Les routes pour Departement #
 #
-departement:
-    pattern:  /departement/{page}
-    defaults: { _controller: MspFrontendBundle:Departement:index, page: 1 }
-
 departement_create:
     pattern:  /departement/create/
     defaults: { _controller: MspFrontendBundle:Departement:create}
@@ -159,6 +195,10 @@ departement_update:
 departement_delete:
     pattern:  /departement/delete/{id}
     defaults: { _controller: MspFrontendBundle:Departement:delete}
+
+departement:
+    pattern:  /departement/{page}/
+    defaults: { _controller: MspFrontendBundle:Departement:index, page: 1 }
 
 #
 # Les routes pour COURS #
@@ -225,10 +265,6 @@ classe_delete:
 #
 # Les routes pour chapitre #
 #
-chapitre:
-    pattern:  /chapitre/{page}
-    defaults: { _controller: MspFrontendBundle:Chapitre:index, page:1 }
-
 chapitre_create:
     pattern:  /chapitre/create/
     defaults: { _controller: MspFrontendBundle:Chapitre:create}
@@ -253,13 +289,14 @@ chapitre_delete:
     pattern:  /chapitre/delete/{id}
     defaults: { _controller: MspFrontendBundle:Chapitre:delete}
 
+chapitre:
+    pattern:  /chapitre/{page}/
+    defaults: { _controller: MspFrontendBundle:Chapitre:index, page:1 }
+
+
 #
 # Les routes pour ExerciceCorrige #
 #
-exercicecorrige:
-    pattern:  /exercicecorrige/{page}
-    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:index, page: 1 }
-
 exercicecorrige_create:
     pattern:  /exercicecorrige/create/
     defaults: { _controller: MspFrontendBundle:ExerciceCorrige:create}
@@ -283,6 +320,10 @@ exercicecorrige_update:
 exercicecorrige_delete:
     pattern:  /exercicecorrige/delete/{id}
     defaults: { _controller: MspFrontendBundle:ExerciceCorrige:delete}
+
+exercicecorrige:
+    pattern:  /exercicecorrige/{page}
+    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:index, page: 1 }
 
 #
 # Les routes pour DIFFICULTER #
@@ -318,10 +359,6 @@ difficulter_delete:
 #
 # Les routes pour QCM #
 #
-qcm:
-    pattern:  /qcm/{page}
-    defaults: { _controller: MspFrontendBundle:Qcm:index, page:1 }
-
 qcm_create:
     pattern:  /qcm/create/
     defaults: { _controller: MspFrontendBundle:Qcm:create}
@@ -345,6 +382,11 @@ qcm_update:
 qcm_delete:
     pattern:  /qcm/delete/{id}
     defaults: { _controller: MspFrontendBundle:Qcm:delete }
+
+qcm:
+    pattern:  /qcm/{page}
+    defaults: { _controller: MspFrontendBundle:Qcm:index, page:1 }
+
 
 #
 # Les routes pour REPONSE #

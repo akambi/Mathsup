@@ -14,8 +14,14 @@ parameters:
     locale:            fr
     secret:            ThisTokenIsNotSoSecretChangeIt
 
+# Configuration server bigbluebutton
+    bigbluebutton_url:  http://test-install.blindsidenetworks.com/bigbluebutton/
+    bigbluebutton_salt: 8cd8ef52e8e101574e400365b55e11a6
+    website_name:       MathSup
+
 # Pour la pagination
     departement:        10
     qcm:                10
     chapitre:           10
     excerccice_corrige: 10
+    conference:         10
