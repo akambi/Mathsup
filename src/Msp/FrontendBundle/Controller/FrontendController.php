@@ -4,10 +4,18 @@ namespace Msp\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
+
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
 use Msp\FrontendBundle\Form\BigBlueButtonType As BBBType;
 use Msp\FrontendBundle\Form\BigBlueButtonHandler As BBBHandler;
+
+use Msp\FrontendBundle\Entity\Conference;
+use Msp\FrontendBundle\Entity\UserGoConference;
+
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Collection;
 
 class FrontendController extends Controller
 {
@@ -252,5 +260,59 @@ class FrontendController extends Controller
         
         return $this->render('MspFrontendBundle:User:conf_connect.html.twig', array( 'form' => $form->createView(), 'msg' => $msg ) );
     }
+    
+    /**
+     * @Secure(roles="ROLE_ELEVE, ROLE_PROFESSEUR")
+     */
+    public function connexionConferenceFormAction()
+    {        
+        $form = $this->createForm(new BBBType);
+        return $this->render('MspFrontendBundle:User:conf_connect_form.html.twig', array( 'form' => $form->createView()) );
+    }
+    
+    /**
+     * @Secure(roles="ROLE_ELEVE, ROLE_PROFESSEUR")
+     */
+    public function conferenceAvisAction( Conference $conference )
+    {        
+    //  Gestion des erreurs ou confirmation
+        $error = "";
+        $msg = "";
+    //  Les contraintres sur le formulaire
+        $collectionConstraint = new Collection(array(
+            'message' => new Length(array("min" => 5)),
+        ));
+    //  Le formulaire
+        $form = $this->createFormBuilder( null, array( 'constraints' => $collectionConstraint ) )
+                ->add('message','textarea', array('label'=>"Message"))        
+                ->getForm();
+    //  On valide le formulaire
+        $request = $this->getRequest();
+        if ( $request->isMethod('POST') ) {
+            $form->bind($request);
+            
+            if ($form->isValid()) {               
+                $data = $form->getData();
+                $message = $data["message"];
+            //  On enregistre le message
+                $user = $this->container->get('security.context')->getToken()->getUser();
+                $em = $this->getDoctrine()->getManager();
+                $repository = $em->getRepository('MspFrontendBundle:UserGoConference');
+                $user_go_conference = $repository->findOneBy( array( "user" => $user, "conference" => $conference) );
+                
+                if ($user_go_conference) {                    
+                    $user_go_conference->setMessage( $message );
+
+                    $em->persist($user_go_conference);
+                    $em->flush();
+                    $msg = "Votre Message a bien été pris en compte. Merci !";
+                }else{
+                    $error = "Désolé, vous n'avez pas assisté à cette conférence";
+                }
+            }            
+        }
         
+        return $this->render('MspFrontendBundle:User:conf_avis.html.twig', array( 'form' => $form->createView(), 'error' => $error, 'msg' => $msg) );
+    }
+    
 }

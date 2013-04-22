@@ -14,8 +14,8 @@ class BigBlueButtonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre', 'text', array( "label" => 'Titre'))
-            ->add('motdepasse','password', array( "label" => 'MOT DE PASSE'))
+            ->add('titre', 'text', array( "label" => 'Titre', "attr" =>array("placeholder"=>"Titre")))
+            ->add('motdepasse','password', array( "label" => 'MOT DE PASSE', "attr" =>array("placeholder"=>"MOT DE PASSE")))
         ;
     }
 

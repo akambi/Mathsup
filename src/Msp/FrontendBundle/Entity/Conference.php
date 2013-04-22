@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 //  Pour utiliser ArrrayCollection de doctrine
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 /**
  * Conference
  *
@@ -91,7 +93,11 @@ class Conference
      */
     private $meetingDate;
 
-
+    /**
+    * @Gedmo\Slug(fields={"meetingName"})
+    * @ORM\Column(length=128, unique=true)
+    */
+    private $slug;
     
     /**
      * Constructor
@@ -353,5 +359,28 @@ class Conference
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Conference
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

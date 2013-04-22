@@ -9,6 +9,13 @@ msp_conference_connexion:
     pattern:  /conference/connexion/
     defaults: { _controller: MspFrontendBundle:Frontend:connexionConference }
 
+msp_conference_form:
+    pattern:  /conference/connexion/form/
+    defaults: { _controller: MspFrontendBundle:Frontend:connexionConferenceForm }
+
+msp_conference_avis:
+    pattern:  /conference/avis/{slug}/
+    defaults: { _controller: MspFrontendBundle:Frontend:conferenceAvis }
 
 #
 # Les routes des eleves #

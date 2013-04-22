@@ -1,0 +1,10 @@
+<form id="conference" action="{{ path("msp_conference_connexion") }}" method="post">
+    <fieldset class=" text-center">
+        <legend>CONFÉRENCE</legend>
+        {{ form_widget(form.titre) }}
+        {{ form_widget(form.motdepasse) }}
+        {{ form_rest(form) }}
+        <input class="btn btn-primary" type="submit" value="Se connecter"/>
+    </fieldset>
+</form>
+    

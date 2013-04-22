@@ -34,6 +34,13 @@ class UserGoConference
     private $date;
     
     /**
+     * @var string
+     *
+     * @ORM\Column(name="message", type="text", nullable=true)
+     */
+    private $message;
+    
+    /**
      * Constructor
      */
     public function __construct()
@@ -108,5 +115,28 @@ class UserGoConference
     public function getConference()
     {
         return $this->conference;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     * @return UserGoConference
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+    
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
     }
 }

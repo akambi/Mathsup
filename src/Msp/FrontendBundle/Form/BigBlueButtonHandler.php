@@ -6,8 +6,6 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 
-
-use Msp\FrontendBundle\Entity\Conference;
 use Msp\FrontendBundle\Entity\ConferenceLog;
 use Msp\FrontendBundle\Entity\UserGoConference;
 
@@ -57,6 +55,7 @@ class BigBlueButtonHandler
     //  On défini ici les repositories
         $repository = $this->em->getRepository('MspFrontendBundle:Conference');
         $repositoryLog = $this->em->getRepository('MspFrontendBundle:ConferenceLog');
+        $repositoryUserGoConference = $this->em->getRepository('MspFrontendBundle:UserGoConference');
         $conference = $repository->findOneByMeetingName( $titre );
         
         if (!$conference) {
@@ -77,14 +76,15 @@ class BigBlueButtonHandler
         $recorded = $conference->getRecorded();
         $duration = 0;
         $voicebridge = 0;
-        $logouturl = $router->generate("msp_frontend_homepage", array(), true);
+        $website_url = $router->generate("msp_frontend_homepage", array(), true);
+        $logouturl = $router->generate("msp_conference_avis", array( "slug" => $conference->getSlug() ), true);
 
         //Metadata for tagging recordings
         $metadata = Array(
             'meta_origin' => 'WordPress',
             'meta_originversion' => '3.5',
             'meta_origintag' => 'wp_plugin-bigbluebutton '.'1.3.3',
-            'meta_originservername' => $logouturl,
+            'meta_originservername' => $website_url,
             'meta_originservercommonname' => $website_name,
             'meta_originurl' => $logouturl
         );        
@@ -108,6 +108,16 @@ class BigBlueButtonHandler
                     $this->em->flush();
                 }
             } 
+            //  On enregistre l'utilisateur qui vient de ce connecter
+            $user_go_conference = $repositoryUserGoConference->findOneBy( array( "user" => $user, "conference" => $conference) );
+            if (!$user_go_conference) {
+                $user_go_conference = new UserGoConference();
+                $user_go_conference->setUser( $user );
+                $user_go_conference->setConference( $conference );
+                
+                $this->em->persist($user_go_conference);
+                $this->em->flush();
+            }
             
             $bigbluebutton_joinURL = $BigBlueButton->getJoinURL($conference->getMeetingID(), $userName, $password, $salt_val, $url_val );
             //Si l'option d'attente du modérateur est à false, redirigé l'utilisateur vers la vidéoconférence            
