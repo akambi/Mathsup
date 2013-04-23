@@ -3,17 +3,7 @@
 {% block content %}
 <section class="span9">
     {% block navbaruser %}
-    <div class="navbar">
-        <div class="navbar-inner">
-            <ul class="nav">
-                <li class="active"><a href="{{ path('msp_eleve', { slug: app.user.slug }) }}"><i class="icon-user"></i></a></li>
-                <li><a href="#">EDITION PROFIL</a></li>
-                <li><a href="#">CORRIGÉS</a></li>
-                <li><a href="#">QCM</a></li>
-                <li><a href="#">RAPPORT TICKETS</a></li>                
-            </ul>
-        </div>
-    </div>
+        {% include "MspFrontendBundle:Navbar:eleve.html.twig" %}
     {% endblock %}
     {% block body %}
     {% endblock %}

@@ -39,7 +39,7 @@ h1.titre{font-size: 12px; line-height: 12px;}
           border-radius: 6px;
 }
 
-.fos_user_registration_register label.fos_user_registration_form_roles_0 { display:none; }
+#fos_user_registration_form_roles label { display:none; }
 
 /* Style pour le tri */
 .sortable {width:980px; border-left:1px solid #c6d5e1; border-top:1px solid #c6d5e1; border-bottom:none; margin:0 auto 15px}

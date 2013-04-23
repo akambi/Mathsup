@@ -9,9 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class RegistrationFormType extends BaseType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        parent::buildForm($builder, $options);
-        
+    {     
         $builder
             ->add('nom', 'text', array( "label" => "Nom de Famille"))
             ->add('prenom')
@@ -31,6 +29,8 @@ class RegistrationFormType extends BaseType
             ->add('dateInscription', 'datetime', array('label' => "Date d'inscription", "with_seconds" => true, 'date_format' => 'dd/MM/yyyy'))
             ->add('classe', 'entity', array( "label"=> "Classe (A définir pour un élève)", 'class' => 'Msp\FrontendBundle\Entity\Classe', 'empty_value' => "Sélectionner une classe", 'required' => false))
         ;
+        
+        parent::buildForm($builder, $options);
     }
 
      public function setDefaultOptions(OptionsResolverInterface $resolver)

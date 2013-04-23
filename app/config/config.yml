@@ -81,4 +81,7 @@ fos_user:
     registration:
         form:
             type: msp_user_registration
+    profile:
+        form:
+            type: msp_user_profile
 

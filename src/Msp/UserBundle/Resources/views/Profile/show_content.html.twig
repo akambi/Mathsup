@@ -1,0 +1,8 @@
+<div class="fos_user_user_show">
+    <p><strong>NOM:</strong> {{ user.nom }}</p>
+    <p><strong>PRENOM:</strong> {{ user.prenom }}</p>
+    <p><strong>DEPARTEMENT:</strong> {{ user.departement }}</p>
+    <p><strong>VILLE:</strong> {{ user.ville }}</p>
+    <p><strong>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}:</strong> {{ user.username }}</p>
+    <p><strong>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}:</strong> {{ user.email }}</p>
+</div>
