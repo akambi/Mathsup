@@ -24,6 +24,25 @@ msp_eleve:
     pattern:  /eleve/profile/{slug}/
     defaults: { _controller: MspFrontendBundle:Frontend:eleve }
 
+msp_eleve_corriges:
+    pattern:  /eleve/corriges/{page}/
+    defaults: { _controller: MspFrontendBundle:Frontend:eleveCorriges, page: 1 }
+    requirements:
+        page: \d*
+
+msp_eleve_corriges_show:
+    pattern:  /eleve/corriges/show/{id}/
+    defaults: { _controller: MspFrontendBundle:Frontend:eleveCorrigesShow }
+
+msp_eleve_qcm:
+    pattern:  /eleve/qcm/
+    defaults: { _controller: MspFrontendBundle:Frontend:eleveQcm }
+
+msp_eleve_qcm_test:
+    pattern:  /eleve/qcm/{qcm_id}/{question_id}/
+    defaults: { _controller: MspFrontendBundle:Frontend:eleveQcmTest, question_id: 1 }
+
+
 #
 # Les routes des professeurs #
 #
@@ -58,6 +77,16 @@ msp_professeur_conference_delete:
 msp_professeur_conference:
     pattern:  /professeur/conference/{page}/
     defaults: { _controller: MspFrontendBundle:Conference:index, page:1 }
+    requirements:
+        page: \d*
+
+msp_professeur_planning:
+    pattern:  /professeur/planning/{slug}/
+    defaults: { _controller: MspFrontendBundle:Frontend:planning }
+
+msp_professeur_planning_edit:
+    pattern:  /planning/edit/{user_slug}/{cours_id}/{timetamp}/{disponibilite}/
+    defaults: { _controller: MspFrontendBundle:Frontend:planningEdit }
 
 #
 # Les routes des administrateurs #
@@ -179,6 +208,12 @@ niveau_delete:
 #
 # Les routes pour Departement #
 #
+departement:
+    pattern:  /departement/{page}/
+    defaults: { _controller: MspFrontendBundle:Departement:index, page: 1 }
+    requirements:
+        page: \d*
+
 departement_create:
     pattern:  /departement/create/
     defaults: { _controller: MspFrontendBundle:Departement:create}
@@ -202,10 +237,6 @@ departement_update:
 departement_delete:
     pattern:  /departement/delete/{id}
     defaults: { _controller: MspFrontendBundle:Departement:delete}
-
-departement:
-    pattern:  /departement/{page}/
-    defaults: { _controller: MspFrontendBundle:Departement:index, page: 1 }
 
 #
 # Les routes pour COURS #
@@ -272,6 +303,12 @@ classe_delete:
 #
 # Les routes pour chapitre #
 #
+chapitre:
+    pattern:  /chapitre/{page}/
+    defaults: { _controller: MspFrontendBundle:Chapitre:index, page:1 }
+    requirements:
+        page: \d*
+
 chapitre_create:
     pattern:  /chapitre/create/
     defaults: { _controller: MspFrontendBundle:Chapitre:create}
@@ -296,14 +333,15 @@ chapitre_delete:
     pattern:  /chapitre/delete/{id}
     defaults: { _controller: MspFrontendBundle:Chapitre:delete}
 
-chapitre:
-    pattern:  /chapitre/{page}/
-    defaults: { _controller: MspFrontendBundle:Chapitre:index, page:1 }
-
-
 #
 # Les routes pour ExerciceCorrige #
 #
+exercicecorrige:
+    pattern:  /exercicecorrige/{page}/
+    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:index, page: 1 }
+    requirements:
+        page: \d*
+
 exercicecorrige_create:
     pattern:  /exercicecorrige/create/
     defaults: { _controller: MspFrontendBundle:ExerciceCorrige:create}
@@ -327,10 +365,6 @@ exercicecorrige_update:
 exercicecorrige_delete:
     pattern:  /exercicecorrige/delete/{id}
     defaults: { _controller: MspFrontendBundle:ExerciceCorrige:delete}
-
-exercicecorrige:
-    pattern:  /exercicecorrige/{page}
-    defaults: { _controller: MspFrontendBundle:ExerciceCorrige:index, page: 1 }
 
 #
 # Les routes pour DIFFICULTER #
@@ -366,6 +400,12 @@ difficulter_delete:
 #
 # Les routes pour QCM #
 #
+qcm:
+    pattern:  /qcm/{page}/
+    defaults: { _controller: MspFrontendBundle:Qcm:index, page:1 }
+    requirements:
+        page: \d*
+
 qcm_create:
     pattern:  /qcm/create/
     defaults: { _controller: MspFrontendBundle:Qcm:create}
@@ -389,11 +429,6 @@ qcm_update:
 qcm_delete:
     pattern:  /qcm/delete/{id}
     defaults: { _controller: MspFrontendBundle:Qcm:delete }
-
-qcm:
-    pattern:  /qcm/{page}
-    defaults: { _controller: MspFrontendBundle:Qcm:index, page:1 }
-
 
 #
 # Les routes pour REPONSE #
@@ -502,4 +537,12 @@ professeur_update:
 professeur_delete:
     pattern:  /professeur/delete/{id}
     defaults: { _controller: MspFrontendBundle:Professeur:delete }
+
+professeur_taux_edit:
+    pattern:  /professeur/taux/edit/{user_id}/{cours_id}/{niveau_id}/
+    defaults: { _controller: MspFrontendBundle:Professeur:tauxEdit }
+
+professeur_taux:
+    pattern:  /professeur/taux/{id}/
+    defaults: { _controller: MspFrontendBundle:Professeur:taux }
 

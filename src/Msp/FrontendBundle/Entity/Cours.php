@@ -84,6 +84,15 @@ class Cours
         $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+     /**
+     * toString
+     */
+    public function __toString()
+    {
+        return $this->libelle;
+    }
+    
+    
     /**
      * Add tickets
      *

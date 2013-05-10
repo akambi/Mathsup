@@ -34,7 +34,13 @@
             </tr>
             <tr>
                 <th>Url pdf</th>
-                <td>{{ entity.urlPdf }}</td>
+                <td>
+                    {% if entity.urlPdf %}
+                    /uploads/exercicescorriges/{{ entity.urlPdf }}
+                    {% else %}
+                    Aucun
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <th>Url video</th>

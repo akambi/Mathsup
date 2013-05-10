@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * UserAvailability 
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Msp\FrontendBundle\Entity\UserAvailabilityRepository")
  */
 class UserAvailability
 {
@@ -27,9 +27,17 @@ class UserAvailability
     private $cours;
     
     /**
-     * @var \DateTime
+     * @var integer
      *
      * @ORM\Id
+     * @ORM\Column(name="timetamp", type="integer")
+     * 
+     */
+    private $timetamp;
+    
+    /**
+     * @var \DateTime
+     * 
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
@@ -42,27 +50,15 @@ class UserAvailability
     private $disponible;
 
     /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return UserAvailability
+     * Constructor
      */
-    public function setDate($date)
+    public function __construct()
     {
-        $this->date = $date;
+        $this->date = new \DateTime(); 
+        $this->disponible = false;        
+    }
     
-        return $this;
-    }
 
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
 
     /**
      * Set disponible
@@ -131,5 +127,53 @@ class UserAvailability
     public function getCours()
     {
         return $this->cours;
+    }
+
+    
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return UserAvailability
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set timetamp
+     *
+     * @param integer $timetamp
+     * @return UserAvailability
+     */
+    public function setTimetamp($timetamp)
+    {
+        $this->timetamp = $timetamp;
+    
+        return $this;
+    }
+
+    /**
+     * Get timetamp
+     *
+     * @return integer 
+     */
+    public function getTimetamp()
+    {
+        return $this->timetamp;
     }
 }

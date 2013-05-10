@@ -7,8 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Msp\UserBundle\Entity\User;
 use Msp\FrontendBundle\Form\ProfesseurType As UserType;
+
+use Msp\FrontendBundle\Entity\UserHourlyRate;
+use Msp\FrontendBundle\Form\UserHourlyRateType;
 
 /**
  * User controller.
@@ -162,4 +164,97 @@ class ProfesseurController extends Controller
             ->getForm()
         ;
     }
+    
+    /**
+     * Manage Taux of User entity.
+     *
+     */
+    public function tauxAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository_assoc = $em->getRepository('MspFrontendBundle:UserHourlyRate');
+        $repository_cours = $em->getRepository('MspFrontendBundle:Cours');
+        $repository_niveau = $em->getRepository('MspFrontendBundle:Niveau');
+    //  On récupère les informations sur le professeur, les cours et les niveaux
+        $user = $em->getRepository('MspUserBundle:User')->find( $id );
+        $cours = $repository_cours->findAll();
+        $niveaux = $repository_niveau->findAll();
+    //  On récupère le planning du professeur ou on l'instancie
+        $userHourlyRates = array();
+        $userHourlyRates = $repository_assoc->getAllForUser( $user );
+        if(!$userHourlyRates):            
+            $s = 0;
+            foreach ($cours as $cours_val):
+                foreach ($niveaux as $niveau_val ):
+                    $userHourlyRates[$s] = new UserHourlyRate();                    
+                    $userHourlyRates[$s]->setCours($cours_val);
+                    $userHourlyRates[$s]->setUser($user);                    
+                    $userHourlyRates[$s]->setNiveau( $niveau_val );
+                    $userHourlyRates[$s]->setTauxHoraire( 00.00 );                                   
+                    $em->persist($userHourlyRates[$s]);                
+                    $s++;
+                endforeach;
+            endforeach;
+            $em->flush();
+        endif;
+    //  On définit ici les taux pour chaque colonne du tableau (UHR=UserHourlyRate)
+        $UHR_cours1 = array();
+        $UHR_cours2 = array();
+        $UHR_cours3 = array();
+        foreach ( $userHourlyRates as $key => $value):
+            if( $key < 4 ):
+                $UHR_cours1[] = $value;
+            elseif( $key < 8 ):
+                $UHR_cours2[] = $value;               
+            else:
+                $UHR_cours3[] = $value;
+            endif;
+        endforeach;        
+        
+        return  $this->render( 'MspFrontendBundle:Professeur:taux.html.twig', 
+                array( 'UHR_cours1' => $UHR_cours1,  'UHR_cours2' => $UHR_cours2, 'UHR_cours3' => $UHR_cours3, 'cours' => $cours, 'user' => $user, 'niveau' => $niveaux ));
+    }
+    
+    /**
+     * Edit Taux of User entity.
+     *
+     */
+    public function tauxEditAction( $user_id, $cours_id, $niveau_id )
+    {    
+    //  On définie les repositories
+        $em = $this->getDoctrine()->getManager();
+        $request = $this->getRequest();
+        $repository_assoc = $em->getRepository('MspFrontendBundle:UserHourlyRate');
+        $repository_cours = $em->getRepository('MspFrontendBundle:Cours');
+        $repository_niveau = $em->getRepository('MspFrontendBundle:Niveau');
+    //  On récupère les informations sur le professeur et les cours
+        $user = $em->getRepository('MspUserBundle:User')->find( $user_id );
+        $cours = $repository_cours->find( $cours_id );
+        $niveau = $repository_niveau->find( $niveau_id );
+        
+    //  On récupère l'instance de UserHourlyRate
+        $userHourlyRate = $repository_assoc->findOneBy( array( 'user' => $user, 'cours' => $cours, 'niveau' => $niveau ) );
+        
+        if (!$userHourlyRate) {
+            throw $this->createNotFoundException('Unable to find UserHourlyRate entity.');
+        }
+
+        $form = $this->createForm(new UserHourlyRateType(), $userHourlyRate);
+        
+        if( $request->getMethod() == 'POST' ):
+            $form->bind($request);            
+            
+            if ( $form->isValid() ) {
+                $em->persist($userHourlyRate);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('professeur_taux', array( 'id' => $user->getId() ) ) );
+            }
+        endif;
+
+        
+        return  $this->render( 'MspFrontendBundle:Professeur:taux_edit.html.twig', 
+                array( 'user' => $user, 'form' => $form->createView() ));
+    }
+    
 }

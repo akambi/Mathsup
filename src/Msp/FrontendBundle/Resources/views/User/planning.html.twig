@@ -1,0 +1,90 @@
+{% extends "MspFrontendBundle::professeur-layout.html.twig" %}
+
+{# Le titre de la page (defaut MathSup) #}
+{% block title %}PLANNING | {{ parent() }}{% endblock %}
+{# La description de la page (defaut vide) #}
+{% block description %}{% endblock %}
+{# Les mots clés de la page (defaut vide) #}
+{% block keywords %}{% endblock %}
+{# Indication pour les robots de la page  (defaut all) #}
+{% block robots %}noindex, nofollow{% endblock %}
+
+{# Le titre de l'entête du document #}
+{% block entetetitle %}PLANNING | {{ parent() }}{% endblock %}
+{# La barre latéralke de la page #}
+{% block aside %}{{ parent() }}{% endblock %}
+{# Le contenu de la page #}
+
+{% block body %}    
+    <h1>GESTION PLANNING</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th>LUNDI</th>
+                <th>MARDI</th>
+                <th>MERCREDI</th>
+                <th>JEUDI</th>
+                <th>VENDREDI</th>
+                <th>SAMEDI</th>
+                <th>DIMANCHE</th>
+            </tr>                
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ cours[0].libelle }}</td>
+                {% for useravailability in UA_cours1 %}
+                    {% if useravailability.disponible %}
+                    <td class="text-center">
+                        <a href="{{ path('msp_professeur_planning_edit', { 'user_slug': user.slug, 'cours_id': cours[0].id, 'timetamp': useravailability.timetamp, 'disponibilite': 0 } ) }}" class="btn btn-success">
+                            V
+                        </a>
+                    </td>
+                    {% else %}
+                    <td class="text-center">
+                        <a href="{{ path('msp_professeur_planning_edit', { 'user_slug': user.slug, 'cours_id': cours[0].id, 'timetamp': useravailability.timetamp, 'disponibilite': 1 } ) }}" class="btn btn-danger">
+                            X
+                        </a>
+                    </td>
+                    {% endif %}               
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ cours[1].libelle }}</td>
+                {% for useravailability in UA_cours2 %}
+                    {% if useravailability.disponible %}
+                    <td class="text-center">
+                        <a href="{{ path('msp_professeur_planning_edit', { 'user_slug': user.slug, 'cours_id': cours[1].id, 'timetamp': useravailability.timetamp, 'disponibilite': 0 } ) }}" class="btn btn-success">
+                            V
+                        </a>
+                    </td>
+                    {% else %}
+                    <td class="text-center">
+                        <a href="{{ path('msp_professeur_planning_edit', { 'user_slug': user.slug, 'cours_id': cours[1].id, 'timetamp': useravailability.timetamp, 'disponibilite': 1 } ) }}" class="btn btn-danger">
+                            X
+                        </a>
+                    </td>
+                    {% endif %}               
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ cours[2].libelle }}</td>
+                {% for useravailability in UA_cours3 %}
+                    {% if useravailability.disponible %}
+                    <td class="text-center">
+                        <a href="{{ path('msp_professeur_planning_edit', { 'user_slug': user.slug, 'cours_id': cours[2].id, 'timetamp': useravailability.timetamp, 'disponibilite': 0 } ) }}" class="btn btn-success">
+                            V
+                        </a>
+                    </td>
+                    {% else %}
+                    <td class="text-center">
+                        <a href="{{ path('msp_professeur_planning_edit', { 'user_slug': user.slug, 'cours_id': cours[2].id, 'timetamp': useravailability.timetamp, 'disponibilite': 1 } ) }}" class="btn btn-danger">
+                            X
+                        </a>
+                    </td>
+                    {% endif %}               
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>        
+{% endblock %}

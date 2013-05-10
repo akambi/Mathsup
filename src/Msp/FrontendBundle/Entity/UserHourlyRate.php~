@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * UserHourlyRate
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Msp\FrontendBundle\Entity\UserHourlyRateRepository")
  */
 class UserHourlyRate
 {
@@ -34,11 +34,101 @@ class UserHourlyRate
     private $niveau;
     
     /**
-     * @var float
+     * @var interger
      *
-     * @ORM\Column(name="taux_horaire", type="float")
+     * @ORM\Column(name="taux_horaire", type="integer")
      */
     private $tauxHoraire;
-}
 
-?>
+    /**
+     * Set tauxHoraire
+     *
+     * @param integer $tauxHoraire
+     * @return UserHourlyRate
+     */
+    public function setTauxHoraire($tauxHoraire)
+    {
+        $this->tauxHoraire = $tauxHoraire;
+    
+        return $this;
+    }
+
+    /**
+     * Get tauxHoraire
+     *
+     * @return integer 
+     */
+    public function getTauxHoraire()
+    {
+        return $this->tauxHoraire;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Msp\UserBundle\Entity\User $user
+     * @return UserHourlyRate
+     */
+    public function setUser(\Msp\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Msp\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set cours
+     *
+     * @param \Msp\FrontendBundle\Entity\Cours $cours
+     * @return UserHourlyRate
+     */
+    public function setCours(\Msp\FrontendBundle\Entity\Cours $cours)
+    {
+        $this->cours = $cours;
+    
+        return $this;
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Msp\FrontendBundle\Entity\Cours 
+     */
+    public function getCours()
+    {
+        return $this->cours;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \Msp\FrontendBundle\Entity\Niveau $niveau
+     * @return UserHourlyRate
+     */
+    public function setNiveau(\Msp\FrontendBundle\Entity\Niveau $niveau)
+    {
+        $this->niveau = $niveau;
+    
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \Msp\FrontendBundle\Entity\Niveau 
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+}

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * UserHourlyRate
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Msp\FrontendBundle\Entity\UserHourlyRateRepository")
  */
 class UserHourlyRate
 {
@@ -34,16 +34,16 @@ class UserHourlyRate
     private $niveau;
     
     /**
-     * @var float
+     * @var interger
      *
-     * @ORM\Column(name="taux_horaire", type="float")
+     * @ORM\Column(name="taux_horaire", type="integer")
      */
     private $tauxHoraire;
 
     /**
      * Set tauxHoraire
      *
-     * @param float $tauxHoraire
+     * @param integer $tauxHoraire
      * @return UserHourlyRate
      */
     public function setTauxHoraire($tauxHoraire)
@@ -56,7 +56,7 @@ class UserHourlyRate
     /**
      * Get tauxHoraire
      *
-     * @return float 
+     * @return integer 
      */
     public function getTauxHoraire()
     {

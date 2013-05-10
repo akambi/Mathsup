@@ -1,0 +1,69 @@
+{% extends "MspFrontendBundle::eleve-layout.html.twig" %}
+
+{# Le titre de la page (defaut MathSup) #}
+{% block title %}LIST QCM | {{ parent() }}{% endblock %}
+{# La description de la page (defaut vide) #}
+{% block description %}{% endblock %}
+{# Les mots clés de la page (defaut vide) #}
+{% block keywords %}{% endblock %}
+{# Indication pour les robots de la page  (defaut all) #}
+{% block robots %}noindex, nofollow{% endblock %}
+
+{# Le titre de l'entête du document #}
+{% block entetetitle %}LIST QCM | {{ parent() }}{% endblock %}
+{# La barre latéralke de la page #}
+{% block aside %}{{ parent() }}{% endblock %}
+{# Le contenu de la page #}
+{% block body %}
+    <h1>List QCM</h1>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>                
+                <th>Libelle</th>
+                <th>Duree</th>                
+                <th>Difficulté</th>                
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.libelle }}</td>                
+                <td>{{ entity.duree|date('H:i:s') }}</td>
+                <td>
+                    {% if entity.difficulter == 'Très facile' %}
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                    {% elseif entity.difficulter == 'Facile' %}
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                    {% elseif entity.difficulter == 'Moyen' %}
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                    {% elseif entity.difficulter == 'Difficile' %}
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>  
+                    {% else %}
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                        <img src="{{ asset('img/small_start_gold.png') }}" alt="star" height="20" width="17"/>
+                    {% endif %}                        
+                </td>                
+                <td>                
+                    <a class="btn" href="{{ path('msp_eleve_qcm_test', { 'qcm_id': entity.id }) }}">Tester <i class="icon-align-justify"></i></a>                    
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    {% if msg %}
+        <div class="alert alert-success">{{ msg }}</div>
+    {% endif %}
+        
+{% endblock %}

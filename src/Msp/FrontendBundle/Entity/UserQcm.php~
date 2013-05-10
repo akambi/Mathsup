@@ -27,14 +27,6 @@ class UserQcm
     private $qcm;
     
     /**
-     * @var \DateTime
-     *
-     * @ORM\Id
-     * @ORM\Column(name="date", type="datetime")
-     */
-    private $date;
-    
-    /**
      * @var integer
      *
      * @ORM\Column(name="note", type="integer")
@@ -48,30 +40,7 @@ class UserQcm
     public function __construct()
     {
         $this->date = new \Datetime();
-    }
-    
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return UserQcm
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
+    }    
 
     /**
      * Set note

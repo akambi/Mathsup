@@ -3,8 +3,8 @@
         <ul class="nav">
             <li class="active"><a href="{{ path('msp_eleve', { slug: app.user.slug }) }}"><i class="icon-user"></i></a></li>
             <li><a href="{{ path('fos_user_profile_edit') }}">EDITION PROFIL</a></li>
-            <li><a href="#">CORRIGÉS</a></li>
-            <li><a href="#">QCM</a></li>
+            <li><a href="{{ path('msp_eleve_corriges') }}">CORRIGÉS</a></li>
+            <li><a href="{{ path('msp_eleve_qcm') }}">QCM</a></li>
             <li><a href="#">RAPPORT TICKETS</a></li>                
         </ul>
     </div>

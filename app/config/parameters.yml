@@ -19,6 +19,9 @@ parameters:
     bigbluebutton_salt: 8cd8ef52e8e101574e400365b55e11a6
     website_name:       MathSup
 
+# La note minimal pour accéder au qcm suivant
+    note:               16
+
 # Pour la pagination
     departement:        10
     qcm:                10

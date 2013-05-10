@@ -43,7 +43,7 @@ class Reponse
 
     public function __construct()
     {
-        $this->date = new \Datetime();        
+               
     }
     
     /**
@@ -108,29 +108,6 @@ class Reponse
     public function getEtat()
     {
         return $this->etat;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Reponse
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
     }
 
     /**

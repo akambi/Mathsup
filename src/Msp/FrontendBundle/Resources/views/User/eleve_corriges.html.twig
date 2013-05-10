@@ -1,0 +1,65 @@
+{% extends "MspFrontendBundle::eleve-layout.html.twig" %}
+
+{# Le titre de la page (defaut MathSup) #}
+{% block title %}LIST EXERCICES CORRIGES | {{ parent() }}{% endblock %}
+{# La description de la page (defaut vide) #}
+{% block description %}{% endblock %}
+{# Les mots clés de la page (defaut vide) #}
+{% block keywords %}{% endblock %}
+{# Indication pour les robots de la page  (defaut all) #}
+{% block robots %}noindex, nofollow{% endblock %}
+
+{# Le titre de l'entête du document #}
+{% block entetetitle %}LIST EXERCICES CORRIGES | {{ parent() }}{% endblock %}
+{# La barre latéralke de la page #}
+{% block aside %}{{ parent() }}{% endblock %}
+{# Le contenu de la page #}
+{% block body %}
+    <h1>List Exercices Corrigés</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>                
+                <th>Exercice</th>
+                <th>Chapitre</th>
+                <th>Url pdf</th>
+                <th>Url video</th>                
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for key, entity in entities %}
+            <tr>
+                <td><a href="{{ path('msp_eleve_corriges_show', { 'id': entity.id }) }}">Exercice N°{{ key + 1 }}</a></td>                
+                <td>{{ entity.chapitre }}</td>
+                <td>
+                    {%if entity.urlPdf is not null %}
+                    <a title="Consulter le fichier" href="{{ asset('uploads/exercicescorriges/') }}{{ entity.urlPdf }}" target="_blank"><img src="{{ asset('pdf-icon.png') }}" alt="pdf"></a>
+                    {% endif %}
+                </td>
+                <td><a title="Voir la vidéo" href="{{ entity.urlVideo }}" target="_blank"><i class="icon-film"></i></a></td>                
+                <td>
+                   <a class="btn" href="{{ path('msp_eleve_corriges_show', { 'id': entity.id }) }}">Voir <i class="icon-align-justify"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="pagination">
+        <ul>
+            {# On utilise la fonction range(a, b) qui crée un tableau de
+            valeurs entre a et b #}
+            {% for p in range(1, nb_pages) %}
+            <li{% if p == page %} class="active"{% endif %}>
+                <a href="{{ path('msp_eleve_corriges', {'page': p}) }}">{{ p }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    {% if msg %}
+        <div class="alert alert-success">{{ msg }}</div>
+    {% endif %}
+    
+{% endblock %}

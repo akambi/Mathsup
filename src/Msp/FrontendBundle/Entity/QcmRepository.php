@@ -17,4 +17,15 @@ class QcmRepository extends EntityRepository
         $qb = $this->createQueryBuilder('a')->select('COUNT(a)'); 
         return (int) $qb->getQuery()->getSingleScalarResult();
     } 
+    
+    public function getByNiveauOrderByDifficulter( $niveau, $limit, $offset = 0 )
+    {       
+        $qb =   $this->createQueryBuilder('a')                
+                ->innerJoin('a.difficulter', 'd')
+                ->where('a.niveau = :niveau')
+                ->setParameter( 'niveau', $niveau )
+                ->orderBy('d.nombreEtoile', 'ASC');
+        
+        return $qb->getQuery()->setMaxResults($limit)->setFirstResult($offset)->getResult();
+    }
 }

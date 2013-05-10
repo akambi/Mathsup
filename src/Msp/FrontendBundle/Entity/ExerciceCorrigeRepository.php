@@ -16,5 +16,25 @@ class ExerciceCorrigeRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('a')->select('COUNT(a)'); 
         return (int) $qb->getQuery()->getSingleScalarResult();
-    } 
+    }
+    
+    public function getTotalForNiveau( $niveau )
+    {       
+        $qb =   $this->createQueryBuilder('a')->select('COUNT(a)')
+                ->innerJoin('a.chapitre', 'c')                
+                ->where('c.niveau = :niveau')                
+                ->setParameter( 'niveau', $niveau )                ;
+        
+        return (int) $qb->getQuery()->getSingleScalarResult();;
+    }
+    
+    public function getByNiveau( $niveau, $limit, $offset )
+    {       
+        $qb =   $this->createQueryBuilder('a')
+                ->innerJoin('a.chapitre', 'c')
+                ->where('c.niveau = :niveau')
+                ->setParameter( 'niveau', $niveau );
+        
+        return $qb->getQuery()->setMaxResults($limit)->setFirstResult($offset)->getResult();
+    }
 }

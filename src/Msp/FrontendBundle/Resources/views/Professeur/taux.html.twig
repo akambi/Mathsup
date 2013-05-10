@@ -1,0 +1,67 @@
+{% extends "MspFrontendBundle::user-layout.html.twig" %}
+
+{# Le titre de la page (defaut MathSup) #}
+{% block title %}TAUX PROFESSEUR "{{ user.nom }} {{ user.prenom }}" | {{ parent() }}{% endblock %}
+{# La description de la page (defaut vide) #}
+{% block description %}{% endblock %}
+{# Les mots clés de la page (defaut vide) #}
+{% block keywords %}{% endblock %}
+{# Indication pour les robots de la page  (defaut all) #}
+{% block robots %}noindex, nofollow{% endblock %}
+
+{# Le titre de l'entête du document #}
+{% block entetetitle %}TAUX PROFESSEUR "{{ user.nom }} {{ user.prenom }}" | {{ parent() }}{% endblock %}
+{# La barre latéralke de la page #}
+{% block aside %}{{ parent() }}{% endblock %}
+{# Le contenu de la page #}
+
+{% block body %}    
+    <h1>Taux Professeur "{{ user.nom }} {{ user.prenom }}"</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th>{{ niveau[0].libelle }}</th>
+                <th>{{ niveau[1].libelle }}</th>
+                <th>{{ niveau[2].libelle }}</th>
+                <th>{{ niveau[3].libelle }}</th>                
+            </tr>                
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ cours[0].libelle }}</td>
+                {% for key, userHourlyRate in UHR_cours1 %}                    
+                    <td class="text-center">
+                        <span>{{ userHourlyRate.tauxHoraire }}</span>
+                        <a href="{{ path('professeur_taux_edit', { 'user_id': user.id, 'cours_id': cours[0].id, 'niveau_id': niveau[key].id } ) }}" class="btn">
+                            ..
+                        </a>
+                    </td>                                 
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ cours[1].libelle }}</td>
+                {% for key, userHourlyRate in UHR_cours2 %}                    
+                    <td class="text-center">
+                        <span>{{ userHourlyRate.tauxHoraire }}</span>
+                        <a href="{{ path('professeur_taux_edit', { 'user_id': user.id, 'cours_id': cours[1].id, 'niveau_id': niveau[key].id } ) }}" class="btn">
+                            ..
+                        </a>
+                    </td>                                 
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ cours[2].libelle }}</td>
+                {% for key, userHourlyRate in UHR_cours3 %}                    
+                    <td class="text-center">
+                        <span>{{ userHourlyRate.tauxHoraire }}</span>
+                        <a href="{{ path('professeur_taux_edit', { 'user_id': user.id, 'cours_id': cours[2].id, 'niveau_id': niveau[key].id } ) }}" class="btn">
+                            ..
+                        </a>
+                    </td>                                 
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>        
+{% endblock %}
+
