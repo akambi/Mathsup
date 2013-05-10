@@ -368,13 +368,17 @@ class FrontendController extends Controller
         //  Si la réponse est bonne on attribue la note de 1
             if( !empty($reponse) and $reponse->getEtat() === true):
                 if($session->get('note')):
-                    $session->set('note', array_merge( $session->get('note'), array( $quest_id => 1) ) );
+                    $array_note = $session->get('note');
+                    $array_note[$quest_id] =  1;
+                    $session->set('note', $array_note );
                 else:
                     $session->set('note', array( $quest_id => 1) );
                 endif;                
             else:
                 if($session->get('note')):
-                    $session->set('note', array_merge( $session->get('note'), array( $quest_id => 0) ) );
+                    $array_note = $session->get('note');
+                    $array_note[$quest_id] =  0;
+                    $session->set('note', $array_note );
                 else:
                     $session->set('note', array( $quest_id => 0) );
                 endif;
