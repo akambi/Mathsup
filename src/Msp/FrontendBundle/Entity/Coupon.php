@@ -56,7 +56,13 @@ class Coupon
     }
     
    
-    
+    /**
+     * toString
+     */
+    public function __toString()
+    {
+        return $this->token;
+    }
     
     /**
      * Get id

@@ -43,14 +43,14 @@ class CouponRepository extends EntityRepository
                 ->getQuery()
                 ->getResult();        
        
-        /*$linked =   $qb->select('a')
+        $linked =   $qb->select('a')
                     ->from( $this->_entityName, 'a')                                  
                     ->where('a.user = :user')
                     ->setParameter('user', $user);
         if($nots):
-            $linked->andWhere($qb->expr()->notIn('a', $nots));
-        endif;*/
+            $linked->andWhere($qb->expr()->notIn('a.token', $nots));
+        endif;
  
-        return $nots;
+        return $linked->getQuery()->getResult();
     }
 }
