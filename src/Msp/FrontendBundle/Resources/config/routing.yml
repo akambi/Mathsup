@@ -103,6 +103,14 @@ msp_professeur_ticket:
     pattern:  /professeur/ticket/
     defaults: { _controller: MspFrontendBundle:Frontend:professeurTicket }
 
+msp_professeur_bilan_mensuel:
+    pattern:  /professeur/bilan-mensuel/
+    defaults: { _controller: MspFrontendBundle:Frontend:professeurBilanMensuel }
+
+msp_professeur_fiche_paie:
+    pattern:  /professeur/fiche-paie/
+    defaults: { _controller: MspFrontendBundle:Frontend:professeurFichePaie }
+
 #
 # Les routes des administrateurs #
 #

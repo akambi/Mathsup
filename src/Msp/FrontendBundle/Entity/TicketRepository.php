@@ -12,5 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class TicketRepository extends EntityRepository
 {
+    public function getAllForUser( $user, $date )
+    {
+        $qb =   $this->createQueryBuilder('a')
+                ->where('a.user = :user')
+                ->setParameter('user', $user)
+                ->andWhere('a.date >= :date')
+                ->setParameter('date', $date);
     
+        return $qb->getQuery()->getResult();
+    }
 }

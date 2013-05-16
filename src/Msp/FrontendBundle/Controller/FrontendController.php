@@ -5,9 +5,9 @@ namespace Msp\FrontendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 use Msp\FrontendBundle\Form\BigBlueButtonType As BBBType;
 use Msp\FrontendBundle\Form\BigBlueButtonHandler As BBBHandler;
@@ -485,6 +485,11 @@ class FrontendController extends Controller
             throw $this->createNotFoundException('Unable to find Coupon entity.');
         }
         
+        if( ! $this->isAuthorised( $entity->getUser()->getId() ) )
+        {        
+            throw new AccessDeniedHttpException('Accès limité aux propriétaires');
+        }
+        
         return  $this->render('MspFrontendBundle:User:eleve_ticket_show.html.twig', 
                 array( 'entity' => $entity) );
     }
@@ -719,6 +724,80 @@ class FrontendController extends Controller
         
         return  $this->render( 'MspFrontendBundle:User:professeur_ticket.html.twig', 
                 array( 'form'   => $form->createView(), 'error' => $error, 'msg' => $msg ) );
+    }
+    
+    /**
+     * @Secure(roles="ROLE_PROFESSEUR")
+     */
+    public function professeurBilanMensuelAction()
+    {    
+    //  On récupère l'utilisateur
+        $user = $this->container->get('security.context')->getToken()->getUser();
+    //  la date du début du mois
+        $date = date('Y-m').'-01';
+    //  Les repository
+        $em = $this->getDoctrine()->getManager();
+        $repositoryTicket = $em->getRepository('MspFrontendBundle:Ticket');
+        $repositoryUserHourlyRate = $em->getRepository('MspFrontendBundle:UserHourlyRate');
+        
+        $tikets = $repositoryTicket->getAllForUser( $user, $date );
+        
+        $coupons = array();
+        $cours = array();
+        $niveaux = array();
+        $eleves = array();
+        $tauxhoraires = array();
+        $total = 0;
+        
+        foreach ($tikets as $key => $value):
+            $coupons[] = $value->getCoupon();
+            $cours[] = $value->getCours();
+            $niveaux[] = $value->getCoupon()->getUser()->getClasse()->getNiveau();
+            $eleves[] = $value->getCoupon()->getUser()->getPrenom().' '.$value->getCoupon()->getUser()->getNom();            
+            $tauxhoraire = $repositoryUserHourlyRate->findOneBy(array('user' => $user, 'cours' => $value->getCours(), 'niveau' => $value->getCoupon()->getUser()->getClasse()->getNiveau()));
+            $tauxhoraires[] = ($tauxhoraire)? $tauxhoraire->getTauxHoraire() : 0;
+            $total += $tauxhoraires[$key];
+        endforeach;
+        
+        return  $this->render( 'MspFrontendBundle:User:professeur_bilan_mensuel.html.twig', 
+                array( 'coupons' => $coupons, 'eleves' => $eleves, 'tauxhoraires' => $tauxhoraires, 'total' => $total, 'cours' => $cours, 'niveaux' => $niveaux) );
+    }
+    
+    /**
+     * @Secure(roles="ROLE_PROFESSEUR")
+     */
+    public function professeurFichePaieAction()
+    {    
+    //  On récupère l'utilisateur
+        $user = $this->container->get('security.context')->getToken()->getUser();
+    //  la date du début du mois
+        $date = date('Y-m').'-01';
+    //  Les repository
+        $em = $this->getDoctrine()->getManager();
+        $repositoryTicket = $em->getRepository('MspFrontendBundle:Ticket');
+        $repositoryUserHourlyRate = $em->getRepository('MspFrontendBundle:UserHourlyRate');
+        
+        $tikets = $repositoryTicket->getAllForUser( $user, $date );
+        
+        $coupons = array();
+        $cours = array();
+        $niveaux = array();
+        $eleves = array();
+        $tauxhoraires = array();
+        $total = 0;
+        
+        foreach ($tikets as $key => $value):
+            $coupons[] = $value->getCoupon();
+            $cours[] = $value->getCours();
+            $niveaux[] = $value->getCoupon()->getUser()->getClasse()->getNiveau();
+            $eleves[] = $value->getCoupon()->getUser()->getPrenom().' '.$value->getCoupon()->getUser()->getNom();            
+            $tauxhoraire = $repositoryUserHourlyRate->findOneBy(array('user' => $user, 'cours' => $value->getCours(), 'niveau' => $value->getCoupon()->getUser()->getClasse()->getNiveau()));
+            $tauxhoraires[] = ($tauxhoraire)? $tauxhoraire->getTauxHoraire() : 0;
+            $total += $tauxhoraires[$key];
+        endforeach;
+        
+        return  $this->render( 'MspFrontendBundle:User:professeur_fiche_paie.html.twig', 
+                array( 'coupons' => $coupons, 'eleves' => $eleves, 'tauxhoraires' => $tauxhoraires, 'total' => $total, 'cours' => $cours, 'niveaux' => $niveaux) );
     }
     
     /**
