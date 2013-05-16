@@ -10,12 +10,7 @@ class CouponType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('token')
-            ->add('etat')
-            ->add('date')
-            ->add('user')
-        ;
+        $builder->add('token', 'textarea', array( 'attr'   =>  array( 'readonly'   => 'readonly')));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

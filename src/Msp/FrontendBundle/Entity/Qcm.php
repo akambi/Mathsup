@@ -143,6 +143,7 @@ class Qcm
     {
         return $this->date;
     }
+    
     /**
      * Constructor
      */

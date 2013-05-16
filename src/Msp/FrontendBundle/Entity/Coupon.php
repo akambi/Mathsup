@@ -19,6 +19,11 @@ class Coupon
     private $user;
     
     /**
+    * @ORM\OneToOne(targetEntity="Msp\FrontendBundle\Entity\Ticket", mappedBy="coupon")
+    */
+    private $ticket;
+    
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -32,14 +37,7 @@ class Coupon
      *
      * @ORM\Column(name="token", type="string", length=255)
      */
-    private $token;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="etat", type="boolean")
-     */
-    private $etat;
+    private $token;    
 
     /**
      * @var \DateTime
@@ -48,7 +46,18 @@ class Coupon
      */
     private $date;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {        
+        $this->date = new \Datetime();
+        $this->token = sha1( time()."Mathsup_Coupon");
+    }
+    
+   
+    
+    
     /**
      * Get id
      *
@@ -81,30 +90,7 @@ class Coupon
     {
         return $this->token;
     }
-
-    /**
-     * Set etat
-     *
-     * @param boolean $etat
-     * @return Coupon
-     */
-    public function setEtat($etat)
-    {
-        $this->etat = $etat;
     
-        return $this;
-    }
-
-    /**
-     * Get etat
-     *
-     * @return boolean 
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-
     /**
      * Set date
      *
@@ -149,5 +135,28 @@ class Coupon
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set ticket
+     *
+     * @param \Msp\FrontendBundle\Entity\Ticket $ticket
+     * @return Coupon
+     */
+    public function setTicket(\Msp\FrontendBundle\Entity\Ticket $ticket = null)
+    {
+        $this->ticket = $ticket;
+    
+        return $this;
+    }
+
+    /**
+     * Get ticket
+     *
+     * @return \Msp\FrontendBundle\Entity\Ticket 
+     */
+    public function getTicket()
+    {
+        return $this->ticket;
     }
 }

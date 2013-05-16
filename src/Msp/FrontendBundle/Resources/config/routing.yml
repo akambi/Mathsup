@@ -42,6 +42,17 @@ msp_eleve_qcm_test:
     pattern:  /eleve/qcm/{qcm_id}/{question_id}/
     defaults: { _controller: MspFrontendBundle:Frontend:eleveQcmTest, question_id: 1 }
 
+msp_eleve_ticket:
+    pattern:  /eleve/ticket/
+    defaults: { _controller: MspFrontendBundle:Frontend:eleveTicket }
+
+msp_eleve_ticket_ajouter:
+    pattern:  /eleve/ticket/ajouter/
+    defaults: { _controller: MspFrontendBundle:Frontend:eleveTicketAjouter }
+
+msp_eleve_ticket_show:
+    pattern:  /eleve/ticket/show/{id}/
+    defaults: { _controller: MspFrontendBundle:Frontend:eleveTicketShow }
 
 #
 # Les routes des professeurs #
@@ -87,6 +98,10 @@ msp_professeur_planning:
 msp_professeur_planning_edit:
     pattern:  /planning/edit/{user_slug}/{cours_id}/{timetamp}/{disponibilite}/
     defaults: { _controller: MspFrontendBundle:Frontend:planningEdit }
+
+msp_professeur_ticket:
+    pattern:  /professeur/ticket/
+    defaults: { _controller: MspFrontendBundle:Frontend:professeurTicket }
 
 #
 # Les routes des administrateurs #

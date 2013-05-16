@@ -25,7 +25,7 @@ class Ticket
     private $cours;
     
     /**
-    * @ORM\OneToOne(targetEntity="Msp\FrontendBundle\Entity\Coupon")
+    * @ORM\OneToOne(targetEntity="Msp\FrontendBundle\Entity\Coupon", inversedBy="ticket")
     */
     private $coupon;
     
@@ -127,5 +127,28 @@ class Ticket
     public function getCours()
     {
         return $this->cours;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Msp\UserBundle\Entity\User $user
+     * @return Ticket
+     */
+    public function setUser(\Msp\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Msp\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

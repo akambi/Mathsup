@@ -25,7 +25,7 @@ class Ticket
     private $cours;
     
     /**
-    * @ORM\OneToOne(targetEntity="Msp\FrontendBundle\Entity\Coupon")
+    * @ORM\OneToOne(targetEntity="Msp\FrontendBundle\Entity\Coupon", inversedBy="ticket")
     */
     private $coupon;
     

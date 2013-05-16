@@ -15,6 +15,10 @@ use Msp\FrontendBundle\Form\BigBlueButtonHandler As BBBHandler;
 use Msp\FrontendBundle\Entity\Conference;
 use Msp\FrontendBundle\Entity\UserAvailability;
 use Msp\FrontendBundle\Entity\UserQcm;
+use Msp\FrontendBundle\Entity\Coupon;
+use Msp\FrontendBundle\Entity\Ticket;
+//  Introduction des form type
+use Msp\FrontendBundle\Form\CouponType;
 
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Collection;
@@ -416,6 +420,75 @@ class FrontendController extends Controller
                 array( 'qcm' => $qcm, 'question' => $question, 'reponses' => $reponses, 'time' => $time, 'question_time' => $question_time,
                     'question_id_suiv' => $question_id_suiv, 'msg' => $msg ) );
     }
+    
+    /**
+     * @Secure(roles="ROLE_ELEVE")
+     */
+    public function eleveTicketAction()
+    {
+    //  On récupère l'utilisateur
+        $user = $this->container->get('security.context')->getToken()->getUser();        
+    //  On définit ici les repository
+        $em = $this->getDoctrine()->getManager();        
+        $repository = $em->getRepository('MspFrontendBundle:Coupon');        
+    //  On récupère le total des coupons de l'utilisateur et ceux restants
+        $ticket_total = $repository->getAllForUser( $user );
+        $ticket_utiliser = $repository->getAllIsUseForUser( $user );
+    //  On récupère les tickets restants
+        $entities = $repository->getAllIsNotUseForUser( $user );        
+        
+        return $this->render('MspFrontendBundle:User:eleve_ticket.html.twig', 
+                array( "ticket_total" => $ticket_total, "ticket_utiliser" => $ticket_utiliser, 'entities' => $entities ) );
+    }
+    
+    /**
+     * @Secure(roles="ROLE_ELEVE")
+     */
+    public function eleveTicketAjouterAction()
+    {
+    //  On récupère l'utilisateur et son niveau
+        $user = $this->container->get('security.context')->getToken()->getUser();        
+    //  on crée le formulaire
+        $entity = new Coupon();
+        $entity->setUser($user);
+        $form   = $this->createForm(new CouponType(), $entity);
+    //  on contrôle le formulaire et on enregistre
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+        
+        if( $request->getMethod() == 'POST' ):
+            $form->bind($request);            
+            
+            if ( $form->isValid() ) {
+                $em->persist($entity);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('msp_eleve_ticket_show', array( 'id' => $entity->getId() ) ) );
+            }
+        endif;
+        
+        return  $this->render('MspFrontendBundle:User:eleve_ticket_ajouter.html.twig', 
+                array( 'entity' => $entity, 'form'   => $form->createView()) );
+    }
+    
+    /**
+     * @Secure(roles="ROLE_ELEVE")
+     */
+    public function eleveTicketShowAction( $id )
+    {
+    //  on récupère le coupon
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('MspFrontendBundle:Coupon')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Coupon entity.');
+        }
+        
+        return  $this->render('MspFrontendBundle:User:eleve_ticket_show.html.twig', 
+                array( 'entity' => $entity) );
+    }
+    
     /**
      * @Secure(roles="ROLE_PROFESSEUR")
      */
@@ -559,7 +632,7 @@ class FrontendController extends Controller
             endif;
         endforeach;
         
-        return  $this->render( 'MspFrontendBundle:User:planning.html.twig', 
+        return  $this->render( 'MspFrontendBundle:User:professeur_planning.html.twig', 
                 array( 'UA_cours1' => $UA_cours1,  'UA_cours2' => $UA_cours2, 'UA_cours3' => $UA_cours3, 'cours' => $cours, 'user' => $user) );
     }
     
@@ -584,6 +657,68 @@ class FrontendController extends Controller
             $em->flush();
         endif;
         return $this->redirect($this->generateUrl('msp_professeur_planning', array('slug' => $user_slug)));
+    }
+    
+    /**
+     * @Secure(roles="ROLE_PROFESSEUR")
+     */
+    public function professeurTicketAction()
+    {    
+    //  On récupère l'utilisateur
+        $user = $this->container->get('security.context')->getToken()->getUser();
+    //  on crée le formulaire d'entrée du ticket
+        $form = $this->createFormBuilder()
+                ->add('token', 'textarea', array( 'label' => 'Numéro du ticket') )
+                ->add('cours', 'entity', array( "label"=> "Cours", 'class' => 'Msp\FrontendBundle\Entity\Cours') )
+                ->getForm();
+    //  message d'erreur ou de confirmation
+        $error = "";
+        $msg = "";
+    //  les repository
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+        
+        $repository_coupon = $em->getRepository('MspFrontendBundle:Coupon');
+        $repository_ticket = $em->getRepository('MspFrontendBundle:Ticket');
+        $repository_cours = $em->getRepository('MspFrontendBundle:Cours');
+    //  on contrôle l'envoie du formulaire
+        if( $request->getMethod() == 'POST' ):
+            $form->bind($request);            
+            
+            if ( $form->isValid() ) {
+            //  On récupère les infos du formulaire
+               $form_data = $request->request->get('form');
+               $token = $form_data["token"];               
+               $cours = $form_data["cours"];;
+            //  on récupère le coupon et s'il existe on contrôle l'existance du ticket
+               $coupon = $repository_coupon->findOneByToken( $token );
+               if( !$coupon ):
+                    $error = "Ce numéro correspont à aucun ticket";
+                else:
+                    $ticket = $repository_ticket->findOneByCoupon( $coupon );                    
+                    if( $ticket ):
+                        $error = "Ce numéro de ticket a déjà été entré.";
+                    else:
+                        $cours = $repository_cours->find( $cours );
+                    
+                        $ticket = new Ticket();
+                        $ticket->setCoupon($coupon);
+                        $ticket->setCours($cours);
+                        $ticket->setUser($user);
+                    //  on enregistre
+                        $em->persist($ticket);
+                        $em->flush();
+                        
+                        $msg = "Le ticket a bien été enregistré avec succès. Merci!";
+                    endif;
+                    
+               endif;
+            }
+            
+        endif;
+        
+        return  $this->render( 'MspFrontendBundle:User:professeur_ticket.html.twig', 
+                array( 'form'   => $form->createView(), 'error' => $error, 'msg' => $msg ) );
     }
     
     /**

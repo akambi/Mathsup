@@ -12,4 +12,45 @@ use Doctrine\ORM\EntityRepository;
  */
 class CouponRepository extends EntityRepository
 {
+     public function getAllForUser( $user )
+    {
+        $qb =   $this->createQueryBuilder('a')
+                ->select('COUNT(a)')
+                ->where('a.user = :user')
+                ->setParameter('user', $user); 
+        return (int) $qb->getQuery()->getSingleScalarResult();
+    }
+    
+    public function getAllIsUseForUser( $user )
+    {
+        $qb =   $this->createQueryBuilder('a')
+                ->select('COUNT(a)')
+                ->innerJoin('a.ticket', 't')
+                ->where('a.user = :user')
+                ->setParameter('user', $user); 
+        return (int) $qb->getQuery()->getSingleScalarResult();
+    }
+    
+    public function getAllIsNotUseForUser( $user )
+    {
+        $qb = $this->_em->createQueryBuilder();
+        
+        $nots = $this->createQueryBuilder('a')
+                ->select('a')
+                ->innerJoin('a.ticket', 't')
+                ->where('a.user = :user')
+                ->setParameter('user', $user)
+                ->getQuery()
+                ->getResult();        
+       
+        /*$linked =   $qb->select('a')
+                    ->from( $this->_entityName, 'a')                                  
+                    ->where('a.user = :user')
+                    ->setParameter('user', $user);
+        if($nots):
+            $linked->andWhere($qb->expr()->notIn('a', $nots));
+        endif;*/
+ 
+        return $nots;
+    }
 }
