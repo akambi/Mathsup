@@ -303,4 +303,40 @@ class ProfesseurController extends Controller
                 array( 'coupons' => $coupons, 'eleves' => $eleves, 'tauxhoraires' => $tauxhoraires, 'total' => $total, 'cours' => $cours, 'niveaux' => $niveaux, 'user' => $user) );
     }
     
+    /**
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function professeurFichePaieAction( $id )
+    {    
+        $em = $this->getDoctrine()->getManager();
+    //  On récupère l'utilisateur
+        $user = $em->getRepository('MspUserBundle:User')->find($id); 
+    //  la date du début du mois
+        $date = date('Y-m').'-01';
+    //  Les repository        
+        $repositoryTicket = $em->getRepository('MspFrontendBundle:Ticket');
+        $repositoryUserHourlyRate = $em->getRepository('MspFrontendBundle:UserHourlyRate');
+        
+        $tikets = $repositoryTicket->getAllForUser( $user, $date );
+        
+        $coupons = array();
+        $cours = array();
+        $niveaux = array();
+        $eleves = array();
+        $tauxhoraires = array();
+        $total = 0;
+        
+        foreach ($tikets as $key => $value):
+            $coupons[] = $value->getCoupon();
+            $cours[] = $value->getCours();
+            $niveaux[] = $value->getCoupon()->getUser()->getClasse()->getNiveau();
+            $eleves[] = $value->getCoupon()->getUser()->getPrenom().' '.$value->getCoupon()->getUser()->getNom();            
+            $tauxhoraire = $repositoryUserHourlyRate->findOneBy(array('user' => $user, 'cours' => $value->getCours(), 'niveau' => $value->getCoupon()->getUser()->getClasse()->getNiveau()));
+            $tauxhoraires[] = ($tauxhoraire)? $tauxhoraire->getTauxHoraire() : 0;
+            $total += $tauxhoraires[$key];
+        endforeach;
+        
+        return  $this->render( 'MspFrontendBundle:Professeur:professeur_fiche_paie.html.twig', 
+                array( 'coupons' => $coupons, 'eleves' => $eleves, 'tauxhoraires' => $tauxhoraires, 'total' => $total, 'cours' => $cours, 'niveaux' => $niveaux, 'user' => $user) );
+    }
 }

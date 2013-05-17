@@ -587,3 +587,7 @@ professeur_taux:
 professeur_bilan_mensuel:
     pattern:  /admin/professeur/bilan-mensuel/{id}/
     defaults: { _controller: MspFrontendBundle:Professeur:professeurBilanMensuel }
+
+professeur_fiche_paie:
+    pattern:  /admin/professeur/fiche-paiel/{id}/
+    defaults: { _controller: MspFrontendBundle:Professeur:professeurFichePaie }

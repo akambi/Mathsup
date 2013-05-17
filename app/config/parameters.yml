@@ -22,7 +22,7 @@ parameters:
 # La note minimal pour accéder au qcm suivant
     note:               16
 
-# Nombre de coupon restant pour l'alerte sur un élève
+# Nombre de coupon restant pour l'alerte sur un élève, alert si inférieur ou égale à 3
     coupon_restant:     3
 
 # Pour la pagination
