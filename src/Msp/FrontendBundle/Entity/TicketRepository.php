@@ -12,6 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class TicketRepository extends EntityRepository
 {
+    public function getTotal()
+    {
+        $qb = $this->createQueryBuilder('a')->select('COUNT(a)'); 
+        return (int) $qb->getQuery()->getSingleScalarResult();
+    } 
+    
     public function getAllForUser( $user, $date )
     {
         $qb =   $this->createQueryBuilder('a')

@@ -12,6 +12,8 @@ use Msp\FrontendBundle\Form\ProfesseurType As UserType;
 use Msp\FrontendBundle\Entity\UserHourlyRate;
 use Msp\FrontendBundle\Form\UserHourlyRateType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * User controller.
  *
@@ -20,6 +22,7 @@ use Msp\FrontendBundle\Form\UserHourlyRateType;
 class ProfesseurController extends Controller
 {
     /**
+     * @Secure(roles="ROLE_ADMIN")
      * Lists all User entities.
      *
      * @Route("/", name="professeur")
@@ -38,6 +41,7 @@ class ProfesseurController extends Controller
     }
     
     /**
+     * @Secure(roles="ROLE_ADMIN")
      * Finds and displays a User entity.
      *
      * @Route("/{id}", name="professeur_show")
@@ -63,6 +67,7 @@ class ProfesseurController extends Controller
     }
 
     /**
+     * @Secure(roles="ROLE_ADMIN")
      * Displays a form to edit an existing User entity.
      *
      * @Route("/{id}/edit", name="professeur_edit")
@@ -90,6 +95,7 @@ class ProfesseurController extends Controller
     }
 
     /**
+     * @Secure(roles="ROLE_ADMIN")
      * Edits an existing User entity.
      *
      * @Route("/{id}", name="professeur_update")
@@ -125,6 +131,7 @@ class ProfesseurController extends Controller
     }
 
     /**
+     * @Secure(roles="ROLE_ADMIN")
      * Deletes a User entity.
      *
      * @Route("/{id}", name="professeur_delete")
@@ -166,6 +173,7 @@ class ProfesseurController extends Controller
     }
     
     /**
+     * @Secure(roles="ROLE_ADMIN")
      * Manage Taux of User entity.
      *
      */
@@ -216,6 +224,7 @@ class ProfesseurController extends Controller
     }
     
     /**
+     * @Secure(roles="ROLE_ADMIN")
      * Edit Taux of User entity.
      *
      */
@@ -255,6 +264,43 @@ class ProfesseurController extends Controller
         
         return  $this->render( 'MspFrontendBundle:Professeur:taux_edit.html.twig', 
                 array( 'user' => $user, 'form' => $form->createView() ));
+    }
+    
+    /**
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function professeurBilanMensuelAction( $id )
+    {    
+        $em = $this->getDoctrine()->getManager();
+    //  On récupère l'utilisateur
+        $user = $em->getRepository('MspUserBundle:User')->find($id); 
+    //  la date du début du mois
+        $date = date('Y-m').'-01';
+    //  Les repository        
+        $repositoryTicket = $em->getRepository('MspFrontendBundle:Ticket');
+        $repositoryUserHourlyRate = $em->getRepository('MspFrontendBundle:UserHourlyRate');
+        
+        $tikets = $repositoryTicket->getAllForUser( $user, $date );
+        
+        $coupons = array();
+        $cours = array();
+        $niveaux = array();
+        $eleves = array();
+        $tauxhoraires = array();
+        $total = 0;
+        
+        foreach ($tikets as $key => $value):
+            $coupons[] = $value->getCoupon();
+            $cours[] = $value->getCours();
+            $niveaux[] = $value->getCoupon()->getUser()->getClasse()->getNiveau();
+            $eleves[] = $value->getCoupon()->getUser()->getPrenom().' '.$value->getCoupon()->getUser()->getNom();            
+            $tauxhoraire = $repositoryUserHourlyRate->findOneBy(array('user' => $user, 'cours' => $value->getCours(), 'niveau' => $value->getCoupon()->getUser()->getClasse()->getNiveau()));
+            $tauxhoraires[] = ($tauxhoraire)? $tauxhoraire->getTauxHoraire() : 0;
+            $total += $tauxhoraires[$key];
+        endforeach;
+        
+        return  $this->render( 'MspFrontendBundle:Professeur:professeur_bilan_mensuel.html.twig', 
+                array( 'coupons' => $coupons, 'eleves' => $eleves, 'tauxhoraires' => $tauxhoraires, 'total' => $total, 'cours' => $cours, 'niveaux' => $niveaux, 'user' => $user) );
     }
     
 }

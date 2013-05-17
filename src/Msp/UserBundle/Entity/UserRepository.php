@@ -28,4 +28,32 @@ class UserRepository extends EntityRepository
         $qb = $this->createQueryBuilder('a')->select('COUNT(a)'); 
         return (int) $qb->getQuery()->getSingleScalarResult();
     } 
+    
+    public function getUserTicketAlert()
+    {
+        $time = mktime('00', '00', '00', date('m'), date('d'), date('Y')) - 30*24*60*60;
+        $date = date('Y-m-d', $time);
+        
+        $qb = $this->_em->createQueryBuilder();
+        
+        $nots = $this->createQueryBuilder('a')
+                ->select('a')
+                ->innerJoin('a.tickets', 't')
+                ->where('t.date >= :date')
+                ->setParameter('date', $date)                
+                ->getQuery()
+                ->getResult();        
+       
+        $linked =   $qb->select('a')
+                    ->from( $this->_entityName, 'a')                    
+                    ->where('a.roles like :roles')
+                    ->setParameter('roles', '%ROLE_PROFESSEUR%'); ; 
+        
+        if($nots):
+            $linked->andWhere($qb->expr()->notIn('a.username', $nots));
+        endif;
+        
+        return  $linked->getQuery()->getResult();
+    }
+    
 }

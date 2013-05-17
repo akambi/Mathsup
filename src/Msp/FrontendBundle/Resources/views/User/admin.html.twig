@@ -15,5 +15,108 @@
 {% block aside %}{{ parent() }}{% endblock %}
 {# Le contenu de la page #}
 {% block body %}    
-        <h1>Administateur : {{ app.user.prenom }} {{ app.user.nom }}</h1>
+    <h1>Tableau de bord</h1>
+    
+    <h2>Nombre de coupons vendu: {{ total_ticket }}</h2>
+    
+    <h2>Nombre de coupons restant: {{ total_ticket - ticket_entrer }}</h2>
+    
+    <h2>Elèves ayant moins de 4 coupons restants</h2>
+        
+    <table id="table"  class="sortable" cellpadding="0" cellspacing="0" border="0" >
+        <thead>
+            <tr>
+                <th><h3>ID</th>
+                <th><h3>Nom</h3></th>
+                <th><h3>Département</h3></th>
+                <th><h3>Ville</h3></th>                
+                <th><h3>Classe</h3></th>
+                <th><h3>Niveau</h3></th>                
+            </tr>
+        </thead>
+        <tbody>
+        {% for key, entity in eleves_alert %}
+            <tr>
+                <td><a href="{{ path('eleve_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nom }} {{ entity.prenom }}</td>
+                <td>{{ entity.departement }}</td>
+                <td>{{ entity.ville }}</td>                
+                <td>{{ entity.classe }}</a></td>
+                <td>{{ eleves_alert_niveau[key] }}</td>                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        
+    <div id="controls">
+        <div id="perpage">
+            <select onchange="sorter.size(this.value)">
+                <option value="5">5</option>
+                <option value="10" selected="selected">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <span>Elèves / Page</span>
+        </div>
+        <div id="navigation">
+            <img src="{{ asset('img/sorter/first.gif') }}" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
+            <img src="{{ asset('img/sorter/previous.gif') }}" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
+            <img src="{{ asset('img/sorter/next.gif') }}" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
+            <img src="{{ asset('img/sorter/last.gif') }}" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+        </div>
+        <div id="text">Page <span id="currentpage"></span> / <span id="pagelimit"></span></div>
+    </div>
+    
+    <div class="clearfix"></div>
+        
+    <h2>Professeurs n'ayant pas saisi de coupons depuis 1 mois</h2>
+    
+    <table id="table1"  class="sortable" cellpadding="0" cellspacing="0" border="0" >
+        <thead>
+            <tr>
+                <th><h3>ID</th>
+                <th><h3>Nom</h3></th>
+                <th><h3>Département</h3></th>
+                <th><h3>Ville</h3></th>               
+            </tr>
+        </thead>
+        <tbody>
+        {% for key, entity in professeurs_alert %}
+            <tr>
+                <td><a href="{{ path('professeur_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nom }} {{ entity.prenom }}</td>
+                <td>{{ entity.departement }}</td>
+                <td>{{ entity.ville }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        
+    <div id="controls">
+        <div id="perpage">
+            <select onchange="sorter1.size(this.value)">
+                <option value="5">5</option>
+                <option value="10" selected="selected">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <span>Professeur / Page</span>
+        </div>
+        <div id="navigation">
+            <img src="{{ asset('img/sorter/first.gif') }}" width="16" height="16" alt="First Page" onclick="sorter1.move(-1,true)" />
+            <img src="{{ asset('img/sorter/previous.gif') }}" width="16" height="16" alt="First Page" onclick="sorter1.move(-1)" />
+            <img src="{{ asset('img/sorter/next.gif') }}" width="16" height="16" alt="First Page" onclick="sorter1.move(1)" />
+            <img src="{{ asset('img/sorter/last.gif') }}" width="16" height="16" alt="Last Page" onclick="sorter1.move(1,true)" />
+        </div>
+        <div id="text">Page <span id="currentpage"></span> / <span id="pagelimit"></span></div>
+    </div>
 {% endblock %}{# empty Twig template #}
+
+    {% block javascripts2 %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('javascript/sorter.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('javascript/start_sorter.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('javascript/start_sorter_1.js') }}"></script>
+{% endblock %}

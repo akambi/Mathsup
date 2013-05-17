@@ -8,7 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Msp\UserBundle\Entity\User;
+use Msp\FrontendBundle\Entity\Coupon;
 use Msp\FrontendBundle\Form\EleveType As UserType;
+use Msp\FrontendBundle\Form\CouponType;
 
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
@@ -180,4 +182,75 @@ class EleveController extends Controller
             ->getForm()
         ;
     }
+    
+    /**
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function eleveTicketAction( $id )
+    {
+        $em = $this->getDoctrine()->getManager();
+    //  On récupère l'utilisateur
+        $user = $em->getRepository('MspUserBundle:User')->find($id);      
+    //  On définit ici les repository             
+        $repository = $em->getRepository('MspFrontendBundle:Coupon');        
+    //  On récupère le total des coupons de l'utilisateur et ceux restants
+        $ticket_total = $repository->getAllForUser( $user );
+        $ticket_utiliser = $repository->getAllIsUseForUser( $user );
+    //  On récupère les tickets restants
+        $entities = $repository->getAllIsNotUseForUser( $user );        
+        
+        return $this->render('MspFrontendBundle:Eleve:eleve_ticket.html.twig', 
+                array( "ticket_total" => $ticket_total, "ticket_utiliser" => $ticket_utiliser, 'entities' => $entities, 'user' => $user ) );
+    }
+    
+    /**
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function eleveTicketAjouterAction( $id )
+    {
+        $em = $this->getDoctrine()->getManager();
+    //  On récupère l'utilisateur
+        $user = $em->getRepository('MspUserBundle:User')->find($id);         
+    //  on crée le formulaire
+        $entity = new Coupon();
+        $entity->setUser($user);
+        $form   = $this->createForm(new CouponType(), $entity);
+    //  on contrôle le formulaire et on enregistre
+        $request = $this->getRequest();        
+        
+        if( $request->getMethod() == 'POST' ):
+            $form->bind($request);            
+            
+            if ( $form->isValid() ) {
+                $em->persist($entity);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('eleve_ticket_show', array( 'id' => $entity->getId(), 'user_id' => $user->getId() ) ) );
+            }
+        endif;
+        
+        return  $this->render('MspFrontendBundle:Eleve:eleve_ticket_ajouter.html.twig', 
+                array( 'entity' => $entity, 'form'   => $form->createView(), 'user' => $user) );
+    }
+    
+    /**
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function eleveTicketShowAction( $id, $user_id )
+    {
+    //  on récupère le coupon
+        $em = $this->getDoctrine()->getManager();
+    //  On récupère l'utilisateur
+        $user = $em->getRepository('MspUserBundle:User')->find($user_id); 
+        
+        $entity = $em->getRepository('MspFrontendBundle:Coupon')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Coupon entity.');
+        }
+                       
+        return  $this->render('MspFrontendBundle:Eleve:eleve_ticket_show.html.twig', 
+                array( 'entity' => $entity, 'user' => $user ) );
+    }
+    
 }

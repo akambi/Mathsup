@@ -507,7 +507,29 @@ class FrontendController extends Controller
      */
     public function adminAction( $slug )
     {
-        return $this->render('MspFrontendBundle:User:admin.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        
+        $repositoryUser = $em->getRepository('MspUserBundle:User');
+        $repositoryCoupon = $em->getRepository('MspFrontendBundle:Coupon');
+        $repositoryTicket = $em->getRepository('MspFrontendBundle:Ticket');
+        
+        $total_ticket = $repositoryCoupon->getTotal();
+        $ticket_entrer = $repositoryTicket->getTotal();
+        
+        $professeurs_alert = $repositoryUser->getUserTicketAlert();
+        $entities_eleves = $repositoryCoupon->getUserCouponAlert();
+        $eleves_alert = array();
+        $eleves_alert_niveau = array();
+        foreach ($entities_eleves as $value) :
+            if( $value["nb"] <= $this->container->getParameter('coupon_restant')):
+                $eleves_alert[] = $value[0]->getUser();
+                $eleves_alert_niveau[] = $value[0]->getUser()->getClasse()->getNiveau();
+            endif;
+        endforeach;
+        
+        return $this->render('MspFrontendBundle:User:admin.html.twig', 
+            array( 'eleves_alert' => $eleves_alert, 'eleves_alert_niveau' => $eleves_alert_niveau, 
+            'professeurs_alert' => $professeurs_alert, 'total_ticket' => $total_ticket, 'ticket_entrer' => $ticket_entrer));
     }
     
     

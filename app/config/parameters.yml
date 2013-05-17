@@ -22,6 +22,9 @@ parameters:
 # La note minimal pour accéder au qcm suivant
     note:               16
 
+# Nombre de coupon restant pour l'alerte sur un élève
+    coupon_restant:     3
+
 # Pour la pagination
     departement:        10
     qcm:                10

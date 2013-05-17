@@ -12,7 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class CouponRepository extends EntityRepository
 {
-     public function getAllForUser( $user )
+    public function getTotal()
+    {
+        $qb = $this->createQueryBuilder('a')->select('COUNT(a)'); 
+        return (int) $qb->getQuery()->getSingleScalarResult();
+    }
+    
+    public function getAllForUser( $user )
     {
         $qb =   $this->createQueryBuilder('a')
                 ->select('COUNT(a)')
@@ -51,6 +57,32 @@ class CouponRepository extends EntityRepository
             $linked->andWhere($qb->expr()->notIn('a.token', $nots));
         endif;
  
+        return $linked->getQuery()->getResult();
+    }
+    
+    public function getUserCouponAlert()
+    {
+        $qb = $this->_em->createQueryBuilder();
+        
+        $nots = $this->createQueryBuilder('a')
+                ->select('a')
+                ->innerJoin('a.ticket', 't')                
+                ->getQuery()
+                ->getResult();        
+       
+        $linked =   $qb->select('COUNT(a) As nb, a')
+                    ->from( $this->_entityName, 'a')
+                    ->innerJoin('a.user', 'u')
+                    ->where('u.roles like :roles')
+                    ->setParameter('roles', '%ROLE_ELEVE%');                    
+                    
+        if($nots):
+            $linked->andWhere($qb->expr()->notIn('a.token', $nots));
+        endif;
+        
+        $linked->orderBy('a.user', 'ASC');
+        $linked->groupBy('a.user');
+        
         return $linked->getQuery()->getResult();
     }
 }

@@ -538,6 +538,21 @@ eleve_delete:
     pattern:  /eleve/delete/{id}
     defaults: { _controller: MspFrontendBundle:Eleve:delete }
 
+eleve_ticket:
+    pattern:  /admin/eleve/ticket/{id}/
+    defaults: { _controller: MspFrontendBundle:Eleve:eleveTicket }
+    requirements:
+        id: \d+
+
+eleve_ticket_ajouter:
+    pattern:  /admin/eleve/ticket/ajouter/{id}/
+    defaults: { _controller: MspFrontendBundle:Eleve:eleveTicketAjouter }
+
+eleve_ticket_show:
+    pattern:  /admin/eleve/ticket/show/{id}/{user_id}/
+    defaults: { _controller: MspFrontendBundle:Eleve:eleveTicketShow }
+
+
 #
 # Les routes pour LA GESTION DES Professeurs #
 #
@@ -569,3 +584,6 @@ professeur_taux:
     pattern:  /professeur/taux/{id}/
     defaults: { _controller: MspFrontendBundle:Professeur:taux }
 
+professeur_bilan_mensuel:
+    pattern:  /admin/professeur/bilan-mensuel/{id}/
+    defaults: { _controller: MspFrontendBundle:Professeur:professeurBilanMensuel }
