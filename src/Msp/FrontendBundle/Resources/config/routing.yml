@@ -589,5 +589,18 @@ professeur_bilan_mensuel:
     defaults: { _controller: MspFrontendBundle:Professeur:professeurBilanMensuel }
 
 professeur_fiche_paie:
-    pattern:  /admin/professeur/fiche-paiel/{id}/
-    defaults: { _controller: MspFrontendBundle:Professeur:professeurFichePaie }
+    pattern:  /admin/professeur/fiche-paie/{id}/{type}/
+    defaults: { _controller: MspFrontendBundle:Professeur:professeurFichePaie, type: html }
+#
+# Les routes pour les pdf
+#
+ms_pdf_fiche_paie:
+    pattern:  /pdf-fiche-paie/{id}/{action}/
+    defaults: { _controller: MspFrontendBundle:Professeur:pdfFichePaie, action: print }
+
+#
+# Les routes pour les barcodes
+#
+ms_barcode:
+    pattern:  /barcode/{code}/
+    defaults: { _controller: MspFrontendBundle:Frontend:barcode }

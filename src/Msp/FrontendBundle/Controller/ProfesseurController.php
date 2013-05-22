@@ -13,6 +13,8 @@ use Msp\FrontendBundle\Entity\UserHourlyRate;
 use Msp\FrontendBundle\Form\UserHourlyRateType;
 
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * User controller.
@@ -299,15 +301,15 @@ class ProfesseurController extends Controller
             $total += $tauxhoraires[$key];
         endforeach;
         
-        return  $this->render( 'MspFrontendBundle:Professeur:professeur_bilan_mensuel.html.twig', 
+        return  $this->render( 'MspFrontendBundle:Professeur:bilan_mensuel.html.twig', 
                 array( 'coupons' => $coupons, 'eleves' => $eleves, 'tauxhoraires' => $tauxhoraires, 'total' => $total, 'cours' => $cours, 'niveaux' => $niveaux, 'user' => $user) );
     }
     
     /**
-     * @Secure(roles="ROLE_ADMIN")
+     * Fiche de paie pdf
      */
-    public function professeurFichePaieAction( $id )
-    {    
+    public function professeurFichePaieAction( $id, $type )
+    {
         $em = $this->getDoctrine()->getManager();
     //  On récupère l'utilisateur
         $user = $em->getRepository('MspUserBundle:User')->find($id); 
@@ -336,7 +338,59 @@ class ProfesseurController extends Controller
             $total += $tauxhoraires[$key];
         endforeach;
         
-        return  $this->render( 'MspFrontendBundle:Professeur:professeur_fiche_paie.html.twig', 
+        if( $type == "html" ):
+            return  $this->render( 'MspFrontendBundle:Professeur:fiche_paie.html.twig', 
                 array( 'coupons' => $coupons, 'eleves' => $eleves, 'tauxhoraires' => $tauxhoraires, 'total' => $total, 'cours' => $cours, 'niveaux' => $niveaux, 'user' => $user) );
+        else:
+            return  $this->render( 'MspFrontendBundle:Professeur:fiche_paie_pdf.html.twig', 
+                array( 'coupons' => $coupons, 'eleves' => $eleves, 'tauxhoraires' => $tauxhoraires, 'total' => $total, 'cours' => $cours, 'niveaux' => $niveaux, 'user' => $user) );
+        endif;        
+    }
+    
+    /**
+     * pdf fiche de paie
+     */
+    public function pdfFichePaieAction( $id, $action )
+    {
+    //  Erreur si l'utilisateur n'a pas accès    
+        if( !$this->isAuthorised( $id ) )
+        {        
+            throw new AccessDeniedHttpException('Accès limité aux propriétaires');
+        }
+    //  On récupère le html de la fiche de paie
+        $html = $this->professeurFichePaieAction( $id, 'pdf');
+        $html = $html->getContent();
+        //echo $html; exit();
+    //  on récupère le services pdf
+        $pdfGenerator = $this->get('spraed.pdf.generator');
+    //  On affiche le pdf
+        if( $action == "print"):
+             return new Response($pdfGenerator->generatePDF($html),
+                            200,
+                            array(
+                                'Content-Type' => 'application/pdf',
+                                'Content-Disposition' => 'inline; filename="out.pdf"'
+                            )
+            );
+        else:
+            
+        endif;
+       
+    }
+    
+    /**
+     * Es-il autorisé à faire une action
+     */
+    public function isAuthorised($id){
+    //  Si c'est l'administrateur il a accès
+        if( $this->get('security.context')->isGranted('ROLE_ADMIN') ):
+            return true;
+        endif;
+    //  Si les identifiants sont différents alors il n'a pas accès
+        if( $this->container->get('security.context')->getToken()->getUser()->getId() != $id ):
+            return false;
+        endif;
+        
+        return true;
     }
 }

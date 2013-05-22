@@ -4,6 +4,7 @@ parameters:
 services:
     msp_frontend.bigbluebutton:
         class: Msp\FrontendBundle\Service\BigBlueButton
+
 #    msp_frontend.example:
 #        class: %msp_frontend.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

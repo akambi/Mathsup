@@ -29,7 +29,7 @@ class ConferenceController extends Controller
             return true;
         endif;
     //  Si les identifiants sont différents alors il n'a pas accès
-        if( $this->container->get('security.context')->getToken()->getUser()->getId() !== $id ):
+        if( $this->container->get('security.context')->getToken()->getUser()->getId() != $id ):
             return false;
         endif;
         

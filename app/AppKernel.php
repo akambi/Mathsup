@@ -24,6 +24,9 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Msp\UserBundle\MspUserBundle(),
+            
+            new Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle(),
+            //new Hackzilla\BarcodeBundle\HackzillaBarcodeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {            

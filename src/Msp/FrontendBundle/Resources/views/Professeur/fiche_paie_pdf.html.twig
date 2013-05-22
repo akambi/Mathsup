@@ -1,0 +1,85 @@
+<style>
+    /* Style pour le tri */
+    .datagrid { width: 680px;}
+    .datagrid table { border-collapse: collapse; text-align: left; width: 100%; } 
+    .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #006699; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+    .datagrid table td, .datagrid table th { padding: 3px 5px; }
+    .datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; color:#FFFFFF; font-size: 15px; font-weight: bold; border-left: 1px solid #0070A8; } 
+    .datagrid table thead th:first-child { border: none; }
+    .datagrid table tbody td { color: #00496B; border-left: 1px solid #E1EEF4;font-size: 12px;font-weight: normal; }
+    .datagrid table tbody .alt td { background: #E1EEF4; color: #00496B; }
+    .datagrid table tbody td:first-child { border-left: none; }
+    .datagrid table tbody tr:last-child td { border-bottom: none; }
+    .datagrid table tfoot td div { border-top: 1px solid #006699;background: #E1EEF4;} 
+    .datagrid table tfoot td { padding: 0; font-size: 12px } 
+    *.datagrid table tfoot td div{ padding: 2px; }
+    .datagrid table tfoot td ul { margin: 0; padding:0; list-style: none; text-align: right; }
+    .datagrid table tfoot  li { display: inline; }
+    .datagrid table tfoot li a { text-decoration: none; display: inline-block;  padding: 2px 8px; margin: 1px;color: #FFFFFF;border: 1px solid #006699;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; }
+    .datagrid table tfoot ul.active, .datagrid table tfoot ul a:hover { text-decoration: none;border-color: #006699; color: #FFFFFF; background: none; background-color:#00557F;}
+  
+</style>
+
+<h1>Fiche Paie de  {{ user.nom }} {{ user.prenom }}</h1>
+<ul class="nav nav-list" style="list-style-type:none; padding: 0;">
+    <li><strong>NOM</strong>: {{ user.nom }}</li>
+    <li><strong>PRENOM</strong>: {{ user.prenom }}</li>
+    <li><strong>DEPARTEMENT</strong>: {{ user.departement }}</li>
+    <li><strong>VILLE</strong>: {{ user.ville }}</li>
+    <li><strong>EMAIL</strong>: {{ user.email }}</li>
+</ul>
+<div class="datagrid">
+<table class="">
+    <thead>
+        <tr>
+            <th>Elève</th>
+            <th>Ticket</th>                
+            <th>Cours</th>
+            <th>Niveaux</th>
+            <th>Nombre Heure</th>
+            <th>Prix Horaire</th>
+            <th>Montant</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th colspan="4"></th>
+            <th colspan="2">Salaire Brut</th>
+            <td>{{ total }} €</td>
+        </tr>
+        <tr>
+            <th colspan="4"></th>
+            <th colspan="2">Taxe (38%)</th>
+            <td>{{ total * 0.38 }} €</td>
+        </tr>
+        <tr>
+            <th colspan="4"></th>
+            <th colspan="2">Net A Payer</th>
+            <td>{{ total - total * 0.38 }} €</td>
+        </tr>
+    </tfoot>
+    <tbody>
+    {% for key, coupon in coupons %}
+        <tr>
+            <td>{{ eleves[key] }}</td>
+            <td>{{ coupon }}</td>
+            <td>{{ cours[key] }}</td>
+            <td>{{ niveaux[key] }}</td>
+            <td>01</td>                
+            <td>{{ tauxhoraires[key] }}</td>
+            <td>{{ tauxhoraires[key] }} €</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>                
+            <td>..</td>
+            <td>..</td>
+        </tr>
+    {% endfor %}
+    </tbody>        
+</table>
+</div>

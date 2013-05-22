@@ -69,7 +69,9 @@
     </table>
     <ul class="inline">
         <li>
-            <a class="btn" href="#">Imprimer Fiche de Paie <i class="icon-print"></i></a>
+            <a class="btn" href="#" onclick="window.open('{{ path("ms_pdf_fiche_paie", { id: app.user.id}) }}'); return false;">
+                Imprimer Fiche de Paie <i class="icon-print"></i>
+            </a>
         </li>
     </ul>
 {% endblock %}

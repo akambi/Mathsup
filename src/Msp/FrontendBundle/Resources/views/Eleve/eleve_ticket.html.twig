@@ -57,7 +57,7 @@
                 <td>
                 <ul class="inline">
                     <li>
-                        <a class="btn" href="#">Imprimer Code Barre <i class="icon-print"></i></a>
+                        <a class="btn" href="#" onclick="window.open('{{ path("ms_barcode", { code: entity.token }) }}'); return false;">Imprimer Code Barre <i class="icon-print"></i></a>
                     </li>
                 </ul>
                 </td>

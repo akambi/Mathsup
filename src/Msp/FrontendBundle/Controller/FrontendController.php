@@ -23,6 +23,8 @@ use Msp\FrontendBundle\Form\CouponType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Collection;
 
+use Msp\FrontendBundle\Service\FPDF;
+
 class FrontendController extends Controller
 {
     
@@ -798,7 +800,7 @@ class FrontendController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repositoryTicket = $em->getRepository('MspFrontendBundle:Ticket');
         $repositoryUserHourlyRate = $em->getRepository('MspFrontendBundle:UserHourlyRate');
-        
+
         $tikets = $repositoryTicket->getAllForUser( $user, $date );
         
         $coupons = array();
@@ -821,6 +823,33 @@ class FrontendController extends Controller
         return  $this->render( 'MspFrontendBundle:User:professeur_fiche_paie.html.twig', 
                 array( 'coupons' => $coupons, 'eleves' => $eleves, 'tauxhoraires' => $tauxhoraires, 'total' => $total, 'cours' => $cours, 'niveaux' => $niveaux) );
     }
+              
+    public function barcodeAction($code) 
+    {        
+    //  On crée une instance de fpdf
+        $pdf = new FPDF('P', 'pt');
+    //  on definit le nom de l'auteur et le titre du document
+        $pdf->SetAuthor('MathSup');
+        $pdf->SetTitle('Barcode '.$code ); 
+        $pdf->AddPage();               
+        $fontSize = 12;
+    //  on ajoute l'image du parcode
+        $pdf->Image($this->getRequest()->server->get('DOCUMENT_ROOT').'img/barcode.jpg');
+    //  on ajoute le code
+        $pdf->SetFont('Arial','B',$fontSize);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(65, 110);
+        $len = $pdf->GetStringWidth($code);
+        $pdf->Cell($len, 10, $code);        
+    //  on affiche le pdf
+        return new Response($pdf->Output(), 200,
+                        array(
+                            'Content-Type' => 'application/pdf',
+                            'Content-Disposition' => 'inline; filename="doc.pdf"'
+                        )
+        );
+        
+    }
     
     /**
      * Es-il autorisé à faire une action
@@ -831,7 +860,7 @@ class FrontendController extends Controller
             return true;
         endif;
     //  Si les identifiants sont différents alors il n'a pas accès
-        if( $this->container->get('security.context')->getToken()->getUser()->getId() !== $id ):
+        if( $this->container->get('security.context')->getToken()->getUser()->getId() != $id ):
             return false;
         endif;
         

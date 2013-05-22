@@ -35,7 +35,7 @@
             </li>
         </li>
         <li>
-            <a class="btn" href="#">
+            <a class="btn" href="#" onclick="window.open('{{ path("ms_barcode", { code: entity.token }) }}'); return false;">
                 Imprimer code barre <i class="icon-print"></i>
             </a>
         </li>    
