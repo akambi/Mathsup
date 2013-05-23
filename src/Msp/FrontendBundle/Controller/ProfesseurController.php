@@ -16,6 +16,8 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
+use Swift_Attachment;
+
 /**
  * User controller.
  *
@@ -373,7 +375,33 @@ class ProfesseurController extends Controller
                             )
             );
         else:
+            $em = $this->getDoctrine()->getManager();
+        //  On récupère l'utilisateur
+            $user = $em->getRepository('MspUserBundle:User')->find($id); 
+        //  on donne le chemin et le nom du fichier pdf
+            $array_month = array('', 'Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre', 'Novembre', 'Decembre');
+            $uploads_dir = $this->getRequest()->server->get('DOCUMENT_ROOT').'/uploads/fiche-paie/';
+            $name = $uploads_dir.'Facture-'.$user->getUsername().'-'.$array_month[date('n')].'-'.date('Y').'.pdf';
+        //  on sauvegarde le fichier pdf
+            $f=fopen($name,'wb');
+            if(!$f) throw $this->createNotFoundException('Unable to create output file: '.$name); 
+            fwrite($f,$pdfGenerator->generatePDF($html),strlen($pdfGenerator->generatePDF($html)));
+            fclose($f);
+        //  Récupération du service pour l'envoi du mail
+            $mailer = $this->get('mailer');
+        //  Création de l'e-mail : le service mailer utilise SwiftMailer, donc nous créons une instance de Swift_Message
+            $webmaster_name = $this->container->getParameter('webmaster_name');
+            $webmaster_email = $this->container->getParameter('webmaster_email');
             
+            $message = \Swift_Message::newInstance()
+            ->setSubject('Votre fiche de paie de '.$array_month[date('n')].'-'.date('Y').' !')
+            ->setFrom( array( $webmaster_email => $webmaster_name ) )
+            ->setTo( array( $user->getEmail() => $user->getNom().' '.$user->getPrenom() ) )
+            ->setBody('Bonjour Monsieur')
+            ->attach(Swift_Attachment::fromPath($name));
+        // Retour au service mailer, nous utilisons sa méthode « send()» pour envoyer notre $message
+            $mailer->send($message);
+            return new Response('Email bien envoyé');
         endif;
        
     }

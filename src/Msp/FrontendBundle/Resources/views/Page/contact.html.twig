@@ -17,5 +17,14 @@
 {% block content %}
     <article class="span9">
         <h1>CONTACT</h1>
+        {% if msg %}
+        <div class="alert alert-success">{{ msg }}</div>
+        {% endif %}
+        <form action="" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+            <p>
+                <button class="btn btn-primary" type="submit">Valider</button>
+            </p>
+        </form>
     </article>    
 {% endblock %}

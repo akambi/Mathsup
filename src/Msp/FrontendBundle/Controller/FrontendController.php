@@ -19,6 +19,8 @@ use Msp\FrontendBundle\Entity\Coupon;
 use Msp\FrontendBundle\Entity\Ticket;
 //  Introduction des form type
 use Msp\FrontendBundle\Form\CouponType;
+use Msp\FrontendBundle\Form\ContactType;
+use Msp\FrontendBundle\Form\ContactHandler;
 
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Collection;
@@ -40,7 +42,17 @@ class FrontendController extends Controller
     
     public function contactAction()
     {
-        return $this->render('MspFrontendBundle:Page:contact.html.twig');
+        $msg="";
+        $form = $this->createForm(new ContactType);
+    
+        $formHandler = new ContactHandler($form, $this->get('request'), $this->container);
+    //  On exécute le traitement du formulaire. S'il retourne true, alors le formulaire a bien été traité
+        if( $formHandler->process() )
+        {
+            $msg = "Message envoyé. Merci!";
+        }
+        
+        return $this->render('MspFrontendBundle:Page:contact.html.twig', array( 'form' => $form->createView(), 'msg' => $msg ));
     }
     
     public function mathPlusAction()
@@ -834,7 +846,7 @@ class FrontendController extends Controller
         $pdf->AddPage();               
         $fontSize = 12;
     //  on ajoute l'image du parcode
-        $pdf->Image($this->getRequest()->server->get('DOCUMENT_ROOT').'img/barcode.jpg');
+        $pdf->Image($this->getRequest()->server->get('DOCUMENT_ROOT').'/img/barcode.jpg');
     //  on ajoute le code
         $pdf->SetFont('Arial','B',$fontSize);
         $pdf->SetTextColor(0, 0, 0);

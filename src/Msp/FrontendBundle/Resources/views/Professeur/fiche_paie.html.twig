@@ -78,6 +78,11 @@
                 Imprimer Fiche de Paie <i class="icon-print"></i>
             </a>
         </li>
+        <li>
+            <a class="btn" href="#" onclick="window.open('{{ path("ms_pdf_fiche_paie", { id: user.id, action: "sendmail"}) }}'); return false;">
+                Envoyer un mail <i class="icon-chevron-right"></i>
+            </a>
+        </li>
     </ul>
     
     
