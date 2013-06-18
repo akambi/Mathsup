@@ -30,11 +30,26 @@ class EleveController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction( $departement, $classe )
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MspUserBundle:User')->getUserByRole("ROLE_ELEVE");
+    //  Les autres options de tri
+        $option = array();
+    //  ici on prend en compte le tri par departement
+        if( $departement ):
+            $option["departement"] = $em->getRepository('MspFrontendBundle:Departement')->find( $departement );
+        endif;
+     //  ici on prend en compte le tri par classe
+        if( $classe ):
+            $option["classe"] = $em->getRepository('MspFrontendBundle:Classe')->find( $classe );
+        endif;
+    //  On récupèle la liste des élèves
+        if( !empty( $option ) ):            
+            $entities = $em->getRepository('MspUserBundle:User')->getUserByRoleAndCriteria("ROLE_ELEVE", $option);
+        else:
+            $entities = $em->getRepository('MspUserBundle:User')->getUserByRoleAndCriteria("ROLE_ELEVE");
+        endif;
+        
         $niveaux = array();
         foreach($entities as $entity):
             $classe = $entity->getClasse();
@@ -45,6 +60,7 @@ class EleveController extends Controller
         return array(
             'entities' => $entities,
             'niveaux'  => $niveaux,
+            'option' => $option,            
         );
     }
     
@@ -129,6 +145,13 @@ class EleveController extends Controller
 
         if ($editForm->isValid()) {
             $em->persist($entity);
+        //  On prend en compte les parents
+            foreach ($entity->getUserFamilies() as $parent)
+            {
+                $parent->setUser($entity);
+                $em->persist($parent);
+            }
+            
             $em->flush();
 
             return $this->redirect($this->generateUrl('eleve_edit', array('id' => $id)));

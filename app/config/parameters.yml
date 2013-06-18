@@ -8,7 +8,7 @@ parameters:
 
     mailer_transport:  gmail
     mailer_host:       ~
-    mailer_user:       kevin.i-class@gmail.com
+    mailer_user:       kevin.iclass@gmail.com
     mailer_password:   berchiol
 
     locale:            fr
@@ -18,9 +18,12 @@ parameters:
     bigbluebutton_url:  http://test-install.blindsidenetworks.com/bigbluebutton/
     bigbluebutton_salt: 8cd8ef52e8e101574e400365b55e11a6
     website_name:       MathSup
+
 # info du webmaster
     webmaster_name:     mathsup
-    webmaster_email:    mathsup@yahoo.fr
+    #webmaster_email:    contact@akambi-fagbohoun.com
+    webmaster_email:    steve-i-class@hotmail.fr
+
 # La note minimal pour accéder au qcm suivant
     note:               16
 

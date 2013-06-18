@@ -25,7 +25,7 @@ h1.titre{font-size: 12px; line-height: 12px;}
 .padding-medium{padding: 10px;}
 .padding-large{padding: 20px;}
 
-#msp_frontendbundle_questiontype_reponses > div 
+#msp_frontendbundle_questiontype_reponses > div, #msp_userbundle_usertype_userFamilies > div
 {  
   padding: 10px;
   margin-bottom: 10px;

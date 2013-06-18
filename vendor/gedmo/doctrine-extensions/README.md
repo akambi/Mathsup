@@ -7,7 +7,7 @@ refactoring doctrine2 extensions. The repository can be moved to the maintainers
 left on mine. I do not want users to lose availability of stable extensions which they were and are
 used to, at the moment.
 
-**Version 2.3.5**
+**Version 2.3.6**
 
 [![Build Status](https://secure.travis-ci.org/l3pp4rd/DoctrineExtensions.png?branch=master)](http://travis-ci.org/l3pp4rd/DoctrineExtensions)
 
@@ -16,6 +16,10 @@ layer. The support for it has been made and tagged with **2.3.1** version tag. I
 with latest version of doctrine mapping at master branches
 
 ### Latest updates
+
+**2013-03-10**
+
+- **Sluggable** added 'unique_base' configuration parameter
 
 **2013-03-05**
 

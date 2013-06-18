@@ -15,6 +15,11 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class User extends BaseUser
 {
     /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserFamily", cascade={"persist"}, mappedBy="user")
+    */
+    private $userFamilies;
+    
+    /**
     * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserGoConference", mappedBy="user")
     */
     private $userGoConferences;
@@ -90,6 +95,41 @@ class User extends BaseUser
      * @ORM\Column(name="ville", type="string", length=255)
      */
     protected $ville;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=1)
+     */
+    protected $sexe;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_fixe", type="string", length=20, nullable=true)
+     */
+    protected $numeroFixe;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_portable", type="string", length=20, nullable=true)
+     */
+    protected $numeroPortable;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="text")
+     */
+    private $adresse;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etablissement", type="string", length=255)
+     */
+    protected $etablissement;
     
     /**
      * @var \DateTime
@@ -512,5 +552,176 @@ class User extends BaseUser
     public function getConferences()
     {
         return $this->conferences;
+    }
+
+    /**
+     * Set sexe
+     *
+     * @param string $sexe
+     * @return User
+     */
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    /**
+     * Get sexe
+     *
+     * @return string 
+     */
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
+
+    /**
+     * Set numeroFixe
+     *
+     * @param string $numeroFixe
+     * @return User
+     */
+    public function setNumeroFixe($numeroFixe)
+    {
+        $this->numeroFixe = $numeroFixe;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroFixe
+     *
+     * @return string 
+     */
+    public function getNumeroFixe()
+    {
+        return $this->numeroFixe;
+    }
+
+    /**
+     * Set numeroPortable
+     *
+     * @param string $numeroPortable
+     * @return User
+     */
+    public function setNumeroPortable($numeroPortable)
+    {
+        $this->numeroPortable = $numeroPortable;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroPortable
+     *
+     * @return string 
+     */
+    public function getNumeroPortable()
+    {
+        return $this->numeroPortable;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     * @return User
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string 
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set etablissement
+     *
+     * @param string $etablissement
+     * @return User
+     */
+    public function setEtablissement($etablissement)
+    {
+        $this->etablissement = $etablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissement
+     *
+     * @return string 
+     */
+    public function getEtablissement()
+    {
+        return $this->etablissement;
+    }
+
+    /**
+     * Add userFamilies
+     *
+     * @param \Msp\FrontendBundle\Entity\UserFamily $userFamilies
+     * @return User
+     */
+    public function addUserFamily(\Msp\FrontendBundle\Entity\UserFamily $userFamilies)
+    {
+        $this->userFamilies[] = $userFamilies;
+
+        return $this;
+    }
+
+    /**
+     * Remove userFamilies
+     *
+     * @param \Msp\FrontendBundle\Entity\UserFamily $userFamilies
+     */
+    public function removeUserFamily(\Msp\FrontendBundle\Entity\UserFamily $userFamilies)
+    {
+        $this->userFamilies->removeElement($userFamilies);
+    }
+
+    /**
+     * Get userFamilies
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserFamilies()
+    {
+        return $this->userFamilies;
+    }
+
+    /**
+     * Add userAvailabilities
+     *
+     * @param \Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities
+     * @return User
+     */
+    public function addUserAvailability(\Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities)
+    {
+        $this->userAvailabilities[] = $userAvailabilities;
+
+        return $this;
+    }
+
+    /**
+     * Remove userAvailabilities
+     *
+     * @param \Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities
+     */
+    public function removeUserAvailability(\Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities)
+    {
+        $this->userAvailabilities->removeElement($userAvailabilities);
     }
 }

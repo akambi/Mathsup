@@ -19,19 +19,47 @@
     <h1>PROFESSEUR "{{ entity.nom }} {{ entity.prenom }}"</h1>
 
     <table class="table table_hover">
-        <tbody>
+        <tbody>            
             <tr>
                 <th>NOM</th>
-                <td>{{ entity.nom }} {{ entity.prenom }}</td>
+                <td>{{ entity.nom }}</td>
             </tr>
             <tr>
+                <th>Prénom</th>
+                <td>{{ entity.prenom }}</td>
+            </tr>            
+            <tr>
+                <th>Sexe</th>
+                <td>{% if entity.sexe == 'H' %}Homme{% elseif entity.sexe == 'F' %}Femme{% endif %}</td>
+            </tr>            
+            <tr>
                 <th>Département</th>
-                <td>{{ entity.nom }}</td>
+                <td>{{ entity.departement }}</td>
             </tr>
             <tr>
                 <th>Ville</th>
                 <td>{{ entity.ville }}</td>
-            </tr>            
+            </tr>
+            <tr>
+                <th>Etablissement</th>
+                <td>{{ entity.etablissement }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ entity.adresse }}</td>
+            </tr> 
+            <tr>
+                <th>Numéro Fixe</th>
+                <td>{{ entity.numeroFixe }}</td>
+            </tr>
+            <tr>
+                <th>Numéro Portable</th>
+                <td>{{ entity.numeroPortable }}</td>
+            </tr> 
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr> 
             <tr>
                 <th>Niveau</th>
                 <td></td>

@@ -156,7 +156,7 @@ class Category
     /**
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $parent;
     
@@ -262,7 +262,7 @@ Entity\Category:
       joinColumn:
         name: parent_id
         referencedColumnName: id
-        onDelete: SET NULL
+        onDelete: CASCADE
       gedmo:
         - treeParent
   oneToMany:
@@ -299,17 +299,23 @@ Entity\Category:
         <field name="right" column="rgt" type="integer">
             <gedmo:tree-right/>
         </field>
-        <field name="root" type="integer">
+        <field name="root" type="integer" nullable="true">
             <gedmo:tree-root/>
         </field>
         <field name="level" column="lvl" type="integer">
             <gedmo:tree-level/>
         </field>
 
-        <many-to-one field="parent" target-entity="NestedTree">
-            <join-column name="parent_id" referenced-column-name="id" on-delete="SET_NULL"/>
+        <many-to-one field="parent" target-entity="NestedTree" inversed-by="children">
+            <join-column name="parent_id" referenced-column-name="id" on-delete="CASCADE"/>
             <gedmo:tree-parent/>
         </many-to-one>
+        
+        <one-to-many field="children" target-entity="NestedTree" mapped-by="parent">
+            <order-by>
+                <order-by-field name="lft" direction="ASC" />
+            </order-by>
+        </one-to-many>
 
         <gedmo:tree type="nested"/>
 
@@ -541,7 +547,7 @@ To load a tree as **ul - li** html tree use:
 $repo = $em->getRepository('Entity\Category');
 $htmlTree = $repo->childrenHierarchy(
     null, /* starting from root nodes */
-    false, /* load all children, not only direct */
+    false, /* true: load all children, false: only direct */
     array(
         'decorate' => true,
         'representationField' => 'slug',
@@ -567,7 +573,7 @@ $options = array(
 );
 $htmlTree = $repo->childrenHierarchy(
     null, /* starting from root nodes */
-    false, /* load all children, not only direct */
+    false, /* true: load all children, false: only direct */
     $options
 );
 
@@ -691,7 +697,7 @@ class Category
     /**
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $parent;
     
@@ -787,7 +793,7 @@ Entity\Category:
       joinColumn:
         name: parent_id
         referencedColumnName: id
-        onDelete: SET NULL
+        onDelete: CASCADE
       gedmo:
         - treeParent
   oneToMany:
@@ -861,7 +867,7 @@ class Category
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
+     *   @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      * })
      */
     private $parent;
@@ -1015,7 +1021,7 @@ class Category
 ```
 
 ### MongoDB example (Yaml)
-
+```
 YourNamespace\Document\Category:
     type:               mappedSuperclass
     repositoryClass:    Gedmo\Tree\Document\MongoDB\Repository\MaterializedPathRepository
@@ -1069,7 +1075,7 @@ YourNamespace\Document\Category:
             simple:     true
             gedmo:
                 -   treeParent
-
+```
 
 ### Path generation
 

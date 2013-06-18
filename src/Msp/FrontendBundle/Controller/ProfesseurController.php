@@ -33,14 +33,25 @@ class ProfesseurController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction( $departement )
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MspUserBundle:User')->getUserByRole("ROLE_PROFESSEUR");
-
+    //  Les autres options de tri
+        $option = array();
+    //  ici on prend en compte le tri par departement
+        if( $departement ):
+            $option["departement"] = $em->getRepository('MspFrontendBundle:Departement')->find( $departement );
+        endif;
+    //  On récupèle la liste des professeurs
+        if( !empty( $option ) ):            
+            $entities = $em->getRepository('MspUserBundle:User')->getUserByRoleAndCriteria("ROLE_PROFESSEUR", $option);
+        else:
+            $entities = $em->getRepository('MspUserBundle:User')->getUserByRoleAndCriteria("ROLE_PROFESSEUR");
+        endif;
+        
         return array(
             'entities' => $entities,
+            'option' => $option,   
         );
     }
     

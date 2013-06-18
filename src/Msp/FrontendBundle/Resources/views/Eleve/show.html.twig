@@ -20,10 +20,18 @@
 
     <table class="table table_hover">
         <tbody>
-            <tr>
+           <tr>
                 <th>NOM</th>
-                <td>{{ entity.nom }} {{ entity.prenom }}</td>
+                <td>{{ entity.nom }}</td>
             </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ entity.prenom }}</td>
+            </tr>            
+            <tr>
+                <th>Sexe</th>
+                <td>{% if entity.sexe == 'H' %}Homme{% elseif entity.sexe == 'F' %}Femme{% endif %}</td>
+            </tr>     
             <tr>
                 <th>Département</th>
                 <td>{{ entity.nom }}</td>
@@ -39,7 +47,48 @@
             <tr>
                 <th>Niveau</th>
                 <td>{{ niveau }}</td>
-            </tr>            
+            </tr>
+            <tr>
+                <th>Etablissement</th>
+                <td>{{ entity.etablissement }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ entity.adresse }}</td>
+            </tr> 
+            <tr>
+                <th>Numéro Fixe</th>
+                <td>{{ entity.numeroFixe }}</td>
+            </tr>
+            <tr>
+                <th>Numéro Portable</th>
+                <td>{{ entity.numeroPortable }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Parents</th>                
+            </tr>
+            <tr>
+                <th>NOM</th>
+                <th>Prénom</th>
+                <th>Sexe</th>
+                <th>Numéro Fixe</th>
+                <th>Numéro Portable</th>
+                <th>Email</th>
+            </tr>
+            {% for parent in entity.userFamilies %}
+                <tr>                    
+                    <td>{{ parent.nom }}</td>
+                    <td>{{ parent.prenom }}</td>
+                    <td>{% if parent.sexe == 'H' %}Homme{% elseif parent.sexe == 'F' %}Femme{% endif %}</td>
+                    <td>{{ parent.numeroFixe }}</td>
+                    <td>{{ parent.numeroPortable }}</td>
+                    <td>{{ parent.email }}</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

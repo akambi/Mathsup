@@ -23,9 +23,6 @@ use Gedmo\Translatable\Entity\MappedSuperclass\AbstractTranslation;
  * the caching is activated for metadata
  *
  * @author Gediminas Morkevicius <gediminas.morkevicius@gmail.com>
- * @package Gedmo.Translatable
- * @subpackage TranslatableListener
- * @link http://www.gediminasm.org
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 class TranslatableListener extends MappedEventSubscriber
@@ -286,7 +283,7 @@ class TranslatableListener extends MappedEventSubscriber
      *
      * @param object $object
      * @param object $meta
-     * @throws RuntimeException - if language or locale property is not
+     * @throws \Gedmo\Exception\RuntimeException - if language or locale property is not
      *         found in entity
      * @return string
      */
@@ -489,7 +486,7 @@ class TranslatableListener extends MappedEventSubscriber
      * Validates the given locale
      *
      * @param string $locale - locale to validate
-     * @throws InvalidArgumentException if locale is not valid
+     * @throws \Gedmo\Exception\InvalidArgumentException if locale is not valid
      * @return void
      */
     protected function validateLocale($locale)
@@ -593,7 +590,7 @@ class TranslatableListener extends MappedEventSubscriber
                 $translation->setContent($content);
                 // check if need to update in database
                 $transWrapper = AbstractWrapper::wrap($translation, $om);
-                if ((is_bool($content) || is_int($content) || (is_string($content) && strlen($content) > 0) || !empty($content)) && ($isInsert || !$transWrapper->getIdentifier() || isset($changeSet[$field]))) {
+                if (((is_null($content) && !$isInsert) || is_bool($content) || is_int($content) || (is_string($content) && strlen($content) > 0) || !empty($content)) && ($isInsert || !$transWrapper->getIdentifier() || isset($changeSet[$field]))) {
                     if ($isInsert && !$objectId && !$ea->usesPersonalTranslation($translationClass)) {
                         // if we do not have the primary key yet available
                         // keep this translation in memory to insert it later with foreign key

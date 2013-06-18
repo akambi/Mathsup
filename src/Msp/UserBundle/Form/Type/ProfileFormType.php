@@ -29,6 +29,10 @@ class ProfileFormType extends BaseType
                 ->add('prenom')
                 ->add('departement')
                 ->add('ville')
+                ->add('etablissement')
+                ->add('adresse')
+                ->add('numeroFixe', 'text', array( "label" => "Numéro Fixe", 'required' => false ) )
+                ->add('numeroPortable', 'text', array( "label" => "Numéro Portable", 'required' => false ))
         ;
         
         if( $first_role === "ROLE_ELEVE"):

@@ -17,7 +17,17 @@
 
 {% block body -%}
     <h1>Liste des Elèves</h1>
-
+    
+    {% if option %}    
+    <ul class="inline">
+        <li>
+            <a class="btn" href="{{ path("eleve") }}">
+                <i class="icon-arrow-left"></i> Retour à la liste complète
+            </a>
+        </li>
+    </ul>
+    {% endif %}
+    
     <table id="table"  class="sortable" cellpadding="0" cellspacing="0" border="0" >
         <thead>
             <tr>
@@ -33,14 +43,30 @@
         <tbody>
         {% for key, entity in entities %}
             <tr>
-                <td><a href="{{ path('eleve_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('eleve_show', { 'id': entity.id }) }}">E{{ entity.id }}</a></td>
                 <td>{{ entity.nom }} {{ entity.prenom }}</td>
-                <td>{{ entity.departement }}</td>
-                <td>{{ entity.ville }}</td>                
-                <td><a href="{{ path('classe_show', { 'id': entity.classe.id }) }}">{{ entity.classe }}</a></td>
-                <td><a href="{{ path('niveau_show', { 'id': niveaux[key].id }) }}">{{ niveaux[key] }}</a></td>
                 <td>
-                <ul class="unstyled nav-pills">
+                    {% if option.departement is defined %}
+                    {{ entity.departement }}
+                    {% else %}
+                    <a href="{% if option.classe is defined %}{{ path('eleve', { 'departement': entity.departement.id, 'classe': option.classe.id }) }}{% else %}{{ path('eleve', { 'departement': entity.departement.id }) }}{% endif %}">
+                        {{ entity.departement }}
+                    </a>
+                    {% endif %}
+                </td>                   
+                <td>{{ entity.ville }}</td>                
+                <td>
+                    {% if option.classe is defined %}
+                    {{ entity.classe }}
+                    {% else %}
+                    <a href="{% if option.departement is defined %}{{ path('eleve', { 'departement': option.departement.id, 'classe': entity.classe.id }) }}{% else %}{{ path('eleve', { 'classe': entity.classe.id }) }}{% endif %}">
+                        {{ entity.classe }}
+                    </a>
+                    {% endif %}
+                </td>
+                <td>{{ niveaux[key] }}</td>
+                <td>
+                <ul class="nav nav-list">
                     <li>
                         <a class="btn" href="{{ path('eleve_show', { 'id': entity.id }) }}">Voir <i class="icon-align-justify"></i></a>
                     </li>
@@ -48,7 +74,7 @@
                         <a class="btn" href="{{ path('eleve_edit', { 'id': entity.id }) }}">Modifier <i class="icon-edit"></i></a>
                     </li>
                     <li>
-                        <a class="btn" href="{{ path('eleve_ticket', { 'id': entity.id }) }}">Rapport Ticket <i class="icon-edit"></i></a>
+                        <a class="btn" href="{{ path('eleve_ticket', { 'id': entity.id }) }}">Rapport Ticket <i class="icon-tasks"></i></a>
                     </li>
                 </ul>
                 </td>

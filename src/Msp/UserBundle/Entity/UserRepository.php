@@ -12,13 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
-    public function getUserByRole( $role )
+    public function getUserByRoleAndCriteria( $role, $option = array() )
     {
         $qb = $this->_em->createQueryBuilder();
         $qb ->select('a')
             ->from('MspUserBundle:User', 'a')
             ->where('a.roles like :roles')
-            ->setParameter('roles', '%"'.$role.'"%');            
+            ->setParameter('roles', '%"'.$role.'"%');
+        //  On prend en compte le département de l'utilisateur
+        if( !empty( $option ) ):
+            if( isset( $option['departement'] ) ):
+                $qb ->andWhere('a.departement = :departement')
+                    ->setParameter('departement', $option['departement']);
+            endif;
+            if( isset( $option['classe'] ) ):
+                $qb ->andWhere('a.classe = :classe')
+                    ->setParameter('classe', $option['classe']);
+            endif;
+        endif;        
+        
         return  $qb->getQuery()
                 ->getResult();
     } 

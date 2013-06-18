@@ -10,7 +10,7 @@
         <meta name="robots" content="{% block robots %}all{% endblock %}"/>
         
         {% block stylesheets %}
-            {% stylesheets output='css/style.css' filter='cssrewrite' 'css/*' 'bundles/sdzblog/css/*' %}
+            {% stylesheets output='css/style.css' filter='cssrewrite' 'css/*' %}
                 <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
             {% endstylesheets %}
         {% endblock %}

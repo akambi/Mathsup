@@ -15,9 +15,6 @@ use Doctrine\Common\Cache\ArrayCache;
  * and the current version of doctrine extensions
  *
  * @author Gediminas Morkevicius <gediminas.morkevicius@gmail.com>
- * @subpackage DoctrineExtensions
- * @package Gedmo
- * @link http://www.gediminasm.org
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 final class DoctrineExtensions
@@ -60,7 +57,7 @@ final class DoctrineExtensions
      * Hooks only superclass metadata mapping drivers
      * into given $driverChain of drivers for ORM
      *
-     * @param \Doctrine\ORM\Mapping\Driver\DriverChain $chain
+     * @param \Doctrine\ORM\Mapping\Driver\DriverChain $driverChain
      * @param \Doctrine\Common\Annotations\Reader $reader
      */
     public static function registerAbstractMappingIntoDriverChainORM(DriverORM\DriverChain $driverChain, Reader $reader = null)

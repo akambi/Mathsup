@@ -2,9 +2,7 @@
 
 namespace Gedmo\Tree\Entity\Repository;
 
-use Gedmo\Exception\InvalidArgumentException,
-    Gedmo\Tree\Strategy,
-    Gedmo\Tree\Strategy\ORM\MaterializedPath,
+use Gedmo\Tree\Strategy,
     Gedmo\Tool\Wrapper\EntityWrapper;
 
 /**
@@ -14,9 +12,6 @@ use Gedmo\Exception\InvalidArgumentException,
  *
  * @author Gustavo Falco <comfortablynumb84@gmail.com>
  * @author Gediminas Morkevicius <gediminas.morkevicius@gmail.com>
- * @package Gedmo.Tree.Entity.Repository
- * @subpackage MaterializedPathRepository
- * @link http://www.gediminasm.org
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 class MaterializedPathRepository extends AbstractTreeRepository
@@ -93,7 +88,7 @@ class MaterializedPathRepository extends AbstractTreeRepository
         $path = $config['path'];
         $qb = $this->_em->createQueryBuilder($meta->name)
             ->select($alias)
-            ->from($meta->name, $alias);
+            ->from($config['useObjectClass'], $alias);
         $expr = '';
 
         if (is_object($node) && $node instanceof $meta->name) {

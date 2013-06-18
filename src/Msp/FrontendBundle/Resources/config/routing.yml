@@ -519,8 +519,11 @@ reponse_delete:
 # Les routes pour LA GESTION DES ELEVES #
 #
 eleve:
-    pattern:  /eleve/
-    defaults: { _controller: MspFrontendBundle:Eleve:index }
+    pattern:  /eleve/departement/{departement}/classe/{classe}/
+    defaults: { _controller: MspFrontendBundle:Eleve:index, departement: 0, classe: 0 }
+    requirements:
+        departement: \d*
+        classe:      \d*
 
 eleve_show:
     pattern:  /eleve/show/{id}
@@ -557,8 +560,10 @@ eleve_ticket_show:
 # Les routes pour LA GESTION DES Professeurs #
 #
 professeur:
-    pattern:  /professeur/
-    defaults: { _controller: MspFrontendBundle:Professeur:index }
+    pattern:  /professeur/departement/{departement}/
+    defaults: { _controller: MspFrontendBundle:Professeur:index, departement: 0 }
+    requirements:
+        departement: \d*
 
 professeur_show:
     pattern:  /professeur/show/{id}

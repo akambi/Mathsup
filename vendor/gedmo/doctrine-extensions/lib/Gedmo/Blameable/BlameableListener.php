@@ -14,9 +14,6 @@ use Gedmo\Blameable\Mapping\Event\BlameableAdapter;
  * dates on creation and update.
  *
  * @author Gediminas Morkevicius <gediminas.morkevicius@gmail.com>
- * @package Gedmo.Blameable
- * @subpackage BlameableListener
- * @link http://www.gediminasm.org
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 class BlameableListener extends TimestampableListener
@@ -57,7 +54,7 @@ class BlameableListener extends TimestampableListener
     /**
      * Set a user value to return
      *
-     * @return mixed
+     * @param mixed $user
      */
     public function setUserValue($user)
     {

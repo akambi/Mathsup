@@ -2,8 +2,6 @@
 
 namespace Gedmo\References;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 use Doctrine\Common\Collections\Collection;
 
 /**
@@ -12,8 +10,6 @@ use Doctrine\Common\Collections\Collection;
  * @author Gediminas Morkevicius <gediminas.morkevicius@gmail.com>
  * @author Bulat Shakirzyanov <mallluhuct@gmail.com>
  * @author Jonathan H. Wage <jonwage@gmail.com>
- * @package Gedmo\References\Mapping\Event
- * @link http://www.gediminasm.org
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 class LazyCollection implements Collection

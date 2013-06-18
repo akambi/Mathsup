@@ -6,15 +6,22 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Msp\FrontendBundle\Form\Type\GenderType;
+
 class ProfesseurType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('sexe',new GenderType(), array( 'empty_value' => 'Choisir un genre',) )
             ->add('nom')
             ->add('prenom')
             ->add('ville')
-            ->add('departement')            
+            ->add('departement')
+            ->add('etablissement')
+            ->add('adresse')
+            ->add('numeroFixe', 'text', array( "label" => "Numéro Fixe", 'required' => false ) )
+            ->add('numeroPortable', 'text', array( "label" => "Numéro Portable", 'required' => false ))
         ;
     }
 

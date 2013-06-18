@@ -37,7 +37,7 @@
         <tbody>
         {% for key, entity in eleves_alert %}
             <tr>
-                <td><a href="{{ path('eleve_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('eleve_show', { 'id': entity.id }) }}">E{{ entity.id }}</a></td>
                 <td>{{ entity.nom }} {{ entity.prenom }}</td>
                 <td>{{ entity.departement }}</td>
                 <td>{{ entity.ville }}</td>                
@@ -84,7 +84,7 @@
         <tbody>
         {% for key, entity in professeurs_alert %}
             <tr>
-                <td><a href="{{ path('professeur_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('professeur_show', { 'id': entity.id }) }}">P{{ entity.id }}</a></td>
                 <td>{{ entity.nom }} {{ entity.prenom }}</td>
                 <td>{{ entity.departement }}</td>
                 <td>{{ entity.ville }}</td>

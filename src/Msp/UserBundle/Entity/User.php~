@@ -15,6 +15,11 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class User extends BaseUser
 {
     /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserFamily", mappedBy="user")
+    */
+    private $userFamilies;
+    
+    /**
     * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserGoConference", mappedBy="user")
     */
     private $userGoConferences;
@@ -90,6 +95,41 @@ class User extends BaseUser
      * @ORM\Column(name="ville", type="string", length=255)
      */
     protected $ville;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=1)
+     */
+    protected $sexe;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_fixe", type="string", length=20, nullable=true)
+     */
+    protected $numeroFixe;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_portable", type="string", length=20, nullable=true)
+     */
+    protected $numeroPortable;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="text")
+     */
+    private $adresse;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etablissement", type="string", length=255)
+     */
+    protected $etablissement;
     
     /**
      * @var \DateTime

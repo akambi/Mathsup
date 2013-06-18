@@ -16,9 +16,6 @@ use Doctrine\Common\Persistence\ObjectManager;
  *
  * @author Gediminas Morkevicius <gediminas.morkevicius@gmail.com>
  * @author Klein Florian <florian.klein@free.fr>
- * @subpackage SluggableListener
- * @package Gedmo.Sluggable
- * @link http://www.gediminasm.org
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 class SluggableListener extends MappedEventSubscriber
@@ -35,9 +32,16 @@ class SluggableListener extends MappedEventSubscriber
     /**
      * Transliteration callback for slugs
      *
-     * @var array
+     * @var callable
      */
     private $transliterator = array('Gedmo\Sluggable\Util\Urlizer', 'transliterate');
+
+    /**
+     * Urlize callback for slugs
+     *
+     * @var callable
+     */
+    private $urlizer = array('Gedmo\Sluggable\Util\Urlizer', 'urlize');
 
     /**
      * List of inserted slugs for each object class.
@@ -80,7 +84,7 @@ class SluggableListener extends MappedEventSubscriber
      * Set the transliteration callable method
      * to transliterate slugs
      *
-     * @param mixed $callable
+     * @param callable $callable
      * @throws \Gedmo\Exception\InvalidArgumentException
      * @return void
      */
@@ -93,6 +97,20 @@ class SluggableListener extends MappedEventSubscriber
     }
 
     /**
+     * Set the urlization callable method
+     * to urlize slugs
+     *
+     * @param callable $callable
+     */
+    public function setUrlizer($callable)
+    {
+        if (!is_callable($callable)) {
+            throw new \Gedmo\Exception\InvalidArgumentException('Invalid urlizer callable parameter given');
+        }
+        $this->urlizer = $callable;
+    }
+
+    /**
      * Get currently used transliterator callable
      *
      * @return callable
@@ -100,6 +118,16 @@ class SluggableListener extends MappedEventSubscriber
     public function getTransliterator()
     {
         return $this->transliterator;
+    }
+
+    /**
+     * Get currently used urlizer callable
+     *
+     * @return callable
+     */
+    public function getUrlizer()
+    {
+        return $this->urlizer;
     }
 
     /**
@@ -183,7 +211,7 @@ class SluggableListener extends MappedEventSubscriber
                 $this->generateSlug($ea, $object);
                 foreach ($config['slugs'] as $slugField => $options) {
                     $slug = $meta->getReflectionProperty($slugField)->getValue($object);
-                    $this->persistedSlugs[$config['useObjectClass']][$slugField][] = $slug;
+                    $this->persistedSlugs[$ea->getRootObjectClass($meta)][$slugField][] = $slug;
                 }
             }
         }
@@ -195,7 +223,7 @@ class SluggableListener extends MappedEventSubscriber
                 $this->generateSlug($ea, $object);
                 foreach ($config['slugs'] as $slugField => $options) {
                     $slug = $meta->getReflectionProperty($slugField)->getValue($object);
-                    $this->persistedSlugs[$config['useObjectClass']][$slugField][] = $slug;
+                    $this->persistedSlugs[$ea->getRootObjectClass($meta)][$slugField][] = $slug;
                 }
             }
         }
@@ -251,6 +279,8 @@ class SluggableListener extends MappedEventSubscriber
             if (!$options['updatable'] && !$isInsert && (!isset($changeSet[$slugField]) || $slug === '__id__')) {
                 continue;
             }
+            // must fetch the old slug from changeset, since $object holds the new version
+            $oldSlug = isset($changeSet[$slugField]) ? $changeSet[$slugField][0] : $slug;
             $needToChangeSlug = false;
             // if slug is null or set to empty, regenerate it, or needs an update
             if (empty($slug) || $slug === '__id__' || !isset($changeSet[$slugField])) {
@@ -297,7 +327,7 @@ class SluggableListener extends MappedEventSubscriber
                 );
                 // Step 2: urlization (replace spaces by '-' etc...)
                 if(!$urlized){
-                    $slug = Util\Urlizer::urlize($slug, $options['separator']);
+                    $slug = call_user_func($this->urlizer, $slug, $options['separator']);
                 }
                 // stylize the slug
                 switch ($options['style']) {
@@ -349,6 +379,8 @@ class SluggableListener extends MappedEventSubscriber
                 }
                 // set the final slug
                 $meta->getReflectionProperty($slugField)->setValue($object, $slug);
+                $uow->propertyChanged($object, $slugField, $oldSlug, $slug);
+
                 // recompute changeset
                 $ea->recomputeSingleObjectChangeSet($uow, $meta, $object);
             }
@@ -372,7 +404,7 @@ class SluggableListener extends MappedEventSubscriber
         // load similar slugs
         $result = array_merge(
             (array) $ea->getSimilarSlugs($object, $meta, $config, $preferedSlug),
-            (array) $this->getSimilarPersistedSlugs($config['useObjectClass'], $preferedSlug, $config['slug'])
+            (array) $this->getSimilarPersistedSlugs($ea->getRootObjectClass($meta), $preferedSlug, $config['slug'])
         );
         // leave only right slugs
         if (!$recursing) {

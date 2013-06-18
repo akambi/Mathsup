@@ -45,7 +45,8 @@ class ContactHandler
         ->setSubject($data["objet"])
         ->setFrom( array( $data["email"] => $data["nom"].$data["prenom"]) )
         ->setTo( array( $webmaster_email => $webmaster_name ) )
-        ->setBody( nl2br($data["message"]).'<br/>Téléphone: '.$data["telephone"] );
+        ->setBody( nl2br($data["message"]).'<br/>Téléphone: '.$data["telephone"] )
+        ->setContentType( 'text/html' );
     // Retour au service mailer, nous utilisons sa méthode « send()» pour envoyer notre $message
         $mailer->send($message);
         

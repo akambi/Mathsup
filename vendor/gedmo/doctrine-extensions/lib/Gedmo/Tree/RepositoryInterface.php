@@ -7,16 +7,16 @@ namespace Gedmo\Tree;
  *
  * @author Gustavo Falco <comfortablynumb84@gmail.com>
  * @author Gediminas Morkevicius <gediminas.morkevicius@gmail.com>
- * @package Gedmo.Tree
- * @subpackage RepositoryInterface
- * @link http://www.gediminasm.org
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 interface RepositoryInterface extends RepositoryUtilsInterface
 {
+
     /**
      * Get all root nodes
      *
+     * @param string $sortByField
+     * @param string $direction
      * @return array
      */
     public function getRootNodes($sortByField = null, $direction = 'asc');

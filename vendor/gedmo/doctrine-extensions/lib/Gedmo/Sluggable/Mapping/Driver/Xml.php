@@ -13,9 +13,6 @@ use Gedmo\Mapping\Driver\Xml as BaseXml,
  *
  * @author Gediminas Morkevicius <gediminas.morkevicius@gmail.com>
  * @author Miha Vrhovnik <miha.vrhovnik@gmail.com>
- * @package Gedmo.Sluggable.Mapping.Driver
- * @subpackage Xml
- * @link http://www.gediminasm.org
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 class Xml extends BaseXml
@@ -94,12 +91,21 @@ class Xml extends BaseXml
                             $this->_getBooleanAttribute($slug, 'updatable') : true,
                         'unique' => $this->_isAttributeSet($slug, 'unique') ?
                             $this->_getBooleanAttribute($slug, 'unique') : true,
+                        'unique_base' => $this->_isAttributeSet($slug, 'unique_base') ?
+                            $this->_getAttribute($slug, 'unique_base') : null,
                         'separator' => $this->_isAttributeSet($slug, 'separator') ?
                             $this->_getAttribute($slug, 'separator') : '-',
                         'handlers' => $handlers,
                     );
                     if (!$meta->isMappedSuperclass && $meta->isIdentifier($field) && !$config['slugs'][$field]['unique']) {
                         throw new InvalidMappingException("Identifier field - [{$field}] slug must be unique in order to maintain primary key in class - {$meta->name}");
+                    }
+                    $ubase = $config['slugs'][$field]['unique_base'];
+                    if ($config['slugs'][$field]['unique'] === false && $ubase) {
+                        throw new InvalidMappingException("Slug annotation [unique_base] can not be set if unique is unset or 'false'");
+                    }
+                    if ($ubase && !$this->isValidField($meta, $ubase) && !$meta->hasAssociation($ubase)) {
+                        throw new InvalidMappingException("Unable to find [{$ubase}] as mapped property in entity - {$meta->name}");
                     }
                 }
             }
