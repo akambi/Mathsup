@@ -1,5 +1,5 @@
 /*  HERE TO ADDING MORE STYLE WITH BOOSTRAP */
-h1.titre{font-size: 12px; line-height: 12px;}
+h1.titre{font-size: 12px; line-height: 12px; text-align: center; }
 
 .margin-left-small{margin-left: 5px;}
 .margin-left-medium{margin-left: 10px;}
@@ -38,10 +38,9 @@ h1.titre{font-size: 12px; line-height: 12px;}
      -moz-border-radius: 6px;
           border-radius: 6px;
 }
-
 #fos_user_registration_form_roles label { display:none; }
-
-/* Style pour le tri */
+#conference input[type=text], #conference input[type=password] { width:90%; }
+/* Style pour la table de tri */
 .sortable {width:980px; border-left:1px solid #c6d5e1; border-top:1px solid #c6d5e1; border-bottom:none; margin:0 auto 15px}
 .sortable th {background:#597d98; text-align:left; color:#cfdce7; border:1px solid #fff; border-right:none}
 .sortable th h3 {font-size: 18px; padding:0 8px; line-height: 18px;}
@@ -55,7 +54,6 @@ h1.titre{font-size: 12px; line-height: 12px;}
 .sortable .oddrow td {background:#ecf2f6}
 .sortable td.evenselected {background:#ecf2f6}
 .sortable td.oddselected {background:#dce6ee}
-
 #controls {width:100%; margin:0 auto; height:20px}
 #perpage {float:left; width:30%; line-height: 30px;}
 #perpage select {float:left; font-size:11px; width: 30%;}
@@ -63,7 +61,51 @@ h1.titre{font-size: 12px; line-height: 12px;}
 #navigation {float:left; width:40%; text-align:center; line-height: 30px;}
 #navigation img {cursor:pointer}
 #text {float:left; width:30%; text-align:right; margin-top:2px; line-height: 30px;}
-
-#conference input[type=text], #conference input[type=password] { width:90%; }
-
 .table td.text-center { text-align: center; }
+
+/* Début style Mathsup  */
+/*  entete  */
+.container-fluid { padding: 0; }
+.container-fluid > header > div { max-width: 1000px; margin: 0 auto; min-height: 81px; }
+.container-fluid > header > div > a, .container-fluid > header > div > nav, .container-fluid > header > div > ul { display: inline-block; vertical-align: middle;  /*width: 21%;*/ }
+.container-fluid > header > div > a { margin-right: 10%; }
+.container-fluid > header > div > nav { margin-right: 13.5%; min-width: 41%; }
+.container-fluid > header > div > ul li { margin-left: 10px; }
+.container-fluid > header ul { list-style: none; margin: 0; }
+.container-fluid > header ul li { display: inline-block; }
+#menu, #menu ul, #menu ul li { min-height: 81px; }
+#menu ul li a, #menu ul li a:link, #menu ul li a:visited, #menu ul li a:active { display: block; line-height: 81px; color: #2a2a2a; font-size: 13px; padding: 0 20px; }
+#menu ul li a:hover, #menu ul li a:focus { background: url('/img/menu-hover.jpg') center bottom no-repeat; text-decoration: none;}
+#menu-niveau { background: #023e70 url('/img/bg_header.jpg') top left repeat-x; min-height: 80px; }
+#menu-niveau ul, #menu-niveau ul li { min-height: 81px; max-width: 840px; margin: 0 auto; }
+#menu-niveau ul li a, #menu-niveau ul li a:link, #menu-niveau ul li a:active, #menu-niveau ul li a:visited { display: block; padding: 0 20px; line-height: 80px; font-size: 25px; color: white; }
+#menu-niveau ul li a:hover, #menu-niveau ul li a:focus { background: url('/img/menu-niveau-hover.jpg') center bottom no-repeat; text-decoration: none; }
+/*  Contenu  accueil */
+.accueil .contentheader { background: url('/img/bg_content.jpg') top center repeat-x; min-height: 254px; color: white; }
+.accueil .contentheader h1 { margin: 0; padding-top: 50px; font-size: 36px; text-align: center; margin-bottom: 20px; ;}
+.accueil .contentheader p { max-width: 400px; margin: 0 auto; font-size: 15px; }
+.accueil .content { background: #f2f2f2; text-align: center; padding: 10px 0 20px; }
+.accueil .content h2 { margin: 0; margin-bottom: 20px; color: #009fe3; font-size: 16px; max-width: 1000px; text-align: left; margin: 0 auto; }
+.accueil .content > div { display: inline-block; vertical-align: top; width: 333px; border-right: 1px #cecece solid;  padding: 20px 0; }
+.accueil .content > div:last-child { border: 0 none; }
+.accueil .content > div p  {  }
+.accueil .content > div p strong { display: block; }
+.accueil .content > div p a { display: block; }
+/*  Slider  */
+#slider { position: relative; max-width: 940px; margin: 40px auto; }
+#slider > img { position: absolute; top: 50%; margin-top: -13px; }
+#slider > img.precedent { left: -40px; }
+#slider > img.suivant { right: -40px; }
+#slider img { cursor: pointer; }
+/*  Le pied de page  */
+.container-fluid > footer{ background: #2a2a2a url('/img/bg_footer.jpg') top center no-repeat; min-height: 65px; text-align: center; }
+.container-fluid > footer > div { max-width: 1000px; margin: 0 auto; }
+.container-fluid > footer > div p, .container-fluid > footer > div ul { display: inline-block; vertical-align: middle; min-height: 65px; margin: 0; }
+.container-fluid > footer > div p { margin-right: 10%; }
+.container-fluid > footer > div p, .container-fluid > footer > div ul li { line-height: 65px; }
+.container-fluid > footer > div p, .container-fluid > footer ul li a { color: #818181; font-size: 13px; }
+.container-fluid > footer ul { list-style: none; }
+.container-fluid > footer ul li { display: inline-block; }
+.container-fluid > footer ul li a { padding: 0 5px; border-right: 1px #818181 solid; }
+.container-fluid > footer ul li:last-child a { border: 0 none; }
+
