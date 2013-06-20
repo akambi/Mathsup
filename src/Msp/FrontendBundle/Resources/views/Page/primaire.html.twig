@@ -11,14 +11,23 @@
 
 {# Le titre de l'entête du document #}
 {% block entetetitle %}PRIMAIRE | {{ parent() }}{% endblock %}
-{# La barre latéralke de la page #}
-{% block aside %}{{ parent() }}{% endblock %}
-{% block primaire %}
-<li class="active"><a href="{{ path('msp_primaire') }}">PRIMAIRE</a></li>
-{% endblock %}
+
 {# Le contenu de la page #}
 {% block content %}
-    <article class="span9">
-        <h1>PRIMAIRE</h1>
-    </article>    
+    <div class="niveau">
+        
+        <p class="header">
+            En primaire, l’élève est exposé à ses premières notions de mathématiques via la numérotation, 
+            la résolution de problèmes simples à l’aide des opérateurs de bases que sont l’addition, la 
+            soustraction,  la multiplication et la division.<br />
+            Le majeur enjeu est la maîtrise de ces quatre modes opératoires.
+        </p>
+        
+        <p class="footer">
+            <strong>Nos cours associés</strong>
+            Je recherche un cours de primaire.
+            <a href="#"><img src="{{ asset('/img/arrow-right.jpg') }}" alt="En savoir plus" /></a>
+        </p>
+        
+    </div>    
 {% endblock %}

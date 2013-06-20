@@ -11,8 +11,7 @@
 
 {# Le titre de l'entête du document #}
 {% block entetetitle %}{{ parent() }} - Et si vous aimiez les maths !{% endblock %}
-{# La barre latéralke de la page #}
-{% block aside %}{{ parent() }}{% endblock %}
+
 {# Le contenu de la page #}
 {% block content %}
     <article class="accueil">
@@ -61,11 +60,14 @@
         </div>
             
         <div id="slider">
-            <img class="precedent" title="1" src="{{ asset('/img/slider-left.jpg') }}" alt="" />
+            
             <div class="slider-handler">
-                <img title="1" src="{{ asset('/img/slider-1_03.jpg') }}" alt="" />                
+                <img title="1" src="{{ asset('/img/slider-1_03.jpg') }}" alt="" /> 
+                <img title="2" src="{{ asset('/img/slider-1_03.jpg') }}" alt="" /> 
+                <img title="3" src="{{ asset('/img/slider-1_03.jpg') }}" alt="" /> 
+                <img title="4" src="{{ asset('/img/slider-1_03.jpg') }}" alt="" /> 
             </div>
-            <img class="suivant" title="1" src="{{ asset('/img/slider-right.jpg') }}" alt="" />
+            
         </div>
         
     </article>    

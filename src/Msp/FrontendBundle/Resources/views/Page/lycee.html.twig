@@ -11,23 +11,92 @@
 
 {# Le titre de l'entête du document #}
 {% block entetetitle %}LYCÉE | {{ parent() }}{% endblock %}
-{# La barre latéralke de la page #}
-{% block aside %}{{ parent() }}{% endblock %}
-{% block lycee %}
-<li class="active">
-    <a href="{{ path('msp_lycee') }}">LYCÉE</a>
-    <ul class="nav nav-list">
-        <li><a href="{{ path('msp_lycee_section', { 'page': "2nde" } ) }}">2<sup>nde</sup></a></li>
-        <li><a href="{{ path('msp_lycee_section', { 'page': "1ere" } ) }}">1<sup>ère</sup></a></li>
-        <li><a href="{{ path('msp_lycee_section', { 'page': "tle" } ) }}">Tle</a></li>
-    </ul>
-</li>
-{% endblock %}
+
 {# Le contenu de la page #}
 {% block content %}
-    <article class="span9">
-        <h1>LYCÉE</h1>
-    </article>    
-{% endblock %}{# empty Twig template #}
-{# empty Twig template #}
-{# empty Twig template #}
+    <div class="niveau">
+        
+        <header class="header">
+           Le Lycée constitue une étape cruciale dans la vie de l’élève, des choix d’orientation plus ou 
+           moins irréversible le conduiront à son projet professionnel ou académique. Dans le but de lui 
+           ouvrir toutes les portes et de lui assurer le minimum de bagages pour la poursuite de son projet, 
+           un accompagnement adapte est préférable.
+        </header>
+       
+        <div id="tabs">
+            
+            <ul>
+                <li><a href="#tabs-1">SECONDE</a></li>
+                <li><a href="#tabs-2">PREMIÈRE</a></li>
+                <li><a href="#tabs-3">TERMINALE</a></li>                
+            </ul>
+                
+            <article id="tabs-1">
+                
+                <h1>SECONDE</h1>
+
+                <div class="introduction noborder">
+                    <p>
+                        La seconde est une classe de détermination. Le programme de mathématiques y a pour fonction :
+                    </p>
+                    <ul>
+                        <li>de conforter l’acquisition par chaque élève de la culture mathématique nécessaire à la vie en société et à la compréhension du monde ;</li>
+                        <li>d’assurer et de consolider les bases de mathématiques nécessaires aux poursuites d’étude du lycée ;</li>
+                        <li>d’aider l’élève à construire son parcours de formation.</li>
+                    </ul>
+                    <p>
+                        Pour chaque partie du programme, les capacités attendues sont clairement identifiées et 
+                        l’accent est mis systématiquement sur les types de problèmes que les élèves doivent 
+                        savoir résoudre. L’acquisition de techniques est indispensable, mais doit être au 
+                        service de la pratique du raisonnement qui est la base de l’activité mathématique des 
+                        élèves. Il faut, en effet, que chaque élève, quels que soient ses projets, puisse 
+                        faire l’expérience personnelle de l’efficacité des concepts mathématiques et de la 
+                        simplification que permet la maîtrise de l’abstraction.
+                    </p>                    
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">L’objectif de ce programme est de former les élèves à la démarche scientifique sous toutes ses formes pour les rendre capables de :</strong></p>
+                    <ul>
+                        <li>modéliser et s’engager dans une activité de recherche ;</li>
+                        <li>conduire un raisonnement, une démonstration ;</li>
+                        <li>pratiquer une activité expérimentale ou algorithmique ;</li>
+                        <li>faire une analyse critique d’un résultat, d’une démarche ;</li>                        
+                        <li>pratiquer une lecture active de l’information (critique, traitement), en privilégiant les changements de registre (graphique, numérique, algébrique, géométrique) ;</li>
+                        <li>utiliser les outils logiciels (ordinateur ou calculatrice) adaptés à la résolution d’un problème ;</li>
+                        <li>communiquer à l’écrit et à l’oral.</li>  
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey"> 
+                    <p>
+                        Dans la mesure du possible, les problèmes posés s’inspirent de situations liées à la 
+                        vie courante ou à d’autres disciplines. Ils doivent pouvoir s’exprimer de façon simple 
+                        et concise et laisser dans leur résolution une place à l’autonomie et à l’initiative 
+                        des élèves. Au niveau d’une classe de seconde de détermination, les solutions attendues 
+                        sont aussi en général simples et courtes.
+                    </p>
+                </div>
+                
+                <footer class="footer">
+                    <strong>Nos cours associés</strong>
+                    Je recherche un cours de seconde.
+                    <a href="#"><img src="{{ asset('/img/arrow-right.jpg') }}" alt="En savoir plus" /></a>
+                </footer>
+                
+            </article>
+            
+        </div>
+        
+    </div>
+{% endblock %}
+
+{% block javascripts2 %}
+    {{ parent() }}   
+    <script>
+        $(document).ready(function() { 
+            $( "#tabs" ).tabs();
+        });
+    </script>
+{% endblock %}
+    

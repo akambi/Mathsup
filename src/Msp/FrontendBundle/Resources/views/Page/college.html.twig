@@ -11,22 +11,597 @@
 
 {# Le titre de l'entête du document #}
 {% block entetetitle %}COLLÈGE | {{ parent() }}{% endblock %}
-{# La barre latéralke de la page #}
-{% block aside %}{{ parent() }}{% endblock %}
-{% block college %}
-<li class="active">
-    <a href="{{ path('msp_college') }}">COLLÈGE</a>
-    <ul class="nav nav-list">
-        <li><a href="{{ path('msp_college_section', { 'page': "6ieme" } ) }}">6<sup>ième</sup></a></li>
-        <li><a href="{{ path('msp_college_section', { 'page': "5ieme" } ) }}">5<sup>ième</sup></a></li>
-        <li><a href="{{ path('msp_college_section', { 'page': "4ieme" } ) }}">4<sup>ième</sup></a></li>
-        <li><a href="{{ path('msp_college_section', { 'page': "3ieme" } ) }}">3<sup>ième</sup></a></li>
-    </ul>
-</li>
-{% endblock %}
+
 {# Le contenu de la page #}
 {% block content %}
-    <article class="span9">
-        <h1>COLLÈGE</h1>
-    </article>    
+   <div class="niveau">
+        
+        <header class="header">
+           Le collège est une étape importante de l’éducation, les matières sont diverses et variées. Un 
+           accompagnement de l’élève  est indispensable pour lui permettre de s’adapter à ce nouveau rythme 
+           de travail. L’intérêt des mathématiques acquis au primaire, doit continuer à être stimuler via de 
+           nouveau domaines tel que la géométrie, les grandeurs et mesures. En effet, l’approfondissement des 
+           calculs et la gestion des données, offrent de nouvelles perspectives dans l’approche de problèmes 
+           concrets.<br />
+           A la fin du collège, l’élève devrait être apte à résoudre des problèmes un peu plus sophistiqués 
+           aussi bien graphiquement qu’à l’aide de calculs numériques.  
+        </header>
+       
+        <div id="tabs">
+            
+            <ul>
+                <li><a href="#tabs-1">SIXIÈME</a></li>
+                <li><a href="#tabs-2">CINQUIÈME</a></li>
+                <li><a href="#tabs-3">QUATRIÈME</a></li>
+                <li><a href="#tabs-4">TROISIÈME</a></li>
+            </ul>
+                
+            <article id="tabs-1">
+                
+                <h1>SIXIÈME</h1>
+                
+                <div class="introduction">
+                    <p>
+                        L’enseignement des mathématiques en classe de sixième a une triple visée :
+                    </p>
+                    <ul>
+                        <li>consolider, enrichir et structurer les acquis de l’école primaire ;</li>
+                        <li>préparer à l’acquisition des méthodes et des modes de pensée caractéristiques des mathématiques (résolution de problèmes et divers moyens d’accéder à la vérité) ;</li>
+                        <li>développer la capacité à utiliser les outils mathématiques dans différents domaines (vie courante, autres disciplines).</li>
+                    </ul>
+                    <p>
+                        Le vocabulaire et les notations nouvelles ( ≈ , % ,     , [AB] , (AB) , [AB) , AB, ) sont introduits au fur et à mesure de leur utilité, et non au départ d’un apprentissage.
+                    </p>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Organisation et gestion de données, fonctions</h2>
+                    <p>
+                        La résolution de problèmes de proportionnalité est déjà travaillée à l’école primaire. 
+                        Elle se poursuit en Sixième, avec des outils nouveaux. La proportionnalité fait l'objet 
+                        d'un apprentissage continu et progressif sur les quatre années du collège et permet de 
+                        comprendre et de traiter de nombreuses notions du programme.
+                    </p>
+                    <p>
+                        À l’école primaire, les élèves ont été mis en situation de prendre de l’information à 
+                        partir de tableaux, de diagrammes ou de graphiques. Ce travail se poursuit au collège, 
+                        notamment avec l’objectif de rendre les élèves capables de faire une interprétation 
+                        critique de l’information apportée par ces types de présentation des données, aux 
+                        natures très diverses, en liaison avec d’autres disciplines (géographie, sciences de 
+                        la vie et de la terre, technologie…).
+                    </p>
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>de mettre en place les principaux raisonnements qui permettent de reconnaître et traiter les situations de proportionnalité,</li>
+                        <li>d’initier les élèves à la présentation, à l’utilisation et à l’interprétation de données sous diverses formes (tableaux, graphiques…).</li>    
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Nombres et Calculs</h2>
+                    <p>
+                       En continuité avec l'école élémentaire les problèmes doivent permettre aux élèves 
+                       d'associer à une situation concrète un travail numérique, de mieux saisir le sens des 
+                       opérations figurant au programme. Les problèmes proposés sont issus de la vie courante, 
+                       des autres disciplines ou des mathématiques.
+                    </p>
+                    <p>    
+                        Les travaux numériques prennent appui sur la pratique du calcul exact ou approché sous 
+                        ses différentes formes, souvent utilisées en interaction : calcul mental, calcul à la 
+                        main ou instrumenté. À la suite de l’école primaire, le collège doit, en particulier, 
+                        permettre aux élèves d'entretenir et de développer leurs compétences en calcul mental 
+                        notamment pour la perception des ordres de grandeur.
+                    </p>
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>de consolider le sens des opérations, de développer le calcul mental, le calcul à la main et l’utilisation raisonnée des calculatrices, de conforter et d’étendre la connaissance des nombres décimaux,</li>
+                        <li>de mettre en place une nouvelle signification de l’écriture fractionnaire comme quotient de deux entiers,</li>    
+                        <li>de savoir choisir l’écriture appropriée d’un nombre suivant la situation,</li>
+                        <li>de percevoir l’ordre de grandeur d’un nombre.</li>    
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Géométrie</h2>
+                    <p>
+                       À l’école élémentaire, les élèves ont acquis une première expérience des figures et des 
+                       solides les plus usuels, en passant d’une reconnaissance perceptive (reconnaissance des 
+                       formes) à une connaissance plus analytique prenant appui sur quelques propriétés 
+                       (alignement, perpendicularité, parallélisme, égalité de longueurs, milieu, axes de 
+                       symétrie), vérifiées à l’aide d’instruments. Ils ont été entraînés au maniement de ces 
+                       instruments (équerre, règle, compas, gabarit) sur des supports variés, pour construire 
+                       des figures, en particulier pour le tracé de perpendiculaires et de parallèles à l’aide 
+                       de la règle et de l’équerre. Les travaux conduits en sixième prennent en compte les 
+                       acquis antérieurs, évalués avec précision et obéissent à de nouveaux objectifs. Ils 
+                       doivent viser d'une part à stabiliser les connaissances des élèves et d'autre part à les 
+                       structurer, et peu à peu à les hiérarchiser. L'objectif d’initier à la déduction est 
+                       aussi pris en compte. À cet effet, les activités qui permettent le développement des 
+                       capacités à décortiquer et à construire des figures et des solides simples, à partir 
+                       de la reconnaissance des propriétés élémentaires, occupent une place centrale.
+                    </p>
+                    <p>
+                        Les travaux géométriques sont conduits dans différents cadres : espace ordinaire 
+                        (cour de récréation, par exemple), espace de la feuille de papier uni ou quadrillé, 
+                        écran d’ordinateur. La résolution des mêmes problèmes dans ces environnements différents,
+                        et les interactions qu’elle suscite, contribuent à une approche plus efficace des 
+                        concepts mis en oeuvre.
+                    </p>
+                    <p>
+                        Les connaissances géométriques permettent de modéliser des situations (par exemple 
+                        représenter un champ par un rectangle) et de résoudre ainsi des problèmes posés dans 
+                        l’espace ordinaire. Les formes géométriques (figures planes, solides) se trouvent dans 
+                        de nombreux domaines : architecture, oeuvres d'art, éléments naturels, objets d’usage 
+                        courant… Ces mises en relation permettent peu à peu de dégager le caractère universel 
+                        des objets géométriques par rapport à leurs diverses réalisations naturelles ou 
+                        artificielles.
+                    </p>                    
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>de compléter la connaissance des propriétés des figures planes et des solides usuels,</li>
+                        <li>
+                            de maîtriser les techniques de construction (utilisation des instruments et 
+                            logiciels adaptés, mobilisation des connaissances dans les raisonnements implicites 
+                            sous-jacents),
+                        </li>    
+                        <li>de reconnaître les figures planes usuelles dans une configuration complexe,</li>
+                        <li>de conduire sans formalisme des raisonnements simples utilisant les propriétés des figures usuelles ou de la symétrie axiale,</li>
+                        <li>de passer d’un objet de l’espace à ses représentations.</li> 
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Grandeurs et mesures</h2>
+                    <p>
+                       En continuité avec le travail effectué à l’école élémentaire, cette rubrique s’appuie 
+                       sur la résolution de problèmes souvent empruntés à la vie courante. Elle permet 
+                       d’aborder l’histoire des sciences, d’assurer des liens avec les autres disciplines, 
+                       en particulier la technologie et les sciences de la vie et de la Terre, de réinvestir 
+                       les connaissances acquises en mathématiques, mais aussi d’en construire de nouvelles. 
+                       Par exemple, le recours aux longueurs et aux aires permet d'enrichir le travail sur les 
+                       nombres non entiers et les opérations étudiées en classe de sixième. Il est important 
+                       que les élèves disposent de références concrètes pour certaines grandeurs et soient 
+                       capables d’estimer une mesure (ordre de grandeur).
+                    </p>
+                    <p>
+                        L’utilisation d'unités dans les calculs sur les grandeurs est légitime. Elle est de 
+                        nature à en faciliter le contrôle et à en soutenir le sens. À travers les activités 
+                        sur les longueurs, les aires et les volumes, les élèves peuvent se construire et 
+                        utiliser un premier répertoire de formules.
+                    </p>
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>de compléter les connaissances relatives aux longueurs, aires, masses et durées,</li>
+                        <li>de savoir choisir une unité appropriée et effectuer des changements d’unités,</li>    
+                        <li>de consolider la notion d’angle, d’assurer la maîtrise des notions d’aire et de périmètre,</li>
+                        <li>de mettre en place la notion de volume et de commencer l’étude du système d’unités de mesure des volumes.</li>    
+                    </ul>                    
+                </div>
+                
+                <footer class="footer">
+                    <strong>Nos cours associés</strong>
+                    Je recherche un cours de sixième.
+                    <a href="#"><img src="{{ asset('/img/arrow-right.jpg') }}" alt="En savoir plus" /></a>
+                </footer>
+                
+            </article>
+            
+            <article id="tabs-2">
+                
+                <h1>CINQUIÈME</h1>
+                
+                <div class="introduction">
+                    <p>
+                        Sur la continuité de la classe de 6ieme, la proportionnalité occupe toujours une place 
+                        centrale, les calculs numériques, la géométrie et la grandeur  deviennent plus poussés.
+                    </p>                                     
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Organisation et gestion de données, fonctions</h2>
+                    <p>
+                        En classe de cinquième, la proportionnalité occupe toujours une place centrale. Les 
+                        méthodes de résolution des problèmes de proportionnalité évoluent avec les 
+                        connaissances des élèves, notamment avec une meilleure maîtrise de la notion de 
+                        quotient. La partie relative au traitement et à la représentation de données a pour 
+                        objectif d’initier à la lecture, à l’interprétation, à la réalisation et à l’utilisation 
+                        de diagrammes, tableaux et graphiques et de mettre en évidence la relativité de 
+                        l’information représentée. Les travaux correspondants sont conduits à partir d’exemples 
+                        et en liaison, chaque fois qu’il est possible, avec l’enseignement des autres 
+                        disciplines et l’étude des thèmes de convergence.
+                    </p>                    
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>d’affermir la maîtrise des principaux raisonnements qui permettent de traiter les situations de proportionnalité,</li>
+                        <li>d’initier les élèves au repérage sur une droite graduée ou dans le plan muni d’un repère,</li>
+                        <li>
+                            d’acquérir et interpréter les premiers outils statistiques (organisation et 
+                            représentation de données, fréquences) utiles dans d’autres
+                            disciplines et dans la vie de citoyen, de se familiariser avec des écritures littérales.
+                        </li>    
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Nombres et Calculs</h2>
+                    <p>
+                       Les problèmes proposés associant à une situation donnée une activité numérique, 
+                       renforcent le sens des opérations et des diverses écritures numériques et littérales. 
+                       Ils sont principalement issus de la vie courante, des autres disciplines ou des 
+                       mathématiques. Il convient de ne pas multiplier les activités purement techniques. 
+                       Toutes les travaux numériques fournissent des occasions de pratiquer le calcul exact ou 
+                       approché sous toutes ses formes, utilisées en interaction : calcul mental, à la main 
+                       ou instrumenté.
+                    </p>                    
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>d’entretenir et développer la pratique du calcul mental, du calcul à la main et l’utilisation raisonnée des calculatrices ;</li>
+                        <li>d’assurer la maîtrise des calculs d’expressions numériques sur les nombres décimaux positifs et prévoir l’ordre de grandeur d’un résultat ;</li>    
+                        <li>
+                            d’initier aux nombres relatifs et aux calculs sur les nombres en écriture fractionnaire ;
+                            de familiariser les élèves aux raisonnements conduisant à des expressions littérales ;
+                        </li>
+                        <li>d’apprendre à choisir et interpréter l’écriture appropriée d’un nombre ou d’une expression littérale suivant la situation, </li>
+                        <li>d’apprendre à effectuer des transformations simples d’écriture ;</li>
+                        <li>d’initier à la notion d’équation.</li> 
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Géométrie</h2>
+                    <p>
+                       En classe de cinquième, l’étude de la symétrie centrale permet de réorganiser et de 
+                       compléter les connaissances sur les figures. 
+                    </p>
+                    <p>
+                        Les travaux de géométrie plane prennent toujours appui sur des figures dessinées, 
+                        suivant les cas, à main levée, à l’aide des instruments de dessin et de mesure, ou 
+                        dans un environnement informatique. Ils sont conduits en liaison étroite avec 
+                        l’étude des autres rubriques. Les diverses activités de géométrie habituent les 
+                        élèves à expérimenter et à conjecturer, et permettent progressivement de s’entraîner 
+                        à des justifications mettant en oeuvre les outils du programme et ceux déjà acquis 
+                        en classe de sixième.
+                    </p>                                     
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>de connaître et utiliser les propriétés conservées par symétrie (axiale ou centrale), les propriétés relatives aux figures usuelles (triangles, parallélogrammes, cercles), </li>
+                        <li>d’entretenir la pratique des constructions géométriques (aux instruments et à l‘aide d’un logiciel de géométrie) et des raisonnements sous-jacents qu’elles mobilisent,</li>    
+                        <li>de conduire sans formalisme des raisonnements géométriques simples,</li>
+                        <li>de familiariser les élèves avec les représentations de figures de l’espace.</li>                        
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Grandeurs et mesures</h2>
+                    <p>
+                       Cette rubrique s’appuie notamment sur la résolution de problèmes empruntés à la vie 
+                       courante. Comme en classe de sixième, l’utilisation d’unités dans les calculs sur 
+                       les grandeurs est légitime. Elle est de nature à en faciliter le contrôle et à en 
+                       soutenir le sens. Les questions de changement d’unités sont reliées à l’utilisation de 
+                       la proportionnalité de préférence au recours systématique à un tableau de conversion.
+                    </p>                    
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>de compléter les connaissances relatives aux longueurs, aux angles, aux masses et aux durées, </li>
+                        <li>de calculer les aires ou volumes attachés aux figures planes ou solides usuels,</li>    
+                        <li>de poursuivre l’étude du système d’unités de mesure des volumes,</li>
+                        <li>d’apprendre à choisir les unités adaptées et à effectuer des changements d’unité.</li>    
+                    </ul>                    
+                </div>
+                
+                <footer class="footer">
+                    <strong>Nos cours associés</strong>
+                    Je recherche un cours de cinquième.
+                    <a href="#"><img src="{{ asset('/img/arrow-right.jpg') }}" alt="En savoir plus" /></a>
+                </footer>
+                
+            </article>
+            
+            <article id="tabs-3">
+                
+                <h1>QUATRIÈME</h1>
+                
+                <div class="introduction">
+                    <p>
+                        La quatrième, correspond à un approfondissement des notions acquises en 5ieme, repérage 
+                        dans le plan de variable, l’étude des expressions littérales ainsi que la géométrie 
+                        dans l’espace.
+                    </p>                                     
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Organisation et gestion de données, fonctions</h2>
+                    <p>
+                        Comme en classe de cinquième, le mot « fonction » est employé, chaque fois que 
+                        nécessaire, en situation, et sans qu’une définition formelle de la notion de fonction 
+                        soit donnée.
+                    </p>
+                    <p>
+                        Les tableurs-grapheurs, dont l’usage a été introduit dès la classe de cinquième, donnent 
+                        accès à une façon particulière de désigner une variable : par l’emplacement de la 
+                        cellule où elle se trouve dans le tableau. Cette nouveauté est un enrichissement pour 
+                        le travail sur la notion de variable, effectué sur des exemples variés.
+                    </p>
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>de consolider et d’enrichir les raisonnements pour traiter des situations de proportionnalité, pour produire ou interpréter des résumés statistiques (moyennes, graphiques), pour analyser la pertinence d’un graphique au regard de la situation étudiée,</li>
+                        <li>d’organiser des calculs ou créer un graphique avec un tableur.</li>                           
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Nombres et Calculs</h2>
+                    <p>
+                       La pratique du calcul numérique (exact ou approché) sous ses différentes formes en 
+                       interaction (calcul mental, calcul à la main, calcul à la machine ou avec un ordinateur) 
+                       permet la maîtrise des procédures de calcul effectivement utilisées, l’acquisition de 
+                       savoir-faire dans la comparaison des nombres ainsi que la réflexion et l’initiative dans 
+                       le choix de l’écriture appropriée d’un nombre suivant la situation.
+                    </p>
+                    <p>
+                        Le calcul littéral qui a fait l’objet d’une première approche en classe de cinquième, 
+                        par le biais de la transformation d’écritures, se développe en classe de quatrième, en 
+                        veillant à ce que les élèves donnent du sens aux activités entreprises dans ce cadre, 
+                        en particulier par l’utilisation de formules issues des sciences et de la technologie.
+                    </p>
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>d’entretenir et d’enrichir la pratique du calcul mental, du calcul à la main et l’utilisation raisonnée des calculatrices ;</li>
+                        <li>d’assurer la maîtrise des calculs sur les nombres relatifs et les expressions numériques ;</li>    
+                        <li>
+                            de conduire les raisonnements permettant de traiter diverses situations (issues de 
+                            la vie courante, des différents champs des mathématiques et des autres disciplines, 
+                            notamment scientifiques) à l’aide de calculs numériques, d’équations ou d’expressions 
+                            littérales ;
+                        </li>
+                        <li>de savoir choisir l’écriture appropriée d’un nombre ou d’une expression littérale suivant la situation.</li>
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Géométrie</h2>                    
+                    <p>
+                       Dans le plan, les travaux portent sur les figures usuelles déjà étudiées (triangles, 
+                       cercles, quadrilatères particuliers), pour lesquelles il est indispensable de continuer 
+                       à faire fonctionner les résultats mis en place. L’étude plus approfondie du triangle 
+                       rectangle et d’une nouvelle configuration (celle de triangles déterminés par deux droites 
+                       parallèles coupant deux sécantes) permet d’aborder quelques aspects numériques 
+                       fondamentaux de la géométrie du plan. Certaines propriétés géométriques d’un 
+                       agrandissement ou d’une réduction d’une figure sont également étudiées. L’effet sur les 
+                       aires et les volumes n’est abordé qu’en classe de troisième.
+                    </p>
+                    <p>
+                        Les activités de découverte, d’élaboration et de rédaction d’une démonstration sont de 
+                        natures différentes et doivent faire l’objet d’une différenciation explicite. Dans 
+                        l’espace, les travaux sur les solides étudiés exploitent largement les résultats de 
+                        géométrie plane. L’étude de configurations de géométrie dans l’espace donne des 
+                        exercices et des illustrations pour différents champs du programme. À ce titre, il 
+                        convient d’aborder la géométrie dans l’espace suffisamment tôt dans l’année scolaire. 
+                    </p>                                     
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Grandeurs et mesures</h2>
+                    <p>
+                        Cette rubrique s’appuie notamment sur la résolution de problèmes empruntés à la vie 
+                        courante et aux autres disciplines.
+                    </p>
+                    <p>
+                        Les notions de mouvement uniforme et de vitesse ont été travaillées en classe de 
+                        cinquième dans le cadre de la proportionnalité. La notion de vitesse en tant que 
+                        grandeur quotient est abordée pour la première fois en classe de quatrième. 
+                    </p>
+                    <p>
+                        Comme dans les classes précédentes, l’utilisation d’unités dans les calculs sur les 
+                        grandeurs est légitime. Elle est de nature à en faciliter le contrôle et à en soutenir 
+                        le sens.
+                    </p>
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>d’initier les élèves à des grandeurs quotient,</li>
+                        <li>de compléter les connaissances et consolider les raisonnements permettant de calculer les grandeurs travaillées antérieurement (longueurs, angles, aires, volumes),</li>    
+                        <li>de savoir choisir les unités adaptées et d’effectuer les changements d’unités.</li>                        
+                    </ul>                    
+                </div>
+                
+                <footer class="footer">
+                    <strong>Nos cours associés</strong>
+                    Je recherche un cours de quatrième.
+                    <a href="#"><img src="{{ asset('/img/arrow-right.jpg') }}" alt="En savoir plus" /></a>
+                </footer>
+                
+            </article>
+            
+            <article id="tabs-4">
+                
+                <h1>TROISIÈME</h1>
+                
+                <div class="introduction noborder">
+                    <p>
+                        Premier examen, le brevet des Collèges, il n’est pas obligatoire mais donne accès à 
+                        certains concours. Il s’agit d’une étape importante on décide de sa filière générale 
+                        ou technologique.
+                    </p>                                     
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">À la fin de cette classe terminale du collège, la maîtrise par les élèves de plusieurs types de savoirs est visée :</strong></p>
+                    <ul>
+                        <li>dans le domaine des nombres et du calcul : calcul numérique (nombres entiers, décimaux et fractionnaires, relatifs ou non, proportionnalité) et premiers éléments de calcul littéral ;</li>
+                        <li>dans le domaine de l’organisation et la gestion de données : premiers éléments de base en statistique descriptive et en probabilité ;</li>
+                        <li>dans le domaine géométrique : figures de base et propriétés de configurations du plan et de l’espace ;</li>   
+                        <li>dans le domaine des grandeurs et de la mesure : grandeurs usuelles, grandeurs composées et changements d’unités ;</li>   
+                        <li>dans le domaine des TICE : utilisation d’un tableur-grapheur et d’un logiciel de construction géométrique.</li>   
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Organisation et gestion de données, fonctions</h2>
+                    <p>
+                        L’un des objectifs est de faire émerger progressivement, sur des exemples, la notion de 
+                        fonction en tant que processus faisant correspondre, à un nombre, un autre nombre. 
+                        Les exemples mettant en jeu des fonctions sont issus de situations concrètes ou de 
+                        thèmes interdisciplinaires. Les fonctions linéaires et affines apparaissent alors 
+                        comme des exemples particuliers de tels processus. L’utilisation des expressions 
+                        « est fonction de » ou « varie en fonction de », amorcée dans les classes précédentes, 
+                        est poursuivie et est associée à l’introduction de la notation f(x). L’usage du tableur 
+                        grapheur contribue aussi à la mise en place du concept, dans ses aspects numériques 
+                        comme dans ses aspects graphiques. La notion d’équation de droite n’est pas au programme 
+                        de la classe de troisième.
+                    </p>
+                    <p>
+                        Pour les séries statistiques, l’étude des paramètres de position est poursuivie : 
+                        médiane et quartiles. Une première approche de la dispersion est envisagée. 
+                        L’éducation mathématique rejoint ici l’éducation du citoyen : prendre l’habitude de 
+                        s’interroger sur la signification des nombres utilisés, sur l’information apportée par 
+                        un résumé statistique. De même, c’est pour permettre au citoyen d’aborder l’incertitude 
+                        et le hasard dans une perspective rationnelle que sont introduits les premiers éléments 
+                        relatifs à la notion de probabilité.
+                    </p>
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>de synthétiser le travail conduit sur la proportionnalité dans les classes antérieures, d’approcher la notion de fonction et d’acquérir une première connaissance des fonctions linéaires et affines,</li>
+                        <li>de poursuivre la mise en place de paramètres de position et de dispersion d’une série statistique,</li>      
+                        <li>d’initier à la notion de probabilité par l’étude d’exemples simples.</li>
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Nombres et Calculs</h2>
+                    <p>
+                       La pratique du calcul numérique (exact ou approché) sous ses différentes formes en 
+                       interaction (calcul mental, calcul à la main, calcul à la machine ou avec un ordinateur) 
+                       a les mêmes objectifs que dans les classes antérieures :
+                    </p>
+                    <ul class="dash">
+                        <li>maîtrise des procédures de calcul effectivement utilisées ;</li>
+                        <li>acquisition de savoir-faire dans la comparaison des nombres ;</li>
+                        <li>réflexion et initiative dans le choix de l’écriture appropriée d’un nombre suivant la situation.</li>
+                    </ul>
+                    <p>
+                        Pour le calcul littéral, l’un des objectifs visés est qu’il prenne sa place dans les 
+                        moyens d’expression des élèves, à côté de la langue usuelle, de l’emploi des nombres ou 
+                        des représentations graphiques. C’est en développant notamment des activités où le 
+                        calcul littéral présente du sens et où il reste simple à effectuer que l’on amène 
+                        l’élève à recourir à l’écriture algébrique lorsqu’elle est pertinente.
+                    </p>
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>d’entretenir le calcul mental, le calcul à la main et de l’usage raisonnée des calculatrices,</li>
+                        <li>d’assurer la maîtrise des calculs sur les nombres rationnels,</li>    
+                        <li>d’amorcer les calculs sur les radicaux et de poursuivre les calculs sur les puissances,</li>
+                        <li>de familiariser les élèves aux raisonnements arithmétiques,</li>
+                        <li>de compléter les bases du calcul littéral et d’en conforter le sens, notamment par le recours à des équations ou des inéquations du premier degré pour résoudre des problèmes,</li>
+                        <li>de savoir choisir l’écriture appropriée d’un nombre ou d’une expression littérale suivant la situation.</li>
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Géométrie</h2>
+                    <p>
+                       Les objectifs des travaux géométriques demeurent ceux des classes antérieures du collège. 
+                       L’étude et la représentation d’objets usuels du plan et de l’espace se poursuivent ainsi 
+                       que le calcul de grandeurs attachées à ces objets. Les travaux sur les solides permettent 
+                       de mobiliser largement les résultats des classes antérieures. À ce titre, il convient 
+                       d’aborder la géométrie dans l’espace suffisamment tôt dans l’année scolaire. L’étude des 
+                       configurations usuelles est enrichie en particulier de la réciproque du théorème de Thalès 
+                       et de l’étude de l’angle inscrit. Le recours à des logiciels de construction géométrique 
+                       (par les élèves ou de manière collective) est intégré aux séquences d’enseignement, dans 
+                       l’approche d’une notion ou dans la résolution de problèmes.
+                    </p>                                                      
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>de connaître les objets usuels du plan et de l’espace, de calculer les grandeurs attachées à ces objets,</li>
+                        <li>de développer les capacités heuristiques, les capacités de raisonnement et les capacités relatives à la formalisation d’une démonstration ;</li>    
+                        <li>d’entretenir la pratique des constructions géométriques (aux instruments et à l’aide d’un logiciel de géométrie dynamique) et des raisonnements sous-jacents qu’elles mobilisent ;</li>                        
+                        <li>de solliciter dans les raisonnements les propriétés géométriques et les relations métriques associées vues dans les classes antérieures ;</li>
+                        <li>de familiariser les élèves aux sections de solides de l’espace.</li>
+                    </ul>                    
+                </div>
+                
+                <div class="bgblankgrey">                    
+                    <h2>Grandeurs et mesures</h2>
+                    <p>
+                        Les situations mettant en jeu des grandeurs sont souvent empruntées à la vie courante 
+                        (aires de terrains, volumes de gaz, de liquides, vitesses, débits, coûts, …) mais 
+                        aussi à d’autres disciplines, notamment scientifiques, et permettent l’interaction entre 
+                        les mathématiques et d’autres domaines. Les activités de comparaison d’aires d’une part, 
+                        et de volumes d’autre part, de figures ou d’objets obtenus par agrandissement ou 
+                        réduction, sont, en particulier, autant d’occasions de manipulations de formules et de 
+                        transformations d’expressions algébriques. Comme dans les classes précédentes, 
+                        l’utilisation d’unités dans les calculs sur les grandeurs est légitime. Elle est de 
+                        nature à en faciliter le contrôle et à en soutenir le sens.
+                    </p>                    
+                </div>
+                
+                <div class="bgblank">
+                    <p><strong class="blue">La résolution de problèmes a pour objectifs :</strong></p>
+                    <ul>
+                        <li>d’entretenir et de compléter les connaissances et les raisonnements relatifs aux calculs d’aires et volumes,</li>
+                        <li>d’étudier des situations dans lesquelles interviennent des grandeurs composées (produit ou quotient), notamment du point de vue des changements d’unités.</li>                                                    
+                    </ul>                    
+                </div>
+                
+                <footer class="footer">
+                    <strong>Nos cours associés</strong>
+                    Je recherche un cours de troisième.
+                    <a href="#"><img src="{{ asset('/img/arrow-right.jpg') }}" alt="En savoir plus" /></a>
+                </footer>
+                
+            </article>
+        
+        </div>    
+       
+    </div>      
 {% endblock %}{# empty Twig template #}
+
+{% block javascripts2 %}
+    {{ parent() }}   
+    <script>
+        $(document).ready(function() { 
+            $( "#tabs" ).tabs();
+        });
+    </script>
+{% endblock %}
+    

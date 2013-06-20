@@ -11,22 +11,22 @@
 
 {# Le titre de l'entête du document #}
 {% block entetetitle %}UNIVERSITÉ | {{ parent() }}{% endblock %}
-{# La barre latéralke de la page #}
-{% block aside %}{{ parent() }}{% endblock %}
-{% block universite %}
-<li class="active">
-    <a href="{{ path('msp_universite') }}">UNIVERSITÉ</a>
-    <ul class="nav nav-list">
-        <li><a href="{{ path('msp_universite_section', { 'page': "licence" }) }}">Licence</a></li>
-        <li><a href="{{ path('msp_universite_section', { 'page': "prepa" }) }}">Prépa</a></li>
-    </ul>
-</li>
-{% endblock %}
+
 {# Le contenu de la page #}
 {% block content %}
-    <article class="span9">
-        <h1>UNIVERSITÉ</h1>
-    </article>    
-{% endblock %}{# empty Twig template #}
-{# empty Twig template #}
-{# empty Twig template #}
+     <div class="niveau">
+        
+        <p class="header">
+            A la faculté, l’étudiant a besoin d’accompagnement pour s’adapter à ce nouvel environnement où 
+            le professeur est concentré sur un groupe et non plus sur les individus.<br />
+            Il faut absolument être capable de suivre le groupe pour ne pas se retrouver très vite perdu.
+        </p>
+        
+        <p class="footer">
+            <strong>Nos cours associés</strong>
+            Je recherche un cours universitaire.
+            <a href="#"><img src="{{ asset('/img/arrow-right.jpg') }}" alt="En savoir plus" /></a>
+        </p>
+        
+    </div>       
+{% endblock %}

@@ -145,17 +145,9 @@ msp_college:
     pattern:  /college/
     defaults: { _controller: MspFrontendBundle:Frontend:college }
 
-msp_college_section:
-    pattern:  /college/{page}/
-    defaults: { _controller: MspFrontendBundle:Frontend:college }
-
 msp_lycee:
     pattern:  /lycee/
     defaults: { _controller: MspFrontendBundle:Frontend:lycee }    
-
-msp_lycee_section:
-    pattern:  /lycee/{page}/
-    defaults: { _controller: MspFrontendBundle:Frontend:lycee } 
 
 msp_universite:
     pattern:  /universite/

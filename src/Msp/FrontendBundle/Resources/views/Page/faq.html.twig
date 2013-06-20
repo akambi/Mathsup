@@ -11,11 +11,168 @@
 
 {# Le titre de l'entête du document #}
 {% block entetetitle %}FAQ | {{ parent() }}{% endblock %}
-{# La barre latéralke de la page #}
-{% block aside %}{{ parent() }}{% endblock %}
+
+{# On retire le menu niveau #}
+{% block menuNiveau %}{% endblock %}
+
 {# Le contenu de la page #}
 {% block content %}
-    <article class="span9">
+    <header>
         <h1>FAQ</h1>
-    </article>    
+    </header>
+
+    <div class="faq">
+        
+        <article class="odd">
+            <h1>Qui sommes nous ?</h1>
+            <p>
+                Une structure composée de profiles scientifiques qui a pour but de rendre les mathématiques 
+                accessibles. Professeurs, chercheurs, notre parcours personnel nous a amené à rencontrer 
+                beaucoup d’étudiants désemparés face aux mathématiques. Plus qu’un soutien nous proposons un 
+                accompagnement spécialisé selon votre situation et vos besoins.
+            </p>
+            <p class="margin-top-large">
+                Vous ne voulez pas que les mathématiques soient une fatalité ? <br />
+                Nous pouvons vous aidez.
+            </p>
+        </article>
+        
+        <article class="even">
+            <h1>Le soutien MathSup s’adresse–t-il à tous les élèves ?</h1>
+            <p>
+                Le soutien scolaire mathSup, s’adresse à tous types d’élèves de niveau allant du Primaire à la License. 
+            </p>
+        </article>
+        
+        <article class="odd">
+            <h1>Pourquoi le soutien scolaire MathSup ?</h1>
+            <p>
+                Notre efficacité est liée :
+            </p>
+            <ul>
+                <li>À notre exigence dans la qualité de nos professeurs, ils doivent justifier de leur niveau académique (License, professeur en poste).</li>
+                <li>Contrairement à d’autres, nous sommes concentrés sur une matière en particulier. Chaque membre de notre administration dirigeante à un profil scientifique ou d’enseignant. Vous avez donc à faire à un interlocuteur concerné et plus a même de répondre à vos questions.</li>
+                <li>Nous proposons un programme adapté à vos demandes d’objectif.</li>
+                <li>Modernes et dynamiques, nous nous attachons à proposer différents moyens d’intervention.</li>                
+            </ul>
+        </article>
+        
+        <article class="even">
+            <h1>À partir de quel âge le soutien scolaire MathSup ?</h1>
+            <p>
+                Nous acceptons des étudiants de tout âge. L’important est de savoir ce que vous voulez et d’avoir un niveau inferieur à la License.
+            </p>
+        </article>
+        
+        <article class="odd">
+            <h1>Qui sont les enseignants MathSup ?</h1>
+            <p>
+                Les enseignants peuvent être :
+            </p>
+            <ul>
+                <li>Des étudiants,</li>
+                <li>Des membres de l’éducation nationale (enseignants, vacataires...),</li>
+                <li>Des Chercheurs en mathématiques du secteur privé ou du secteur public,</li>
+                <li>Des Ingénieurs.</li>
+            </ul>
+        </article>
+        
+        <article class="even">
+            <h1>Comment être sure que l’enseignant conviendra à mon profil ?</h1>
+            <p>
+                Lors de votre premier entretien, nous établissons un  profil de l’étudiant en termes de vie et 
+                de personnalité.  En fonction de ce profil, nous affectons un enseignant qui rentre en 
+                adéquation avec le profil.
+            </p>
+        </article>
+        
+        <article class="odd">
+            <h1>Comment puis-je avoir plus d’infos ?</h1>
+            <p>
+                Pour plus d’informations, n’hésiter pas à nous contacter par téléphone ou email.
+            </p>
+        </article>
+        
+        <article class="even">
+            <h1>Pourquoi que les Maths ?</h1>
+            <p>
+                Les Maths furent une évidence au vue du profil des fondateurs mais il s’agissait aussi d’une 
+                vision ; une volonté de ne plus voir des étudiants résolus ou fatalistes.
+            </p>
+            <p>
+                Une volonté de justice,  et de permettre à toutes les classes l’accès au perfectionnement et l’accompagnement.
+            </p>
+            <p>
+                Les maths ouvrent la porte à l’esprit scientifique ainsi qu’ à beaucoup d’opportunités qui vont de l’épanouissement personnel au potentiel professionnel.
+            </p>
+        </article>
+        
+        <article class="odd">
+            <h1>Pourquoi MathSup ?</h1>
+            <p>
+                Nous sommes un groupe d’universitaires positifs, nous savons qu’un bon encadrement peu conduire 
+                à une réussite inespérée. Nous en avons fait l’expérience. MathSup c’est toujours regarder vers 
+                le haut (Math & Up).
+            </p>
+        </article>
+        
+        <article class="even">
+            <h1>Qu’est ce que MathsPlus ?</h1>
+            <p>
+                Mathplus (ou Math 4 Us) est une interface de communication que nous utilisons pour communiquer 
+                avec les étudiants et les parents d’une manière moins formel et plus en cohérence avec la 
+                technologie d’aujourd’hui. Plus qu’un blog, nous tentons de créer une connexion entre les 
+                étudiants et les mathématiques.
+            </p>
+            <p>
+                <strong class="blue">En effet, les mathématiques jugées ennuyeuses et trop sérieuses, peuvent être ludiques et à caractère créatif.</strong>
+            </p>
+            <p>
+                Il s’agit d’une autre vision des mathématiques, nous invitons chacun de nos élèves à suivre ce blog updater chaque mois. Ou via Twitter – Facebook.
+            </p>
+        </article>
+        
+        <article class="odd">
+            <h1>Puis-je bénéficier de réduction d’impôts ?</h1>
+            <p>
+                En ce qui concerne les réductions d’impôts, elles sont possibles en qualité de particulier au de emploi de personne à domicile.
+            </p>
+            <p>
+                Vous pouvez bénéficiez d’une réduction d’impôts ou d’un crédit d’impôt de 50% sur les cours effectués.
+            </p>
+        </article>
+        
+        <article class="even">
+            <h1>Comité d’entreprise</h1>
+            <p>
+                Pour comité d’entreprise :
+            </p>
+            <ul>
+                <li>Nous proposons des offres spécifiques </li>
+                <li>
+                    Possibilités d’intervention :
+                    <ul>
+                        <li>Séminaire collectif</li>
+                        <li>Cours par petit groupes</li>
+                        <li>Remises à niveau aux vue de certification ou diplômes.</li>
+                    </ul>
+                </li>                            
+            </ul>
+            <p>
+                Pour plus de détails sur nos offres et nos tarifs, n’hésiter pas à nous contacter via l’adresse mail suivante.
+            </p>
+        </article>
+        
+        <article class="odd">
+            <h1>Recrutement</h1>
+            <p>
+                Nous recrutons à toute période de l’année, nous sommes inflexibles au regard des critères de diplômes. 
+            </p>
+            <p>
+                N’hésiter pas à nous contacter avec votre CV  à mathsup.net
+            </p>
+        </article>
+        
+    </div>    
+    
 {% endblock %}

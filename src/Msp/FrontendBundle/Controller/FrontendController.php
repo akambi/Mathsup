@@ -70,81 +70,16 @@ class FrontendController extends Controller
         return $this->render('MspFrontendBundle:Page:primaire.html.twig');
     }
     
-    public function collegeAction( $page = 0 )
-    {
-        $page_disponible = array( 0, "6ieme", "5ieme", "4ieme", "3ieme");
-        
-        if( in_array($page, $page_disponible) ):
-            if( $page === 0 ):
-                return $this->render('MspFrontendBundle:Page:college.html.twig');
-            elseif($page === "6ieme"):
-                return $this->collegeSixiemeAction();
-            elseif($page === "5ieme"):    
-                return $this->collegeCinquiemeAction();
-            elseif($page === "4ieme"):
-                return $this->collegeQuatriemeAction();
-            else:
-                return $this->collegeTroisiemeAction();
-            endif;
-        else:
-            throw $this->createNotFoundException("Page introuvable !");
-        endif;
+    public function collegeAction()
+    {        
+        return $this->render('MspFrontendBundle:Page:college.html.twig');            
+    }
+         
+    public function lyceeAction()
+    {        
+        return $this->render('MspFrontendBundle:Page:lycee.html.twig');           
     }
     
-    public function collegeSixiemeAction()
-    {
-        return $this->render('MspFrontendBundle:Page:college_sixieme.html.twig');
-    }
-    
-    public function collegeCinquiemeAction()
-    {
-        return $this->render('MspFrontendBundle:Page:college_cinquieme.html.twig');
-    }
- 
-    public function collegeQuatriemeAction()
-    {
-        return $this->render('MspFrontendBundle:Page:college_quatrieme.html.twig');
-    }
- 
-     public function collegeTroisiemeAction()
-    {
-        return $this->render('MspFrontendBundle:Page:college_troisieme.html.twig');
-    }
- 
-    public function lyceeAction( $page = 0 )
-    {
-        $page_disponible = array( 0, "2nde", "1ere", "tle");
-        
-        if( in_array($page, $page_disponible) ):
-            if( $page === 0 ):
-                return $this->render('MspFrontendBundle:Page:lycee.html.twig');
-            elseif($page === "2nde"):
-                return $this->lyceeSecondeAction();
-            elseif($page === "1ere"):    
-                return $this->lyceePremiereAction();
-            else:
-                return $this->lyceeTerminaleAction();
-            endif;
-        else:
-            throw $this->createNotFoundException("Page introuvable !");
-        endif;
-    }
- 
-    public function lyceeSecondeAction()
-    {
-        return $this->render('MspFrontendBundle:Page:lycee_seconde.html.twig');
-    }
- 
-    public function lyceePremiereAction()
-    {
-        return $this->render('MspFrontendBundle:Page:lycee_premiere.html.twig');
-    }
- 
-    public function lyceeTerminaleAction()
-    {
-        return $this->render('MspFrontendBundle:Page:lycee_terminale.html.twig');
-    }
- 
     public function universiteAction( $page = 0 )
     {
         $page_disponible = array( 0, "licence", "prepa");
