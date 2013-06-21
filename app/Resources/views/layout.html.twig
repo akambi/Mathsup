@@ -63,14 +63,14 @@
                             
                     </nav>
                     
-                    <ul>
-                        <li><a href="{{ path('fos_user_registration_register') }}"><img src="{{ asset('/img/inscription.png') }}" alt="inscription" /></a></li>
+                    <ul class="login-sign-in">
+                        <li><a href="{{ path('fos_user_registration_register') }}">+ S'INSCRIRE</a></li>
                         <li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             {# L'utilisateur est connecté ! #}                            
                             <a class="btn btn-danger" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
                             {% else %}
-                            <a href="{{ path('fos_user_security_login') }}"><img src="{{ asset('/img/connexion.png') }}" alt="connexion" /></a>
+                            <a href="{{ path('fos_user_security_login') }}">CONNEXION</a>
                             {% endif %}
                         </li>
                     </ul>
@@ -88,6 +88,21 @@
                     </ul>
                 </nav>
                 {% endblock %}
+                
+                <form id="connexion-menu" class="hide" action="{{ path("fos_user_security_check") }}" method="post">
+                    <fieldset class="text-center">
+                        <div>
+                            <a href="{{ path("fos_user_resetting_request") }}">Mot de passe oublié ?</a>
+                            <label class="checkbox"><input type="checkbox" id="remember_me" name="_remember_me" value="on" /> Se rappeler de moi.</label>
+                            <a href="{{ path('fos_user_registration_register') }}">Pas encore membre ? S’inscrire.</a>
+                        </div>
+                        <div>
+                            <input type="text" id="username" name="_username" class="input-small" placeholder="Login" required="required" />
+                            <input type="password" id="password" name="_password"  class="input-small" placeholder="Mot de passe" required="required" />
+                            <input type="submit" id="_submit" class="" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+                        </div>
+                    </fieldset>
+                </form>
                 
             </header>
                 

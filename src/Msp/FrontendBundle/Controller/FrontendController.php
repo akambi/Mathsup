@@ -49,7 +49,7 @@ class FrontendController extends Controller
     //  On exécute le traitement du formulaire. S'il retourne true, alors le formulaire a bien été traité
         if( $formHandler->process() )
         {
-            $msg = "Message envoyé. Merci!";
+            $msg = "Merci, nous prenons en compte votre demande.";
         }
         
         return $this->render('MspFrontendBundle:Page:contact.html.twig', array( 'form' => $form->createView(), 'msg' => $msg ));

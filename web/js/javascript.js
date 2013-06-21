@@ -71,6 +71,84 @@ $(document).ready(function() {
                     $(this).text((index + 1)+". "+ $(this).text()); 
                 });
     });
+//  On gère ici le hover sur le bouton connexion
+    $(".login-sign-in li:last a").mouseenter( function( ){
+        $("#menu-niveau").hide();
+        $(".container-fluid > section > header").hide();
+        $("#connexion-menu").show();
+    });
+    
+    $(".container-fluid > section, .login-sign-in li:first a, #menu").mouseenter( function( ){
+        $("#menu-niveau").show();
+        $(".container-fluid > section > header").show();
+        $("#connexion-menu").hide();
+    });
+/*  Le slider de la liste des membres */
+    var liste_equipes = $('#liste-equipes');
+    var liste_equipes_total = liste_equipes.children().length;
+    //  Le nombre de projets à afficher
+    var membres_a_afficher = 7;
+    var membre_debut = 0;
+    //  Action qui se produit quand on clic sur le bouton précédent
+    var previous_action = function(){
+        //  Si on est au début, on ne fait rien sinon on slide
+        if( membre_debut === 0 ){
+            return;
+        }else{
+            membre_debut -=1;
+            var projet_end = membre_debut + membres_a_afficher;
+            set_display_projets(liste_equipes, membre_debut, projet_end, 'previous');
+            // Si on est au début du slide, cacher le bouton slider
+            if( membre_debut === 0 ){
+                $('#slider-footer .previous').hide();
+            }
+            //  Si on vient de quitter la fin du slide, on affiche le bouton next
+            if( ( membre_debut + membres_a_afficher ) === ( liste_equipes_total - 1 ) ){
+                $('#slider-footer .next').show();
+            }
+        }
+    };
+    //  Action qui se produit quand on clic sur le bouton suivant
+    var next_action = function(){
+        //  Si on est à la fin du slide, on ne fait rien, sinon on slide
+        if( ( membre_debut + membres_a_afficher ) === ( liste_equipes_total ) ){
+            return;
+        }else{
+            membre_debut +=1;
+            var projet_end = membre_debut + membres_a_afficher;
+            set_display_projets(liste_equipes, membre_debut, projet_end, 'next');
+            //  Si on vient de démarrer le slide, on affiche le bouton previous
+            if( membre_debut === 1 ){
+                $('#slider-footer .previous').show();
+            }
+            //  Si on est à la fin du slide, on cache le bouton next
+            if( ( membre_debut + membres_a_afficher ) === ( liste_equipes_total ) ){
+                $('#slider-footer .next').hide();
+            }
+        }
+    };
+    //  On crée le bouton précédent du slider liste projets
+        $('<img class="previous" />')
+                .attr('src', '/img/slider-left.jpg')                
+                .click( previous_action )
+                .prependTo( '#slider-footer' );
+    //  On cache le bouton previous au début
+    if( membre_debut === 0 ){
+        $('#slider-footer .previous').hide();
+    }
+    //  On crée le bouton suivant du slider liste projets
+        $('<img class="next" />')
+                .attr('src', '/img/slider-right.jpg')                
+                .click( next_action )
+                .appendTo( '#slider-footer' );
+    //  On gère ici les redirections des images
+        $('#liste-equipes img').click( function(){
+            var index = $(this).parent().parent().index();
+            alert('On se dirige vers le lien de l\'image ' + ( index + 1) );
+            //window.open( protocole + 'exemple' + domaineCOM );
+            return false;
+        });
+/*  Fin du code du slider en bas de page */
 });
 
 /*
@@ -86,4 +164,21 @@ function movTo( total, width ){
     if( current_slide === ( total ) ){
         current_slide = 0;
     }    
+}
+
+/*
+* 
+* name: set_display_projets
+* description: permet de faire défiler les vignettes des projets
+* @returns [null]
+* 
+*/
+function set_display_projets(container, first, last, method) {
+    if(method === 'next'){
+        container.children().eq(first-1).hide('slow');
+        container.children().eq(last).show('slow');
+    }else{
+        container.children().eq(last+1).hide('slow');
+        container.children().eq(first).show('slow');
+    }
 }

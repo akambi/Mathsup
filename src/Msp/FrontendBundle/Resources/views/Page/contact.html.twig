@@ -11,20 +11,81 @@
 
 {# Le titre de l'entête du document #}
 {% block entetetitle %}CONTACT | {{ parent() }}{% endblock %}
-{# La barre latéralke de la page #}
-{% block aside %}{{ parent() }}{% endblock %}
+
+{# On retire le menu niveau #}
+{% block menuNiveau %}{% endblock %}
+
 {# Le contenu de la page #}
 {% block content %}
-    <article class="span9">
+    <header>
         <h1>CONTACT</h1>
-        {% if msg %}
-        <div class="alert alert-success">{{ msg }}</div>
-        {% endif %}
-        <form action="" method="post" {{ form_enctype(form) }}>
-            {{ form_widget(form) }}
-            <p>
-                <button class="btn btn-primary" type="submit">Valider</button>
-            </p>
-        </form>
-    </article>    
+    </header>
+    
+    <div class="contact">
+        
+        <div class="firswrap">
+            <article>
+                <h1>Nous vous rappelons (service immédiat et gratuit)</h1>
+                
+                <form id="contactform" action="" method="post" {{ form_enctype(form) }}>
+                    <fieldset>
+                        {{ form_widget(form) }}
+                        <div class="bottomwrap">
+                            {% if msg %}
+                            <div class="email-send">{{ msg }}</div>
+                            {% endif %}
+                            <div class="button-send">
+                                <button type="submit">ENVOYER</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </article>
+
+            <article>
+                <h1>À PROPOS DE MATHSUP</h1>
+                <p>
+                    <q>Les maths ouvrent la porte à l’esprit scientifique et donc à beaucoup d’opportunités qui 
+                    vont de l’épanouissement personnel au potentiel professionnel. Pour votre futur, il 
+                    faut réagir maintenant !</q>
+                    <cite>C. Kamtchueng</cite>
+                </p>
+            </article>
+                
+        </div>
+        
+        <article>
+            <h1>NOTRE ÉQUIPE</h1>            
+            <div id="slider-footer">                        
+                <ul id="liste-equipes">
+                    <li><a title="1" href="#"><img src="{{ asset('/img/photo-1.jpg') }}" alt="" /></a></li>
+                    <li><a title="2" href="#"><img src="{{ asset('/img/photo-2.jpg') }}" alt="" /></a></li>
+                    <li><a title="3" href="#"><img src="{{ asset('/img/photo-3.jpg') }}" alt="" /></a></li>
+                    <li><a title="4" href="#"><img src="{{ asset('/img/photo-4.jpg') }}" alt="" /></a></li>
+                    <li><a title="5" href="#"><img src="{{ asset('/img/photo-5.jpg') }}" alt="" /></a></li>
+                    <li><a title="6" href="#"><img src="{{ asset('/img/photo-6.jpg') }}" alt="" /></a></li>
+                    <li><a title="7" href="#"><img src="{{ asset('/img/photo-7.jpg') }}" alt="" /></a></li> 
+                    <li><a title="8" href="#"><img src="{{ asset('/img/photo-1.jpg') }}" alt="" /></a></li>
+                    <li><a title="9" href="#"><img src="{{ asset('/img/photo-2.jpg') }}" alt="" /></a></li>
+                    <li><a title="10" href="#"><img src="{{ asset('/img/photo-3.jpg') }}" alt="" /></a></li>
+                    <li><a title="11" href="#"><img src="{{ asset('/img/photo-4.jpg') }}" alt="" /></a></li>
+                </ul>                        
+            </div>
+        </article>
+        
+        <div class="newsletter">
+            <div>
+                <h1>NOTRE NEWSLETTER</h1>
+                <form id="newsletter" class="form-inline" action="" method="post">
+                    <fieldset>
+                        <input type="text" placeholder="Entrez votre Nom">
+                        <input type="email" placeholder="Entrez votre Email">
+                        <button type="submit">S'ABONNER</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+            
+    </div>
+    
 {% endblock %}

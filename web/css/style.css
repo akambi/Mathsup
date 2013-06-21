@@ -6200,6 +6200,7 @@ h1.titre{font-size: 12px; line-height: 12px; text-align: center; display: none; 
   background-color: #eeeeee;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
+       -o-border-radius: 6px;
           border-radius: 6px;
 }
 #fos_user_registration_form_roles label { display:none; }
@@ -6239,11 +6240,33 @@ h1.titre{font-size: 12px; line-height: 12px; text-align: center; display: none; 
 .container-fluid > header ul li { display: inline-block; }
 #menu, #menu ul, #menu ul li { min-height: 81px; }
 #menu ul li a, #menu ul li a:link, #menu ul li a:visited, #menu ul li a:active { display: block; line-height: 81px; color: #2a2a2a; font-size: 13px; padding: 0 20px; }
-#menu ul li a:hover, #menu ul li a:focus { background: url('/img/menu-hover.jpg') center bottom no-repeat; text-decoration: none;}
-#menu-niveau, .container-fluid > section > header { background: #023e70 url('/img/bg_header.jpg') top left repeat-x; min-height: 80px; }
+#menu ul li a:hover, #menu ul li a:focus, .login-sign-in li:hover, .login-sign-in li:focus { background: url('/img/menu-hover.jpg') center bottom no-repeat; text-decoration: none;}
+#menu-niveau, .container-fluid > section > header, #connexion-menu { background: #023e70 url('/img/bg_header.jpg') top left repeat-x; min-height: 80px; }
 #menu-niveau ul, #menu-niveau ul li { min-height: 81px; max-width: 840px; margin: 0 auto; }
 .container-fluid > section > header h1, #menu-niveau ul li a, #menu-niveau ul li a:link, #menu-niveau ul li a:active, #menu-niveau ul li a:visited { display: block; padding: 0 20px; line-height: 80px; font-size: 25px; color: white; }
 #menu-niveau ul li a:hover, #menu-niveau ul li a:focus { background: url('/img/menu-niveau-hover.jpg') center bottom no-repeat; text-decoration: none; }
+/* menu d'inscription et de connexion'*/
+.login-sign-in, .login-sign-in li { min-height: 81px; line-height: 81px; }
+.login-sign-in li a, .login-sign-in li a:link, .login-sign-in li a:visited, .login-sign-in li a:active 
+{ 
+    padding: 5px 10px; 
+    color: #d1d1d1; 
+    background-color: #b2b2b2;    
+    -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+       -o-border-radius: 5px;
+          border-radius: 5px;
+}
+.login-sign-in li a:hover, .login-sign-in li a:focus { background-color: #009fe3; text-decoration: none;}
+/*  Formulaire de connexion  */
+#connexion-menu { margin: 0; }
+#connexion-menu fieldset { padding: 10px 0; }
+#connexion-menu fieldset > div { display: inline-block; vertical-align: middle; max-width: 50%; text-align: left; margin-right: 100px; }
+#connexion-menu fieldset > div a, #connexion-menu fieldset > div label { color: white; margin: 0; }
+#connexion-menu fieldset > div a:hover, #connexion-menu fieldset > div a:focus { text-decoration: none; }
+#connexion-menu fieldset > div + div input { display: inline-block; vertical-align: middle; margin: 0 20px 0 0; }
+#connexion-menu fieldset > div input[type=text], #connexion-menu fieldset > div input[type=password] { min-height: 48px; padding: 0 5px; line-height: 48px; width: 200px; }
+#connexion-menu fieldset > div input[type=submit] { background: url('/img/btn-ok.png') top center no-repeat; cursor: pointer;  min-height: 48px; line-height: 48px; width: 119px; color: #708b98; border: 0 none; }
 /*  Contenu */
 .container-fluid > section {  }
 ul.dash { list-style: none; }
@@ -6305,11 +6328,79 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 /*  Contenu FAQ  */
 .container-fluid > section > header h1 { text-align: center; margin: 0; }
 .faq article p, .faq article ul, .faq article h1 { max-width: 900px; margin: 0 auto; }
+.faq article p.faq-top { margin-top: 30px; }
+.faq article p.faq-top strong { color: #009fe3; }
 .faq article.odd { background: #3b3b3b url('/img/faq-odd.jpg') top center repeat-y; padding: 20px 0; color: #b8b8b8; border-bottom: 1px #585858 solid; }
 .faq article.even { background: #323232 url('/img/faq-even.jpg') top center repeat-y; padding: 20px 0; color: #8a8a8a; border-bottom: 1px #585858 solid; }
 .faq article h1 { font-size: 16px; font-weight: bold; color: white; }
 .faq article ul { max-width: 870px; margin: 0 auto; }
 .faq article ul ul { max-width: 840px; }
+/*  Content contact  */
+    /*  Ici le slider  */
+.contact { background: #f2f2f2; padding-bottom: 30px; }
+.contact .newsletter {  background: #fff; border-top: 1px #cecece solid; border-bottom: 1px #cecece solid; }
+.contact .firswrap, .contact article  { max-width: 1000px; margin: 0 auto; }
+.contact article h1, .newsletter h1 { font-size: 16px; color: #009fe3; }
+
+.contact .firswrap > article { display: inline-block; vertical-align: top; width: 75%; }
+.contact .firswrap > article + article { width: 23%; margin-left: 1%; }
+.contact .firswrap q { display: block; padding: 20px; background: white; border:  1px #cecece solid; margin-bottom: 20px;  
+    -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+       -o-border-radius: 5px;
+          border-radius: 5px;
+}
+.contact .firswrap cite { display: block; text-align: right; }
+
+.contact #contactform fieldset { background: white; padding: 20px; border:  1px #cecece solid; 
+    -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+       -o-border-radius: 5px;
+          border-radius: 5px;
+}
+#contactform label { display: none; }
+#contactform fieldset > div { position: relative; }
+#contactform fieldset > div > div { display: inline-block; width: 220px; margin-right: 44%; }
+#contactform fieldset > div > div + div { position: absolute; top: 0; right: 0; margin-right: 0; }
+#contactform fieldset > div > div + div + div { position: absolute; top: 80px; left: 0; margin-right: 0; }
+#contactform fieldset > div > div + div + div + div { position: absolute; top: 80px; left: 295px; width: 400px; margin-right: 0;}
+#contactform fieldset > div > div + div + div + div + div { position: absolute; top: 160px; left: 0; margin-right: 0; }
+#icls_boutiquebundle_contacttype_message { width: 400px; height: 100px; }
+#contactform input[type=text], #contactform input[type=email], #contactform select{  }
+#contactform fieldset .bottomwrap { margin-top: 200px; }
+#contactform fieldset .bottomwrap > div { display: inline-block; vertical-align: middle; width: 20%;}
+#contactform fieldset .bottomwrap .email-send { width: 72%;  padding: 0 20px; background: #525252 url('/img/mail-send.jpg') top right no-repeat; height: 39px; line-height: 39px; color: white; }
+#contactform fieldset .bottomwrap .button-send{ float: right; margin: 0; }
+#contactform fieldset .bottomwrap > div button { width: 100%; height: 39px; line-height: 39px; background: #004899; color: white; border: 0 none; font-weight: bold; 
+     -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+          -o-border-radius: 5px;
+             border-radius: 5px;
+}
+
+.newsletter { padding: 30px 0; }
+.newsletter > div { max-width: 1000px; margin: 0 auto; }
+.newsletter h1, .newsletter form {  display: inline-block; vertical-align: middle; margin: 0; }
+.newsletter h1 { margin-right: 17.3%; }
+.newsletter input[type=text], .newsletter input[type=email] { width: 200px; padding: 10px; background: #f0f0f0; border: 2px #e5e5e5 solid; margin-right: 20px; }
+.newsletter button { width: 150px; background: #004899; color: white; border: 0 none; font-weight: bold; height: 40px; line-height: 40px; 
+    -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+          -o-border-radius: 5px;
+             border-radius: 5px;
+}
+
+#slider-footer { max-width: 1000px; margin: 0 auto 30px; position: relative; }
+#slider-footer img { cursor: pointer; }
+#slider-footer > img { position: absolute; top: 50%; margin-top: -13px; }
+#slider-footer > img.previous { left: -40px; }
+#slider-footer > img.next { right: -40px; }
+#slider-footer ul { list-style: none; max-width: 1000px; max-height: 116px; margin: 0 auto; overflow: hidden; }
+#slider-footer ul li { display: inline-block; margin-left: 20px; }
+#slider-footer ul li a { display: block; }
+#slider-footer ul li img { max-width: 117px; max-height: 116px;}
+#slider-footer ul li:last-child a img { }
+#slider-footer ul li:first-child { margin-left: 0; }
 /*  Le pied de page  */
 .container-fluid > footer{ background: #2a2a2a url('/img/bg_footer.jpg') top center no-repeat; min-height: 65px; text-align: center; }
 .container-fluid > footer > div { max-width: 1000px; margin: 0 auto; }

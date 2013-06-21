@@ -43,7 +43,7 @@ class ContactHandler
         
         $message = \Swift_Message::newInstance()
         ->setSubject($data["objet"])
-        ->setFrom( array( $data["email"] => $data["nom"].$data["prenom"]) )
+        ->setFrom( array( $data["email"] => $data["nom"]) )
         ->setTo( array( $webmaster_email => $webmaster_name ) )
         ->setBody( nl2br($data["message"]).'<br/>Téléphone: '.$data["telephone"] )
         ->setContentType( 'text/html' );
