@@ -6299,6 +6299,7 @@ ul.dash li:before{
 #slider .slider-handler { position: absolute; top: 0; left: 0; height: 252px; }
 #slider .slider-handler img { float: left; }
 /*  Contenu Niveau */
+#btn_up, #btn_up:hover { outline: none; }
 .niveau { background: #f2f2f2; padding: 20px; min-height: 500px; }
 .niveau .header, .niveau .footer { max-width: 1000px; margin: 0 auto; }
 .niveau .header { background: #ced9e5; padding: 20px;  max-width: 960px; -webkit-border-radius: 10px; -o-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
@@ -6358,15 +6359,14 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
        -o-border-radius: 5px;
           border-radius: 5px;
 }
-#contactform label { display: none; }
 #contactform fieldset > div { position: relative; }
-#contactform fieldset > div > div { display: inline-block; width: 220px; margin-right: 44%; }
+#contactform fieldset > div > div { display: inline-block; width: 240px; }
 #contactform fieldset > div > div + div { position: absolute; top: 0; right: 0; margin-right: 0; }
 #contactform fieldset > div > div + div + div { position: absolute; top: 80px; left: 0; margin-right: 0; }
 #contactform fieldset > div > div + div + div + div { position: absolute; top: 80px; left: 295px; width: 400px; margin-right: 0;}
 #contactform fieldset > div > div + div + div + div + div { position: absolute; top: 160px; left: 0; margin-right: 0; }
 #icls_boutiquebundle_contacttype_message { width: 400px; height: 100px; }
-#contactform input[type=text], #contactform input[type=email], #contactform select{  }
+#contactform input[type=text], #contactform input[type=email], #contactform select, #contactform input[type=number]{ margin-bottom: 0; }
 #contactform fieldset .bottomwrap { margin-top: 200px; }
 #contactform fieldset .bottomwrap > div { display: inline-block; vertical-align: middle; width: 20%;}
 #contactform fieldset .bottomwrap .email-send { width: 72%;  padding: 0 20px; background: #525252 url('/img/mail-send.jpg') top right no-repeat; height: 39px; line-height: 39px; color: white; }
@@ -6376,6 +6376,17 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
         -moz-border-radius: 5px;
           -o-border-radius: 5px;
              border-radius: 5px;
+}
+#contactform ul { list-style: none; padding: 0; margin: 0; 
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    background-color: #fcf8e3;
+    border: 1px solid #fbeed5;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+   color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
 }
 
 .newsletter { padding: 30px 0; }
@@ -6389,7 +6400,12 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
           -o-border-radius: 5px;
              border-radius: 5px;
 }
-
+/*  Contenu general  */
+.general-content { background: #f2f2f2; min-height: 500px; padding: 20px 0; }
+.general-content article { max-width: 1000px; margin: 0 auto; }
+.general-content h1, .general-content p { margin: 0; }
+.general-content article h1 { max-width: 1000px; font-size: 16px; color: #009fe3; }
+/*  Contenu general  */
 #slider-footer { max-width: 1000px; margin: 0 auto 30px; position: relative; }
 #slider-footer img { cursor: pointer; }
 #slider-footer > img { position: absolute; top: 50%; margin-top: -13px; }

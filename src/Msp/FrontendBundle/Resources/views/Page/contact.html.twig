@@ -29,7 +29,29 @@
                 
                 <form id="contactform" action="" method="post" {{ form_enctype(form) }}>
                     <fieldset>
-                        {{ form_widget(form) }}
+                        <div>
+                            <div>
+                                {{ form_widget(form.nom) }}
+                                {{ form_errors(form.nom) }}
+                            </div>
+                            <div>
+                                {{ form_widget(form.objet) }}
+                                {{ form_errors(form.objet) }}
+                            </div>                            
+                            <div>
+                                {{ form_widget(form.telephone) }}
+                                {{ form_errors(form.telephone) }}
+                            </div>
+                            <div>
+                                {{ form_widget(form.message) }}
+                                {{ form_errors(form.message) }}
+                            </div>
+                            <div>
+                                {{ form_widget(form.email) }}
+                                {{ form_errors(form.email) }}
+                            </div>
+                        </div>
+                        {{ form_rest(form) }} 
                         <div class="bottomwrap">
                             {% if msg %}
                             <div class="email-send">{{ msg }}</div>
@@ -76,10 +98,10 @@
         <div class="newsletter">
             <div>
                 <h1>NOTRE NEWSLETTER</h1>
-                <form id="newsletter" class="form-inline" action="" method="post">
+                <form id="newsletter" class="form-inline" action="{{ path('msp_newsletter')}}" method="post">
                     <fieldset>
-                        <input type="text" placeholder="Entrez votre Nom">
-                        <input type="email" placeholder="Entrez votre Email">
+                        <input type="text"  id="user_name" name="user_name" placeholder="Entrez votre Nom">
+                        <input type="email" id="user_email" name="user_email" placeholder="Entrez votre Email">
                         <button type="submit">S'ABONNER</button>
                     </fieldset>
                 </form>

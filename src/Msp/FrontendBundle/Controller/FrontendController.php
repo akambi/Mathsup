@@ -17,6 +17,7 @@ use Msp\FrontendBundle\Entity\UserAvailability;
 use Msp\FrontendBundle\Entity\UserQcm;
 use Msp\FrontendBundle\Entity\Coupon;
 use Msp\FrontendBundle\Entity\Ticket;
+use Msp\FrontendBundle\Entity\Newsletter;
 //  Introduction des form type
 use Msp\FrontendBundle\Form\CouponType;
 use Msp\FrontendBundle\Form\ContactType;
@@ -55,6 +56,37 @@ class FrontendController extends Controller
         return $this->render('MspFrontendBundle:Page:contact.html.twig', array( 'form' => $form->createView(), 'msg' => $msg ));
     }
     
+    public function newsletterAction()
+    {
+        $request = $this->getRequest();
+        if( $request->getMethod() == 'POST' )
+        {
+            $user_email = $request->get('user_email');
+            $user_name = $request->get('user_name');
+            $em = $this->getDoctrine()->getManager();
+            $newsletter = $em->getRepository('MspFrontendBundle:Newsletter')->findByEmail($user_email);
+            if(!$newsletter):
+                $newsletter = new Newsletter();
+                $newsletter->setNom($user_name);
+                $newsletter->setEmail($user_email);
+                $em->persist($newsletter);
+                $em->flush();
+                $msg="Merci pour votre inscription à la newsletter !";
+            else:
+                $msg="Vous êtes déjà inscrit à notre newsletter. Merci !";
+            endif;
+        }else{
+            $referer_url = $this->get('request')->headers->get('referer');
+            if ($referer_url != null) {
+                return $this->redirect($referer_url);
+            }else{
+                return $this->redirect($this->generateUrl('msp_frontend_homepage'));
+            }
+        }
+        
+        return $this->render('MspFrontendBundle:Page:newsletter.html.twig', array( 'msg' => $msg ) );
+    }   
+    
     public function mathPlusAction()
     {
         return $this->render('MspFrontendBundle:Page:math_plus.html.twig');
@@ -80,33 +112,11 @@ class FrontendController extends Controller
         return $this->render('MspFrontendBundle:Page:lycee.html.twig');           
     }
     
-    public function universiteAction( $page = 0 )
-    {
-        $page_disponible = array( 0, "licence", "prepa");
-        
-        if( in_array($page, $page_disponible) ):
-            if( $page === 0 ):
-                return $this->render('MspFrontendBundle:Page:universite.html.twig');
-            elseif($page === "licence"):
-                return $this->universiteLicenceAction();            
-            else:
-                return $this->universitePrepaAction();
-            endif;
-        else:
-            throw $this->createNotFoundException("Page introuvable !");
-        endif;
+    public function universiteAction()
+    {          
+        return $this->render('MspFrontendBundle:Page:universite.html.twig');            
     }
- 
-    public function universiteLicenceAction()
-    {
-        return $this->render('MspFrontendBundle:Page:universite_licence.html.twig');
-    }
- 
-    public function universitePrepaAction()
-    {
-        return $this->render('MspFrontendBundle:Page:universite_prepa.html.twig');
-    }    
- 
+    
     public function institutionAction( $page = 0 )
     {
         $page_disponible = array( 0, "remise-a-niveau", "comite-entreprise", "preparation-concours");
@@ -171,7 +181,7 @@ class FrontendController extends Controller
     public function liensAction()
     {
         return $this->render('MspFrontendBundle:Page:liens.html.twig');
-    }    
+    } 
     
     /**
      * @Secure(roles="ROLE_ELEVE")

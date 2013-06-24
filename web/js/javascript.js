@@ -149,6 +149,24 @@ $(document).ready(function() {
             return false;
         });
 /*  Fin du code du slider en bas de page */
+//  Ici on ajoute un script pour un bouton qui permet un retour en entête de page
+    $('#btn_up').click(function() {
+        $('html,body').animate({scrollTop: 0}, 'slow');
+        return false;
+    });
+    
+    $(window).scroll(function(){
+        
+        if ($(window).scrollTop() < 500){
+            $('#btn_up').stop().animate({'opacity':0},function(){
+               $(this).hide()
+            });
+        } else {
+            $('#btn_up').stop().show().animate({'opacity':1});
+        }
+        
+    });
+
 });
 
 /*

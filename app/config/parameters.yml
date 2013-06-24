@@ -21,8 +21,8 @@ parameters:
 
 # info du webmaster
     webmaster_name:     mathsup
-    #webmaster_email:    contact@akambi-fagbohoun.com
-    webmaster_email:    steve-i-class@hotmail.fr
+    webmaster_email:    contact@akambi-fagbohoun.com
+    #webmaster_email:    steve-i-class@hotmail.fr
 
 # La note minimal pour accéder au qcm suivant
     note:               16

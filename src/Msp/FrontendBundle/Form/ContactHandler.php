@@ -28,6 +28,9 @@ class ContactHandler
             {
                 $this->onSuccess($this->form->getData());
                 return true;
+            }else{
+                print_r($this->form->getErrors());
+                exit();
             }
         }
         return false;

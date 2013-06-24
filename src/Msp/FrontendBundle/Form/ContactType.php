@@ -26,7 +26,7 @@ class ContactType extends AbstractType
         $collectionConstraint = new Collection(array(            
             'nom' => new Length( array('min' => 3) ),            
             'email' => new Email(array('message' => 'Email invalide')),
-            'telephone' => new Length( array('min' => 5) ),
+            'telephone' => new Length( array('min' => 8) ),
             'objet' => new Length( array('min' => 5) ),
             'message' => new Length( array('min' => 10) ),
         ));

@@ -161,10 +161,6 @@ msp_institution:
     pattern:  /institution/
     defaults: { _controller: MspFrontendBundle:Frontend:institution }
 
-msp_institution_section:
-    pattern:  /institution/{page}/
-    defaults: { _controller: MspFrontendBundle:Frontend:institution }
-
 msp_tarifs:
     pattern:  /tarifs/
     defaults: { _controller: MspFrontendBundle:Frontend:tarifs }
@@ -188,6 +184,10 @@ msp_plan_du_site:
 msp_liens:
     pattern:  /liens/
     defaults: { _controller: MspFrontendBundle:Frontend:liens }
+
+msp_newsletter:
+    pattern:  /newsletter/
+    defaults: { _controller: MspFrontendBundle:Frontend:newsletter }
 
 #
 # Les routes pour niveau #
