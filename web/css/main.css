@@ -81,9 +81,9 @@ h1.titre{font-size: 12px; line-height: 12px; text-align: center; display: none; 
 #menu, #menu ul, #menu ul li { min-height: 81px; }
 #menu ul li a, #menu ul li a:link, #menu ul li a:visited, #menu ul li a:active { display: block; line-height: 81px; color: #2a2a2a; font-size: 13px; padding: 0 20px; }
 #menu ul li a:hover, #menu ul li a:focus, .login-sign-in li:hover, .login-sign-in li:focus { background: url('/img/menu-hover.jpg') center bottom no-repeat; text-decoration: none;}
-#menu-niveau, .container-fluid > section > header, #connexion-menu { background: #023e70 url('/img/bg_header.jpg') top left repeat-x; min-height: 80px; }
+#menu-niveau, .container-fluid > section > header, #connexion-menu { background: url('/img/bg_sub_menu.jpg') no-repeat fixed center center / cover; min-height: 80px; }
 #menu-niveau ul, #menu-niveau ul li { min-height: 81px; max-width: 840px; margin: 0 auto; }
-.container-fluid > section > header h1, #menu-niveau ul li a, #menu-niveau ul li a:link, #menu-niveau ul li a:active, #menu-niveau ul li a:visited { display: block; padding: 0 20px; line-height: 80px; font-size: 25px; color: white; }
+.container-fluid > section > header h1, #menu-niveau ul li a, #menu-niveau ul li a:link, #menu-niveau ul li a:active, #menu-niveau ul li a:visited { display: block; padding: 0 20px; line-height: 80px; font-size: 24px; color: white; }
 #menu-niveau ul li a:hover, #menu-niveau ul li a:focus { background: url('/img/menu-niveau-hover.jpg') center bottom no-repeat; text-decoration: none; }
 /* menu d'inscription et de connexion'*/
 .login-sign-in, .login-sign-in li { min-height: 81px; line-height: 81px; }
@@ -119,10 +119,10 @@ ul.dash li:before{
 
 
 /*  Contenu  accueil */
-.accueil .contentheader { background: url('/img/bg_content.jpg') top center repeat-x; min-height: 254px; color: white; }
+.accueil .contentheader {background-image: url("/img/bg.jpg");background-repeat: no-repeat;background-position: center center; min-height: 254px; color: white;}
 .accueil .contentheader h1 { margin: 0; padding-top: 50px; font-size: 36px; text-align: center; margin-bottom: 20px; ;}
 .accueil .contentheader p { max-width: 400px; margin: 0 auto; font-size: 15px; }
-.accueil .content { background: #f2f2f2; text-align: center; padding: 10px 0 20px; }
+.accueil .content { background: #f2f2f2 no-repeat fixed center center; text-align: center; width: 1200px; margin: 0 auto}
 .accueil .content h2 { margin: 0; margin-bottom: 20px; color: #009fe3; font-size: 16px; max-width: 1000px; text-align: left; margin: 0 auto; }
 .accueil .content > div { display: inline-block; vertical-align: top; width: 333px; border-right: 1px #cecece solid;  padding: 20px 0; }
 .accueil .content > div:last-child { border: 0 none; }
