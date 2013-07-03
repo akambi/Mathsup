@@ -70,18 +70,19 @@ h1.titre{font-size: 12px; line-height: 12px; text-align: center; display: none; 
 
 /* Début style Mathsup  */
 /*  entete  */
-.container-fluid { padding: 0; }
-.container-fluid > header > div { max-width: 1000px; margin: 0 auto; min-height: 81px; }
+.container-fluid { padding: 0;}
+.container-fluid > header > div {width: 1000px; margin: 0 auto; height: 81px;padding-left: 40px }
 .container-fluid > header > div > a, .container-fluid > header > div > nav, .container-fluid > header > div > ul { display: inline-block; vertical-align: middle;  /*width: 21%;*/ }
 .container-fluid > header > div > a { margin-right: 10%; }
 .container-fluid > header > div > nav { margin-right: 13.5%; min-width: 41%; }
 .container-fluid > header > div > ul li { margin-left: 10px; }
 .container-fluid > header ul { list-style: none; margin: 0; }
 .container-fluid > header ul li { display: inline-block; }
+#menu{margin-right: 80px}
 #menu, #menu ul, #menu ul li { min-height: 81px; }
 #menu ul li a, #menu ul li a:link, #menu ul li a:visited, #menu ul li a:active { display: block; line-height: 81px; color: #2a2a2a; font-size: 13px; padding: 0 20px; }
 #menu ul li a:hover, #menu ul li a:focus, .login-sign-in li:hover, .login-sign-in li:focus { background: url('/img/menu-hover.jpg') center bottom no-repeat; text-decoration: none;}
-#menu-niveau, .container-fluid > section > header, #connexion-menu { background: url('/img/bg_sub_menu.jpg') no-repeat fixed center center / cover; min-height: 80px; }
+#menu-niveau, .container-fluid > section > header, #connexion-menu { background-image: url('/img/bg_sub_menu.jpg');background-repeat: no-repeat;background-position: center center; min-height: 80px; min-width: 1200px }
 #menu-niveau ul, #menu-niveau ul li { min-height: 81px; max-width: 840px; margin: 0 auto; }
 .container-fluid > section > header h1, #menu-niveau ul li a, #menu-niveau ul li a:link, #menu-niveau ul li a:active, #menu-niveau ul li a:visited { display: block; padding: 0 20px; line-height: 80px; font-size: 24px; color: white; }
 #menu-niveau ul li a:hover, #menu-niveau ul li a:focus { background: url('/img/menu-niveau-hover.jpg') center bottom no-repeat; text-decoration: none; }
@@ -117,12 +118,13 @@ ul.dash li:before{
     left: -5px;
 }
 
-
+.span9{margin:0 352px 0 352px; width: 1200px; height:auto;padding: 20px}
+.content h2{text-transform:uppercase;}
 /*  Contenu  accueil */
-.accueil .contentheader {background-image: url("/img/bg.jpg");background-repeat: no-repeat;background-position: center center; min-height: 254px; color: white;}
+.accueil .contentheader {background-image: url("/img/bg.jpg");background-repeat: no-repeat;background-position: center center; min-height: 254px; color: white; min-width: 1200px}
 .accueil .contentheader h1 { margin: 0; padding-top: 50px; font-size: 36px; text-align: center; margin-bottom: 20px; ;}
 .accueil .contentheader p { max-width: 400px; margin: 0 auto; font-size: 15px; }
-.accueil .content { background: #f2f2f2 no-repeat fixed center center; text-align: center; width: 1200px; margin: 0 auto}
+.accueil .content {background-image: url("/img/bg_content1.jpg");background-repeat: no-repeat;background-position: center center; width: 1200px; height: 300px; margin: 0 auto; text-align: center}
 .accueil .content h2 { margin: 0; margin-bottom: 20px; color: #009fe3; font-size: 16px; max-width: 1000px; text-align: left; margin: 0 auto; }
 .accueil .content > div { display: inline-block; vertical-align: top; width: 333px; border-right: 1px #cecece solid;  padding: 20px 0; }
 .accueil .content > div:last-child { border: 0 none; }
@@ -140,7 +142,7 @@ ul.dash li:before{
 #slider .slider-handler img { float: left; }
 /*  Contenu Niveau */
 #btn_up, #btn_up:hover { outline: none; }
-.niveau { background: #f2f2f2; padding: 20px; min-height: 500px; }
+.niveau { background: #f2f2f2;  min-height: 500px; margin: 0 auto; width: 1200px;padding: 30px 0 30px 0}
 .niveau .header, .niveau .footer { max-width: 1000px; margin: 0 auto; }
 .niveau .header { background: #ced9e5; padding: 20px;  max-width: 960px; -webkit-border-radius: 10px; -o-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 .niveau .footer { max-width: 400px; margin: 0 auto; text-align: center; margin-top: 20px; }
@@ -168,6 +170,7 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 .niveau #tabs article .noborder { border: 0 none; }
 /*  Contenu FAQ  */
 .container-fluid > section > header h1 { text-align: center; margin: 0; }
+.faq{width: 1200px;margin: 0 auto; }
 .faq article p, .faq article ul, .faq article h1 { max-width: 900px; margin: 0 auto; }
 .faq article p.faq-top { margin-top: 30px; }
 .faq article p.faq-top strong { color: #009fe3; }
@@ -258,7 +261,7 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 #slider-footer ul li:last-child a img { }
 #slider-footer ul li:first-child { margin-left: 0; }
 /*  Le pied de page  */
-.container-fluid > footer{ background: #2a2a2a url('/img/bg_footer.jpg') top center no-repeat; min-height: 65px; text-align: center; }
+.container-fluid > footer{ background-image: url('/img/bg_footer.jpg'); background-repeat: no-repeat;background-position: center center; min-height: 65px; min-width: 1200px }
 .container-fluid > footer > div { max-width: 1000px; margin: 0 auto; }
 .container-fluid > footer > div p, .container-fluid > footer > div ul { display: inline-block; vertical-align: middle; min-height: 65px; margin: 0; }
 .container-fluid > footer > div p { margin-right: 10%; }
