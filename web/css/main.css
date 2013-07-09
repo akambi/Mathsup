@@ -1,4 +1,5 @@
 /*  HERE TO ADDING MORE STYLE WITH BOOSTRAP */
+#global{ margin-left: auto;margin-right: auto;width:1200px;}
 h1.titre{font-size: 12px; line-height: 12px; text-align: center; display: none; }
 
 .margin-left-small{margin-left: 5px;}
@@ -84,7 +85,7 @@ h1.titre{font-size: 12px; line-height: 12px; text-align: center; display: none; 
 #menu ul li a:hover, #menu ul li a:focus, .login-sign-in li:hover, .login-sign-in li:focus { background: url('/img/menu-hover.jpg') center bottom no-repeat; text-decoration: none;}
 #menu-niveau, .container-fluid > section > header, #connexion-menu { background-image: url('/img/bg_sub_menu.jpg');background-repeat: no-repeat;background-position: center center; min-height: 80px; min-width: 1200px }
 #menu-niveau ul, #menu-niveau ul li { min-height: 81px; max-width: 840px; margin: 0 auto; }
-.container-fluid > section > header h1, #menu-niveau ul li a, #menu-niveau ul li a:link, #menu-niveau ul li a:active, #menu-niveau ul li a:visited { display: block; padding: 0 20px; line-height: 80px; font-size: 24px; color: white; }
+.container-fluid > section > header h1, #menu-niveau ul li a, #menu-niveau ul li a:link, #menu-niveau ul li a:active, #menu-niveau ul li a:visited { display: block; padding: 0 20px; line-height: 80px; font-size: 24px; color: white;font-weight: lighter; }
 #menu-niveau ul li a:hover, #menu-niveau ul li a:focus { background: url('/img/menu-niveau-hover.jpg') center bottom no-repeat; text-decoration: none; }
 /* menu d'inscription et de connexion'*/
 .login-sign-in, .login-sign-in li { min-height: 81px; line-height: 81px; }
@@ -107,7 +108,7 @@ h1.titre{font-size: 12px; line-height: 12px; text-align: center; display: none; 
 #connexion-menu fieldset > div a:hover, #connexion-menu fieldset > div a:focus { text-decoration: none; }
 #connexion-menu fieldset > div + div input { display: inline-block; vertical-align: middle; margin: 0 20px 0 0; }
 #connexion-menu fieldset > div input[type=text], #connexion-menu fieldset > div input[type=password] { min-height: 48px; padding: 0 5px; line-height: 48px; width: 200px; }
-#connexion-menu fieldset > div input[type=submit] { background: url('/img/btn-ok.png') top center no-repeat; cursor: pointer;  min-height: 48px; line-height: 48px; width: 119px; color: #708b98; border: 0 none; }
+#connexion-menu fieldset > div input[type=submit] { background: url('/img/btn-ok.png') top center no-repeat; cursor: pointer;  min-height: 48px; line-height: 48px; width: 100px; color: #708b98; border: 0 none; }
 /*  Contenu */
 .container-fluid > section {  }
 ul.dash { list-style: none; }
@@ -118,12 +119,11 @@ ul.dash li:before{
     left: -5px;
 }
 
-.span9{margin:0 352px 0 352px; width: 1200px; height:auto;padding: 20px}
 .content h2{text-transform:uppercase;}
 /*  Contenu  accueil */
-.accueil .contentheader {background-image: url("/img/bg.jpg");background-repeat: no-repeat;background-position: center center; min-height: 254px; color: white; min-width: 1200px}
-.accueil .contentheader h1 { margin: 0; padding-top: 50px; font-size: 36px; text-align: center; margin-bottom: 20px; ;}
-.accueil .contentheader p { max-width: 400px; margin: 0 auto; font-size: 15px; }
+.accueil .contentheader {background-image: url("/img/bg.jpg");background-repeat: no-repeat;background-position: center center; min-height: 254px; color: white; min-width: 1200px;}
+.accueil .contentheader h1 { margin: 0; padding-top: 50px; font-size: 36px; text-align: center; margin-bottom: 20px;text-transform: uppercase;font-weight:lighter;}
+.accueil .contentheader p { max-width: 400px; margin: 0 auto; font-size: 14px;font-weight:lighter; }
 .accueil .content {background-image: url("/img/bg_content1.jpg");background-repeat: no-repeat;background-position: center center; width: 1200px; height: 300px; margin: 0 auto; text-align: center}
 .accueil .content h2 { margin: 0; margin-bottom: 20px; color: #009fe3; font-size: 16px; max-width: 1000px; text-align: left; margin: 0 auto; }
 .accueil .content > div { display: inline-block; vertical-align: top; width: 333px; border-right: 1px #cecece solid;  padding: 20px 0; }

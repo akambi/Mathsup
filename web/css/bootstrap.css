@@ -65,11 +65,11 @@ audio:not([controls]) {
   display: none;
 }
 
-html {
+/*html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
-}
+}*/
 
 a:focus {
   outline: thin dotted #333;
@@ -223,12 +223,14 @@ textarea {
 
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, Geneva, sans-serif;
+  font-weight:regular;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
   background-color: #ffffff;
 }
+
 
 a {
   color: #0088cc;
@@ -649,7 +651,7 @@ a:focus {
 }
 
 p {
-  margin: 0 0 10px;
+  margin: 0 0 10px;font-weight: lighter;
 }
 
 .lead {
