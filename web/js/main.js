@@ -2276,8 +2276,8 @@
 }(window.jQuery);
 // Variable de départ pour le slider principal
 var current_slide = 0;
-
-$(document).ready(function() {    
+jQuery.noConflict();
+jQuery(document).ready(function($) {   
 /*  Ici on définit quelques variables de redirection */
     var protocole = "http", domaineFR = '.fr', domaineCOM = '.com';
     protocole += '://';
