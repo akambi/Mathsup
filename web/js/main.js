@@ -2348,7 +2348,7 @@ jQuery(document).ready(function($) {
                 });
     });
 //  On gère ici le hover sur le bouton connexion
-    $(".login-sign-in li:last a").mouseenter( function( ){
+    $(".login-sign-in li a#member-connect").mouseenter( function( ){
         $("#menu-niveau").hide();
         $(".container-fluid > section > header").hide();
         $("#connexion-menu").show();

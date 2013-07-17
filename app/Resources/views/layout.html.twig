@@ -64,15 +64,14 @@
                     </nav>
                     
                     <ul class="login-sign-in">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {# L'utilisateur est connecté ! #}
+                        <li><a href="{{ path('msp_conference_connexion') }}">Visioconférence</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                        {% else %}
                         <li><a href="{{ path('fos_user_registration_register') }}">+ S'INSCRIRE</a></li>
-                        <li>
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            {# L'utilisateur est connecté ! #}                            
-                            <a class="btn btn-danger" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
-                            {% else %}
-                            <a href="{{ path('fos_user_security_login') }}">CONNEXION</a>
-                            {% endif %}
-                        </li>
+                        <li><a id="member-connect" href="{{ path('fos_user_security_login') }}">CONNEXION</a></li>                        
+                        {% endif %}
                     </ul>
                     
                 </div>
