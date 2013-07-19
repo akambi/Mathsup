@@ -21,7 +21,9 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
         {% endblock %}
-        
+            <style type="text/css">
+                   
+            </style>    
     </head>
     <body>    
         <div class="container-fluid" id="global">
@@ -39,7 +41,7 @@
                     <nav id="menu">
                         
                         <ul>
-                            <li><a href="{{ path('msp_frontend_homepage') }}">ACCUEIL</a></li>                            
+                            <li class="active" id="accueil"><a href="{{ path('msp_frontend_homepage') }}">ACCEUIL</a></li>                            
                             <li><a href="{{ path('msp_math_plus') }}">MATH PLUS</a></li>
                             <li><a href="{{ path('msp_contact') }}">CONTACT</a></li>                                                      
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -64,7 +66,7 @@
                     </nav>
                     
                     <ul class="login-sign-in">
-                        <li><a href="{{ path('fos_user_registration_register') }}">+ S'INSCRIRE</a></li>
+                        <li class="insactive" id="inscr"><a href="{{ path('fos_user_registration_register') }}">+ S'INSCRIRE</a></li>
                         <li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             {# L'utilisateur est connecté ! #}                            
@@ -80,7 +82,7 @@
                 {% block menuNiveau %}
                 <nav id="menu-niveau">                    
                     <ul>                        
-                        <li><a href="{{ path('msp_primaire') }}">PRIMAIRE</a></li>                        
+                        <li class=""><a href="{{ path('msp_primaire') }}">PRIMAIRE</a></li>                        
                         <li><a href="{{ path('msp_college') }}">COLLÈGE</a></li>
                         <li><a href="{{ path('msp_lycee') }}">LYCÉE</a></li>                        
                         <li><a href="{{ path('msp_universite') }}">UNIVERSITÉ</a></li>
@@ -120,19 +122,19 @@
                     <p>Copyright © 2013, MathSup. Tous droits réservés.</p>
 
                     <ul>
-                        <li><a href="{{ path('msp_faq') }}">FAQ</a></li> 
-                        <li><a href="{{ path('msp_tarifs') }}">Tarifs</a></li>
-                        <li><a href="{{ path('msp_partenariats') }}">Partenariats</a></li>
-                        <li><a href="{{ path('msp_cgs') }}">CGS</a></li>
-                        <li><a href="{{ path('msp_nos_engagements') }}">Nos engagements</a></li>                        
-                        <li><a href="{{ path('msp_plan_du_site') }}">Plan du site</a></li>
+                        <li><a href="{{ path('msp_faq') }}">FAQ /</a></li> 
+                        <li><a href="{{ path('msp_tarifs') }}">Tarifs /</a></li>
+                        <li><a href="{{ path('msp_partenariats') }}">Partenariats /</a></li>
+                        <li><a href="{{ path('msp_cgs') }}">CGS /</a></li>
+                        <li><a href="{{ path('msp_nos_engagements') }}">Nos engagements /</a></li>                        
+                        <li><a href="{{ path('msp_plan_du_site') }}">Plan du site </a></li>
                         {# L'utilisateur est-il connecté ? #}
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}                        
                         {# L'utilisateur est-il admin ? #}
                         {% if is_granted('ROLE_ADMIN') %}
                         {# L'utilisateur est admin ! #}
                         <li>
-                            <a href="{{ path('msp_admin', { slug: app.user.slug }) }}">Espace Administrateur <i class=" icon-user icon-white"></i></a>
+                            <a href="{{ path('msp_admin', { slug: app.user.slug }) }}">/Espace Administrateur <i class=" icon-user icon-white"></i></a>
                         </li>
                         {% endif %}                        
                         {% endif %}     
@@ -147,6 +149,54 @@
         {# inclusion de la librairie de jquery #}
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script type="text/javascript">
+        //script permettant d'activer un lien de menu 
+          //<![CDATA[
+            jQuery(function() {
+              jQuery('#menu ul li').each(function() {
+                  
+                var href = jQuery(this).find('a').attr('href');
+                
+                if (href === window.location.pathname) {
+                  jQuery('#accueil').removeClass('active');
+                  jQuery(this).addClass('active');
+                }
+              });
+              
+              //Menu compte
+              
+              jQuery('.login-sign-in li').each(function() {
+                  
+                var href = jQuery(this).find('a').attr('href');
+                
+                if (href === window.location.pathname) {
+                  jQuery('#accueil').removeClass('active');
+                  //
+                  jQuery('#inscr').removeClass('insactive');
+                  //jQuery(this).addClass('insactive').css("background" : "url('/img/menu-hover.jpg') center bottom no-repeat","background" : "url('/img/menu-hover.jpg') center bottom no-repeat");
+                    jQuery(this).addClass('insactive').css({
+                    "background": "url('/img/menu-hover.jpg') center bottom no-repeat",
+                    "text-decoration": "none"
+                  });
+                  jQuery(".insactive a").css({
+                    "color": "white"
+                  });
+                }
+              });
+              
+              //Menu niveau
+              
+              jQuery('#menu-niveau ul li').each(function() {
+                  
+                var href = jQuery(this).find('a').attr('href');
+                
+                if (href === window.location.pathname) {
+                    jQuery(this).addClass('niveauactive');
+                }
+              });
+            });  
+            //]]>
+        </script>
         {% endblock %}
         
         {% block javascripts2 %}
