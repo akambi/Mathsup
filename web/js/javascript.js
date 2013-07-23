@@ -1,7 +1,7 @@
 // Variable de départ pour le slider principal
 var current_slide = 0;
-
-$(document).ready(function() {    
+jQuery.noConflict();
+jQuery(document).ready(function($) {   
 /*  Ici on définit quelques variables de redirection */
     var protocole = "http", domaineFR = '.fr', domaineCOM = '.com';
     protocole += '://';
@@ -72,7 +72,7 @@ $(document).ready(function() {
                 });
     });
 //  On gère ici le hover sur le bouton connexion
-    $(".login-sign-in li:last a").mouseenter( function( ){
+    $(".login-sign-in li a#member-connect").mouseenter( function( ){
         $("#menu-niveau").hide();
         $(".container-fluid > section > header").hide();
         $("#connexion-menu").show();
@@ -166,7 +166,49 @@ $(document).ready(function() {
         }
         
     });
+    
+//  script permettant d'activer un lien de menu : Jacques
+    jQuery('#menu ul li').each(function() {
+                  
+        var href = jQuery(this).find('a').attr('href');
 
+        if (href === window.location.pathname) {
+          jQuery('#accueil').removeClass('active');
+          jQuery(this).addClass('active');
+        }
+    });
+
+    //Menu compte
+
+    jQuery('.login-sign-in li').each(function() {
+
+      var href = jQuery(this).find('a').attr('href');
+
+      if (href === window.location.pathname) {
+        jQuery('#accueil').removeClass('active');
+        //
+        jQuery('#inscr').removeClass('insactive');
+        //jQuery(this).addClass('insactive').css("background" : "url('/img/menu-hover.jpg') center bottom no-repeat","background" : "url('/img/menu-hover.jpg') center bottom no-repeat");
+          jQuery(this).addClass('insactive').css({
+          "background": "url('/img/menu-hover.jpg') center bottom no-repeat",
+          "text-decoration": "none"
+        });
+        jQuery(".insactive a").css({
+          "color": "white"
+        });
+      }
+    });
+
+    //Menu niveau
+
+    jQuery('#menu-niveau ul li').each(function() {
+
+      var href = jQuery(this).find('a').attr('href');
+
+      if (href === window.location.pathname) {
+          jQuery(this).addClass('niveauactive');
+      }
+    });
 });
 
 /*
