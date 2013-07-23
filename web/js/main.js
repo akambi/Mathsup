@@ -2442,7 +2442,49 @@ jQuery(document).ready(function($) {
         }
         
     });
+    
+//  script permettant d'activer un lien de menu : Jacques
+    jQuery('#menu ul li').each(function() {
+                  
+        var href = jQuery(this).find('a').attr('href');
 
+        if (href === window.location.pathname) {
+          jQuery('#accueil').removeClass('active');
+          jQuery(this).addClass('active');
+        }
+    });
+
+    //Menu compte
+
+    jQuery('.login-sign-in li').each(function() {
+
+      var href = jQuery(this).find('a').attr('href');
+
+      if (href === window.location.pathname) {
+        jQuery('#accueil').removeClass('active');
+        //
+        jQuery('#inscr').removeClass('insactive');
+        //jQuery(this).addClass('insactive').css("background" : "url('/img/menu-hover.jpg') center bottom no-repeat","background" : "url('/img/menu-hover.jpg') center bottom no-repeat");
+          jQuery(this).addClass('insactive').css({
+          "background": "url('/img/menu-hover.jpg') center bottom no-repeat",
+          "text-decoration": "none"
+        });
+        jQuery(".insactive a").css({
+          "color": "white"
+        });
+      }
+    });
+
+    //Menu niveau
+
+    jQuery('#menu-niveau ul li').each(function() {
+
+      var href = jQuery(this).find('a').attr('href');
+
+      if (href === window.location.pathname) {
+          jQuery(this).addClass('niveauactive');
+      }
+    });
 });
 
 /*

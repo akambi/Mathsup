@@ -6160,6 +6160,37 @@ a.badge:focus {
 }
 
 
+body {
+	font-family: Helvetica, Arial, Geneva, sans-serif;
+	font-weight:regular;
+}
+.light {
+	font-weight:lighter;
+}
+.bold {
+	font-weight:bold;
+}
+
+
+
+/* AVENIR NEXT */
+.avenirNextRegular,
+.avenirNextDemiBold,
+.avenirNextBold {
+	font-family: "Avenir Next", Avenir, Helvetica, Arial, Geneva, sans-serif;
+}
+/* Avenir Next - Regular */
+.avenirNextRegular {
+	font-weight:400;
+}
+/* Avenir Next - Demi Bold */
+.avenirNextDemiBold {
+	font-weight:600;
+}
+/* Avenir Next - Bold */
+.avenirNextBold {
+	font-weight:700;
+}
 /*  HERE TO ADDING MORE STYLE WITH BOOSTRAP */
 #global{ margin-left: auto;margin-right: auto;width:1200px;}
 h1.titre{font-size: 12px; line-height: 12px; text-align: center; display: none; }
@@ -6244,14 +6275,20 @@ h1.titre{font-size: 12px; line-height: 12px; text-align: center; display: none; 
 #menu{margin-right: 80px}
 #menu, #menu ul, #menu ul li { min-height: 81px; }
 #menu ul li a, #menu ul li a:link, #menu ul li a:visited, #menu ul li a:active { display: block; line-height: 81px; color: #2a2a2a; font-size: 13px; padding: 0 20px; }
-#menu ul li a:hover, #menu ul li a:focus, .login-sign-in li:hover, .login-sign-in li:focus { background: url('/img/menu-hover.jpg') center bottom no-repeat; text-decoration: none;}
+/*#menu ul li a:focus, .login-sign-in li:hover, .login-sign-in li:focus { background: url('/img/menu-hover.jpg') center bottom no-repeat; text-decoration: none;}*/
+#menu ul li a:hover{text-decoration: none;}
+#menu ul li.active a{color:#aaaaaa}
+#menu ul li.active {background: url('/img/menu-hover.jpg') center bottom no-repeat; text-decoration: none;}
 #menu-niveau, .container-fluid > section > header, #connexion-menu { background-image: url('/img/bg_sub_menu.jpg');background-repeat: no-repeat;background-position: center center; min-height: 80px; min-width: 1200px }
 #menu-niveau ul, #menu-niveau ul li { min-height: 81px; max-width: 840px; margin: 0 auto; }
 .container-fluid > section > header h1, #menu-niveau ul li a, #menu-niveau ul li a:link, #menu-niveau ul li a:active, #menu-niveau ul li a:visited { display: block; padding: 0 20px; line-height: 80px; font-size: 24px; color: white;font-weight: lighter; }
 #menu-niveau ul li a:hover, #menu-niveau ul li a:focus { background: url('/img/menu-niveau-hover.jpg') center bottom no-repeat; text-decoration: none; }
+#menu-niveau ul li.niveauactive{background: url('/img/menu-niveau-hover.jpg') center bottom no-repeat;}
+
 /* menu d'inscription et de connexion'*/
 .login-sign-in, .login-sign-in li { min-height: 81px; line-height: 81px; }
-.login-sign-in li a, .login-sign-in li a:link, .login-sign-in li a:visited, .login-sign-in li a:active 
+.login-sign-in li {font-weight: bold}
+.login-sign-in li a:link, .login-sign-in li a:visited, .login-sign-in li a:active 
 { 
     padding: 5px 10px; 
     color: #d1d1d1; 
@@ -6261,6 +6298,8 @@ h1.titre{font-size: 12px; line-height: 12px; text-align: center; display: none; 
        -o-border-radius: 5px;
           border-radius: 5px;
 }
+.login-sign-in li.insactive a{padding: 5px 10px;background-color: #009fe3;}
+
 .login-sign-in li a:hover, .login-sign-in li a:focus { background-color: #009fe3; text-decoration: none;}
 /*  Formulaire de connexion  */
 #connexion-menu { margin: 0; }
@@ -6306,7 +6345,7 @@ ul.dash li:before{
 #btn_up, #btn_up:hover { outline: none; }
 .niveau { background: #f2f2f2;  min-height: 500px; margin: 0 auto; width: 1200px;padding: 30px 0 30px 0}
 .niveau .header, .niveau .footer { max-width: 1000px; margin: 0 auto; }
-.niveau .header { background: #ced9e5; padding: 20px;  max-width: 960px; -webkit-border-radius: 10px; -o-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+.niveau .header { background: #ced9e5; padding: 20px;  max-width: 960px; -webkit-border-radius: 10px; -o-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; font-family: 'Avenir Next Italic', sans-serif;}
 .niveau .footer { max-width: 400px; margin: 0 auto; text-align: center; margin-top: 20px; }
 .niveau .footer strong, .niveau .footer a { display: block; margin-bottom: 10px;}
 .niveau .footer a { margin-top: 10px; }
@@ -6346,7 +6385,7 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 .contact { background: #f2f2f2; padding-bottom: 30px; }
 .contact .newsletter {  background: #fff; border-top: 1px #cecece solid; border-bottom: 1px #cecece solid; }
 .contact .firswrap, .contact article  { max-width: 1000px; margin: 0 auto; }
-.contact article h1, .newsletter h1 { font-size: 16px; color: #009fe3; }
+.contact article h1, .newsletter h1 { font-size: 16px; color: #009fe3; font-weight: bold }
 
 .contact .firswrap > article { display: inline-block; vertical-align: top; width: 75%; }
 .contact .firswrap > article + article { width: 23%; margin-left: 1%; }
@@ -6356,7 +6395,8 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
        -o-border-radius: 5px;
           border-radius: 5px;
 }
-.contact .firswrap cite { display: block; text-align: right; }
+.contact .firswrap cite { display: block; text-align: right;font-weight: bold }
+
 
 .contact #contactform fieldset { background: white; padding: 20px; border:  1px #cecece solid; 
     -webkit-border-radius: 5px;
@@ -6371,7 +6411,8 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 #contactform fieldset > div > div + div + div + div { position: absolute; top: 80px; left: 295px; width: 400px; margin-right: 0;}
 #contactform fieldset > div > div + div + div + div + div { position: absolute; top: 160px; left: 0; margin-right: 0; }
 #icls_boutiquebundle_contacttype_message { width: 400px; height: 100px; }
-#contactform input[type=text], #contactform input[type=email], #contactform select, #contactform input[type=number]{ margin-bottom: 0; }
+#contactform input[type=text], #contactform input[type=email], #contactform select, #contactform input[type=number]{ margin-bottom: 0; background-color: #f0f0f0;height: 39px}
+#contactform textarea{ margin-bottom: 0; background-color: #f0f0f0;height: 120px}
 #contactform fieldset .bottomwrap { margin-top: 200px; }
 #contactform fieldset .bottomwrap > div { display: inline-block; vertical-align: middle; width: 20%;}
 #contactform fieldset .bottomwrap .email-send { width: 72%;  padding: 0 20px; background: #525252 url('/img/mail-send.jpg') top right no-repeat; height: 39px; line-height: 39px; color: white; }
@@ -6431,6 +6472,6 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 .container-fluid > footer > div p, .container-fluid > footer ul li a { color: #818181; font-size: 13px; }
 .container-fluid > footer ul { list-style: none; }
 .container-fluid > footer ul li { display: inline-block; }
-.container-fluid > footer ul li a { padding: 0 5px; border-right: 1px #818181 solid; }
+/*.container-fluid > footer ul li a { padding: 0 5px; border-right: 1px #818181 solid; }*/
 .container-fluid > footer ul li:last-child a { border: 0 none; }
 
