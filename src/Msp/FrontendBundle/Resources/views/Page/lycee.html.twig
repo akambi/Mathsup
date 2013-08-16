@@ -16,7 +16,7 @@
 {% block content %}
     <div class="niveau">
         
-        <header class="header">
+        <header class="header avenirNextItalic">
            Le Lycée constitue une étape cruciale dans la vie de l’élève, des choix d’orientation plus ou 
            moins irréversible le conduiront à son projet professionnel ou académique. <i>Dans le but de lui 
            ouvrir toutes les portes et de lui assurer le minimum de bagages pour la poursuite de son projet, 
@@ -25,13 +25,13 @@
        
         <div id="tabs">
             
-            <ul>
+            <ul class="avenirNextBold">
                 <li><a href="#tabs-1">SECONDE</a></li>
                 <li><a href="#tabs-2">PREMIÈRE</a></li>
                 <li><a href="#tabs-3">TERMINALE</a></li>                
             </ul>
                 
-            <article id="tabs-1">
+            <article id="tabs-1" class="light">
                 
                 <h1>SECONDE</h1>
 
@@ -83,13 +83,51 @@
                 </div >
                 
                 <footer class="footer">
-                    <strong>Nos cours associés</strong>
+                    <p class="avenirNextDemiBold">Nos cours associés</p>
                     Je recherche un cours de seconde.
                     <a href="#"><img src="{{ asset('/img/arrow-right.jpg') }}" alt="En savoir plus" /></a>
                 </footer>
                 
             </article>
+
             
+            <article id="tabs-2" class="light">
+                
+                <div class="contenu-simple">
+                    <p>
+                        Selon votre choix de filière, les mathématiques auront une importance plus ou moins élevée. Il est recommandé fortement de consolider les bases via un soutien régulier en dehors des cours.
+                    </p>
+                </div>
+                <div class="text-center margin-top-medium">
+                    <a title="Retour au menu principal" id="btn_up" class="btn text-center" href="#"><i class="icon-arrow-up"></i></a>
+                </div >
+                
+                <footer class="footer">
+                    <p class="avenirNextDemiBold">Nos cours associés</p>
+                    Je recherche un cours de première.
+                    <a href="#"><img src="{{ asset('/img/arrow-right.jpg') }}" alt="En savoir plus" /></a>
+                </footer>
+                
+            </article>
+            
+            <article id="tabs-3" class="light">
+                
+                <div class="contenu-simple">
+                    <p>
+                        C’est l’année du bac, l’élève se doit d’obtenir de bons résultats qui détermineront ses différents choix d’orientations possibles (concours, classes préparatoires et autres)
+                    </p>
+                </div>
+                <div class="text-center margin-top-medium">
+                    <a title="Retour au menu principal" id="btn_up" class="btn text-center" href="#"><i class="icon-arrow-up"></i></a>
+                </div >
+                
+                <footer class="footer">
+                    <p class="avenirNextDemiBold">Nos cours associés</p>
+                    Je recherche un cours de terminale.
+                    <a href="#"><img src="{{ asset('/img/arrow-right.jpg') }}" alt="En savoir plus" /></a>
+                </footer>
+                
+            </article>
         </div>
         
     </div>

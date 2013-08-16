@@ -21,9 +21,6 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
         {% endblock %}
-            <style type="text/css">
-                   
-            </style>    
     </head>
     <body>    
         <div class="container-fluid" id="global">
@@ -71,8 +68,8 @@
                         <li class="insactive" id="inscr"><a href="{{ path('msp_conference_connexion') }}">Visioconférence</a></li>
                         <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                         {% else %}
-                        <li class="insactive" id="inscr"><a href="{{ path('fos_user_registration_register') }}">+ S'INSCRIRE</a></li>
-                        <li><a id="member-connect" href="{{ path('fos_user_security_login') }}">CONNEXION</a></li>                        
+                        <li class="insactive avenirNextBold" id="inscr"><a href="{{ path('fos_user_registration_register') }}">+ S'INSCRIRE</a></li>
+                        <li class="avenirNextBold"><a id="member-connect" href="{{ path('fos_user_security_login') }}">CONNEXION</a></li>                        
                         {% endif %}
                     </ul>
                     
@@ -80,7 +77,7 @@
                 
                 {% block menuNiveau %}
                 <nav id="menu-niveau">                    
-                    <ul>                        
+                    <ul class="light">                        
                         <li class=""><a href="{{ path('msp_primaire') }}">PRIMAIRE</a></li>                        
                         <li><a href="{{ path('msp_college') }}">COLLÈGE</a></li>
                         <li><a href="{{ path('msp_lycee') }}">LYCÉE</a></li>                        
@@ -90,7 +87,7 @@
                 </nav>
                 {% endblock %}
                 
-                <form id="connexion-menu" class="hide" action="{{ path("fos_user_security_check") }}" method="post">
+                <form id="connexion-menu" class="hide light" action="{{ path("fos_user_security_check") }}" method="post">
                     <fieldset class="text-center">
                         <div>
                             <a href="{{ path("fos_user_resetting_request") }}">Mot de passe oublié ?</a>

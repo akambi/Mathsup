@@ -18,18 +18,18 @@
 {# Le contenu de la page #}
 {% block content %}
     <header>
-        <h1>RENSEIGNEMENTS & INSCRIPTIONS AU 01 25 63 00 00</h1>
+        <h1><span class="light">RENSEIGNEMENTS & INSCRIPTIONS AU</span><span class="bold"> 01 25 63 00 00</span></h1>
     </header>
     
     <div class="contact">
         
         <div class="firswrap">
             <article>
-                <h1>NOUS VOUS RAPPELONS (service immédiat et gratuit)</h1>
+                <h1><span class="avenirNextBold">NOUS VOUS RAPPELONS</span> <span class="light">(service immédiat et gratuit)</span></h1>
                 
                 <form id="contactform" action="" method="post" {{ form_enctype(form) }}>
                     <fieldset>
-                        <div>
+                        <div class="light">
                             <div>
                                 {{ form_widget(form.nom) }}
                                 {{ form_errors(form.nom) }}
@@ -54,10 +54,10 @@
                         {{ form_rest(form) }} 
                         <div class="bottomwrap">
                             {% if msg %}
-                            <div class="email-send">{{ msg }}</div>
+                            <div class="email-send light">{{ msg }}</div>
                             {% endif %}
                             <div class="button-send">
-                                <button type="submit">ENVOYER</button>
+                                <button class="avenirNextBold" type="submit">ENVOYER</button>
                             </div>
                         </div>
                     </fieldset>
@@ -65,19 +65,19 @@
             </article>
 
             <article>
-                <h1>À PROPOS DE MATHSUP</h1>
+                <h1 class="avenirNextBold">À PROPOS DE MATHSUP</h1>
                 <p>
-                    <q>Les maths ouvrent la porte à l’esprit scientifique et donc à beaucoup d’opportunités qui 
+                    <q class="light">Les maths ouvrent la porte à l’esprit scientifique et donc à beaucoup d’opportunités qui 
                     vont de l’épanouissement personnel au potentiel professionnel. Pour votre futur, il 
                     faut réagir maintenant !</q>
-                    <cite>C. Kamtchueng</cite>
+                    <cite class="avenirNextDemiBold">C. Kamtchueng</cite>
                 </p>
             </article>
                 
         </div>
         
         <article>
-            <h1>NOTRE ÉQUIPE</h1>            
+            <h1 class="avenirNextBold">NOTRE ÉQUIPE</h1>            
             <div id="slider-footer">                        
                 <ul id="liste-equipes">
                     <li><a title="1" href="#"><img src="{{ asset('/img/photo-1.jpg') }}" alt="" /></a></li>
@@ -97,12 +97,12 @@
         
         <div class="newsletter">
             <div>
-                <h1>NOTRE NEWSLETTER</h1>
+                <h1 class="avenirNextBold">NOTRE NEWSLETTER</h1>
                 <form id="newsletter" class="form-inline" action="{{ path('msp_newsletter')}}" method="post">
                     <fieldset>
-                        <input type="text"  id="user_name" name="user_name" placeholder="Entrez votre Nom">
-                        <input type="email" id="user_email" name="user_email" placeholder="Entrez votre Email">
-                        <button type="submit">S'ABONNER</button>
+                        <input class="light" type="text"  id="user_name" name="user_name" placeholder="Entrez votre Nom">
+                        <input class="light" type="email" id="user_email" name="user_email" placeholder="Entrez votre Email">
+                        <button class="avenirNextBold" type="submit">S'ABONNER</button>
                     </fieldset>
                 </form>
             </div>

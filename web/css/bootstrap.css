@@ -223,8 +223,6 @@ textarea {
 
 body {
   margin: 0;
-  font-family: Helvetica, Arial, Geneva, sans-serif;
-  font-weight:regular;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
@@ -651,7 +649,7 @@ a:focus {
 }
 
 p {
-  margin: 0 0 10px;font-weight: lighter;
+  margin: 0 0 10px;
 }
 
 .lead {
@@ -734,7 +732,7 @@ a.text-success:focus {
   text-align: center;
 }
 
-h1,
+/*h1,
 h2,
 h3,
 h4,
@@ -746,7 +744,7 @@ h6 {
   line-height: 20px;
   color: inherit;
   text-rendering: optimizelegibility;
-}
+}*/
 
 h1 small,
 h2 small,
@@ -1067,7 +1065,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, Geneva, sans-serif;
 }
 
 label {
