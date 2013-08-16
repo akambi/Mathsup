@@ -1,0 +1,13 @@
+/nbproject/
+/app/cache/
+/app/logs/
+/vendor/
+/web/css/style.css
+/web/js/main.js
+/web/javascript/
+/web/bundles/
+web/uploads/fiche-paie/*
+web/uploads/exercicescorriges/*
+composer.lock
+bin
+*~
