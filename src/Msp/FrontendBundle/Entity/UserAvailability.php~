@@ -153,4 +153,27 @@ class UserAvailability
     {
         return $this->date;
     }
+
+    /**
+     * Set timetamp
+     *
+     * @param integer $timetamp
+     * @return UserAvailability
+     */
+    public function setTimetamp($timetamp)
+    {
+        $this->timetamp = $timetamp;
+    
+        return $this;
+    }
+
+    /**
+     * Get timetamp
+     *
+     * @return integer 
+     */
+    public function getTimetamp()
+    {
+        return $this->timetamp;
+    }
 }

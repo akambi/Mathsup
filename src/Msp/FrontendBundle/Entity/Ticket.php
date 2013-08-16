@@ -16,13 +16,7 @@ class Ticket
     * @ORM\ManyToOne(targetEntity="Msp\UserBundle\Entity\User", inversedBy="tickets")
     * @ORM\JoinColumn(nullable=false)
     */
-    private $user;
-    
-    /**
-    * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Cours", inversedBy="tickets")
-    * @ORM\JoinColumn(nullable=false)
-    */
-    private $cours;
+    private $user;  
     
     /**
     * @ORM\OneToOne(targetEntity="Msp\FrontendBundle\Entity\Coupon", inversedBy="ticket")
@@ -105,29 +99,7 @@ class Ticket
     {
         return $this->coupon;
     }
-
-    /**
-     * Set cours
-     *
-     * @param \Msp\FrontendBundle\Entity\Cours $cours
-     * @return Ticket
-     */
-    public function setCours(\Msp\FrontendBundle\Entity\Cours $cours)
-    {
-        $this->cours = $cours;
     
-        return $this;
-    }
-
-    /**
-     * Get cours
-     *
-     * @return \Msp\FrontendBundle\Entity\Cours 
-     */
-    public function getCours()
-    {
-        return $this->cours;
-    }
 
     /**
      * Set user

@@ -15,7 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class User extends BaseUser
 {
     /**
-    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserFamily", cascade={"persist"}, mappedBy="user")
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserFamily", mappedBy="user", cascade={"persist"})
     */
     private $userFamilies;
     
@@ -85,21 +85,21 @@ class User extends BaseUser
     
    /**
     * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Departement", inversedBy="users")
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\JoinColumn(nullable=true)
     */
     protected $departement;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=255)
+     * @ORM\Column(name="ville", type="string", length=255, nullable=true)
      */
     protected $ville;
     
      /**
      * @var string
      *
-     * @ORM\Column(name="sexe", type="string", length=1)
+     * @ORM\Column(name="sexe", type="string", length=1, nullable=true)
      */
     protected $sexe;
     
@@ -127,9 +127,23 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="etablissement", type="string", length=255)
+     * @ORM\Column(name="etablissement", type="string", length=255, nullable=true)
      */
     protected $etablissement;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="objectifs", type="text", nullable=true)
+     */
+    private $objectifs;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_de_naissance", type="date")
+     */
+    private $dateDeNaissance;
     
     /**
      * @var \DateTime
@@ -402,7 +416,7 @@ class User extends BaseUser
      * @param \Msp\FrontendBundle\Entity\Departement $departement
      * @return User
      */
-    public function setDepartement(\Msp\FrontendBundle\Entity\Departement $departement)
+    public function setDepartement(\Msp\FrontendBundle\Entity\Departement $departement = null)
     {
         $this->departement = $departement;
     
@@ -487,7 +501,30 @@ class User extends BaseUser
     {
         return $this->dateInscription;
     }
+    
+    /**
+     * Set $dateDeNaissance
+     *
+     * @param \DateTime $dateDeNaissance
+     * @return User
+     */
+    public function setDateDeNaissance($dateDeNaissance)
+    {
+        $this->dateDeNaissance = $dateDeNaissance;
+    
+        return $this;
+    }
 
+    /**
+     * Get datedeNaissance
+     *
+     * @return \DateTime 
+     */
+    public function getDateDeNaissance()
+    {
+        return $this->dateDeNaissance;
+    }
+    
     /**
      * Add userGoConferences
      *
@@ -645,7 +682,30 @@ class User extends BaseUser
     {
         return $this->adresse;
     }
+    
+     /**
+     * Set objectifs
+     *
+     * @param string $objectifs
+     * @return User
+     */
+    public function setObjectifs($objectifs)
+    {
+        $this->objectifs = $objectifs;
 
+        return $this;
+    }
+
+    /**
+     * Get objectifs
+     *
+     * @return string 
+     */
+    public function getObjectifs()
+    {
+        return $this->objectifs;
+    }
+    
     /**
      * Set etablissement
      *
@@ -701,7 +761,14 @@ class User extends BaseUser
     {
         return $this->userFamilies;
     }
+    
+    public function setUserFamilies(\Msp\FrontendBundle\Entity\UserFamily $userFamilies){
+        $userFamilies->setUser($this);
+        $this->userFamilies = $userFamilies;
 
+        return $this;
+    }
+    
     /**
      * Add userAvailabilities
      *
@@ -724,4 +791,6 @@ class User extends BaseUser
     {
         $this->userAvailabilities->removeElement($userAvailabilities);
     }
+    
+    
 }

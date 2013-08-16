@@ -22,7 +22,8 @@
         "stof/doctrine-extensions-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "*",
         "hackzilla/barcode-bundle": "*",
-        "spraed/pdf-generator-bundle": "dev-master"
+        "spraed/pdf-generator-bundle": "dev-master",
+        "craue/formflow-bundle": "~2.0.0"
     },
     "scripts": {
         "post-install-cmd": [

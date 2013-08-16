@@ -24,6 +24,12 @@ class Coupon
     private $ticket;
     
     /**
+    * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Cours", inversedBy="coupons")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $cours;
+    
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -164,5 +170,28 @@ class Coupon
     public function getTicket()
     {
         return $this->ticket;
+    }
+
+    /**
+     * Set cours
+     *
+     * @param \Msp\FrontendBundle\Entity\Cours $cours
+     * @return Coupon
+     */
+    public function setCours(\Msp\FrontendBundle\Entity\Cours $cours)
+    {
+        $this->cours = $cours;
+
+        return $this;
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Msp\FrontendBundle\Entity\Cours 
+     */
+    public function getCours()
+    {
+        return $this->cours;
     }
 }

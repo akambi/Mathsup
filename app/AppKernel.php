@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Msp\UserBundle\MspUserBundle(),
             
             new Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle(),
+            new Craue\FormFlowBundle\CraueFormFlowBundle(),
             //new Hackzilla\BarcodeBundle\HackzillaBarcodeBundle(),
         );
 

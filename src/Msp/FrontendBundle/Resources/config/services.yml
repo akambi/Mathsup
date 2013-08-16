@@ -4,7 +4,19 @@ parameters:
 services:
     msp_frontend.bigbluebutton:
         class: Msp\FrontendBundle\Service\BigBlueButton
-
+    
+    msp_frontend.form.registrationEleve:
+        class:  Msp\UserBundle\Form\RegistrationEleveForm
+        tags:
+            - { name: form.type, alias: registrationEleve }
+    
+    msp_frontend.form.flow.registrationEleve:
+        class: Msp\UserBundle\Form\RegistrationEleveFormFlow        
+        parent: craue.form.flow
+        scope: request
+        calls:
+            - [setFormType, ["@msp_frontend.form.registrationEleve"]]
+    
 #    msp_frontend.example:
 #        class: %msp_frontend.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

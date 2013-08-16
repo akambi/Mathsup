@@ -23,9 +23,9 @@ class Cours
     private $userAvailabilities;
     
     /**
-    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Ticket", mappedBy="cours")
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Coupon", mappedBy="cours")
     */
-    private $tickets;
+    private $coupons;
     
     /**
      * @var integer
@@ -91,40 +91,7 @@ class Cours
     {
         return $this->libelle;
     }
-    
-    
-    /**
-     * Add tickets
-     *
-     * @param \Msp\FrontendBundle\Entity\Ticket $tickets
-     * @return Cours
-     */
-    public function addTicket(\Msp\FrontendBundle\Entity\Ticket $tickets)
-    {
-        $this->tickets[] = $tickets;
-    
-        return $this;
-    }
-
-    /**
-     * Remove tickets
-     *
-     * @param \Msp\FrontendBundle\Entity\Ticket $tickets
-     */
-    public function removeTicket(\Msp\FrontendBundle\Entity\Ticket $tickets)
-    {
-        $this->tickets->removeElement($tickets);
-    }
-
-    /**
-     * Get tickets
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTickets()
-    {
-        return $this->tickets;
-    }
+      
 
     /**
      * Add userHourlyRates
@@ -190,5 +157,61 @@ class Cours
     public function getUserAvailabilities()
     {
         return $this->userAvailabilities;
+    }
+
+    /**
+     * Add userAvailabilities
+     *
+     * @param \Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities
+     * @return Cours
+     */
+    public function addUserAvailability(\Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities)
+    {
+        $this->userAvailabilities[] = $userAvailabilities;
+
+        return $this;
+    }
+
+    /**
+     * Remove userAvailabilities
+     *
+     * @param \Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities
+     */
+    public function removeUserAvailability(\Msp\FrontendBundle\Entity\UserAvailability $userAvailabilities)
+    {
+        $this->userAvailabilities->removeElement($userAvailabilities);
+    }
+
+    /**
+     * Add coupons
+     *
+     * @param \Msp\FrontendBundle\Entity\Coupon $coupons
+     * @return Cours
+     */
+    public function addCoupon(\Msp\FrontendBundle\Entity\Coupon $coupons)
+    {
+        $this->coupons[] = $coupons;
+
+        return $this;
+    }
+
+    /**
+     * Remove coupons
+     *
+     * @param \Msp\FrontendBundle\Entity\Coupon $coupons
+     */
+    public function removeCoupon(\Msp\FrontendBundle\Entity\Coupon $coupons)
+    {
+        $this->coupons->removeElement($coupons);
+    }
+
+    /**
+     * Get coupons
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCoupons()
+    {
+        return $this->coupons;
     }
 }

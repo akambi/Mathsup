@@ -16,6 +16,16 @@ msp_conference_form:
 msp_conference_avis:
     pattern:  /conference/avis/{slug}/
     defaults: { _controller: MspFrontendBundle:Frontend:conferenceAvis }
+#
+# Les routes inscription #
+#
+msp_eleve_inscription:
+    pattern:  /inscription/eleve/
+    defaults: { _controller: MspUserBundle:Registration:registerEleve }
+
+#msp_professeur_inscription:
+#    pattern:  /inscription/professeur/
+#    defaults: { _controller: MspUserBundle:Registration:register, role: ROLE_PROFESSEUR }
 
 #
 # Les routes des eleves #

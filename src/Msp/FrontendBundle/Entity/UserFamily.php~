@@ -44,28 +44,28 @@ class UserFamily
     /**
      * @var string
      *
-     * @ORM\Column(name="sexe", type="string", length=1)
+     * @ORM\Column(name="sexe", type="string", length=1, nullable=true)
      */
     private $sexe;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="numero_fixe", type="string", length=20)
+     * @ORM\Column(name="numero_fixe", type="string", length=20, nullable=true)
      */
     private $numeroFixe;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="numero_portable", type="string", length=20)
+     * @ORM\Column(name="numero_portable", type="string", length=20, nullable=true)
      */
     private $numeroPortable;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
 
