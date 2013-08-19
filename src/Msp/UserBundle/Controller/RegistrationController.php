@@ -6,6 +6,7 @@ use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\UserBundle\Model\UserInterface;
 use Msp\UserBundle\Entity\User;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class RegistrationController extends BaseController
 {   
@@ -30,8 +31,13 @@ class RegistrationController extends BaseController
             //  On définit le rôle de l'agent
                 $roles = array('ROLE_ELEVE');
                 $eleve->setRoles($roles);
+            //  On autorise l'utilisateur à se connecter
+                $eleve->setConfirmationToken(null);
+                $eleve->setEnabled(true);
+                $eleve->setLastLogin(new \DateTime());
                 //var_dump($eleve);
-                
+                //exit();
+            //  On enregistre l'utilisateur
                 $em->persist($eleve);
                 $em->flush();
 
@@ -42,9 +48,11 @@ class RegistrationController extends BaseController
                 $response = new RedirectResponse($url);
 
                 if ($authUser) {
-                    $this->authenticateUser($user, $response);
+                    $this->authenticateUser($eleve, $response);
                 }
-
+            //  On supprime les variables sessions
+                $flow->reset();
+                
                 return $response;
             }
         }        

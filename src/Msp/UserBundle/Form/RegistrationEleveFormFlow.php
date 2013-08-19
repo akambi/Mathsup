@@ -32,9 +32,18 @@ class RegistrationEleveFormFlow extends FormFlow {
             array(
                 'label' => 'ESPACE PARENT',
                 'type' => $this->formType,
-                /*'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {
-                    return $estimatedCurrentStepNumber > 1 && !$flow->getFormData()->canHaveEngine();
-                },*/
+                'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {
+                    $skip = false;
+                //  On recupère l'entité user avec sa date de naissance
+                    $dataUser = $flow->getFormData();
+                    $dateDenaissance = $dataUser->getDateDeNaissance();                    
+                //  On vérifie que l'élève n'est pas mineur (date de naissance supérieur ou égale à 18)
+                    if( $dateDenaissance instanceof \DateTime and ( date('Y') - $dateDenaissance->format('Y') ) >= 18):
+                        $skip = true;
+                    endif;
+                //  Si skip = true alors on saute cette étape sinon on affiche ce formulaire
+                    return $skip;
+                },
             ),
             array(
                 'label' => 'VOS OBJECTIFS',

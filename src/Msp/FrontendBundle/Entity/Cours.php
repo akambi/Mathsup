@@ -28,6 +28,11 @@ class Cours
     private $coupons;
     
     /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Ticket", mappedBy="cours")
+    */
+    private $tickets;
+    
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")

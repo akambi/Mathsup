@@ -654,8 +654,7 @@ class FrontendController extends Controller
         $user = $this->container->get('security.context')->getToken()->getUser();
     //  on crée le formulaire d'entrée du ticket
         $form = $this->createFormBuilder()
-                ->add('token', 'textarea', array( 'label' => 'Numéro du ticket') )
-                ->add('cours', 'entity', array( "label"=> "Cours", 'class' => 'Msp\FrontendBundle\Entity\Cours') )
+                ->add('token', 'textarea', array( 'label' => 'Numéro du ticket') )                
                 ->getForm();
     //  message d'erreur ou de confirmation
         $error = "";
@@ -665,8 +664,7 @@ class FrontendController extends Controller
         $em = $this->getDoctrine()->getManager();
         
         $repository_coupon = $em->getRepository('MspFrontendBundle:Coupon');
-        $repository_ticket = $em->getRepository('MspFrontendBundle:Ticket');
-        $repository_cours = $em->getRepository('MspFrontendBundle:Cours');
+        $repository_ticket = $em->getRepository('MspFrontendBundle:Ticket');        
     //  on contrôle l'envoie du formulaire
         if( $request->getMethod() == 'POST' ):
             $form->bind($request);            
@@ -675,7 +673,6 @@ class FrontendController extends Controller
             //  On récupère les infos du formulaire
                $form_data = $request->request->get('form');
                $token = $form_data["token"];               
-               $cours = $form_data["cours"];;
             //  on récupère le coupon et s'il existe on contrôle l'existance du ticket
                $coupon = $repository_coupon->findOneByToken( $token );
                if( !$coupon ):
@@ -684,12 +681,11 @@ class FrontendController extends Controller
                     $ticket = $repository_ticket->findOneByCoupon( $coupon );                    
                     if( $ticket ):
                         $error = "Ce numéro de ticket a déjà été entré.";
-                    else:
-                        $cours = $repository_cours->find( $cours );
-                    
+                    else:        
+                        
                         $ticket = new Ticket();
                         $ticket->setCoupon($coupon);
-                        $ticket->setCours($cours);
+                        $ticket->setCours($coupon->getCours());
                         $ticket->setUser($user);
                     //  on enregistre
                         $em->persist($ticket);

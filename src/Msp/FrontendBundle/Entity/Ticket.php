@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Ticket
 {
     /**
+    * @ORM\ManyToOne(targetEntity="Msp\FrontendBundle\Entity\Cours", inversedBy="tickets")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $cours;
+    
+    /**
     * @ORM\ManyToOne(targetEntity="Msp\UserBundle\Entity\User", inversedBy="tickets")
     * @ORM\JoinColumn(nullable=false)
     */
@@ -122,5 +128,28 @@ class Ticket
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set cours
+     *
+     * @param \Msp\FrontendBundle\Entity\Cours $cours
+     * @return Ticket
+     */
+    public function setCours(\Msp\FrontendBundle\Entity\Cours $cours)
+    {
+        $this->cours = $cours;
+
+        return $this;
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Msp\FrontendBundle\Entity\Cours 
+     */
+    public function getCours()
+    {
+        return $this->cours;
     }
 }

@@ -26,7 +26,11 @@
         {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
         {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a></p>{% endif %}
     {% endif %}
-            
+
+    {# L'utilisateur est-il connecté ? #}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    {# L'utilisateur e le rôle admin ? #}
+    {% if is_granted('ROLE_ADMIN') %}
     <ul class="unstyled nav-pills nav-stacked">
         <li>
             <a class="btn" href="{{ path('eleve') }}">
@@ -39,5 +43,6 @@
             </a>
         </li>
     </ul>
-            
+    {% endif %}
+    {% endif %} 
 {% endblock fos_user_content %}

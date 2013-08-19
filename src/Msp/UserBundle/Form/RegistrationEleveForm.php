@@ -15,13 +15,13 @@ class RegistrationEleveForm extends AbstractType {
             case 1:                
                 //parent::buildForm( $builder, $options );
                 $builder
-                    ->add('username', null, array('label' => 'Pseudo :', 'translation_domain' => 'FOSUserBundle'))
-                    ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+                    ->add('username', null, array('label' => 'Pseudo :', 'attr' => array("placeholder" => "Pseudo") ))
+                    ->add('email', 'email', array('label' => 'form.email', 'attr' => array("placeholder" => "Email")))
                     ->add('plainPassword', 'repeated', array(
                         'type' => 'password',
                         'options' => array('translation_domain' => 'FOSUserBundle'),
-                        'first_options' => array('label' => 'form.password'),
-                        'second_options' => array('label' => 'form.password_confirmation'),
+                        'first_options' => array('label' => 'form.password', 'attr' => array("placeholder" => "form.password")),
+                        'second_options' => array('label' => 'form.password_confirmation', 'attr' => array("placeholder" => "form.password_confirmation")),
                         'invalid_message' => 'fos_user.password.mismatch',
                     ))
                     ->add('nom', 'text', array( 'attr' => array("placeholder" => "Nom") ) )
@@ -29,17 +29,17 @@ class RegistrationEleveForm extends AbstractType {
                     ->add('adresse', 'text', array( 'attr' => array("placeholder" => "Adresse")))                   
                     ->add('numeroPortable', 'text', array( 'label' => "Numéro de téléphone", 'attr' => array("placeholder" => "Numéro de téléphone"), 'required' => false ))
                     ->add('classe', 'entity', array( 'class' => 'Msp\FrontendBundle\Entity\Classe', 'empty_value' => "classe", 'required' => true))
-                    ->add('dateDeNaissance', 'date', array('label' => "Date de naissance", 'attr' => array("placeholder" => "Date de naissance"), 'format' => 'dd/MM/yyyy'))
+                    ->add('dateDeNaissance', 'birthday', array('label' => "Date de naissance", 'widget' => 'single_text', 'attr' => array("placeholder" => "Date de naissance"), 'format' => 'dd/MM/yyyy'))
                 ;
                 break;
             case 2:
                 $builder
-                    ->add('userFamilies', new UserFamilyType())
+                    ->add('userFamily', new UserFamilyType())
                 ;
                 break;
             case 3:
                 $builder
-                    ->add('objectifs', 'textarea', array('attr' => array("placeholder" => "Date de naissance")))                    
+                    ->add('objectifs', 'textarea', array('attr' => array("placeholder" => "Vos objectifs")))                    
                 ;
                 break;            
         }
@@ -53,7 +53,7 @@ class RegistrationEleveForm extends AbstractType {
     }
 
     public function getName() {
-        return 'registrationEleve';
+        return 'registration_eleve';
     }
 
 }

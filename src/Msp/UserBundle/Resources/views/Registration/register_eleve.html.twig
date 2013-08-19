@@ -11,55 +11,84 @@
 
 {# Le titre de l'entête du document #}
 {% block entetetitle %}INSCRIPTION ÉLÈVE | {{ parent() }}{% endblock %}
-{# La barre latéralke de la page #}
-{% block aside %}{{ parent() }}{% endblock %}
+
+{# On retire le menu niveau #}
+{% block menuNiveau %}{% endblock %}
 
 {% block fos_user_content %}
-
 <header>        
-    <h1>INSCRIPTION ÉLÈVE</h1>
-    <p class="pull-right"><a class="btn" href="{{ path('fos_user_registration_register')}}">INSCRIPTION PROFESSEUR</a></p>
+    <h1 class="light">VOUS NOUS REMERCIEREZ PLUS TARD</h1>    
 </header>
-
-<div>
-    Etapes:
-    {% include 'CraueFormFlowBundle:FormFlow:stepList.html.twig' %}
-</div>
-
-<form action="{{ path('msp_eleve_inscription') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-    {% include 'CraueFormFlowBundle:FormFlow:stepField.html.twig' %}
-
-    {{ form_errors(form) }}
-
-    {{ form_widget(form) }}
-
-    {{ form_rest(form) }}
-
-    {% set renderBackButton = flow.getCurrentStepNumber() in (flow.getFirstStepNumber() + 1) .. flow.getLastStepNumber() %}
-    <div class="craue_formflow_buttons craue_formflow_button_count_{% if renderBackButton %}3{% else %}2{% endif %}">
-            
-            <button class="btn btn-danger" type="submit" class="craue_formflow_button_first" name="{{ flow.getFormTransitionKey() }}" value="reset" formnovalidate="formnovalidate">
-                    {{- 'button.reset' | trans({}, 'CraueFormFlowBundle') -}}
-            </button>
-        
-            {% if renderBackButton %}
-                    {# see http://www.html5rocks.com/en/tutorials/forms/html5forms/ #}
-                    <button class="btn btn-info" type="submit" name="{{ flow.getFormTransitionKey() }}" value="back" formnovalidate="formnovalidate">
-                            {{- 'button.back' | trans({}, 'CraueFormFlowBundle') -}}
-                    </button>
+<div class="wrap-form">
+    <article class="container">
+        <h1 class="avenirNextBold">
+            {%- if flow.getCurrentStepNumber() < 3 -%}
+            D'ABORD COMPLÉTEZ VOTRE PROFIL ...
+            {% elseif flow.getCurrentStepNumber() == 3%}
+            MAINTENANT DITES NOUS QUELS SONT VOS OBJECTIFS ...
+            {% elseif flow.getCurrentStepNumber() == 4%}
+            ENFIN CHOISSISSEZ VOTRE FORMULES.
             {% endif %}
+        </h1>
+        <p class="pull-right"><a class="btn" href="{{ path('fos_user_registration_register')}}">INSCRIPTION PROFESSEUR</a></p>
+        <div>
+            Etapes:
+            {% include 'CraueFormFlowBundle:FormFlow:stepList.html.twig' %}
+        </div>        
         
-            <button class="btn btn-success" type="submit" class="craue_formflow_button_last">
-                    {%- if flow.getCurrentStepNumber() < flow.getLastStepNumber() -%}
-                            {{- 'button.next' | trans({}, 'CraueFormFlowBundle') -}}
-                    {%- else -%}
-                            {{- 'button.finish' | trans({}, 'CraueFormFlowBundle') -}}
-                    {%- endif -%}
-            </button>
-
-                    
-    </div>
-</form>
+        <form action="{{ path('msp_eleve_inscription') }}" {{ form_enctype(form) }} method="POST" class="eleve_registration">
+            <fieldset>
+                {%- if flow.getCurrentStepNumber() == 1 %}
+                <legend class="avenirNextBold espace-eleve">ESPACE ÉLÈVE</legend>
+                {% elseif flow.getCurrentStepNumber() == 2 %}
+                <legend class="avenirNextBold espace-parent">ESPACE PARENT</legend>                
+                {% endif %}
+                <div class="form-wrap-inner row-fluid">                                 
+                    <div class="wrap-left">
+                    {% include 'CraueFormFlowBundle:FormFlow:stepField.html.twig' %}  
+                    {{ form_widget(form) }}
+                    </div>                    
+                    {% set renderBackButton = flow.getCurrentStepNumber() in (flow.getFirstStepNumber() + 1) .. flow.getLastStepNumber() %}
+                    <div class="craue-button">                        
+                            <!--<button class="btn btn-danger" type="submit" class="craue_formflow_button_first" name="{{ flow.getFormTransitionKey() }}" value="reset" formnovalidate="formnovalidate">
+                                    {{- 'button.reset' | trans({}, 'CraueFormFlowBundle') -}}
+                            </button>
+                            <br/><br/>
+                            {% if renderBackButton %}
+                                    {# see http://www.html5rocks.com/en/tutorials/forms/html5forms/ #}
+                                    <button class="btn btn-info" type="submit" name="{{ flow.getFormTransitionKey() }}" value="back" formnovalidate="formnovalidate">
+                                            {{- 'button.back' | trans({}, 'CraueFormFlowBundle') -}}
+                                    </button>
+                                    <br/><br/>
+                            {% endif %}
+                            -->  
+                            {%- if flow.getCurrentStepNumber() == 1 or flow.getCurrentStepNumber() == 3 %}
+                            <div class="{% if flow.getCurrentStepNumber() == 1 %}align-profil{% else %}align-objectifs{% endif %}" >
+                            <button type="submit" class="offset1 btn btn-primary avenirNextBold craue_poursuivre">                                  
+                                    POURSUIVRE                                    
+                            </button>
+                            </div>
+                            {%- elseif flow.getCurrentStepNumber() == 2 %}
+                            <button type="submit" class="btn-inverse avenirNextBold craue_valider">                                  
+                                    VALIDER                                   
+                            </button>
+                            {%- endif %}                        
+                    </div>                    
+                </div>
+                <!--
+                {%- if flow.getCurrentStepNumber() == flow.getLastStepNumber() -%}
+                <div class="footer-form">
+                </div>
+                <button type="submit" class="craue_terminer">                                  
+                        VALIDER                                   
+                </button>
+                {%- endif %}
+                -->
+            </fieldset>
+        </form>
+        
+    </article>
+</div>
 
 {% endblock fos_user_content %}
 

@@ -14,8 +14,8 @@ class UserFamilyType extends AbstractType
     {
         $builder
             //->add('sexe',new GenderType(), array( 'empty_value' => 'Choisir un genre',) )
-            ->add('nom')
-            ->add('prenom')            
+            ->add('nom','text', array( 'attr' => array("placeholder" => "Votre nom")))
+            ->add('prenom','text', array( 'attr' => array("placeholder" => "Votre prénom")))            
             //->add('numeroFixe', 'text', array( "label" => "Numéro Fixe", 'required' => false ) )
             //->add('numeroPortable', 'text', array( "label" => "Numéro Portable", 'required' => false ))
             //->add('email')

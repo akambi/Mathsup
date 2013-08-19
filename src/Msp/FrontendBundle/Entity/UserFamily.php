@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class UserFamily
 {
      /**
-    * @ORM\ManyToOne(targetEntity="Msp\UserBundle\Entity\User", cascade={"persist"}, inversedBy="userFamilies" )
+    * @ORM\OneToOne(targetEntity="Msp\UserBundle\Entity\User", inversedBy="userFamily", cascade={"persist"} )
     * @ORM\JoinColumn(nullable=false)
     */
     private $user;

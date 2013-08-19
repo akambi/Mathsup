@@ -7,7 +7,7 @@ use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 use Gedmo\Mapping\Annotation as Gedmo;
-
+use \Doctrine\Common\Collections\ArrayCollection;
 /**
 * @ORM\Entity(repositoryClass="Msp\UserBundle\Entity\UserRepository")
 * @ORM\Table()
@@ -15,9 +15,9 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class User extends BaseUser
 {
     /**
-    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserFamily", mappedBy="user", cascade={"persist"})
+    * @ORM\OneToOne(targetEntity="Msp\FrontendBundle\Entity\UserFamily", mappedBy="user", cascade={"persist"})
     */
-    private $userFamilies;
+    private $userFamily;
     
     /**
     * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\UserGoConference", mappedBy="user")
@@ -161,7 +161,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->dateInscription = new \Datetime();
+        $this->dateInscription = new \Datetime();       
         // your own logic
     }
     
@@ -727,45 +727,27 @@ class User extends BaseUser
     public function getEtablissement()
     {
         return $this->etablissement;
-    }
+    }    
 
     /**
-     * Add userFamilies
+     * Get userFamily
      *
-     * @param \Msp\FrontendBundle\Entity\UserFamily $userFamilies
-     * @return User
+     * @return \Msp\FrontendBundle\Entity\UserFamily
      */
-    public function addUserFamily(\Msp\FrontendBundle\Entity\UserFamily $userFamilies)
+    public function getUserFamily()
     {
-        $this->userFamilies[] = $userFamilies;
-
-        return $this;
-    }
-
-    /**
-     * Remove userFamilies
-     *
-     * @param \Msp\FrontendBundle\Entity\UserFamily $userFamilies
-     */
-    public function removeUserFamily(\Msp\FrontendBundle\Entity\UserFamily $userFamilies)
-    {
-        $this->userFamilies->removeElement($userFamilies);
-    }
-
-    /**
-     * Get userFamilies
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUserFamilies()
-    {
-        return $this->userFamilies;
+        return $this->userFamily;
     }
     
-    public function setUserFamilies(\Msp\FrontendBundle\Entity\UserFamily $userFamilies){
-        $userFamilies->setUser($this);
-        $this->userFamilies = $userFamilies;
-
+    /**
+     * Set userFamily
+     *
+     * @return \Msp\UserBundle\Entity\User
+     */
+    public function setUserFamily(\Msp\FrontendBundle\Entity\UserFamily $userFamily){
+        $userFamily->setUser($this);        
+        $this->userFamily = $userFamily;        
+        
         return $this;
     }
     

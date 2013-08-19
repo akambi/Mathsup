@@ -284,4 +284,19 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 .container-fluid > footer ul li { display: inline-block; }
 /*.container-fluid > footer ul li a { padding: 0 5px; border-right: 1px #818181 solid; }*/
 .container-fluid > footer ul li:last-child a { border: 0 none; }
+/*Inscription eleve*/
+.eleve_registration label { display: none; }
+.wrap-form { background: #f2f2f2; padding-bottom: 50px; }
+.wrap-form h1 { font-size: 16px; color: #009fe3; }
+.eleve_registration legend { width: 140px;  margin: 0; border: 0; border: 1px #cecece solid; border-bottom: 0 none; font-size: 13px; text-align: center; }
+.eleve_registration legend.espace-eleve { background: white; }
+.eleve_registration .form-wrap-inner { background: white; border: 1px #cecece solid; padding: 20px; }
+.border-form { border-right: 1px #cecece solid; }
+.eleve_registration input[type=text], .eleve_registration input[type=password], .eleve_registration input[type=email], .eleve_registration select, .eleve_registration textarea { background: #f0f0f0; }
+.help-form { display: inline-block; margin-left: 20px; color: #009fe3; font-size: 14px; }
+.eleve_registration .craue-button, .eleve_registration .wrap-left { display:inline-block; width: 80%; vertical-align: top; }
+.eleve_registration .craue-button { width: 14%; }
+.eleve_registration .craue-button .align-profil, .eleve_registration .craue-button .align-objectifs { display: table-cell; width: 100%; height: 240px; vertical-align: bottom; }
+.eleve_registration .craue-button .align-objectifs { height: 127px;}
+/*.craue_poursuivre { display: inline-block; width: 100px; background: #00489a; line-height: 40px; color: white; }*/
 
