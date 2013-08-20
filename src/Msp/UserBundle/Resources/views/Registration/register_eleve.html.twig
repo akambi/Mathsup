@@ -29,12 +29,11 @@
             {% elseif flow.getCurrentStepNumber() == 4%}
             ENFIN CHOISSISSEZ VOTRE FORMULES.
             {% endif %}
-        </h1>
-        <p class="pull-right"><a class="btn" href="{{ path('fos_user_registration_register')}}">INSCRIPTION PROFESSEUR</a></p>
-        <div>
+        </h1>        
+        <!--<div>
             Etapes:
             {% include 'CraueFormFlowBundle:FormFlow:stepList.html.twig' %}
-        </div>        
+        </div>   -->     
         
         <form action="{{ path('msp_eleve_inscription') }}" {{ form_enctype(form) }} method="POST" class="eleve_registration">
             <fieldset>
@@ -64,13 +63,13 @@
                             -->  
                             {%- if flow.getCurrentStepNumber() == 1 or flow.getCurrentStepNumber() == 3 %}
                             <div class="{% if flow.getCurrentStepNumber() == 1 %}align-profil{% else %}align-objectifs{% endif %}" >
-                            <button type="submit" class="offset1 btn btn-primary avenirNextBold craue_poursuivre">                                  
-                                    POURSUIVRE                                    
+                            <button type="submit" class="craue_poursuivre">                                  
+                                <img src="{{ asset('/img/poursuivre.png') }}" alt=""/>
                             </button>
                             </div>
                             {%- elseif flow.getCurrentStepNumber() == 2 %}
-                            <button type="submit" class="btn-inverse avenirNextBold craue_valider">                                  
-                                    VALIDER                                   
+                            <button type="submit" class="craue_poursuivre">                                  
+                                <img src="{{ asset('/img/valider.png') }}" alt=""/>                            
                             </button>
                             {%- endif %}                        
                     </div>                    
@@ -86,7 +85,7 @@
                 -->
             </fieldset>
         </form>
-        
+        <p class=""><a class="btn" href="{{ path('fos_user_registration_register')}}">INSCRIPTION PROFESSEUR</a></p>
     </article>
 </div>
 

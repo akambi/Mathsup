@@ -68,7 +68,7 @@
                         <li class="insactive" id="inscr"><a href="{{ path('msp_conference_connexion') }}">Visioconférence</a></li>
                         <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                         {% else %}
-                        <li class="insactive avenirNextBold" id="inscr"><a href="{{ path('fos_user_registration_register') }}">+ S'INSCRIRE</a></li>
+                        <li class="insactive avenirNextBold" id="inscr"><a href="{{ path('msp_eleve_inscription') }}">+ S'INSCRIRE</a></li>
                         <li class="avenirNextBold"><a id="member-connect" href="{{ path('fos_user_security_login') }}">CONNEXION</a></li>                        
                         {% endif %}
                     </ul>

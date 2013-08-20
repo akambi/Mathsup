@@ -73,9 +73,9 @@
                 {{ form_label(form.numeroPortable, null, {'label_attr': {'class' : 'control-label' }}) }}
                 <div class="controls">
                 {% if form.numeroPortable.vars.errors|length %}
-                    {{ form_widget(form.numeroPortable, {'attr' : {'class' : 'offset1 span11 alert'}}) }}
+                    {{ form_widget(form.numeroPortable, {'attr' : {'class' : 'input-large alert'}}) }}
                 {% else %}
-                    {{ form_widget(form.numeroPortable, {'attr' : {'class' : 'offset1 span11'}}) }}
+                    {{ form_widget(form.numeroPortable, {'attr' : {'class' : 'input-large'}}) }}
                 {% endif %}
                 </div>
                 {{ form_errors(form.numeroPortable) }}
@@ -87,9 +87,9 @@
             {{ form_label(form.adresse, null, {'label_attr': {'class' : 'control-label' }}) }}
             <div class="controls">
             {% if form.adresse.vars.errors|length %}
-                {{ form_widget(form.adresse, {'attr' : {'class' : 'span12 alert'}}) }}
+                {{ form_widget(form.adresse, {'attr' : {'class' : ' alert'}}) }}
             {% else %}
-                {{ form_widget(form.adresse, {'attr' : {'class' : 'span12-large'}}) }}
+                {{ form_widget(form.adresse, {'attr' : {'class' : ''}}) }}
             {% endif %}
             </div>
             {{ form_errors(form.adresse) }}
@@ -121,39 +121,42 @@
         </div>
     </div>
     {% elseif form.userFamily is defined %}
-        {# Affichage du champ userFamily #}        
-        <div class="control-group span3">
+        {# Affichage du champ userFamily #}  
+        <p class="parent-title">
+            S’enregistrer en tant que parent d’élève.
+        </p>
+        <div class="control-group parent-field">
             {{ form_label(form.userFamily.nom, null, {'label_attr': {'class' : 'control-label' }}) }}
             <div class="controls">
             {% if form.userFamily.nom.vars.errors|length %}
-                {{ form_widget(form.userFamily.nom, {'attr' : {'class' : 'input-large alert'}}) }}
+                {{ form_widget(form.userFamily.nom, {'attr' : {'class' : 'alert'}}) }}
             {% else %}
-                {{ form_widget(form.userFamily.nom, {'attr' : {'class' : 'input-large'}}) }}
+                {{ form_widget(form.userFamily.nom, {'attr' : {'class' : ''}}) }}
             {% endif %}            
             </div>
             {{ form_errors(form.userFamily.nom) }}
         </div>
         {# Affichage du champ userFamily.prenom #}
-        <div class="control-group span3 offset1">
+        <div class="control-group parent-field">
             {{ form_label(form.userFamily.prenom, null, {'label_attr': {'class' : 'control-label' }}) }}
             <div class="controls">
             {% if form.userFamily.prenom.vars.errors|length %}
-                {{ form_widget(form.userFamily.prenom, {'attr' : {'class' : 'input-large alert'}}) }}
+                {{ form_widget(form.userFamily.prenom, {'attr' : {'class' : 'alert'}}) }}
             {% else %}
-                {{ form_widget(form.userFamily.prenom, {'attr' : {'class' : 'input-large'}}) }}
+                {{ form_widget(form.userFamily.prenom, {'attr' : {'class' : ''}}) }}
             {% endif %}            
             </div>
             {{ form_errors(form.userFamily.prenom) }}
         </div>
     {% else %}
         {# Affichage du champ objectifs #}
-        <div class="control-group">
+        <div class="control-group objectifs-text">
             {{ form_label(form.objectifs, null, {'label_attr': {'class' : 'control-label' }}) }}
             <div class="controls">
             {% if form.objectifs.vars.errors|length %}
-                {{ form_widget(form.objectifs, {'attr' : {'class' : 'span12 alert', 'rows': 5}}) }}
+                {{ form_widget(form.objectifs, {'attr' : {'class' : 'alert'}}) }}
             {% else %}
-                {{ form_widget(form.objectifs, {'attr' : {'class' : 'span12', 'rows': 5}}) }}
+                {{ form_widget(form.objectifs, {'attr' : {'class' : ''}}) }}
             {% endif %}            
             </div>
             {{ form_errors(form.objectifs) }}

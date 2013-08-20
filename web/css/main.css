@@ -289,14 +289,23 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 .wrap-form { background: #f2f2f2; padding-bottom: 50px; }
 .wrap-form h1 { font-size: 16px; color: #009fe3; }
 .eleve_registration legend { width: 140px;  margin: 0; border: 0; border: 1px #cecece solid; border-bottom: 0 none; font-size: 13px; text-align: center; }
-.eleve_registration legend.espace-eleve { background: white; }
+.eleve_registration legend.espace-eleve { background: white; color: #009fe3; }
+.eleve_registration legend.espace-parent { background: #e5e5e5; color: #8a8a8a; }
 .eleve_registration .form-wrap-inner { background: white; border: 1px #cecece solid; padding: 20px; }
 .border-form { border-right: 1px #cecece solid; }
-.eleve_registration input[type=text], .eleve_registration input[type=password], .eleve_registration input[type=email], .eleve_registration select, .eleve_registration textarea { background: #f0f0f0; }
+.eleve_registration input[type=text], .eleve_registration input[type=password], .eleve_registration input[type=email], .eleve_registration select, .eleve_registration textarea { background: #f0f0f0; border: 2px solid #CCCCCC; height: 26px; line-height: 26px; }
+.eleve_registration textarea { height: 115px; width: 96%; margin-bottom: 0;}
+.objectifs-text { margin: 0; }
 .help-form { display: inline-block; margin-left: 20px; color: #009fe3; font-size: 14px; }
-.eleve_registration .craue-button, .eleve_registration .wrap-left { display:inline-block; width: 80%; vertical-align: top; }
-.eleve_registration .craue-button { width: 14%; }
-.eleve_registration .craue-button .align-profil, .eleve_registration .craue-button .align-objectifs { display: table-cell; width: 100%; height: 240px; vertical-align: bottom; }
+.eleve_registration .craue-button, .eleve_registration .wrap-left { display:inline-block; width: 87.9%; vertical-align: top; }
+.eleve_registration .craue-button { width: 11.6%; }
+.eleve_registration .craue-button .align-profil, .eleve_registration .craue-button .align-objectifs { display: table-cell; width: 100%; height: 215px; vertical-align: bottom; }
 .eleve_registration .craue-button .align-objectifs { height: 127px;}
-/*.craue_poursuivre { display: inline-block; width: 100px; background: #00489a; line-height: 40px; color: white; }*/
+#registration_eleve_adresse { width: 96.5%; }
+#registration_eleve_numeroPortable { float: right; }
+.eleve_registration  #registration_eleve_classe { height: 38px; line-height: 38px; padding: 8px 6px; }
+.craue_poursuivre { border: 0 none; padding: 0; }
+.parent-title { background: url('/img/parent-title.png') top left; width: 255px; padding: 0 10px; height: 38px; line-height: 38px; color: white; font-size: 13px; float: left; margin-bottom: 0;}
+.parent-field { float: left; width: 250px; margin-left: 20px; margin-bottom: 0;}
+.parent-field  input { width: 92%; margin: 0; }
 
