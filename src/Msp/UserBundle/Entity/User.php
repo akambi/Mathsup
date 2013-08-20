@@ -15,6 +15,11 @@ use \Doctrine\Common\Collections\ArrayCollection;
 class User extends BaseUser
 {
     /**
+    * @ORM\OneToMany(targetEntity="Msp\FrontendBundle\Entity\Log", mappedBy="user")
+    */
+    private $logs;
+    
+    /**
     * @ORM\OneToOne(targetEntity="Msp\FrontendBundle\Entity\UserFamily", mappedBy="user", cascade={"persist"})
     */
     private $userFamily;
@@ -157,6 +162,16 @@ class User extends BaseUser
     * @ORM\Column(length=128, unique=true)
     */
     private $slug;
+    
+    /**
+     * Cette variable sert à conserver temporairement le choix du cours pour le pack
+     */
+    public $cours;
+    
+    /**
+     * Cette variable sert à conserver temporairement le choix du pack
+     */
+    public $pack;
     
     public function __construct()
     {
@@ -774,5 +789,36 @@ class User extends BaseUser
         $this->userAvailabilities->removeElement($userAvailabilities);
     }
     
+    /**
+     * Add logs
+     *
+     * @param \Msp\FrontendBundle\Entity\Log $logs
+     * @return User
+     */
+    public function addLog(\Msp\FrontendBundle\Entity\Log $logs)
+    {
+        $this->logs[] = $logs;
     
+        return $this;
+    }
+
+    /**
+     * Remove logs
+     *
+     * @param \Msp\FrontendBundle\Entity\Log $logs
+     */
+    public function removeLog(\Msp\FrontendBundle\Entity\Log $logs)
+    {
+        $this->logs->removeElement($logs);
+    }
+
+    /**
+     * Get logs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLogs()
+    {
+        return $this->logs;
+    }
 }

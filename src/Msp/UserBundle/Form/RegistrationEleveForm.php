@@ -41,7 +41,28 @@ class RegistrationEleveForm extends AbstractType {
                 $builder
                     ->add('objectifs', 'textarea', array('attr' => array("placeholder" => "Vos objectifs")))                    
                 ;
-                break;            
+                break;
+            case 4:
+                $builder
+                    ->add('cours','choice', array( 
+                        'choices'   => array(
+                            '1'   => 'Cours à domicile',
+                            '2' => 'Face à face',
+                            '3' => 'classe virtuelle',
+                        ),
+                        'expanded' => true
+                    ))
+                    ->add('pack','choice', array( 
+                        'choices'   => array(
+                            '12'   => '12 H',
+                            '24' => '24 H',
+                            '36' => '36 H',
+                            '48' => '48 H',
+                        ),
+                        'expanded' => true
+                    ))                       
+                ;
+                break; 
         }
     }
 

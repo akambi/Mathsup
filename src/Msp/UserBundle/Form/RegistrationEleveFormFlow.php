@@ -5,6 +5,7 @@ namespace Msp\UserBundle\Form;
 use Craue\FormFlowBundle\Form\FormFlow;
 use Craue\FormFlowBundle\Form\FormFlowInterface;
 use Symfony\Component\Form\FormTypeInterface;
+use Msp\UserBundle\Form\RegistrationEleveForm;
 
 class RegistrationEleveFormFlow extends FormFlow {
     
@@ -27,11 +28,11 @@ class RegistrationEleveFormFlow extends FormFlow {
         return array(
             array(
                 'label' => 'ESPACE ÉLÈVE',
-                'type' => $this->formType,
+                'type' => new RegistrationEleveForm(),
             ),
             array(
                 'label' => 'ESPACE PARENT',
-                'type' => $this->formType,
+                'type' => new RegistrationEleveForm(),
                 'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {
                     $skip = false;
                 //  On recupère l'entité user avec sa date de naissance
@@ -47,16 +48,13 @@ class RegistrationEleveFormFlow extends FormFlow {
             ),
             array(
                 'label' => 'VOS OBJECTIFS',
-                'type' => $this->formType, 
+                'type' => new RegistrationEleveForm(),
             ),
-            /*array(
-                'label' => 'VOTRE FORMULE',
-                'type' => $this->formType, 
-            ),         
             array(
-                'label' => 'confirmation',
-                'type' => $this->formType, // needed to avoid InvalidOptionsException regarding option 'flowStep'
-            ),*/
+                'label' => 'VOTRE FORMULE',
+                'type' => new RegistrationEleveForm(), 
+            ),         
+            
         );
     }
 

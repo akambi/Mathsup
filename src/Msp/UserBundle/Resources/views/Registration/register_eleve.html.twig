@@ -42,7 +42,8 @@
                 {% elseif flow.getCurrentStepNumber() == 2 %}
                 <legend class="avenirNextBold espace-parent">ESPACE PARENT</legend>                
                 {% endif %}
-                <div class="form-wrap-inner row-fluid">                                 
+                {% if flow.getCurrentStepNumber() < flow.getLastStepNumber() -%}
+                <div class="form-wrap-inner row-fluid form-with-padding">                                 
                     <div class="wrap-left">
                     {% include 'CraueFormFlowBundle:FormFlow:stepField.html.twig' %}  
                     {{ form_widget(form) }}
@@ -74,15 +75,26 @@
                             {%- endif %}                        
                     </div>                    
                 </div>
-                <!--
+                {% else %}
+                <div class="form-wrap-inner row-fluid">                     
+                    {% include 'CraueFormFlowBundle:FormFlow:stepField.html.twig' %}  
+                    {{ form_widget(form) }}
+                </div>
+                {% endif %}
                 {%- if flow.getCurrentStepNumber() == flow.getLastStepNumber() -%}
                 <div class="footer-form">
+                    <p class="form-text-end">
+                        Vous n'avez pas encore fait votre choix. Vous souhaitez bénéficier de nos conseils…
+                    </p>
+                    <a class="pull-right" href="{{ path('msp_contact') }}" target="_blank"><img src="{{ asset('/img/mecontacter.png') }}" alt=""/></a>
+                    <div class="clearfix"></div>
                 </div>
-                <button type="submit" class="craue_terminer">                                  
-                        VALIDER                                   
-                </button>
-                {%- endif %}
-                -->
+                <div class="text-center">
+                    <button type="submit" class="craue_poursuivre">                                  
+                        <img src="{{ asset('/img/terminer-inscription.png') }}" alt=""/>                                
+                    </button>
+                </div>
+                {%- endif %}                
             </fieldset>
         </form>
         <p class=""><a class="btn" href="{{ path('fos_user_registration_register')}}">INSCRIPTION PROFESSEUR</a></p>

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use FOS\UserBundle\Model\UserInterface;
 use Msp\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Msp\FrontendBundle\Entity\Log;
 
 class RegistrationController extends BaseController
 {   
@@ -35,10 +36,16 @@ class RegistrationController extends BaseController
                 $eleve->setConfirmationToken(null);
                 $eleve->setEnabled(true);
                 $eleve->setLastLogin(new \DateTime());
-                //var_dump($eleve);
+            //  On enregistre le choix du pack et du cours dans le log
+                $cours = $em->getRepository('MspFrontendBundle:Cours')->find($eleve->cours);
+                $log = new Log();
+                $log->setUser($eleve);
+                $log->setInfo('Pack '.$eleve->pack.'H - '.$cours);
+                //var_dump($log);
                 //exit();
             //  On enregistre l'utilisateur
                 $em->persist($eleve);
+                $em->persist($log);
                 $em->flush();
 
                 $authUser = true;

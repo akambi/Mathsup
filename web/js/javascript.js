@@ -209,6 +209,26 @@ jQuery(document).ready(function($) {
           jQuery(this).addClass('niveauactive');
       }
     });
+    
+    // Ici on gère le pack à l'inscription
+    $('.formule-cours input:radio').click(function(){
+        $('.formule-cours').css('background','#e5e5e5');
+        $(this).parent().parent().css('background','white');
+        $('.formule-pack').css('display','inline-block');
+    });
+    /* Slider niveau */
+     $( "#slider-blue" ).slider({
+        orientation: "horizontal",
+        range: "min",
+        max: 160,
+        value: 40,
+        slide: refreshSwatch,
+        change: refreshSwatch
+    });
+    $( "#slider-blue" ).slider( "value", 40 );
+     function refreshSwatch() {
+        $( "#slider-blue" ).slider( "value" );       
+    }
 });
 
 /*

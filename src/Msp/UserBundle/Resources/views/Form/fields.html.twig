@@ -73,9 +73,9 @@
                 {{ form_label(form.numeroPortable, null, {'label_attr': {'class' : 'control-label' }}) }}
                 <div class="controls">
                 {% if form.numeroPortable.vars.errors|length %}
-                    {{ form_widget(form.numeroPortable, {'attr' : {'class' : 'input-large alert'}}) }}
+                    {{ form_widget(form.numeroPortable, {'attr' : {'class' : 'alert'}}) }}
                 {% else %}
-                    {{ form_widget(form.numeroPortable, {'attr' : {'class' : 'input-large'}}) }}
+                    {{ form_widget(form.numeroPortable, {'attr' : {'class' : ''}}) }}
                 {% endif %}
                 </div>
                 {{ form_errors(form.numeroPortable) }}
@@ -94,18 +94,31 @@
             </div>
             {{ form_errors(form.adresse) }}
         </div>
-         {# Affichage du champ numeroPortable #}
-        <div class="control-group">
-            {{ form_label(form.classe, null, {'label_attr': {'class' : 'control-label' }}) }}
-            <div class="controls">
-            {% if form.classe.vars.errors|length %}
-                {{ form_widget(form.classe, {'attr' : {'class' : 'input-large alert'}}) }}
-            {% else %}
-                {{ form_widget(form.classe, {'attr' : {'class' : 'input-large'}}) }}
-            {% endif %}
-            </div>
-            {{ form_errors(form.classe) }}
+        <div class="left-side">
+           {# Affichage du champ numeroPortable #}
+           <div class="control-group">
+               {{ form_label(form.classe, null, {'label_attr': {'class' : 'control-label' }}) }}
+               <div class="controls">
+               {% if form.classe.vars.errors|length %}
+                   {{ form_widget(form.classe, {'attr' : {'class' : 'input-large alert'}}) }}
+               {% else %}
+                   {{ form_widget(form.classe, {'attr' : {'class' : 'input-large'}}) }}
+               {% endif %}
+               </div>
+               {{ form_errors(form.classe) }}
+           </div>
         </div>
+        <div class="right-side">
+            <div class="control-group">
+                <label class="niveau-estime">Niveau estimé :</label>
+                <div class="controls">
+                   <div id="slider-blue">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
          {# Affichage du champ numeroPortable #}
         <div class="control-group">
             {{ form_label(form.dateDeNaissance, null, {'label_attr': {'class' : 'control-label' }}) }}
@@ -148,7 +161,7 @@
             </div>
             {{ form_errors(form.userFamily.prenom) }}
         </div>
-    {% else %}
+    {% elseif form.objectifs is defined %}    
         {# Affichage du champ objectifs #}
         <div class="control-group objectifs-text">
             {{ form_label(form.objectifs, null, {'label_attr': {'class' : 'control-label' }}) }}
@@ -161,6 +174,73 @@
             </div>
             {{ form_errors(form.objectifs) }}
         </div>
+    {% else %}
+        {# Affichage du champ cours #}
+        {% for key, cours in form.cours %}
+        <div class="formule-cours formule-cours-{{key + 1}}">
+            <figure>
+            {% if key == 0 %}                
+                <img src="{{ asset('/img/logo_cours_domicile.jpg') }}" alt="" />                
+            {% elseif key == 1 %} 
+                <img src="{{ asset('/img/logo_cours_distance.jpg') }}" alt="" />                
+            {% else %}                
+                <img src="{{ asset('/img/logo_classe_virtuelle.jpg') }}" alt="" />                
+            {% endif  %}
+            </figure>
+            <p>                
+                {% if key == 0 %}
+                    <span class="avenirNextDemiBold">Cours à domicile</span>
+                    Cours particuliers à domicile
+                {% elseif key == 1 %}
+                    <span class="avenirNextDemiBold">Face à face</span>
+                    Cours particuliers en ligne
+                {% else %}
+                    <span class="avenirNextDemiBold">Classe virtuelle</span>
+                    Cours en ligne (25 élèves)
+                {% endif  %}
+            </p>
+            <div>
+            {% if cours.vars.errors|length %}
+                {{ form_widget(cours, {'attr' : {'class' : 'alert'}}) }}
+            {% else %}
+                {{ form_widget(cours, {'attr' : {'class' : ''}}) }}
+            {% endif %}            
+            </div>
+            {{ form_errors(cours) }}
+        </div>
+        {% endfor %}
+        {# Affichage du champ pack #}
+        {% for key, pack in form.pack %}
+        <div class="formule-pack formule-pack-{{key + 1}} hide">
+            <p>
+            {% if key == 0 %}                
+                <strong class="avenirNextDemiBold">Pack</strong>
+                <span class="avenirNextDemiBold">12 H</span>
+                240 €                
+            {% elseif key == 1 %} 
+                <strong class="avenirNextDemiBold">Pack</strong>
+                <span class="avenirNextDemiBold">24 H</span>
+                470 €  
+            {% elseif key == 2 %} 
+                <strong class="avenirNextDemiBold">Pack</strong>
+                <span class="avenirNextDemiBold">36 H</span>
+                700 €          
+            {% else %}                
+                <strong class="avenirNextDemiBold">Pack</strong>
+                <span class="avenirNextDemiBold">36 H</span>
+                930 €       
+            {% endif  %}
+            </p>
+            <div>
+            {% if pack.vars.errors|length %}
+                {{ form_widget(pack, {'attr' : {'class' : 'alert'}}) }}
+            {% else %}
+                {{ form_widget(pack, {'attr' : {'class' : ''}}) }}
+            {% endif %}            
+            </div>
+            {{ form_errors(pack) }}
+        </div>
+        {% endfor %}
     {% endif %}
     {{ form_rest(form) }}     
 </div>
