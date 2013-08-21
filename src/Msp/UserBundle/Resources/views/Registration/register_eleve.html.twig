@@ -17,9 +17,6 @@
 {# Le titre de l'entête du document #}
 {% block entetetitle %}INSCRIPTION ÉLÈVE | {{ parent() }}{% endblock %}
 
-{# On retire le menu niveau #}
-{% block menuNiveau %}{% endblock %}
-
 {% block fos_user_content %}
 <header>        
     <h1 class="light">VOUS NOUS REMERCIEREZ PLUS TARD</h1>    
@@ -27,11 +24,12 @@
 <div class="wrap-form">
     <article class="container">
         <h1 class="avenirNextBold">
-            {%- if flow.getCurrentStepNumber() < 3 -%}
+            {% set getFlowBeforeLastStep = flow.getLastStepNumber() - 1 %}
+            {%- if flow.getCurrentStepNumber() < getFlowBeforeLastStep %}
             D'ABORD COMPLÉTEZ VOTRE PROFIL ...
-            {% elseif flow.getCurrentStepNumber() == 3%}
+            {% elseif flow.getCurrentStepNumber() == getFlowBeforeLastStep %}
             MAINTENANT DITES NOUS QUELS SONT VOS OBJECTIFS ...
-            {% elseif flow.getCurrentStepNumber() == 4%}
+            {% elseif flow.getCurrentStepNumber() == flow.getLastStepNumber()%}
             ENFIN CHOISSISSEZ VOTRE FORMULES.
             {% endif %}
         </h1>        
@@ -44,7 +42,7 @@
             <fieldset>
                 {%- if flow.getCurrentStepNumber() == 1 %}
                 <legend class="avenirNextBold espace-eleve">ESPACE ÉLÈVE</legend>
-                {% elseif flow.getCurrentStepNumber() == 2 %}
+                {% elseif flow.getCurrentStepNumber() == 3 %}
                 <legend class="avenirNextBold espace-parent">ESPACE PARENT</legend>                
                 {% endif %}
                 {% if flow.getCurrentStepNumber() < flow.getLastStepNumber() -%}
@@ -67,13 +65,13 @@
                                     <br/><br/>
                             {% endif %}
                             -->  
-                            {%- if flow.getCurrentStepNumber() == 1 or flow.getCurrentStepNumber() == 3 %}
-                            <div class="{% if flow.getCurrentStepNumber() == 1 %}align-profil{% else %}align-objectifs{% endif %}" >
+                            {%- if flow.getCurrentStepNumber() in [1, 2, 4] %}
+                            <div class="{% if flow.getCurrentStepNumber() == 1 %} align-password {% elseif flow.getCurrentStepNumber() == 2 %} align-profil {% else %} align-objectifs {% endif %}" >
                             <button type="submit" class="craue_poursuivre">                                  
                                 <img src="{{ asset('/img/poursuivre.png') }}" alt=""/>
                             </button>
                             </div>
-                            {%- elseif flow.getCurrentStepNumber() == 2 %}
+                            {%- elseif flow.getCurrentStepNumber() == 3 %}
                             <button type="submit" class="craue_poursuivre">                                  
                                 <img src="{{ asset('/img/valider.png') }}" alt=""/>                            
                             </button>

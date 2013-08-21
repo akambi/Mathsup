@@ -12,8 +12,7 @@ class RegistrationEleveForm extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) { 
         switch ($options['flowStep']) {
-            case 1:                
-                //parent::buildForm( $builder, $options );
+            case 1:
                 $builder
                     ->add('username', null, array('label' => 'Pseudo :', 'attr' => array("placeholder" => "Pseudo") ))
                     ->add('email', 'email', array('label' => 'form.email', 'attr' => array("placeholder" => "Email")))
@@ -25,24 +24,31 @@ class RegistrationEleveForm extends AbstractType {
                         'invalid_message' => 'fos_user.password.mismatch',
                     ))
                     ->add('nom', 'text', array( 'attr' => array("placeholder" => "Nom") ) )
-                    ->add('prenom', 'text', array( 'attr' => array("placeholder" => "Prénom")))                    
+                    ->add('prenom', 'text', array( 'attr' => array("placeholder" => "Prénom")))
+                ;
+                break;
+            case 2:                
+                $builder                    
+                    ->add('nom', 'hidden' )
+                    ->add('prenom', 'hidden')
+                    ->add('email', 'email', array('label' => 'form.email', 'attr' => array("placeholder" => "Email")))
                     ->add('adresse', 'text', array( 'attr' => array("placeholder" => "Adresse")))                   
                     ->add('numeroPortable', 'text', array( 'label' => "Numéro de téléphone", 'attr' => array("placeholder" => "Numéro de téléphone"), 'required' => false ))
                     ->add('classe', 'entity', array( 'class' => 'Msp\FrontendBundle\Entity\Classe', 'empty_value' => "classe", 'required' => true))
                     ->add('dateDeNaissance', 'birthday', array('label' => "Date de naissance", 'widget' => 'single_text', 'attr' => array("placeholder" => "Date de naissance"), 'format' => 'dd/MM/yyyy'))
                 ;
                 break;
-            case 2:
+            case 3:
                 $builder
                     ->add('userFamily', new UserFamilyType())
                 ;
                 break;
-            case 3:
+            case 4:
                 $builder
                     ->add('objectifs', 'textarea', array('attr' => array("placeholder" => "Vos objectifs")))                    
                 ;
                 break;
-            case 4:
+            case 5:
                 $builder
                     ->add('cours','choice', array( 
                         'choices'   => array(

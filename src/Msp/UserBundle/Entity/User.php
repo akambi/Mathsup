@@ -8,6 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use \Doctrine\Common\Collections\ArrayCollection;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
 * @ORM\Entity(repositoryClass="Msp\UserBundle\Entity\UserRepository")
 * @ORM\Table()
@@ -78,6 +81,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=45)
+     * @Assert\Length(min="2")
      */
     protected $nom;
     
@@ -85,6 +89,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=45)
+     * @Assert\Length(min="2")
      */
     protected $prenom;
     
@@ -126,6 +131,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="adresse", type="text")
+     * @Assert\NotBlank()
      */
     private $adresse;
     
@@ -140,6 +146,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="objectifs", type="text", nullable=true)
+     * @Assert\Length(min="10")
      */
     private $objectifs;
     
@@ -147,6 +154,7 @@ class User extends BaseUser
      * @var \DateTime
      *
      * @ORM\Column(name="date_de_naissance", type="date")
+     * @Assert\Date()
      */
     private $dateDeNaissance;
     
@@ -154,6 +162,7 @@ class User extends BaseUser
      * @var \DateTime
      *
      * @ORM\Column(name="date_inscription", type="datetime")
+     * @Assert\DateTime()
      */
     private $dateInscription;
     

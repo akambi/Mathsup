@@ -31,6 +31,10 @@ class RegistrationEleveFormFlow extends FormFlow {
                 'type' => new RegistrationEleveForm(),
             ),
             array(
+                'label' => 'ESPACE ÉLÈVE SUITE',
+                'type' => new RegistrationEleveForm(),
+            ),
+            array(
                 'label' => 'ESPACE PARENT',
                 'type' => new RegistrationEleveForm(),
                 'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {

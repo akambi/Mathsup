@@ -292,15 +292,20 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 .eleve_registration legend.espace-eleve { background: white; color: #009fe3; }
 .eleve_registration legend.espace-parent { background: #e5e5e5; color: #8a8a8a; }
 .eleve_registration .form-wrap-inner { background: white; border: 1px #cecece solid; }
-.border-form { border-right: 1px #cecece solid; }
+.border-form-1 { border-right: 1px #cecece solid; }
+.border-form-2 { border-right: 1px #cecece solid; height: 253px; }
+.border-form-2 p { color: #00489a; font-size: 16px; }
+.border-form-2 .edit-profil { display: table-cell; vertical-align: bottom; height: 183px;}
+.border-form-2 .edit-profil a { color: #525252; }
 .eleve_registration input[type=text], .eleve_registration input[type=password], .eleve_registration input[type=email], .eleve_registration select, .eleve_registration textarea { background: #f0f0f0; border: 2px solid #CCCCCC; height: 26px; line-height: 26px; }
 .eleve_registration textarea { height: 115px; width: 96%; margin-bottom: 0;}
 .objectifs-text { margin: 0; }
 .help-form { display: inline-block; margin-left: 20px; color: #009fe3; font-size: 14px; }
 .eleve_registration .craue-button, .eleve_registration .wrap-left { display:inline-block; width: 87.9%; vertical-align: top; }
 .eleve_registration .craue-button { width: 11.6%; }
-.eleve_registration .craue-button .align-profil, .eleve_registration .craue-button .align-objectifs { display: table-cell; width: 100%; height: 235px; vertical-align: bottom; }
-.eleve_registration .craue-button .align-objectifs { height: 127px;}
+.eleve_registration .craue-button .align-profil, .eleve_registration .craue-button .align-password, .eleve_registration .craue-button .align-objectifs { display: table-cell; width: 100%; height: 235px; vertical-align: bottom; }
+.eleve_registration .craue-button .align-objectifs { height: 127px;} 
+.eleve_registration .craue-button .align-password { height: 154px;} 
 #registration_eleve_adresse { width: 96.5%; }
 #registration_eleve_numeroPortable { float: right; width: 87%; }
 .eleve_registration  #registration_eleve_classe { height: 38px; line-height: 38px; padding: 8px 6px; width: 100%; margin-top: 25px;}
