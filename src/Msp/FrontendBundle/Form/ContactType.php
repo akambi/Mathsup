@@ -16,7 +16,7 @@ class ContactType extends AbstractType
     {        
         $builder->add( 'nom', 'text', array( 'max_length' => 255 , 'label' => 'Nom: ', 'attr' => array( 'placeholder' => 'Votre Nom' ) ) )                
                 ->add( 'objet', 'choice', array( 'choices' => array('option1' => 'option 1', 'option2' => 'option 2'), 'empty_value' => 'Service', 'label' => 'Service: ', 'attr' => array( 'placeholder' => 'Service') ) )                
-                ->add( 'telephone', 'integer', array( 'label' => 'Téléphone: ', 'required' => false, 'attr' => array( 'placeholder' => 'Votre numéro de téléphone' ) ) )                  
+                ->add( 'telephone', 'text', array( 'label' => 'Téléphone: ', 'required' => false, 'attr' => array( 'placeholder' => 'Votre numéro de téléphone' ) ) )                  
                 ->add( 'message', 'textarea', array( 'label' => 'Message: ', 'attr' => array( 'placeholder' => 'Votre message' ) ) )
             ->add( 'email', 'email', array( 'max_length' => 255 , 'label' => 'Email: ', 'attr' => array( 'placeholder' => 'Votre Adresse de contact' ) ) );
     }

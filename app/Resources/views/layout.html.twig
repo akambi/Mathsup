@@ -9,8 +9,7 @@
         <meta name="keywords" lang="fr" content="{% block keywords %}{% endblock %}"/>
         <meta name="robots" content="{% block robots %}all{% endblock %}"/>
         
-        {% block stylesheets %}
-            <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        {% block stylesheets %}            
             {% stylesheets output='css/style.css' filter='cssrewrite' 'css/*' %}
                 <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
             {% endstylesheets %}

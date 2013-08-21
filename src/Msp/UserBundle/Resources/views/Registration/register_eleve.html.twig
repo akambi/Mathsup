@@ -9,6 +9,11 @@
 {# Indication pour les robots de la page  (defaut all) #}
 {% block robots %}noindex, nofollow{% endblock %}
 
+ {% block stylesheets %}
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    {{ parent() }}
+{% endblock %}
+
 {# Le titre de l'entête du document #}
 {% block entetetitle %}INSCRIPTION ÉLÈVE | {{ parent() }}{% endblock %}
 
