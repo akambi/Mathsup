@@ -2,7 +2,7 @@
 {% spaceless %}
 <div class="row-fluid">
     {# Affichage du formulaire etape 1 #}
-    {% if form.plainPassword is defined %}
+    {% if form.nom is defined %}
     <div class="span5 border-form-1">        
         {# Affichage du champ nom #}
         <div class="control-group">
@@ -41,52 +41,16 @@
             {{ form_errors(form.email) }}
         </div>
     </div>
-    <div class="span7">
-        {# Affichage du champ username #}
-        <div class="control-group">
-            {{ form_label(form.username, null, {'label_attr': {'class' : 'control-label' }}) }}
-            <div class="controls">
-            {% if form.username.vars.errors|length %}
-                {{ form_widget(form.username, {'attr' : {'class' : 'input-large alert'}}) }}
-            {% else %}
-                {{ form_widget(form.username, {'attr' : {'class' : 'input-large'}}) }}
-            {% endif %}
-            </div>
-            {{ form_errors(form.username) }}
-        </div>
-        {# Affichage du champ plainPassword #}
-        {% for plainPassword in form.plainPassword %}
-        <div class="control-group">
-            {{ form_label(plainPassword, null, {'label_attr': {'class' : 'control-label' }}) }}
-            <div class="controls">
-            {% if plainPassword.vars.errors|length %}
-                {{ form_widget(plainPassword, {'attr' : {'class' : 'input-large alert'}}) }}
-            {% else %}
-                {{ form_widget(plainPassword, {'attr' : {'class' : 'input-large'}}) }}
-            {% endif %}
-            </div>
-            {{ form_errors(plainPassword) }}
-        </div>
-        {% endfor %}
-    </div>
     {# Affichage du formulaire etape 2 #}
     {% elseif form.adresse is defined %}
     <div class="span5 border-form-2">
         <div>
             <p class="avenirNextBold">
-                {{ form.nom.vars.value }}
+                {{ form.vars.data.nom }}
             </p>
             <p class="avenirNextBold">
-                {{ form.prenom.vars.value }}
+                {{ form.vars.data.prenom }}
             </p> 
-            {# Affichage du champ nom #}
-            <div>            
-                {{ form_widget(form.nom) }}            
-            </div>
-            {# Affichage du champ prenom #}
-            <div>            
-                {{ form_widget(form.prenom) }}
-            </div>
         </div>
         <div class="edit-profil">
             <a href="{{ path('msp_eleve_inscription') }}">Modifier</a>

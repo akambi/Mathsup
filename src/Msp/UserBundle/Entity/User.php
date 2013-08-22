@@ -10,11 +10,57 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use \Doctrine\Common\Collections\ArrayCollection;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
-* @ORM\Entity(repositoryClass="Msp\UserBundle\Entity\UserRepository")
-* @ORM\Table()
-*/
+ * @ORM\Entity(repositoryClass="Msp\UserBundle\Entity\UserRepository")
+ * @ORM\Table()
+ * @UniqueEntity("email")
+ * @UniqueEntity("username") 
+ * 
+ * @ORM\AttributeOverrides({
+ *      @ORM\AttributeOverride(name="username",
+ *          column=@ORM\Column(
+ *              name     = "username",
+ *              type = "string",
+ *              nullable = true,
+ *              length   = 255
+ *          )
+ *      ),
+ *      @ORM\AttributeOverride(name="usernameCanonical",
+ *          column=@ORM\Column(
+ *              name     = "username_canonical",
+ *              type = "string",
+ *              nullable = true,
+ *              unique   = true,
+ *              length   = 255
+ *          )
+ *      ),
+ *      @ORM\AttributeOverride(name="email",
+ *          column=@ORM\Column(
+ *              name     = "email",
+ *              type = "string",
+ *              length   = 255
+ *          )
+ *      ),
+ *      @ORM\AttributeOverride(name="emailCanonical",
+ *          column=@ORM\Column(
+ *              name     = "email_canonical",
+ *              type = "string",
+ *              unique   = true,
+ *              length   = 255
+ *          )
+ *      ),
+ *      @ORM\AttributeOverride(name="password",
+ *          column=@ORM\Column(
+ *              name     = "password",
+ *              nullable = true,
+ *              type = "string"
+ *          )
+ *      )
+ * })
+ * 
+ */
 class User extends BaseUser
 {
     /**
