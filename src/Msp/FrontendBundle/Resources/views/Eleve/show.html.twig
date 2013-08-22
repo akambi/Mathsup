@@ -79,16 +79,16 @@
                 <th>Numéro Portable</th>
                 <th>Email</th>
             </tr>
-            {% for parent in entity.userFamilies %}
+            {% if entity.userFamily %}
                 <tr>                    
-                    <td>{{ parent.nom }}</td>
-                    <td>{{ parent.prenom }}</td>
-                    <td>{% if parent.sexe == 'H' %}Homme{% elseif parent.sexe == 'F' %}Femme{% endif %}</td>
-                    <td>{{ parent.numeroFixe }}</td>
-                    <td>{{ parent.numeroPortable }}</td>
-                    <td>{{ parent.email }}</td>
+                    <td>{{ entity.userFamily.nom }}</td>
+                    <td>{{ entity.userFamily.prenom }}</td>
+                    <td>{% if entity.userFamily.sexe == 'H' %}Homme{% elseif parent.sexe == 'F' %}Femme{% endif %}</td>
+                    <td>{{ entity.userFamily.numeroFixe }}</td>
+                    <td>{{ entity.userFamily.numeroPortable }}</td>
+                    <td>{{ entity.userFamily.email }}</td>
                 </tr>
-            {% endfor %}
+            {% endif %}
         </tbody>
     </table>
 

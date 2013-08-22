@@ -47,11 +47,21 @@
                 <td>{{ entity.nom }} {{ entity.prenom }}</td>
                 <td>
                     {% if option.departement is defined %}
-                    {{ entity.departement }}
-                    {% else %}
-                    <a href="{% if option.classe is defined %}{{ path('eleve', { 'departement': entity.departement.id, 'classe': option.classe.id }) }}{% else %}{{ path('eleve', { 'departement': entity.departement.id }) }}{% endif %}">
+                        {% if option.classe is defined %}
+                            <a href="{{ path('eleve', { 'departement': entity.departement.id, 'classe': option.classe.id }) }}">
+                        {% else %}
+                            <a href="{{ path('eleve', { 'departement': entity.departement.id }) }}">
+                        {% endif %}
                         {{ entity.departement }}
-                    </a>
+                        </a>
+                    {% else %}
+                        {% if option.classe is defined %}
+                            <a href="{{ path('eleve', { 'classe': option.classe.id }) }}">
+                                {{ entity.departement }}
+                            </a>
+                            {% else %}
+                            {{ entity.departement }}
+                            {% endif %}
                     {% endif %}
                 </td>                   
                 <td>{{ entity.ville }}</td>                

@@ -24,7 +24,7 @@ class EleveType extends AbstractType
             ->add('numeroFixe', 'text', array( "label" => "Numéro Fixe", 'required' => false ) )
             ->add('numeroPortable', 'text', array( "label" => "Numéro Portable", 'required' => false ))
             ->add('classe')           
-            ->add('userFamilies', 'collection', array("type" => new UserFamilyType, 'allow_add' => true, 'allow_delete' => true, 'by_reference' => false, 'label' => 'Parents'))
+            ->add('userFamily', new UserFamilyType(), array('label' => 'Parent'))
         ;
     }
 

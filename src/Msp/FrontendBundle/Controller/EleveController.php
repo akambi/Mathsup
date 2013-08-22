@@ -39,10 +39,13 @@ class EleveController extends Controller
         if( $departement ):
             $option["departement"] = $em->getRepository('MspFrontendBundle:Departement')->find( $departement );
         endif;
+        
+        
      //  ici on prend en compte le tri par classe
         if( $classe ):
             $option["classe"] = $em->getRepository('MspFrontendBundle:Classe')->find( $classe );
         endif;
+        
     //  On récupèle la liste des élèves
         if( !empty( $option ) ):            
             $entities = $em->getRepository('MspUserBundle:User')->getUserByRoleAndCriteria("ROLE_ELEVE", $option);
@@ -127,14 +130,14 @@ class EleveController extends Controller
      * 
      * @Route("/{id}", name="eleve_update")
      * @Method("PUT")
-     * @Template("MspUserBundle:User:edit.html.twig")
+     * @Template("MspFrontendBundle:Eleve:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('MspUserBundle:User')->find($id);
-
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
@@ -146,7 +149,8 @@ class EleveController extends Controller
         if ($editForm->isValid()) {
             $em->persist($entity);
         //  On prend en compte les parents
-            foreach ($entity->getUserFamilies() as $parent)
+            $parent = $entity->getUserFamily();
+            if ($parent)
             {
                 $parent->setUser($entity);
                 $em->persist($parent);

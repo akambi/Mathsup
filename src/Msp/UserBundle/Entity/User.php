@@ -199,7 +199,7 @@ class User extends BaseUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_de_naissance", type="date")
+     * @ORM\Column(name="date_de_naissance", type="date", nullable=true)
      * @Assert\Date()
      */
     private $dateDeNaissance;
