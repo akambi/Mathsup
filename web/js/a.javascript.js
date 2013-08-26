@@ -222,12 +222,29 @@ $(function() {
         $('.formule-pack').css('display','inline-block');
     });
 
-    $('.craue_poursuivre').click(function(){
-        //alert(this.tagName);
-        var parent = $(this).parents(".form-wrap-inner").parent();            
+    $('.craue_poursuivre').click(function(){        
+    //  On récupère le div de l'étape courant
+        var parent = $(this).parents(".form-wrap-inner").parent(); 
+    //  On récupère le div de l'étape suivant
         var next = parent.next();
-        parent.hide(3000);
-        next.show(3000);        
+    //  On vérifie si la personne est majeur sinon on affiche le formulaire parent
+        if(parent.attr('id') == "step-2"){
+            var date_de_naissance = $('#register_eleve_dateDeNaissance').val();
+        //  On vérifie ici que le champ a bien été renseigné
+            if(date_de_naissance){
+            //  Le champ dete de naissance a été renseigné
+                var firstValue = date_de_naissance.split('/');                
+                
+                var firstDate=new Date();
+                firstDate.setFullYear(firstValue[2],(firstValue[1] - 1 ),firstValue[0]);
+                var secondDate = new Date();
+                
+                var age = secondDate.getFullYear() - firstDate.getFullYear();
+            //  Si la personne est majeur, on saute le formulaire parent
+                if( age >= 18) next = next.next();
+            }      
+        }                
+        next.show(3000);
     });
 
     /* Slider niveau */

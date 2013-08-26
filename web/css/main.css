@@ -309,7 +309,7 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 #registration_eleve_adresse, #register_eleve_adresse { width: 96.5%; }
 #registration_eleve_numeroPortable { float: right; width: 87%; }
 .eleve_registration  #registration_eleve_classe, .eleve_registration  #register_eleve_classe { height: 38px; line-height: 38px; padding: 8px 6px; width: 100%; margin-top: 25px;}
-.craue_poursuivre { border: 0 none; padding: 0; }
+.craue_end, .align-password button, .craue_poursuivre { border: 0 none; padding: 0; }
 .form-text-end, .parent-title { background: url('/img/parent-title.png') top left; width: 255px; padding: 0 10px; height: 38px; line-height: 38px; color: white; font-size: 13px; float: left; margin-bottom: 0;}
 .form-text-end { background: url('/img/bloc-terminer.png') top left; width: 767px; }
 .parent-field { float: left; width: 230px; margin-left: 20px; margin-bottom: 0;}
@@ -334,3 +334,4 @@ label.niveau-estime { display: block; width: 92%;}
 #slider-blue{ float: left; clear: left; width: 160px; margin: 10px; }
 #slider-blue .ui-slider-range { background: #00489a; }
 #slider-blue .ui-slider-handle { border-color: #00489a; }
+#step-3, #step-4, #step-5 { margin-top: 20px; }

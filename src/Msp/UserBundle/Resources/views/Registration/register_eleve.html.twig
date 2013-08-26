@@ -23,16 +23,7 @@
 </header>
 <div class="wrap-form">
     <article class="container">
-        <h1 class="avenirNextBold">
-            {% set getFlowBeforeLastStep = flow.getLastStepNumber() - 1 %}
-            {%- if flow.getCurrentStepNumber() < getFlowBeforeLastStep %}
-            D'ABORD COMPLÉTEZ VOTRE PROFIL ...
-            {% elseif flow.getCurrentStepNumber() == getFlowBeforeLastStep %}
-            MAINTENANT DITES NOUS QUELS SONT VOS OBJECTIFS ...
-            {% elseif flow.getCurrentStepNumber() == flow.getLastStepNumber()%}
-            ENFIN CHOISSISSEZ VOTRE FORMULES.
-            {% endif %}
-        </h1>
+        <h1 class="avenirNextBold">D'ABORD COMPLÉTEZ VOTRE PROFIL ...</h1>
         
         <form action="{{ path('msp_eleve_inscription') }}" {{ form_enctype(form) }} method="POST" class="eleve_registration">
             {% include 'CraueFormFlowBundle:FormFlow:stepField.html.twig' %}
