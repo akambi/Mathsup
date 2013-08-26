@@ -1,3 +1,151 @@
+{% block register_professeur_widget %}
+{% spaceless %}
+<div class="row-fluid">
+    {# Affichage du formulaire etape 1 #}
+    {% if form.nom is defined %}           
+        {# Affichage du champ nom #}
+    <div class="control-group span4 margin-none">
+        {{ form_label(form.nom, null, {'label_attr': {'class' : 'control-label' }}) }}
+        <div class="controls">
+        {% if form.nom.vars.errors|length %}
+            {{ form_widget(form.nom, {'attr' : {'class' : 'input-large alert'}}) }}
+        {% else %}
+            {{ form_widget(form.nom, {'attr' : {'class' : 'input-large'}}) }}
+        {% endif %}
+        </div>
+        {{ form_errors(form.nom) }}
+    </div>
+    {# Affichage du champ prenom #}
+    <div class="control-group span4 margin-none">
+        {{ form_label(form.prenom, null, {'label_attr': {'class' : 'control-label' }}) }}
+        <div class="controls">
+        {% if form.prenom.vars.errors|length %}
+            {{ form_widget(form.prenom, {'attr' : {'class' : 'input-large alert'}}) }}
+        {% else %}
+            {{ form_widget(form.prenom, {'attr' : {'class' : 'input-large'}}) }}
+        {% endif %}
+        </div>
+        {{ form_errors(form.prenom) }}
+    </div>
+    {# Affichage du champ email #}        
+    <div class="control-group span4 margin-none">
+        {{ form_label(form.email, null, {'label_attr': {'class' : 'control-label' }}) }}
+        <div class="controls">
+        {% if form.email.vars.errors|length %}
+            {{ form_widget(form.email, {'attr' : {'class' : 'input-large alert'}}) }}
+        {% else %}
+            {{ form_widget(form.email, {'attr' : {'class' : 'input-large'}}) }}
+        {% endif %}
+        </div>
+        {{ form_errors(form.email) }}
+    </div>    
+    {# Affichage du formulaire etape 2 #}
+    {% elseif form.adresse is defined %}
+    <div class="span5 border-form-2">
+        <div>
+            <p class="avenirNextBold">
+                {{ form.vars.data.nom }}
+            </p>
+            <p class="avenirNextBold">
+                {{ form.vars.data.prenom }}
+            </p> 
+        </div>
+        <div class="edit-profil">
+            <a href="{{ path('msp_eleve_inscription') }}">Modifier</a>
+        </div>
+    </div>
+    <div class="span7">
+        {# Affichage du champ email #}
+        <div class="span6">
+            <div class="control-group">
+                {{ form_label(form.email, null, {'label_attr': {'class' : 'control-label' }}) }}
+                <div class="controls">
+                {% if form.email.vars.errors|length %}
+                    {{ form_widget(form.email, {'attr' : {'class' : 'input-large alert'}}) }}
+                {% else %}
+                    {{ form_widget(form.email, {'attr' : {'class' : 'input-large'}}) }}
+                {% endif %}
+                </div>
+                {{ form_errors(form.email) }}
+            </div>
+        </div>
+        <div class="span6">
+            {# Affichage du champ numeroPortable #}
+            <div class="control-group">
+                {{ form_label(form.numeroPortable, null, {'label_attr': {'class' : 'control-label' }}) }}
+                <div class="controls">
+                {% if form.numeroPortable.vars.errors|length %}
+                    {{ form_widget(form.numeroPortable, {'attr' : {'class' : 'alert'}}) }}
+                {% else %}
+                    {{ form_widget(form.numeroPortable, {'attr' : {'class' : ''}}) }}
+                {% endif %}
+                </div>
+                {{ form_errors(form.numeroPortable) }}
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        {# Affichage du champ adresse #}
+        <div class="control-group">
+            {{ form_label(form.adresse, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">
+            {% if form.adresse.vars.errors|length %}
+                {{ form_widget(form.adresse, {'attr' : {'class' : ' alert'}}) }}
+            {% else %}
+                {{ form_widget(form.adresse, {'attr' : {'class' : ''}}) }}
+            {% endif %}
+            </div>
+            {{ form_errors(form.adresse) }}
+        </div>
+        <div class="row-fluid">
+        <div class="span6">
+           {# Affichage du champ numeroPortable #}
+           <div class="control-group">
+               {{ form_label(form.departement, null, {'label_attr': {'class' : 'control-label' }}) }}
+               <div class="controls">
+               {% if form.departement.vars.errors|length %}
+                   {{ form_widget(form.departement, {'attr' : {'class' : 'input-large alert'}}) }}
+               {% else %}
+                   {{ form_widget(form.departement, {'attr' : {'class' : 'input-large'}}) }}
+               {% endif %}
+               </div>
+               {{ form_errors(form.departement) }}
+           </div>
+        </div>
+        <div class="span6">
+            <div class="control-group">
+               {{ form_label(form.ville, null, {'label_attr': {'class' : 'control-label' }}) }}
+               <div class="controls">
+               {% if form.ville.vars.errors|length %}
+                   {{ form_widget(form.ville, {'attr' : {'class' : 'input-medium alert'}}) }}
+               {% else %}
+                   {{ form_widget(form.ville, {'attr' : {'class' : 'input-medium'}}) }}
+               {% endif %}
+               </div>
+               {{ form_errors(form.ville) }}
+           </div>
+        </div>
+        <div class="clearfix"></div>
+        </div>
+         {# Affichage du champ numeroPortable #}
+        <div class="control-group">
+            {{ form_label(form.dateDeNaissance, null, {'label_attr': {'class' : 'control-label' }}) }}
+            <div class="controls">
+            {% if form.dateDeNaissance.vars.errors|length %}
+                {{ form_widget(form.dateDeNaissance, {'attr' : {'class' : 'input-large alert'}}) }}
+            {% else %}
+                {{ form_widget(form.dateDeNaissance, {'attr' : {'class' : 'input-large'}}) }}
+            {% endif %}
+            <span class="help-form">Format jj/mm/aaaa</span>
+            </div>
+            {{ form_errors(form.dateDeNaissance) }}
+        </div>
+    </div>    
+    {% endif %}
+    {{ form_rest(form) }}    
+</div>
+{% endspaceless %}
+{% endblock %}
+
 {% block registration_eleve_widget %}
 {% spaceless %}
 <div class="row-fluid">

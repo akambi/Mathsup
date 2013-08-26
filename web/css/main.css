@@ -290,6 +290,7 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 .wrap-form h1 { font-size: 16px; color: #009fe3; }
 .eleve_registration legend { width: 140px;  margin: 0; border: 0; border: 1px #cecece solid; border-bottom: 0 none; font-size: 13px; text-align: center; }
 .eleve_registration legend.espace-eleve { background: white; color: #009fe3; }
+.eleve_registration legend.espace-professeur { background: white; color: #009fe3; width: 200px; }
 .eleve_registration legend.espace-parent { background: #e5e5e5; color: #8a8a8a; }
 .eleve_registration .form-wrap-inner { background: white; border: 1px #cecece solid; }
 .border-form-1 { border-right: 1px #cecece solid; }
@@ -306,10 +307,11 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 .eleve_registration .craue-button .align-profil, .eleve_registration .craue-button .align-password, .eleve_registration .craue-button .align-objectifs { display: table-cell; width: 100%; height: 235px; vertical-align: bottom; }
 .eleve_registration .craue-button .align-objectifs { height: 127px;} 
 .eleve_registration .craue-button .align-password { height: 38px;} 
-#registration_eleve_adresse, #register_eleve_adresse { width: 96.5%; }
+#registration_eleve_adresse, #register_eleve_adresse, #register_professeur_adresse { width: 96.5%; }
 #registration_eleve_numeroPortable { float: right; width: 87%; }
-.eleve_registration  #registration_eleve_classe, .eleve_registration  #register_eleve_classe { height: 38px; line-height: 38px; padding: 8px 6px; width: 100%; margin-top: 25px;}
-.craue_end, .align-password button, .craue_poursuivre { border: 0 none; padding: 0; }
+.eleve_registration  #registration_eleve_classe, .eleve_registration  #register_eleve_classe, .eleve_registration  #register_professeur_departement { height: 38px; line-height: 38px; padding: 8px 6px; width: 100%; margin-top: 25px;}
+.eleve_registration #register_professeur_departement { margin-top: 0;}
+.craue_end, .align-password button, .craue_poursuivre, .align-profil button { border: 0 none; padding: 0; }
 .form-text-end, .parent-title { background: url('/img/parent-title.png') top left; width: 255px; padding: 0 10px; height: 38px; line-height: 38px; color: white; font-size: 13px; float: left; margin-bottom: 0;}
 .form-text-end { background: url('/img/bloc-terminer.png') top left; width: 767px; }
 .parent-field { float: left; width: 230px; margin-left: 20px; margin-bottom: 0;}
@@ -335,3 +337,6 @@ label.niveau-estime { display: block; width: 92%;}
 #slider-blue .ui-slider-range { background: #00489a; }
 #slider-blue .ui-slider-handle { border-color: #00489a; }
 #step-3, #step-4, #step-5 { margin-top: 20px; }
+.margin-none { margin: 0; }
+.margin-none div { margin: 0; }
+.margin-none input { margin: 0; }

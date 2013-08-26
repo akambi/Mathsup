@@ -17,6 +17,13 @@ services:
         #calls:
         #    - [setFormType, ["@msp_frontend.form.registrationEleve"]]
     
+    msp_frontend.form.flow.registrationProfesseur:
+        class: Msp\UserBundle\Form\RegistrationProfesseurFormFlow        
+        parent: craue.form.flow
+        scope: request
+        #calls:
+        #    - [setFormType, ["@msp_frontend.form.registrationEleve"]]
+    
 #    msp_frontend.example:
 #        class: %msp_frontend.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

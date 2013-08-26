@@ -23,9 +23,9 @@ msp_eleve_inscription:
     pattern:  /inscription/eleve/
     defaults: { _controller: MspUserBundle:Registration:registerEleve }
 
-#msp_professeur_inscription:
-#    pattern:  /inscription/professeur/
-#    defaults: { _controller: MspUserBundle:Registration:register, role: ROLE_PROFESSEUR }
+msp_professeur_inscription:
+    pattern:  /inscription/professeur/
+    defaults: { _controller: MspUserBundle:Registration:registerProfesseur }
 
 #
 # Les routes des eleves #
