@@ -1,0 +1,84 @@
+<div id="step-5" class="hide">    
+    <div class="form-wrap-inner row-fluid">                     
+        <div class="row-fluid">            
+            {# Affichage du champ cours #}
+            {% for key, cours in form.cours %}
+            <div class="formule-cours formule-cours-{{key + 1}}">
+                <figure>
+                {% if key == 0 %}                
+                    <img src="{{ asset('/img/logo_cours_domicile.jpg') }}" alt="" />                
+                {% elseif key == 1 %} 
+                    <img src="{{ asset('/img/logo_cours_distance.jpg') }}" alt="" />                
+                {% else %}                
+                    <img src="{{ asset('/img/logo_classe_virtuelle.jpg') }}" alt="" />                
+                {% endif  %}
+                </figure>
+                <p>                
+                    {% if key == 0 %}
+                        <span class="avenirNextDemiBold">Cours à domicile</span>
+                        Cours particuliers à domicile
+                    {% elseif key == 1 %}
+                        <span class="avenirNextDemiBold">Face à face</span>
+                        Cours particuliers en ligne
+                    {% else %}
+                        <span class="avenirNextDemiBold">Classe virtuelle</span>
+                        Cours en ligne (25 élèves)
+                    {% endif  %}
+                </p>
+                <div>
+                {% if cours.vars.errors|length %}
+                    {{ form_widget(cours, {'attr' : {'class' : 'alert'}}) }}
+                {% else %}
+                    {{ form_widget(cours, {'attr' : {'class' : ''}}) }}
+                {% endif %}            
+                </div>
+                {{ form_errors(cours) }}
+            </div>
+            {% endfor %}
+            {# Affichage du champ pack #}
+            {% for key, pack in form.pack %}
+            <div class="formule-pack formule-pack-{{key + 1}} hide">
+                <p>
+                {% if key == 0 %}                
+                    <strong class="avenirNextDemiBold">Pack</strong>
+                    <span class="avenirNextDemiBold">12 H</span>
+                    240 €                
+                {% elseif key == 1 %} 
+                    <strong class="avenirNextDemiBold">Pack</strong>
+                    <span class="avenirNextDemiBold">24 H</span>
+                    470 €  
+                {% elseif key == 2 %} 
+                    <strong class="avenirNextDemiBold">Pack</strong>
+                    <span class="avenirNextDemiBold">36 H</span>
+                    700 €          
+                {% else %}                
+                    <strong class="avenirNextDemiBold">Pack</strong>
+                    <span class="avenirNextDemiBold">36 H</span>
+                    930 €       
+                {% endif  %}
+                </p>
+                <div>
+                {% if pack.vars.errors|length %}
+                    {{ form_widget(pack, {'attr' : {'class' : 'alert'}}) }}
+                {% else %}
+                    {{ form_widget(pack, {'attr' : {'class' : ''}}) }}
+                {% endif %}            
+                </div>
+                {{ form_errors(pack) }}
+            </div>
+            {% endfor %}
+        </div>     
+    </div>
+    <div class="footer-form">
+        <p class="form-text-end">
+            Vous n'avez pas encore fait votre choix. Vous souhaitez bénéficier de nos conseils…
+        </p>
+        <a class="pull-right" href="{{ path('msp_contact') }}" target="_blank"><img src="{{ asset('/img/mecontacter.png') }}" alt=""/></a>
+        <div class="clearfix"></div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="craue_poursuivre">                                  
+            <img src="{{ asset('/img/terminer-inscription.png') }}" alt=""/>                                
+        </button>
+    </div>
+</div>

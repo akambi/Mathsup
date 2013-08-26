@@ -1,0 +1,52 @@
+<div id="step-1">
+    <legend class="avenirNextBold espace-eleve">ESPACE ÉLÈVE</legend>
+    <div class="form-wrap-inner row-fluid form-with-padding">                                 
+        <div class="wrap-left">                      
+            <div class="row-fluid">            
+                {# Affichage du champ nom #}
+                <div class="control-group span4">
+                    {{ form_label(form.nom, null, {'label_attr': {'class' : 'control-label' }}) }}
+                    <div class="controls">
+                    {% if form.nom.vars.errors|length %}
+                        {{ form_widget(form.nom, {'attr' : {'class' : 'input-large alert'}}) }}
+                    {% else %}
+                        {{ form_widget(form.nom, {'attr' : {'class' : 'input-large'}}) }}
+                    {% endif %}
+                    </div>
+                    {{ form_errors(form.nom) }}
+                </div>
+                {# Affichage du champ prenom #}
+                <div class="control-group span4">
+                    {{ form_label(form.prenom, null, {'label_attr': {'class' : 'control-label' }}) }}
+                    <div class="controls">
+                    {% if form.prenom.vars.errors|length %}
+                        {{ form_widget(form.prenom, {'attr' : {'class' : 'input-large alert'}}) }}
+                    {% else %}
+                        {{ form_widget(form.prenom, {'attr' : {'class' : 'input-large'}}) }}
+                    {% endif %}
+                    </div>
+                    {{ form_errors(form.prenom) }}
+                </div>
+                {# Affichage du champ email #}        
+                <div class="control-group span4">
+                    {{ form_label(form.email, null, {'label_attr': {'class' : 'control-label' }}) }}
+                    <div class="controls">
+                    {% if form.email.vars.errors|length %}
+                        {{ form_widget(form.email, {'attr' : {'class' : 'input-large alert'}}) }}
+                    {% else %}
+                        {{ form_widget(form.email, {'attr' : {'class' : 'input-large'}}) }}
+                    {% endif %}
+                    </div>
+                    {{ form_errors(form.email) }}
+                </div>
+            </div>
+        </div>                      
+        <div class="craue-button">            
+            <div class="align-password">
+                <button type="submit" class="craue_poursuivre">                                  
+                    <img src="{{ asset('/img/poursuivre.png') }}" alt=""/>
+                </button>
+            </div>                                   
+        </div>                    
+    </div>
+</div>

@@ -217,12 +217,21 @@ jQuery.noConflict();
           }
         });
 
-        // Ici on gère le pack à l'inscription
+        // Code lié à l'inscription des élève
         $('.formule-cours input:radio').click(function(){
             $('.formule-cours').css('background','#e5e5e5');
             $(this).parent().parent().css('background','white');
             $('.formule-pack').css('display','inline-block');
         });
+        
+        $('.craue_poursuivre').click(function(){
+            //alert(this.tagName);
+            var parent = $(this).parents(".form-wrap-inner").parent();            
+            var next = parent.next();
+            parent.hide(3000);
+            next.show(3000);        
+        });
+        
         /* Slider niveau */
          $( "#slider-blue" ).slider({
             orientation: "horizontal",

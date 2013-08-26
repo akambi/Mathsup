@@ -32,72 +32,20 @@
             {% elseif flow.getCurrentStepNumber() == flow.getLastStepNumber()%}
             ENFIN CHOISSISSEZ VOTRE FORMULES.
             {% endif %}
-        </h1>        
-        <!--<div>
-            Etapes:
-            {% include 'CraueFormFlowBundle:FormFlow:stepList.html.twig' %}
-        </div>   -->     
+        </h1>
         
         <form action="{{ path('msp_eleve_inscription') }}" {{ form_enctype(form) }} method="POST" class="eleve_registration">
-            <fieldset>
-                {%- if flow.getCurrentStepNumber() == 1 %}
-                <legend class="avenirNextBold espace-eleve">ESPACE ÉLÈVE</legend>
-                {% elseif flow.getCurrentStepNumber() == 3 %}
-                <legend class="avenirNextBold espace-parent">ESPACE PARENT</legend>                
-                {% endif %}
-                {% if flow.getCurrentStepNumber() < flow.getLastStepNumber() -%}
-                <div class="form-wrap-inner row-fluid form-with-padding">                                 
-                    <div class="wrap-left">
-                    {% include 'CraueFormFlowBundle:FormFlow:stepField.html.twig' %}  
-                    {{ form_widget(form) }}
-                    </div>                    
-                    {% set renderBackButton = flow.getCurrentStepNumber() in (flow.getFirstStepNumber() + 1) .. flow.getLastStepNumber() %}
-                    <div class="craue-button">                        
-                            <!--<button class="btn btn-danger" type="submit" class="craue_formflow_button_first" name="{{ flow.getFormTransitionKey() }}" value="reset" formnovalidate="formnovalidate">
-                                    {{- 'button.reset' | trans({}, 'CraueFormFlowBundle') -}}
-                            </button>
-                            <br/><br/>
-                            {% if renderBackButton %}
-                                    {# see http://www.html5rocks.com/en/tutorials/forms/html5forms/ #}
-                                    <button class="btn btn-info" type="submit" name="{{ flow.getFormTransitionKey() }}" value="back" formnovalidate="formnovalidate">
-                                            {{- 'button.back' | trans({}, 'CraueFormFlowBundle') -}}
-                                    </button>
-                                    <br/><br/>
-                            {% endif %}
-                            -->  
-                            {%- if flow.getCurrentStepNumber() in [1, 2, 4] %}
-                            <div class="{% if flow.getCurrentStepNumber() == 1 %} align-password {% elseif flow.getCurrentStepNumber() == 2 %} align-profil {% else %} align-objectifs {% endif %}" >
-                            <button type="submit" class="craue_poursuivre">                                  
-                                <img src="{{ asset('/img/poursuivre.png') }}" alt=""/>
-                            </button>
-                            </div>
-                            {%- elseif flow.getCurrentStepNumber() == 3 %}
-                            <button type="submit" class="craue_poursuivre">                                  
-                                <img src="{{ asset('/img/valider.png') }}" alt=""/>                            
-                            </button>
-                            {%- endif %}                        
-                    </div>                    
-                </div>
+            {% include 'CraueFormFlowBundle:FormFlow:stepField.html.twig' %}
+            <fieldset>                
+                {% if flow.getCurrentStepNumber() == 1 -%}
+                    {% include "MspUserBundle:Registration:register_eleve_etape1.html.twig" %}
                 {% else %}
-                <div class="form-wrap-inner row-fluid">                     
-                    {% include 'CraueFormFlowBundle:FormFlow:stepField.html.twig' %}  
-                    {{ form_widget(form) }}
-                </div>
+                    {% include "MspUserBundle:Registration:register_eleve_etape2.html.twig" %}
+                    {% include "MspUserBundle:Registration:register_eleve_etape3.html.twig" %}
+                    {% include "MspUserBundle:Registration:register_eleve_etape4.html.twig" %}
+                    {% include "MspUserBundle:Registration:register_eleve_etape5.html.twig" %}
                 {% endif %}
-                {%- if flow.getCurrentStepNumber() == flow.getLastStepNumber() -%}
-                <div class="footer-form">
-                    <p class="form-text-end">
-                        Vous n'avez pas encore fait votre choix. Vous souhaitez bénéficier de nos conseils…
-                    </p>
-                    <a class="pull-right" href="{{ path('msp_contact') }}" target="_blank"><img src="{{ asset('/img/mecontacter.png') }}" alt=""/></a>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="craue_poursuivre">                                  
-                        <img src="{{ asset('/img/terminer-inscription.png') }}" alt=""/>                                
-                    </button>
-                </div>
-                {%- endif %}                
+                {{ form_rest(form) }}
             </fieldset>
         </form>
         <p class=""><a class="btn" href="{{ path('fos_user_registration_register')}}">INSCRIPTION PROFESSEUR</a></p>

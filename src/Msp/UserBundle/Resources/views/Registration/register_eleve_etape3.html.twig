@@ -1,0 +1,41 @@
+<div id="step-3" class="hide">
+    <legend class="avenirNextBold espace-parent">ESPACE PARENT</legend>  
+    <div class="form-wrap-inner row-fluid form-with-padding">                                 
+        <div class="wrap-left">                      
+            <div class="row-fluid">            
+                {# Affichage du champ userFamily #}  
+                <p class="parent-title">
+                    S’enregistrer en tant que parent d’élève.
+                </p>
+                <div class="control-group parent-field">
+                    {{ form_label(form.userFamily.nom, null, {'label_attr': {'class' : 'control-label' }}) }}
+                    <div class="controls">
+                    {% if form.userFamily.nom.vars.errors|length %}
+                        {{ form_widget(form.userFamily.nom, {'attr' : {'class' : 'alert'}}) }}
+                    {% else %}
+                        {{ form_widget(form.userFamily.nom, {'attr' : {'class' : ''}}) }}
+                    {% endif %}            
+                    </div>
+                    {{ form_errors(form.userFamily.nom) }}
+                </div>
+                {# Affichage du champ userFamily.prenom #}
+                <div class="control-group parent-field">
+                    {{ form_label(form.userFamily.prenom, null, {'label_attr': {'class' : 'control-label' }}) }}
+                    <div class="controls">
+                    {% if form.userFamily.prenom.vars.errors|length %}
+                        {{ form_widget(form.userFamily.prenom, {'attr' : {'class' : 'alert'}}) }}
+                    {% else %}
+                        {{ form_widget(form.userFamily.prenom, {'attr' : {'class' : ''}}) }}
+                    {% endif %}            
+                    </div>
+                    {{ form_errors(form.userFamily.prenom) }}
+                </div>
+            </div>
+        </div>                      
+        <div class="craue-button">            
+            <button type="button" class="craue_poursuivre">                                  
+                <img src="{{ asset('/img/valider.png') }}" alt=""/>                            
+            </button>                                
+        </div>                    
+    </div>
+</div>

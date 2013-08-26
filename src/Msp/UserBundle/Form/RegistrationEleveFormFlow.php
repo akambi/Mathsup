@@ -34,7 +34,7 @@ class RegistrationEleveFormFlow extends FormFlow {
                 'label' => 'ESPACE ÉLÈVE SUITE',
                 'type' => new RegistrationEleveForm(),
             ),
-            array(
+            /*array(
                 'label' => 'ESPACE PARENT',
                 'type' => new RegistrationEleveForm(),
                 'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {
@@ -57,7 +57,7 @@ class RegistrationEleveFormFlow extends FormFlow {
             array(
                 'label' => 'VOTRE FORMULE',
                 'type' => new RegistrationEleveForm(), 
-            ),         
+            ),    */     
             
         );
     }

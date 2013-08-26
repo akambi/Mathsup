@@ -1,0 +1,27 @@
+<div id="step-4" class="hide">    
+    <div class="form-wrap-inner row-fluid form-with-padding">                                 
+        <div class="wrap-left">                      
+            <div class="row-fluid">            
+                {# Affichage du champ objectifs #}
+                <div class="control-group objectifs-text">
+                    {{ form_label(form.objectifs, null, {'label_attr': {'class' : 'control-label' }}) }}
+                    <div class="controls">
+                    {% if form.objectifs.vars.errors|length %}
+                        {{ form_widget(form.objectifs, {'attr' : {'class' : 'alert'}}) }}
+                    {% else %}
+                        {{ form_widget(form.objectifs, {'attr' : {'class' : ''}}) }}
+                    {% endif %}            
+                    </div>
+                    {{ form_errors(form.objectifs) }}
+                </div>
+            </div>
+        </div>                      
+        <div class="craue-button">            
+            <div class="align-objectifs">
+                <button type="button" class="craue_poursuivre">                                  
+                    <img src="{{ asset('/img/poursuivre.png') }}" alt=""/>
+                </button>
+            </div>                               
+        </div>                    
+    </div>
+</div>

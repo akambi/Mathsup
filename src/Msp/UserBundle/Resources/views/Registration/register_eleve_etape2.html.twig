@@ -1,0 +1,110 @@
+<div id="step-2">
+    <legend class="avenirNextBold espace-eleve">ESPACE ÉLÈVE</legend>
+    <div class="form-wrap-inner row-fluid form-with-padding">                                 
+        <div class="wrap-left">                      
+            <div class="row-fluid">            
+                <div class="span5 border-form-2">
+                    <div>
+                        <p class="avenirNextBold">
+                            {{ form.vars.data.nom }}
+                        </p>
+                        <p class="avenirNextBold">
+                            {{ form.vars.data.prenom }}
+                        </p> 
+                    </div>
+                    <div class="edit-profil">
+                        <a href="{{ path('msp_eleve_inscription') }}">Modifier</a>
+                    </div>
+                </div>
+                <div class="span7">
+                    {# Affichage du champ email #}
+                    <div class="span6">
+                        <div class="control-group">
+                            {{ form_label(form.email, null, {'label_attr': {'class' : 'control-label' }}) }}
+                            <div class="controls">
+                            {% if form.email.vars.errors|length %}
+                                {{ form_widget(form.email, {'attr' : {'class' : 'input-large alert'}}) }}
+                            {% else %}
+                                {{ form_widget(form.email, {'attr' : {'class' : 'input-large'}}) }}
+                            {% endif %}
+                            </div>
+                            {{ form_errors(form.email) }}
+                        </div>
+                    </div>
+                    <div class="span6">
+                        {# Affichage du champ numeroPortable #}
+                        <div class="control-group">
+                            {{ form_label(form.numeroPortable, null, {'label_attr': {'class' : 'control-label' }}) }}
+                            <div class="controls">
+                            {% if form.numeroPortable.vars.errors|length %}
+                                {{ form_widget(form.numeroPortable, {'attr' : {'class' : 'alert'}}) }}
+                            {% else %}
+                                {{ form_widget(form.numeroPortable, {'attr' : {'class' : ''}}) }}
+                            {% endif %}
+                            </div>
+                            {{ form_errors(form.numeroPortable) }}
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    {# Affichage du champ adresse #}
+                    <div class="control-group">
+                        {{ form_label(form.adresse, null, {'label_attr': {'class' : 'control-label' }}) }}
+                        <div class="controls">
+                        {% if form.adresse.vars.errors|length %}
+                            {{ form_widget(form.adresse, {'attr' : {'class' : ' alert'}}) }}
+                        {% else %}
+                            {{ form_widget(form.adresse, {'attr' : {'class' : ''}}) }}
+                        {% endif %}
+                        </div>
+                        {{ form_errors(form.adresse) }}
+                    </div>
+                    <div class="left-side">
+                       {# Affichage du champ numeroPortable #}
+                       <div class="control-group">
+                           {{ form_label(form.classe, null, {'label_attr': {'class' : 'control-label' }}) }}
+                           <div class="controls">
+                           {% if form.classe.vars.errors|length %}
+                               {{ form_widget(form.classe, {'attr' : {'class' : 'input-large alert'}}) }}
+                           {% else %}
+                               {{ form_widget(form.classe, {'attr' : {'class' : 'input-large'}}) }}
+                           {% endif %}
+                           </div>
+                           {{ form_errors(form.classe) }}
+                       </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="control-group">
+                            <label class="niveau-estime">Niveau estimé :</label>
+                            <div class="controls">
+                               <div id="slider-blue">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                     {# Affichage du champ numeroPortable #}
+                    <div class="control-group">
+                        {{ form_label(form.dateDeNaissance, null, {'label_attr': {'class' : 'control-label' }}) }}
+                        <div class="controls">
+                        {% if form.dateDeNaissance.vars.errors|length %}
+                            {{ form_widget(form.dateDeNaissance, {'attr' : {'class' : 'input-large alert'}}) }}
+                        {% else %}
+                            {{ form_widget(form.dateDeNaissance, {'attr' : {'class' : 'input-large'}}) }}
+                        {% endif %}
+                        <span class="help-form">Format jj/mm/aaaa</span>
+                        </div>
+                        {{ form_errors(form.dateDeNaissance) }}
+                    </div>
+                </div>
+            </div>
+        </div>                      
+        <div class="craue-button">            
+            <div class="align-profil">
+                <button type="button" class="craue_poursuivre">                                  
+                    <img src="{{ asset('/img/poursuivre.png') }}" alt=""/>
+                </button>
+            </div>                                   
+        </div>                    
+    </div>
+</div>
