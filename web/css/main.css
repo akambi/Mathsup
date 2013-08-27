@@ -308,7 +308,6 @@ p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; marg
 .eleve_registration .craue-button .align-objectifs { height: 127px;} 
 .eleve_registration .craue-button .align-password { height: 38px;} 
 #registration_eleve_adresse, #register_eleve_adresse, #register_professeur_adresse { width: 96.5%; }
-#registration_eleve_numeroPortable { float: right; width: 87%; }
 .eleve_registration  #registration_eleve_classe, .eleve_registration  #register_eleve_classe, .eleve_registration  #register_professeur_departement { height: 38px; line-height: 38px; padding: 8px 6px; width: 100%; margin-top: 25px;}
 .eleve_registration #register_professeur_departement { margin-top: 0;}
 .craue_end, .align-password button, .craue_poursuivre, .align-profil button { border: 0 none; padding: 0; }

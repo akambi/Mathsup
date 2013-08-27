@@ -19,8 +19,8 @@ class RegistrationFormType extends BaseType
             ->add('nom', 'text', array( "label" => "Nom de Famille"))
             ->add('prenom')
             ->add('departement')
-            //->add('ville')
-            ->add('etablissement')
+            ->add('ville')
+            //->add('etablissement')
             ->add('adresse')
            // ->add('numeroFixe', 'text', array( "label" => "Numéro Fixe", 'required' => false ) )
             ->add('numeroPortable', 'text', array( "label" => "Numéro Portable", 'required' => false ))
@@ -35,6 +35,7 @@ class RegistrationFormType extends BaseType
                     )
                 )
             )
+            ->add('dateDeNaissance', 'birthday', array('label' => "Date de naissance", 'widget' => 'single_text', 'attr' => array("placeholder" => "Date de naissance"), 'format' => 'dd/MM/yyyy'))
             //->add('dateInscription', 'datetime', array('label' => "Date d'inscription", "with_seconds" => true, 'date_format' => 'dd/MM/yyyy'))
             //->add('classe', 'entity', array( "label"=> "Classe (A définir pour un élève)", 'class' => 'Msp\FrontendBundle\Entity\Classe', 'empty_value' => "Sélectionner une classe", 'required' => false))
         ;       
