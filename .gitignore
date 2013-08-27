@@ -2,8 +2,6 @@
 /app/cache/
 /app/logs/
 /vendor/
-/web/css/style.css
-/web/js/main.js
 /web/bundles/
 web/uploads/fiche-paie/*
 web/uploads/exercicescorriges/*
