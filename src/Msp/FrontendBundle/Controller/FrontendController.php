@@ -118,41 +118,10 @@ class FrontendController extends Controller
     }
     
     public function institutionAction( $page = 0 )
-    {
-        $page_disponible = array( 0, "remise-a-niveau", "comite-entreprise", "preparation-concours");
-        
-        if( in_array($page, $page_disponible) ):
-            if( $page === 0 ):
-                return $this->render('MspFrontendBundle:Page:institution.html.twig');
-            elseif($page === "remise-a-niveau"):
-                return $this->institutionRemiseNiveauAction();
-            elseif($page === "comite-entreprise"):    
-                return $this->institutionComiteEntrepriseAction();
-            else:
-                return $this->institutionPreparationConcoursAction();
-            endif;
-        else:
-            throw $this->createNotFoundException("Page introuvable !");
-        endif;
-        
-        
+    {       
+        return $this->render('MspFrontendBundle:Page:institution.html.twig');
     }
- 
-    public function institutionRemiseNiveauAction()
-    {
-        return $this->render('MspFrontendBundle:Page:institution_remise_niveau.html.twig');
-    }
-    
-    public function institutionComiteEntrepriseAction()
-    {
-        return $this->render('MspFrontendBundle:Page:institution_comite_entreprise.html.twig');
-    }
-    
-    public function institutionPreparationConcoursAction()
-    {
-        return $this->render('MspFrontendBundle:Page:institution_preparation_concours.html.twig');
-    }
-    
+         
     public function tarifsAction()
     {
         return $this->render('MspFrontendBundle:Page:tarifs.html.twig');

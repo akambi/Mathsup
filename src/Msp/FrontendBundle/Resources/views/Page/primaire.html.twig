@@ -14,13 +14,15 @@
 
 {# Le contenu de la page #}
 {% block content %}
-    <div class="niveau">
+    <article class="niveau">
         
         <p class="header avenirNextItalic">
-            En primaire, l’élève est exposé à ses premières notions de mathématiques via la numérotation, 
-            la résolution de problèmes simples à l’aide des opérateurs de bases que sont l’addition, la 
-            soustraction,  la multiplication et la division.<br />
-            Le majeur enjeu est la maîtrise de ces quatre modes opératoires.
+            En primaire, l’élève est exposé à ses premières notions de mathématiques via la numérotation, la 
+            résolution de problèmes simples à l’aide des operateurs de bases que sont l’addition, 
+            la soustraction,  la multiplication et la division.<br/>
+            L’enjeu majeur est la maitrise de ces quatre modes opératoires. Il est important de s’assurer 
+            de l’assimilation de certaines bases avant l’entrée au collège. L’élève doit être mis en confiance, 
+            un dialogue permanent permet de voir ou d’anticiper des lacunes éventuelles.
         </p>
         
         <footer class="footer">
@@ -29,5 +31,9 @@
             <a href="#"><img src="{{ asset('/img/arrow-right.jpg') }}" alt="En savoir plus" /></a>
         </footer>
         
-    </div>    
+        <figure class="text-center">
+            <img src="{{ asset('/img/primaire.jpg') }}" alt="" />
+        </figure>
+        
+    </article>    
 {% endblock %}

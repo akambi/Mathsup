@@ -11,23 +11,14 @@
 
 {# Le titre de l'entête du document #}
 {% block entetetitle %}INSTITUTION | {{ parent() }}{% endblock %}
-{# La barre latéralke de la page #}
-{% block aside %}{{ parent() }}{% endblock %}
-{% block institution %}
-<li class="active">
-    <a href="{{ path('msp_institution') }}">INSTITUTION</a>
-    <ul class="nav nav-list">
-        <li><a href="{{ path('msp_institution_section', { 'page': "remise-a-niveau" }) }}">Remise à niveau</a></li>
-        <li><a href="{{ path('msp_institution_section', { 'page': "comite-entreprise" }) }}">Comité d'Entreprise</a></li>
-        <li><a href="{{ path('msp_institution_section', { 'page': "preparation-concours" }) }}">Préparation Concours</a></li>
-    </ul>
-</li>
-{% endblock %}
+
 {# Le contenu de la page #}
 {% block content %}
-    <article class="span9">
-        <h1>INSTITUTION</h1>
-    </article>    
+    <article class="niveau">
+        
+        <p class="header avenirNextItalic">
+            Des cours de remise à niveau sont proposées pour différents objectifs préétablies
+        </p>
+                        
+    </article>   
 {% endblock %}{# empty Twig template #}
-{# empty Twig template #}
-{# empty Twig template #}

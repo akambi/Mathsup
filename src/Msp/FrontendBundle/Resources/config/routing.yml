@@ -163,10 +163,6 @@ msp_universite:
     pattern:  /universite/
     defaults: { _controller: MspFrontendBundle:Frontend:universite }
 
-msp_universite_section:
-    pattern:  /universite/{page}/
-    defaults: { _controller: MspFrontendBundle:Frontend:universite }
-
 msp_institution:
     pattern:  /institution/
     defaults: { _controller: MspFrontendBundle:Frontend:institution }
