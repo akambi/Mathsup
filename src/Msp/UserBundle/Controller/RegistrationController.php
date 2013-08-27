@@ -49,7 +49,7 @@ class RegistrationController extends BaseController
                 $em->persist($log);
                 $em->flush();
 
-                $authUser = true;
+                $authUser = false;
                 $route = 'fos_user_registration_confirmed';
                 $this->setFlash('fos_user_success', 'registration.flash.user_created');
                 $url = $this->container->get('router')->generate($route);
@@ -102,7 +102,7 @@ class RegistrationController extends BaseController
                 $em->persist($professeur);                
                 $em->flush();
 
-                $authUser = true;
+                $authUser = false;
                 $route = 'fos_user_registration_confirmed';
                 $this->setFlash('fos_user_success', 'registration.flash.user_created');
                 $url = $this->container->get('router')->generate($route);

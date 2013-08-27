@@ -36,7 +36,7 @@ class RegistrationEleveForm extends AbstractType {
                     ->add('dateDeNaissance', 'birthday', array('label' => "Date de naissance", 'widget' => 'single_text', 'attr' => array("placeholder" => "Date de naissance"), 'format' => 'dd/MM/yyyy'))
                 ;
                 $builder
-                    ->add('userFamily', new UserFamilyType())
+                    ->add('userFamily', new UserFamilyType(), array('required' => false))
                 ;
                 $builder
                     ->add('objectifs', 'textarea', array('attr' => array("placeholder" => "Vos objectifs")))                    
