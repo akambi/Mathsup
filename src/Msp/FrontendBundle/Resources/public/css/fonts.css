@@ -1,0 +1,30 @@
+body {
+	font-family: Helvetica, Arial, Geneva, sans-serif;
+	font-weight:regular;
+}
+.light {
+	font-weight:lighter;
+}
+.bold {
+	font-weight:bold;
+}
+
+/* AVENIR NEXT */
+.avenirNextRegular,
+.avenirNextDemiBold,
+.avenirNextBold,.avenirNextItalic {
+	font-family: "Avenir Next", Avenir, Helvetica, Arial, Geneva, sans-serif;
+}
+/* Avenir Next - Regular */
+.avenirNextRegular {
+	font-weight:400;
+}
+/* Avenir Next - Demi Bold */
+.avenirNextDemiBold {
+	font-weight:600;
+}
+/* Avenir Next - Bold */
+.avenirNextBold {
+	font-weight:700;
+}
+.avenirNextItalic{font-style:italic}
