@@ -1,5 +1,5 @@
 // Variable de départ pour le slider principal
-var current_slide = 0;
+var current_slide = 1;
 $(function() {  
 /*  Ici on définit quelques variables de redirection */
     var protocole = "http", domaineFR = '.fr', domaineCOM = '.com';
@@ -23,6 +23,10 @@ $(function() {
         }else{
             current_slide -=1;
         }
+    //  On gère la flêche dans bas de nos méthdodes
+        jQuery('.content div').removeClass('active');
+        jQuery('.content div').eq(current_slide).addClass('active');
+    //  On anime le slider
         slider_handler.animate({"left": '-'+( current_slide * slider_width )}, { duration: 500} );     
         slidetimer=setInterval("movTo(" + slider_content_length + "," + slider_width + ")", 5000);
     };
@@ -34,32 +38,50 @@ $(function() {
         }else{
             current_slide +=1; 
         }
+    //  On gère la flêche dans bas de nos méthdodes
+        jQuery('.content div').removeClass('active');
+        jQuery('.content div').eq(current_slide).addClass('active');
+    //  On anime le slider
         slider_handler.animate({"left": '-'+( current_slide * slider_width )}, { duration: 500} );
         slidetimer=setInterval("movTo(" + slider_content_length + "," + slider_width + ")", 5000);
     };
-
+    //  L'action à effectuer quand on est sur le curseur d'un cours
+    var coursCursorEnterAction = function(){
+        clearInterval(slidetimer);
+    //  On recupère l'index du parent .content div du curseur
+        var cours_cursor_parent_index = $(this).parent().parent().index();
+        cours_cursor_parent_index -=1;
+    //  On met à jour le current_slide
+        current_slide = cours_cursor_parent_index;
+    //  On gère la flêche dans bas de nos méthdodes
+        jQuery('.content div').removeClass('active');
+        jQuery('.content div').eq(current_slide).addClass('active');
+    //  On anime le slider
+        slider_handler.animate({"left": '-'+( current_slide * slider_width )}, { duration: 500} );        
+    };
+    //  L'action à effectuer quand on est sortie du curseur d'un cours
+    var coursCursorOutAction = function(){        
+        slidetimer=setInterval("movTo(" + slider_content_length + "," + slider_width + ")", 5000);
+    };    
+    //  Affiche du cursor gauche du slider
     $('<img class="precedent" />')
             .attr('src', '/img/slider-left.jpg')                
             .click( precedentAction )
             .insertBefore( '#slider' );
-
+    //  Affiche du cursor droit du slider
     $('<img class="suivant" />')
             .attr('src', '/img/slider-right.jpg')
             .click( suivantAction )
             .insertAfter( '#slider' );
-
+    //  Le hover sur un curseur de cours
+    $('.cours-curseur').mouseenter(coursCursorEnterAction);
+    //  Le out hover sur un curseur de cours
+    $('.cours-curseur').mouseleave(coursCursorOutAction);
+    //  On retire l'action du href
+    $('.cours-curseur').click(function(){ return false; });
+    
     var slidetimer=setInterval("movTo(" + slider_content_length + "," + slider_width + ")", 5000);
 /*  Fin du code du slider en haut de page */
-
-/*  Action sur le formulaire d'inscription  */
-    $("#fos_user_registration_form_roles_0").change(function(){
-        var role = $("#fos_user_registration_form_roles_0").val();
-        if( role == "ROLE_ELEVE" ){                       
-            $('#fos_user_registration_form_classe').parent().show();            
-        }else{                        
-            $('#fos_user_registration_form_classe').parent().hide();
-        }
-    });
 
 //  Ajout de la numérotation des titres des articles de la catégorie niveau
     $(".niveau #tabs article").each( function( ){
@@ -270,8 +292,13 @@ $(function() {
 * 
 */
 function movTo( total, width ){        
+//  On anime le slider
     jQuery('.slider-handler').animate({"left": '-'+( current_slide * width )}, { duration: 500} );
-    current_slide +=1; 
+//  On gère la flêche dans bas de nos méthdodes
+    jQuery('.content div').removeClass('active');
+    jQuery('.content div').eq(current_slide).addClass('active');
+//  On indique la prochaine etape
+    current_slide +=1;    
     if( current_slide === ( total ) ){
         current_slide = 0;
     }    

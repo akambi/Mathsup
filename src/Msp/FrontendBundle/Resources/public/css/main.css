@@ -133,13 +133,14 @@ ul.dash li:before{
 .accueil .contentheader {background-image: url("/img/bg.jpg");background-repeat: no-repeat;background-position: center center; min-height: 254px; color: white; min-width: 1200px;}
 .accueil .contentheader h1 { margin: 0; padding-top: 50px; font-size: 36px; text-align: center; margin-bottom: 20px;text-transform: uppercase;font-weight:lighter;}
 .accueil .contentheader p { max-width: 400px; margin: 0 auto; font-size: 14px;font-weight:lighter; }
-.accueil .content {background-image: url("/img/bg_content1.jpg");background-repeat: no-repeat;background-position: center center; width: 1200px; height: 300px; margin: 0 auto; text-align: center}
+.accueil .content { background: #f2f2f2; width: 1200px; margin: 0 auto; text-align: center}
 .accueil .content h2 { margin: 0; margin-bottom: 20px; color: #009fe3; font-size: 16px; max-width: 1000px; text-align: left; margin: 0 auto; }
-.accueil .content > div { display: inline-block; vertical-align: top; width: 333px; border-right: 1px #cecece solid;  padding: 20px 0; }
-.accueil .content > div:last-child { border: 0 none; }
-.accueil .content > div p  {  }
-.accueil .content > div p strong { display: block; }
-.accueil .content > div p a { display: block; margin-top: 20px; }
+.accueil .content div { display: inline-block; vertical-align: top; width: 333px; border-right: 1px #cecece solid;  padding: 20px 0; }
+.accueil .content div:last-child { border: 0 none; }
+.accueil .content div.active {background: url("/img/slider_down.jpg") center bottom no-repeat; }
+.accueil .content div p  {  }
+.accueil .content div p strong { display: block; }
+.accueil .content div p a { display: block; margin-top: 20px; }
 /*  Slider  */
 #slider-content, #slider { position: relative; max-width: 940px; margin: 40px auto; height: 252px; }
 #slider { overflow: hidden;}
@@ -150,7 +151,7 @@ ul.dash li:before{
 #slider .slider-handler { position: absolute; top: 0; left: 0; height: 252px; }
 #slider .slider-handler img { float: left; }
 /*  Contenu Niveau */
-.btn_up, .btn_up:hover, .btn_up:focus, .btn_up:active { outline: none; }
+.btn_up, .btn_up:hover, .btn_up:focus, .btn_up:active, .cours-curseur, .cours-curseur:hover, .cours-curseur:focus,.cours-curseur:active { outline: none; }
 .niveau { background: #f2f2f2;  min-height: 500px; margin: 0 auto; width: 1200px;padding: 30px 0 30px 0}
 .niveau .header, .niveau .footer { max-width: 1000px; margin: 0 auto; }
 .niveau .header { background: #ced9e5; padding: 20px;  max-width: 960px; -webkit-border-radius: 10px; -o-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;}

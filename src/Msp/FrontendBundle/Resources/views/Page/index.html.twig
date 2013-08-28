@@ -26,14 +26,14 @@
             
         <div class="content"> 
             <h2 class="avenirNextBold">Nos méthodes</h2>
-            <div>
+            <div class="active">
                 <figure>
                     <img src="{{ asset('/img/logo_cours_domicile.jpg') }}" alt="" />
                 </figure>
                 <p>
                     <span class="avenirNextDemiBold">Cours à domicile</span>
                     Cours particuliers à domicile
-                    <a href="#"><img src="{{ asset('/img/en_savoir_plus.jpg') }}" alt="En savoir plus" /></a>
+                    <a class="cours-curseur" href="#"><img src="{{ asset('/img/en_savoir_plus.jpg') }}" alt="En savoir plus" /></a>
                 </p>
             </div>
             <div>
@@ -43,7 +43,7 @@
                 <p>
                     <span class="avenirNextDemiBold">Face à face</span>
                     Cours particuliers en ligne
-                    <a href="#"><img src="{{ asset('/img/en_savoir_plus.jpg') }}" alt="En savoir plus" /></a>
+                    <a class="cours-curseur" href="#"><img src="{{ asset('/img/en_savoir_plus.jpg') }}" alt="En savoir plus" /></a>
                 </p>
             </div>
             <div>
@@ -53,7 +53,7 @@
                 <p>
                     <span class="avenirNextDemiBold">Classe virtuelle</span>
                     Cours en ligne (25 élèves)
-                    <a href="#"><img src="{{ asset('/img/en_savoir_plus.jpg') }}" alt="En savoir plus" /></a>
+                    <a class="cours-curseur" href="#"><img src="{{ asset('/img/en_savoir_plus.jpg') }}" alt="En savoir plus" /></a>
                 </p>
             </div>
             
@@ -61,11 +61,10 @@
             
         <div id="slider">
             
-            <div class="slider-handler">
-                <img title="3" src="{{ asset('/img/primaire-2.jpg') }}" alt="" /> 
-                <img title="3" src="{{ asset('/img/domicile-1.jpg') }}" alt="" /> 
-                <img title="3" src="{{ asset('/img/face-a-face-1.jpg') }}" alt="" /> 
-                <img title="4" src="{{ asset('/img/classe-virtuelle-1.jpg') }}" alt="" /> 
+            <div class="slider-handler">                
+                <img title="Cours à domicile" src="{{ asset('/img/cours-a-domicile.jpg') }}" alt="cours à domicile" /> 
+                <img title="Cours à distance" src="{{ asset('/img/cours-a-distance.jpg') }}" alt="cours à distance" /> 
+                <img title="Classe virtuelle" src="{{ asset('/img/classe-virtuelle.jpg') }}" alt="classe virtuelle" /> 
             </div>
             
         </div>
