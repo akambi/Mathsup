@@ -1,10 +1,17 @@
 {% extends "::layout.html.twig" %}
 
 {% block content %}
-<section class="span9">
+<section>
     {% block navbaruser %}
+        {% if is_granted("ROLE_ADMIN") %}
         {% include "MspFrontendBundle:Navbar:admin.html.twig" %}
+        {% elseif is_granted("ROLE_PROFESSEUR") %}
+        {% include "MspFrontendBundle:Navbar:professeur.html.twig" %}
+        {% else %}
+        {% include "MspFrontendBundle:Navbar:eleve.html.twig" %}
+        {% endif %}
     {% endblock %}
+        
     {% block body %}
     {% endblock %}
      
