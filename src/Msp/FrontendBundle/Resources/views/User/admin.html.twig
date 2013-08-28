@@ -42,7 +42,7 @@
                 <td>{{ entity.departement }}</td>
                 <td>{{ entity.ville }}</td>                
                 <td>{{ entity.classe }}</a></td>
-                <td>{{ eleves_alert_niveau[key] }}</td>                
+                <td>{{ entity.classe.niveau }}</td>                
             </tr>
         {% endfor %}
         </tbody>

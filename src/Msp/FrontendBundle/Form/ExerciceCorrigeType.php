@@ -16,7 +16,7 @@ class ExerciceCorrigeType extends AbstractType
             ->add('corrige','textarea', array('label' => 'Rédaction du corrigé'))
             ->add('file', 'file', array( "label" => "Selectionner un fichier PDF", 'required' => false))
             ->add('urlVideo', 'url', array( "label" => 'L\'url de la vidéo'))
-            ->add('date', 'datetime', array('extra_fields_message' => 'test', "with_seconds" => true, 'date_format' => 'dd/MM/yyyy') )            
+            //->add('date', 'datetime', array('extra_fields_message' => 'test', "with_seconds" => true, 'date_format' => 'dd/MM/yyyy') )            
         ;
     }
 

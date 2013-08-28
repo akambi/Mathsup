@@ -29,7 +29,7 @@
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 {# L'utilisateur e le rôle admin ? #}
 {% if is_granted('ROLE_ADMIN') %}
-<ul class="unstyled nav-pills nav-stacked">
+<ul class="inline">
     <li>
         <a class="btn" href="{{ path('msp_eleve_inscription')}}">INSCRIPTION ELEVE</a>
     </li>

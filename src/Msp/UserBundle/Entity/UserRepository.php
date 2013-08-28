@@ -46,26 +46,27 @@ class UserRepository extends EntityRepository
         $time = mktime('00', '00', '00', date('m'), date('d'), date('Y')) - 30*24*60*60;
         $date = date('Y-m-d', $time);
         
-        $qb = $this->_em->createQueryBuilder();
+        $qb =   $this->createQueryBuilder('a')                
+                ->leftJoin('a.tickets', 't')
+                ->where('a.roles like :roles')
+                ->setParameter('roles', '%ROLE_PROFESSEUR%')
+                ->andWhere('t.date >= :date or t.date is null')
+                ->setParameter('date', $date)
+            ;   
         
-        $nots = $this->createQueryBuilder('a')
-                ->select('a')
-                ->innerJoin('a.tickets', 't')
-                ->where('t.date >= :date')
-                ->setParameter('date', $date)                
-                ->getQuery()
-                ->getResult();        
-       
-        $linked =   $qb->select('a')
-                    ->from( $this->_entityName, 'a')                    
-                    ->where('a.roles like :roles')
-                    ->setParameter('roles', '%ROLE_PROFESSEUR%'); ; 
-        
-        if($nots):
-            $linked->andWhere($qb->expr()->notIn('a.username', $nots));
-        endif;
-        
-        return  $linked->getQuery()->getResult();
+        return  $qb->getQuery()->getResult();
     }
     
+    public function getUserCouponAlert()
+    {
+        $qb =   $this->createQueryBuilder('a')                
+                ->leftJoin('a.coupons', 'c')
+                ->leftJoin('c.ticket', 't')
+                ->where('a.roles like :roles')
+                ->setParameter('roles', '%ROLE_ELEVE%')
+                ->having('COUNT(c) < 4 or ( COUNT(c) - COUNT(t) < 4 )')                
+            ;
+        
+        return $qb->getQuery()->getResult();
+    }
 }

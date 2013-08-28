@@ -44,7 +44,13 @@
             </tr>
             <tr>
                 <th>Url video</th>
-                <td>{{ entity.urlVideo }}</td>
+                <td>
+                    {%if entity.urlVideo is not null %}
+                    {{ entity.urlVideo }}
+                    {% else %}
+                    Aucun
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <th>Date</th>

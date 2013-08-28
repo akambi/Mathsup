@@ -15,7 +15,7 @@ class QuestionType extends AbstractType
             ->add('libelle', 'textarea', array( "label" => 'Titre'))
             ->add('illustration')
             ->add('duree', 'time', array( 'label' => 'Durée', "with_seconds" => true))
-            ->add('date', 'datetime', array('extra_fields_message' => 'test', "with_seconds" => true, 'date_format' => 'dd/MM/yyyy'))
+            //->add('date', 'datetime', array('extra_fields_message' => 'test', "with_seconds" => true, 'date_format' => 'dd/MM/yyyy'))
             //  Pour les relations 1-n
             ->add('reponses', 'collection', array("type" => new ReponseType, 'allow_add' => true, 'allow_delete' => true, 'by_reference' => false))
             //  Pour les relations 1-1

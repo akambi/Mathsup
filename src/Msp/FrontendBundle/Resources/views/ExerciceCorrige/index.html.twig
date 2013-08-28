@@ -42,7 +42,10 @@
                     <a title="Consulter le fichier" href="{{ asset('uploads/exercicescorriges/') }}{{ entity.urlPdf }}" target="_blank"><img src="{{ asset('pdf-icon.png') }}" alt="pdf"></a>
                     {% endif %}
                 </td>
-                <td><a title="Voir la vidéo" href="{{ entity.urlVideo }}" target="_blank"><i class="icon-film"></i></a></td>
+                <td>
+                    {%if entity.urlVideo is not null %}
+                    <a title="Voir la vidéo" href="{{ entity.urlVideo }}" target="_blank"><i class="icon-film"></i>{{ entity.urlVideo }}</a></td>
+                    {% endif %}
                 <td>{% if entity.date %}{{ entity.date|date('d/m/Y H:i:s') }}{% endif %}</td>
                 <td>
                 <ul class="inline">

@@ -12,7 +12,7 @@ class ChapitreType extends AbstractType
     {
         $builder
             ->add('libelle', 'textarea', array( "label" => 'Titre') )
-            ->add('date', 'datetime', array('extra_fields_message' => 'test', "with_seconds" => true, 'date_format' => 'dd/MM/yyyy'))
+            //->add('date', 'datetime', array('extra_fields_message' => 'test', "with_seconds" => true, 'date_format' => 'dd/MM/yyyy'))
             ->add('niveau')
         ;
     }

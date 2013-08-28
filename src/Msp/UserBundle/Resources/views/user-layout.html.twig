@@ -1,7 +1,7 @@
 {% extends "::layout.html.twig" %}
 
 {% block content %}
-<section>
+<section class="container">
     {% block navbaruser %}
         {% if is_granted('ROLE_ADMIN') %}
             {% include "MspFrontendBundle:Navbar:admin.html.twig" %}

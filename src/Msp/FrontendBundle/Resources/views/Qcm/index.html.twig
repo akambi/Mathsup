@@ -38,8 +38,8 @@
                 <td>{{ entity.libelle }}</td>
                 <td>{{ entity.duree|date('H:i:s') }}</td>
                 <td>{% if entity.date %}{{ entity.date|date('d/m/Y H:i:s') }}{% endif %}</td>
-                <td><a href="{{ path('niveau_show', {id: entity.niveau.id}) }}">{{ entity.niveau }}</a></td>
-                <td><a href="{{ path('difficulter_show', {id: entity.difficulter.id}) }}">{{ entity.difficulter }}</a></td>
+                <td>{{ entity.niveau }}</td>
+                <td>{{ entity.difficulter }}</td>
                 <td>{{ entity.questions|length }}</td>
                 <td>
                 <ul class="inline nav-pills">

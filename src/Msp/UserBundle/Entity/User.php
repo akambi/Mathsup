@@ -815,8 +815,11 @@ class User extends BaseUser
      * @return \Msp\UserBundle\Entity\User
      */
     public function setUserFamily(\Msp\FrontendBundle\Entity\UserFamily $userFamily){
-        $userFamily->setUser($this);        
-        $this->userFamily = $userFamily;        
+    //  On vérifie que l'entité n'est pas vide
+        if($userFamily->getNom()):
+            $userFamily->setUser($this);        
+            $this->userFamily = $userFamily;  
+        endif;              
         
         return $this;
     }
