@@ -15,7 +15,7 @@
 {% block aside %}{{ parent() }}{% endblock %}
 {# Le contenu de la page #}
 {% block body %}
-    <h1>{{ qcm.libelle }} <em id="qcm_time">{{ time }}</em></h1>
+    <h1>{{ qcm.libelle }} {% if msg == "" %}<em id="qcm_time">{{ time }}</em>{% endif %}</h1>
     {% if msg %}
     <p class="alert alert-success">{{ msg }}</p>
     <ul class="inline">

@@ -50,7 +50,7 @@ class UserRepository extends EntityRepository
                 ->leftJoin('a.tickets', 't')
                 ->where('a.roles like :roles')
                 ->setParameter('roles', '%ROLE_PROFESSEUR%')
-                ->andWhere('t.date >= :date or t.date is null')
+                ->andWhere('t.date <= :date or t.date is null')
                 ->setParameter('date', $date)
             ;   
         
