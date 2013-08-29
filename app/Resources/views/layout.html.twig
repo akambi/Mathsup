@@ -11,7 +11,7 @@
         
         {% block stylesheets %}            
             {% stylesheets output='css/style.css' filter='cssrewrite' 
-            '@MspFrontendBundle/Resources/public/css/bootstrap.css'
+            '@bootstrap_css'
             '@MspFrontendBundle/Resources/public/css/main.css'
             '@MspFrontendBundle/Resources/public/css/fonts.css'
             %}
@@ -148,9 +148,9 @@
         {% block javascripts %}
             {# inclusion de la librairie de jquery #}
             {% javascripts output='js/main.js' 
-            '@MspFrontendBundle/Resources/public/js/jquery.min.js'
-            '@MspFrontendBundle/Resources/public/js/jquery-ui.min.js'
-            '@MspFrontendBundle/Resources/public/js/bootstrap.js'
+            '@jquery'
+            '@jquery_ui'
+            '@bootstrap_js'
             '@MspFrontendBundle/Resources/public/js/a.javascript.js'
             %}
             <script type="text/javascript" src="http://{{ app.request.host }}{{ asset_url }}"></script>

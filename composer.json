@@ -23,8 +23,37 @@
         "friendsofsymfony/user-bundle": "*",
         "hackzilla/barcode-bundle": "*",
         "spraed/pdf-generator-bundle": "dev-master",
-        "craue/formflow-bundle": "~2.0.0"
+        "craue/formflow-bundle": "~2.0.0",
+        "jquery/jquery": "1.9.1",
+        "jquery/jquery-ui": "1.10.3",
+        "twbs/bootstrap": "v2.3.2",
+        "braincrafted/bootstrap-bundle": "dev-master",
+        "leafo/lessphp": "v0.4.0"
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "1.9.1",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.9.1.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery-ui",
+                "version": "1.10.3",
+                "dist": {
+                    "url": "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js",
+                    "type": "file"
+                }
+            }
+        }        
+    ],
     "scripts": {
         "post-install-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",

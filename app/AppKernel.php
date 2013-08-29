@@ -27,6 +27,8 @@ class AppKernel extends Kernel
             
             new Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
+
+            new Bc\Bundle\BootstrapBundle\BcBootstrapBundle(),
             //new Hackzilla\BarcodeBundle\HackzillaBarcodeBundle(),
         );
 

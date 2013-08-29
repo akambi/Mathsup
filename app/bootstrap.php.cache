@@ -325,13 +325,12 @@ protected $debug;
 protected $booted;
 protected $name;
 protected $startTime;
-protected $classes;
 protected $errorReportingLevel;
-const VERSION ='2.2.5';
-const VERSION_ID ='20205';
+const VERSION ='2.2.6';
+const VERSION_ID ='20206';
 const MAJOR_VERSION ='2';
 const MINOR_VERSION ='2';
-const RELEASE_VERSION ='5';
+const RELEASE_VERSION ='6';
 const EXTRA_VERSION ='';
 public function __construct($environment, $debug)
 {
@@ -340,7 +339,6 @@ $this->debug = (Boolean) $debug;
 $this->booted = false;
 $this->rootDir = $this->getRootDir();
 $this->name = $this->getName();
-$this->classes = array();
 $this->bundles = array();
 if ($this->debug) {
 $this->startTime = microtime(true);
