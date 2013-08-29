@@ -26,8 +26,8 @@
         qcm_time.innerHTML = "" + h_g +" h "+ mn_g +" min "+ sec_g + " s ";
         question_time.innerHTML = "" + h_l +" h "+ mn_l +" min "+ sec_l + " s ";
         form_time.value = time_globale;
-    }else{
-        if( time_locale == 0 ){
+    }else{        
+        if( time_locale <= 0 ){
         //  Si le temps de la question est fini, on soumet le formulaire
             quest_form.submit();
         }else{
@@ -38,7 +38,7 @@
             var new_action = "";
             for( var i = 0; i < ( array_action.length - 1 ); i++){
                 new_action += array_action[i] + '/';
-            }
+            }            
             quest_form.action = new_action;
             quest_form.submit();
         }

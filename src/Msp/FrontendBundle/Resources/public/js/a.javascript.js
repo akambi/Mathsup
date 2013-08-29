@@ -96,10 +96,17 @@ $(function() {
     $(".login-sign-in li a#member-connect").mouseenter( function( ){        
         $("#connexion-menu").show();
     });
-
-    $(".container-fluid > section, .login-sign-in li:first a, #menu").mouseenter( function( ){        
+    //  Si on quite le formulaire de connexion, il disparait
+    $("#connexion-menu").mouseleave( function( ){        
     //  On met 5 secondes avant de cacher le formulaire de connexion
         $("#connexion-menu").delay(5000).hide('slow');
+    });
+    //  Si on est sur le formulaire de connexion avec la souris, on supprime toute action 
+    //  jquery sur le formulaire
+    $("#connexion-menu").mouseenter( function( ){        
+    //  On met 5 secondes avant de cacher le formulaire de connexion
+        $("#connexion-menu").clearQueue();
+        $("#connexion-menu").show();
     });
 /*  Le slider de la liste des membres */
     var liste_equipes = $('#liste-equipes');
@@ -187,6 +194,7 @@ $(function() {
             });
         } else {
             $('.btn_up').stop().show().animate({'opacity':1});
+            $("#connexion-menu").hide('slow');
         }
 
     });
