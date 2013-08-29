@@ -3,6 +3,7 @@
 namespace Msp\FrontendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * UserFamily
@@ -31,6 +32,7 @@ class UserFamily
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=45)
+     * @Assert\Length(min="2", groups={"flow_RegistrationEleve_step2"})
      */
     private $nom;
 
@@ -38,6 +40,7 @@ class UserFamily
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=45)
+     * @Assert\Length(min="2", groups={"flow_RegistrationEleve_step2"})
      */
     private $prenom;
 

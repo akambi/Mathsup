@@ -8,7 +8,7 @@
                     {{ form_label(form.objectifs, null, {'label_attr': {'class' : 'control-label' }}) }}
                     <div class="controls">
                     {% if form.objectifs.vars.errors|length %}
-                        {{ form_widget(form.objectifs, {'attr' : {'class' : 'alert'}}) }}
+                        {{ form_widget(form.objectifs, {'attr' : {'class' : ''}}) }}
                     {% else %}
                         {{ form_widget(form.objectifs, {'attr' : {'class' : ''}}) }}
                     {% endif %}            

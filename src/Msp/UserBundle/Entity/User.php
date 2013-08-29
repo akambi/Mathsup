@@ -70,6 +70,7 @@ class User extends BaseUser
     
     /**
     * @ORM\OneToOne(targetEntity="Msp\FrontendBundle\Entity\UserFamily", mappedBy="user", cascade={"persist"})
+    * @Assert\Valid
     */
     private $userFamily;
     
@@ -149,6 +150,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="ville", type="string", length=255, nullable=true)
+     * @Assert\Length(min="2", groups={"flow_RegistrationProfesseur_step2"})
      */
     protected $ville;
     
@@ -170,6 +172,8 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="numero_portable", type="string", length=20, nullable=true)
+     * @Assert\Type(type="numeric", groups={"flow_RegistrationEleve_step2", "flow_RegistrationProfesseur_step2"})
+     * @Assert\Length(min="10", groups={"flow_RegistrationEleve_step2", "flow_RegistrationProfesseur_step2"})
      */
     protected $numeroPortable;
     
@@ -177,7 +181,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="adresse", type="text")
-     * @Assert\NotBlank()
+     * @Assert\Length(min="4", groups={"flow_RegistrationEleve_step2", "flow_RegistrationProfesseur_step2"})
      */
     private $adresse;
     
@@ -192,7 +196,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="objectifs", type="text", nullable=true)
-     * @Assert\Length(min="10")
+     * @Assert\Length(min="10", groups={"flow_RegistrationEleve_step2"})
      */
     private $objectifs;
     

@@ -109,7 +109,7 @@ h1.titre{font-size: 12px; line-height: 12px; text-align: center; display: none; 
 
 .login-sign-in li a:hover, .login-sign-in li a:focus { background-color: #009fe3; text-decoration: none;}
 /*  Formulaire de connexion  */
-#connexion-menu { margin: 0; }
+#connexion-menu { margin: 0; position: absolute; top: 80px;}
 #connexion-menu fieldset { padding: 10px 0; }
 #connexion-menu fieldset > div { display: inline-block; vertical-align: middle; max-width: 50%; text-align: left; margin-right: 100px; }
 #connexion-menu fieldset > div a, #connexion-menu fieldset > div label { color: white; margin: 0; }
@@ -138,9 +138,9 @@ ul.dash li:before{
 .accueil .content div { display: inline-block; vertical-align: top; width: 333px; border-right: 1px #cecece solid;  padding: 20px 0; }
 .accueil .content div:last-child { border: 0 none; }
 .accueil .content div.active {background: url("/img/slider_down.jpg") center bottom no-repeat; }
-.accueil .content div p  {  }
+.accueil .content div p  { }
 .accueil .content div p strong { display: block; }
-.accueil .content div p a { display: block; margin-top: 20px; }
+.accueil .content div p a { display: block; width: 20px; margin: 20px auto 0; }
 /*  Slider  */
 #slider-content, #slider { position: relative; max-width: 940px; margin: 40px auto; height: 252px; }
 #slider { overflow: hidden;}
@@ -149,7 +149,7 @@ ul.dash li:before{
 #slider-content > img.suivant { right: -40px; }
 #slider-content img { cursor: pointer; }
 #slider .slider-handler { position: absolute; top: 0; left: 0; height: 252px; }
-#slider .slider-handler img { float: left; }
+#slider .slider-handler img { float: left; width: 940px; height: 252px; }
 /*  Contenu Niveau */
 .btn_up, .btn_up:hover, .btn_up:focus, .btn_up:active, .cours-curseur, .cours-curseur:hover, .cours-curseur:focus,.cours-curseur:active { outline: none; }
 .niveau { background: #f2f2f2;  min-height: 500px; margin: 0 auto; width: 1200px;padding: 30px 0 30px 0}
@@ -176,6 +176,7 @@ ul.dash li:before{
 .niveau #tabs article p, .niveau #tabs article ul, .niveau #tabs article h1, .niveau #tabs article h2 { max-width: 1000px; margin: 0 auto; }
 .niveau #tabs article h1, .niveau #tabs article h2 { font-size: 16px; color: #525252; }
 .niveau #tabs article ul { max-width: 970px; margin: 0 auto; }
+.niveau #tabs article ul ul { margin-left: 20px; }
 p strong.blue { display: inline-block; color: #009fe3; font-weight: normal; margin-bottom: 10px; }
 .niveau #tabs article .noborder { border: 0 none; }
 .niveau #tabs article .contenu-simple{padding: 20px 0;} 

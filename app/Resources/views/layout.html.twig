@@ -42,7 +42,7 @@
                     <nav id="menu">
                         
                         <ul>
-                            <li class="active" id="accueil"><a href="{{ path('msp_frontend_homepage') }}">ACCEUIL</a></li>                            
+                            <li id="accueil"><a href="{{ path('msp_frontend_homepage') }}">ACCEUIL</a></li>                            
                             <li><a href="{{ path('msp_math_plus') }}">MATH PLUS</a></li>
                             <li><a href="{{ path('msp_contact') }}">CONTACT</a></li>                                                      
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

@@ -20,7 +20,7 @@ class RegistrationController extends BaseController
         
         // form of the current step
         $form = $flow->createForm();
-        //$errors = $this->container->get('validator')->validate($eleve, array('full', 'Default'));
+        
         if ($flow->isValid($form)) {
             $flow->saveCurrentStepData($form);
 

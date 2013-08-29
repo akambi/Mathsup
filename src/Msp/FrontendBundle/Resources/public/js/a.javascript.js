@@ -92,17 +92,14 @@ $(function() {
                     $(this).text((index + 1)+". "+ $(this).text()); 
                 });
     });
-//  On gère ici le hover sur le bouton connexion
-    $(".login-sign-in li a#member-connect").mouseenter( function( ){
-        $("#menu-niveau").hide();
-        $(".container-fluid > section > header").hide();
+//  On gère ici le hover sur le formulaire connexion
+    $(".login-sign-in li a#member-connect").mouseenter( function( ){        
         $("#connexion-menu").show();
     });
 
-    $(".container-fluid > section, .login-sign-in li:first a, #menu").mouseenter( function( ){
-        $("#menu-niveau").show();
-        $(".container-fluid > section > header").show();
-        $("#connexion-menu").hide();
+    $(".container-fluid > section, .login-sign-in li:first a, #menu").mouseenter( function( ){        
+    //  On met 5 secondes avant de cacher le formulaire de connexion
+        $("#connexion-menu").delay(5000).hide('slow');
     });
 /*  Le slider de la liste des membres */
     var liste_equipes = $('#liste-equipes');
@@ -202,7 +199,7 @@ $(function() {
         if (href === window.location.pathname) {
           jQuery('#accueil').removeClass('active');
           jQuery(this).addClass('active');
-        }
+        }        
     });
 
     //Menu compte
@@ -237,13 +234,21 @@ $(function() {
       }
     });
 
-    // Code lié à l'inscription des élève
+// Code lié à l'inscription des élève
+    // Bouton radio pack cours
     $('.formule-cours input:radio').click(function(){
         $('.formule-cours').css('background','#e5e5e5');
         $(this).parent().parent().css('background','white');
         $('.formule-pack').css('display','inline-block');
     });
-
+    
+    // Bouton radio pack cours déjà cliqué
+    if($('.formule-cours [type=radio]:checked').prop("checked")){        
+        $('.formule-cours [type=radio]:checked').parent().parent().css('background','white');            
+        $('.formule-pack').css('display','inline-block');
+    }
+    
+    //  Affichage des différents formulaire d'inscription élève
     $('.craue_poursuivre').click(function(){        
     //  On récupère le div de l'étape courant
         var parent = $(this).parents(".form-wrap-inner").parent(); 
@@ -275,13 +280,34 @@ $(function() {
         range: "min",
         max: 160,
         value: 40,
-        slide: refreshSwatch,
-        change: refreshSwatch
+        slide: slideSwatch,
+        change: changeSwatch
     });
     $( "#slider-blue" ).slider( "value", 40 );
-     function refreshSwatch() {
-        $( "#slider-blue" ).slider( "value" );       
+    //  Cette fonction agit quand on bouge le curseur
+    function slideSwatch() {
+        var niveau = $( "#slider-blue" ).slider( "value" );
+        setClasse( $("#register_eleve_classe"), niveau );
     }
+    //  Cette fonction agit quand on change la propriété value du slider
+    function changeSwatch() {
+        $( "#slider-blue" ).slider( "value" );        
+    }
+    // Ici on gère le niveau en fonction de la classe choisie
+        //  On definie le niveau par defaut
+    if($("#register_eleve_classe")){
+        //  On recupère la classe
+        var _classe =  $("#register_eleve_classe").val();
+    //  On affiche le niveau
+        setNiveau($( "#slider-blue" ), _classe); 
+    }
+        //  Si la classe change, on change aussi le niveau
+    $("#register_eleve_classe").change(function(){    
+    //  On recupère la classe
+        var _classe =  $("#register_eleve_classe").val();
+    //  On affiche le niveau
+        setNiveau($( "#slider-blue" ), _classe);        
+    });
 });
 
 /*
@@ -319,4 +345,62 @@ function set_display_projets(container, first, last, method) {
         container.children().eq(last+1).hide('slow');
         container.children().eq(first).show('slow');
     }
+}
+
+/*
+ * Description: Vérifie si une variable existe dans un tableau
+ * 
+ * array array contient  une liste de variables
+ * p_val string contient la variable à recherché
+ */
+function inArray(array, p_val) {
+    var l = array.length;
+    for(var i = 0; i < l; i++) {
+        if(array[i] == p_val) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/*
+ * Description: Affiche le niveau de l'utilisateur courant
+ * 
+ * $container contient  l'objet slider
+ * classe contient le choix de la classe courante
+ */
+function setNiveau($container, classe) {
+    if(!classe) classe = "classe";
+    var _primaire = ["classe", 1];        
+    var _college = [2, 3, 4, 5];
+    var _lycee = [6, 7, 8];
+    var _universite = [9, 10];
+    var niveau;
+    if( inArray( _primaire, classe )  ){
+        niveau = 1;
+    }
+    if( inArray( _college, classe )  ){
+        niveau = 2;
+    }
+    if( inArray( _lycee, classe )  ){
+        niveau = 3;
+    }
+    if( inArray( _universite, classe )  ){
+        niveau = 4;
+    }    
+    $container.slider( "value", 40 * niveau );
+}
+
+/*
+ * Description: Affiche la classe en fonction du niveau
+ * 
+ * $container contient  l'objet jquery de la classe
+ * niveau contient le niveau en cours
+ */
+function setClasse($container, niveau) {
+    var classe = parseInt(niveau/16);
+    if( classe == 0) classe ="";
+    if( niveau > 150 ) classe = 10;    
+    
+    $container.val( classe );
 }
