@@ -15,9 +15,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass="Msp\UserBundle\Entity\UserRepository")
  * @ORM\Table()
- * @UniqueEntity("email")
- * @UniqueEntity("username") 
- * 
+ * @UniqueEntity(fields={"email"}, groups={"flow_RegistrationEleve_step1", "flow_RegistrationProfesseur_step1"})
+ * @UniqueEntity(fields={"username"}, groups={"flow_RegistrationEleve_step1", "flow_RegistrationProfesseur_step1"})
+ *  
  * @ORM\AttributeOverrides({
  *      @ORM\AttributeOverride(name="username",
  *          column=@ORM\Column(
@@ -127,7 +127,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=45)
-     * @Assert\Length(min="2")
+     * @Assert\Length(min="4", groups={"flow_RegistrationEleve_step1", "flow_RegistrationProfesseur_step1"})
      */
     protected $nom;
     
@@ -135,7 +135,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=45)
-     * @Assert\Length(min="2")
+     * @Assert\Length(min="2", groups={"flow_RegistrationEleve_step1", "flow_RegistrationProfesseur_step1"})
      */
     protected $prenom;
     
