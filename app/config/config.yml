@@ -53,7 +53,7 @@ assetic:
         img_bootstrap_glyphicons_white:
             inputs:
                 -  "%kernel.root_dir%/../vendor/twbs/bootstrap/img/glyphicons-halflings-white.png"
-        output: "img/glyphicons-halflings-white.png"
+            output: "img/glyphicons-halflings-white.png"
 
         bootstrap_css:
             inputs:

@@ -234,7 +234,8 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->dateInscription = new \Datetime();       
+        $this->dateInscription = new \Datetime();
+        $this->username = time();
         // your own logic
     }
     
