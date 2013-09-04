@@ -52,7 +52,7 @@
                     "type": "file"
                 }
             }
-        }        
+        }
     ],
     "scripts": {
         "post-install-cmd": [
