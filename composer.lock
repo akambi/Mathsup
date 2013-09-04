@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "db8eb6bb6bc83c6ce2d9ac056c134f8e",
+    "hash": "1dc67b39b8711f8322f67b71c3b0ac22",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -1917,16 +1917,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.0.1",
+            "version": "v5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "v5.0.1"
+                "reference": "f3917ecef35a4e4d98b303eb9fee463bc983f379"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/v5.0.1",
-                "reference": "v5.0.1",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/f3917ecef35a4e4d98b303eb9fee463bc983f379",
+                "reference": "f3917ecef35a4e4d98b303eb9fee463bc983f379",
                 "shasum": ""
             },
             "require": {
@@ -1962,7 +1962,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2013-06-17 13:32:32"
+            "time": "2013-08-30 12:35:21"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -2240,33 +2240,6 @@
             "time": "2013-08-26 19:27:24"
         },
         {
-            "name": "twbs/bootstrap",
-            "version": "v2.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "b4c4072679943773a7582daa63f545ba818fa627"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/b4c4072679943773a7582daa63f545ba818fa627",
-                "reference": "b4c4072679943773a7582daa63f545ba818fa627",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
-            "homepage": "http://twbs.github.com/bootstrap/",
-            "keywords": [
-                "bootstrap",
-                "css"
-            ],
-            "time": "2013-07-27 06:36:38"
-        },
-        {
             "name": "twig/extensions",
             "version": "v1.0.0",
             "source": {
@@ -2361,6 +2334,33 @@
                 "templating"
             ],
             "time": "2013-08-03 15:35:31"
+        },
+        {
+            "name": "twitter/bootstrap",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap.git",
+                "reference": "b4c4072679943773a7582daa63f545ba818fa627"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/b4c4072679943773a7582daa63f545ba818fa627",
+                "reference": "b4c4072679943773a7582daa63f545ba818fa627",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
+            "homepage": "http://twbs.github.com/bootstrap/",
+            "keywords": [
+                "bootstrap",
+                "css"
+            ],
+            "time": "2013-07-27 06:36:38"
         }
     ],
     "packages-dev": [

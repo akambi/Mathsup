@@ -25,9 +25,9 @@
         "spraed/pdf-generator-bundle": "dev-master",
         "craue/formflow-bundle": "~2.0.0",
         "jquery/jquery": "1.9.1",
-        "jquery/jquery-ui": "1.10.3",
-        "twbs/bootstrap": "v2.3.2",
+        "jquery/jquery-ui": "1.10.3",        
         "braincrafted/bootstrap-bundle": "dev-master",
+        "twitter/bootstrap": "2.3.*",
         "leafo/lessphp": "v0.4.0"
     },
     "repositories": [

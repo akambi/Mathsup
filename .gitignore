@@ -4,6 +4,7 @@
 /app/config/parameters.yml
 /vendor/
 /web/bundles/
+/web/assetic
 /web/js
 /web/css
 web/uploads/fiche-paie/*
